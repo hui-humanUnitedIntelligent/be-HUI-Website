@@ -127,3 +127,72 @@
       margin: 0.3rem 0;
     }
 
+    footer a:hover {
+      color: #00eaff;
+    }
+
+    .copyright {
+      margin-top: 2rem;
+      text-align: center;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 900px) {
+      footer {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">HUI · Human United Intelligent</div>
+  </header>
+
+  <main>
+    <h1>Kontaktiere <span>HUI</span></h1>
+    <p>
+      Du hast Fragen, möchtest ein Projekt starten oder Teil der HUI‑Community werden?  
+      Schreib uns – wir melden uns persönlich bei dir.
+    </p>
+
+    <form>
+      <input type="text" placeholder="Dein Name" required />
+      <input type="email" placeholder="Deine E‑Mail" required />
+      <textarea placeholder="Deine Nachricht" required></textarea>
+      <button type="submit">Nachricht senden</button>
+    </form>
+  </main>
+
+  <footer>
+    <div>
+      <h3>Über HUI</h3>
+      <a href="ueber-uns.html">Was ist HUI</a>
+      <a href="index.html#team">Team</a>
+      <a href="contact.html">Kontakt</a>
+    </div>
+
+    <div>
+      <h3>Plattform</h3>
+      <a href="impact-pool.html">Impact Pool</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="community.html">Community</a>
+    </div>
+
+    <div>
+      <h3>HUI App</h3>
+      <a href="hui-app.html">App Übersicht</a>
+      <a href="hui-app.html">Funktionen</a>
+      <a href="https://be-hui.vercel.app/Home">Web-App öffnen</a>
+    </div>
+
+    <div class="copyright">
+      © 2026 by Be‑HUI · Human United Intelligent · Alle Rechte vorbehalten
+    </div>
+  </footer>
+
+</body>
+</html>
