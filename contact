@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kontakt – HUI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #050505;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 2rem 5vw;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: #00eaff;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 5vw 5rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: linear-gradient(90deg, #00eaff, #ff00c8);
+      color: #050505;
+      margin-bottom: 1.2rem;
+    }
+
+    p {
+      color: #d4d4d4;
+      margin: 0.6rem 0;
+    }
+
+    form {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #00eaff;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 0.9rem 1.4rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      background: linear-gradient(90deg, #00eaff, #ff00c8);
+      color: #050505;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    .info {
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 2rem;
+    }
+
+    .info p {
+      margin: 0.3rem 0;
+    }
+
+    a {
+      color: #00eaff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">HUI · Human United Intelligence</div>
+  </header>
+
+  <main>
+    <span class="pill">Kontakt</span>
+    <h1>Wir sind für dich da</h1>
+    <p>
+      Du hast Fragen zu HUI, möchtest ein Projekt starten oder mit uns zusammenarbeiten?
+      Schreib uns einfach – wir melden uns so schnell wie möglich.
+    </p>
+
+    <form>
+      <input type="text" placeholder="Dein Name" required />
+      <input type="email" placeholder="Deine E‑Mail" required />
+      <textarea placeholder="Deine Nachricht" required></textarea>
+      <button type="submit">Nachricht senden</button>
+    </form>
+
+    <div class="info">
+      <h2>Weitere Kontaktmöglichkeiten</h2>
+      <p>E‑Mail: <a href="mailto:info@hui-app.com">info@hui-app.com</a></p>
+      <p>Website: <a href="https://hui-app.com">hui-app.com</a></p>
+    </div>
+  </main>
+</body>
+</html>
