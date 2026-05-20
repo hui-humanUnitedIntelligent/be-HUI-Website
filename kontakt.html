@@ -63,4 +63,62 @@ input, textarea{
   width: 100%;
   padding: 14px;
   border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  background: #fff;
+}
 
+textarea{
+  min-height: 150px;
+  resize: vertical;
+}
+
+button{
+  background: var(--teal);
+  color: #fff;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover{
+  background: var(--coral);
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION (kopiert aus deiner index.html) ================= -->
+<header>
+  <nav id="topnav">
+    <a href="index.html" class="brand">HUI</a>
+    <ul>
+      <li><a href="ueber-uns.html">Über HUI</a></li>
+      <li><a href="hui-app.html">HUI App</a></li>
+      <li><a href="impact-pool.html">Impact Pool</a></li>
+      <li><a href="projekte.html">Projekte</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="kontakt.html" class="active">Kontakt</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ================= KONTAKT-FORMULAR ================= -->
+<div class="contact-wrapper">
+  <h1>Kontakt</h1>
+  <p>Schreib uns eine Nachricht – wir melden uns schnellstmöglich zurück.</p>
+
+  <form action="https://formspree.io/f/mayvlqge" method="POST">
+    <input type="text" name="name" placeholder="Dein Name" required>
+    <input type="email" name="email" placeholder="Deine E-Mail" required>
+    <textarea name="message" placeholder="Deine Nachricht" required></textarea>
+    <button type="submit">Nachricht senden</button>
+  </form>
+</div>
+
+</body>
+</html>
