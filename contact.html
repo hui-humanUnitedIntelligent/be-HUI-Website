@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kontakt – HUI | Human United Intelligent</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>(function(){ emailjs.init({ publicKey: 'rn01OjX48srlic_N7' }); })();</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#1ED8C8;--teal-d:#17B8AA;--teal-l:#E6FAF8;
+  --coral:#E8876A;--orange:#F4793B;
+  --grad:linear-gradient(135deg,#1ED8C8,#E8876A);
+  --bg:#F5F0E8;--bg2:#FAF7F2;--white:#FFFFFF;
+  --text:#1A1A1A;--text2:#3D3D3D;--muted:#7A7A8A;--light:#B0B0BC;
+  --border:rgba(30,216,200,0.15);--border2:rgba(0,0,0,0.06);
+  --r:16px;--rl:24px;--rx:32px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:14px 52px;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);transition:all .3s}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-wrap{width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.nav-logo-img{width:46px;height:46px;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.08));transition:filter .2s,transform .2s}
+.nav-brand:hover .nav-logo-img{filter:drop-shadow(0 3px 8px rgba(30,216,200,0.3));transform:scale(1.05)}
+.nav-hui{font-family:'Playfair Display',serif;font-weight:900;font-size:20px;color:var(--teal);letter-spacing:2px;display:block}
+.nav-sub{font-size:8px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;margin-top:1px;display:block}
+nav ul.nl{list-style:none;display:flex;align-items:center;gap:2px}
+nav ul.nl>li{position:relative}
+nav ul.nl>li>a,nav ul.nl>li>span{color:var(--text2);text-decoration:none;font-size:13.5px;font-weight:500;padding:8px 13px;border-radius:10px;display:flex;align-items:center;gap:5px;cursor:pointer;transition:color .2s,background .2s;white-space:nowrap;user-select:none}
+nav ul.nl>li>a:hover,nav ul.nl>li>span:hover,nav ul.nl>li.dd-open>span{color:var(--teal);background:var(--teal-l)}
+.nav-arr{font-size:9px;color:var(--light);transition:transform .3s;display:inline-block}
+nav ul.nl>li.dd-open .nav-arr{transform:rotate(180deg)}
+.dd{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-8px);background:var(--white);border:1px solid var(--border2);border-radius:var(--rl);padding:10px;min-width:210px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;box-shadow:0 20px 56px rgba(0,0,0,0.12),0 4px 16px rgba(0,0,0,0.06);z-index:400}
+nav ul.nl>li.dd-open .dd{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.dd::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}
+.dd::after{content:'';position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:14px;height:7px;background:var(--white);clip-path:polygon(50% 0%,0% 100%,100% 100%);filter:drop-shadow(0 -2px 2px rgba(0,0,0,0.05))}
+nav ul.nl>li.dd-open>span{color:var(--teal)!important;background:var(--teal-l)!important}
+.dd a{display:flex;align-items:center;gap:10px;color:var(--text2);text-decoration:none;font-size:13.5px;font-weight:500;padding:10px 13px;border-radius:12px;transition:background .15s,color .15s;white-space:nowrap}
+.dd a:hover{background:var(--teal-l);color:var(--teal)}
+.dd-ico{font-size:15px;width:20px;text-align:center}
+.dd-div{height:1px;background:var(--border2);margin:6px 4px}
+.dd-title{font-size:10px;font-weight:700;color:var(--light);letter-spacing:2px;text-transform:uppercase;padding:8px 13px 4px}
+.dd-wide{min-width:260px}
+.n-login{background:var(--teal-l)!important;color:var(--teal)!important;border:1px solid var(--border)!important;font-weight:600!important}
+.n-cta{background:var(--grad)!important;color:var(--white)!important;font-weight:700!important;padding:10px 22px!important;border-radius:50px!important;box-shadow:0 4px 16px rgba(30,216,200,0.25)!important;transition:transform .2s,box-shadow .2s!important}
+.n-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 24px rgba(30,216,200,0.35)!important}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.ham span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+#mmenu{display:none;position:fixed;top:70px;left:0;right:0;z-index:250;background:var(--white);padding:16px 24px;border-bottom:1px solid var(--border2);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+#mmenu a{display:block;color:var(--text2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--border2);font-size:15px}
+#mmenu a:last-child{border-bottom:none;color:var(--teal);font-weight:700}
+.page-hero{padding:160px 52px 80px;background:linear-gradient(160deg,#0f1a1a 0%,#0b1512 50%,#081010 100%);position:relative;overflow:hidden;text-align:center}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(30,216,200,0.12) 0%,transparent 70%);pointer-events:none}
+.page-hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(30,216,200,0.10);border:1px solid rgba(30,216,200,0.3);border-radius:50px;padding:8px 20px;font-size:11px;color:var(--teal);letter-spacing:2.5px;text-transform:uppercase;font-weight:700;margin-bottom:28px;position:relative;z-index:1}
+.bdot{width:7px;height:7px;background:var(--teal);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,72px);font-weight:900;line-height:1.08;color:#fff;margin-bottom:20px;position:relative;z-index:1}
+.page-hero h1 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-hero p{font-size:clamp(16px,2vw,19px);color:rgba(240,240,240,0.75);max-width:560px;margin:0 auto;line-height:1.7;font-weight:300;position:relative;z-index:1}
+.wave-divider{display:block;width:100%;overflow:hidden;line-height:0;background:linear-gradient(160deg,#0f1a1a,#081010)}
+.wave-divider svg{display:block;width:100%}
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px}
+.eyebrow{display:inline-block;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--teal);font-weight:700;background:rgba(30,216,200,0.08);border:1px solid rgba(30,216,200,0.18);padding:5px 14px;border-radius:999px;margin-bottom:14px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,40px);font-weight:800;color:var(--text);line-height:1.2;margin-bottom:12px}
+.section-title em{font-style:normal;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.dsc{font-size:16px;color:var(--muted);line-height:1.7;font-weight:400}
+.contact-section{padding:96px 0 120px}
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-info-header{margin-bottom:8px}
+.impact-card{background:linear-gradient(135deg,#0f1a1a,#0a1512);border:1px solid rgba(30,216,200,0.2);border-radius:var(--rl);padding:28px 24px;position:relative;overflow:hidden}
+.impact-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 10% 0%,rgba(30,216,200,0.10) 0%,transparent 65%);pointer-events:none}
+.impact-card-ico{font-size:28px;margin-bottom:12px}
+.impact-card-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:8px}
+.impact-card-text{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6}
+.impact-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(30,216,200,0.12);border:1px solid rgba(30,216,200,0.25);border-radius:999px;padding:4px 12px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--teal);margin-top:14px}
+.contact-form-wrap{background:var(--white);border:1px solid var(--border2);border-radius:var(--rx);padding:44px 40px;box-shadow:0 8px 40px rgba(0,0,0,0.05);position:relative;overflow:hidden}
+.contact-form-wrap::before{content:'';position:absolute;top:-80px;right:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(30,216,200,0.06),transparent 70%);pointer-events:none}
+.form-header{margin-bottom:32px}
+.form-header .eyebrow{margin-bottom:10px}
+.form-title{font-family:'Playfair Display',serif;font-size:clamp(22px,2.5vw,30px);font-weight:800;color:var(--text);line-height:1.2;margin-bottom:8px}
+.form-sub{font-size:14px;color:var(--muted);line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-group label{font-size:12px;font-weight:700;color:var(--text2);letter-spacing:.5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 16px;border:1.5px solid var(--border2);border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--bg2);outline:none;transition:border-color .2s,box-shadow .2s,background .2s;appearance:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(30,216,200,0.12);background:var(--white)}
+.form-group textarea{resize:vertical;min-height:130px;line-height:1.6}
+.form-group select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7A8A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.form-check{display:flex;align-items:flex-start;gap:10px;margin-bottom:24px}
+.form-check input[type=checkbox]{width:18px;height:18px;border:1.5px solid var(--border2);border-radius:5px;accent-color:var(--teal);flex-shrink:0;margin-top:2px;cursor:pointer}
+.form-check label{font-size:13px;color:var(--muted);line-height:1.5;cursor:pointer}
+.form-check label a{color:var(--teal);text-decoration:none;font-weight:600}
+.btn-submit{width:100%;background:var(--grad);color:var(--white);padding:16px 32px;border-radius:50px;border:none;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 6px 24px rgba(30,216,200,0.3);transition:transform .2s,box-shadow .2s,opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-submit:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(30,216,200,0.4)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-error{display:none;background:#fff0f0;border:1px solid #ffcccc;border-radius:12px;padding:14px 18px;margin-top:16px;font-size:13px;color:#c0392b;line-height:1.5}
+.form-success{display:none;text-align:center;padding:40px 20px}
+.form-success-ico{font-size:56px;margin-bottom:16px}
+.form-success-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;color:var(--text);margin-bottom:10px}
+.form-success-text{font-size:15px;color:var(--muted);line-height:1.6}
+.faq-section{padding:80px 0 100px;background:var(--bg2);border-top:1px solid var(--border2)}
+.faq-header{text-align:center;margin-bottom:56px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:900px;margin:0 auto}
+.faq-item{background:var(--white);border:1px solid var(--border2);border-radius:var(--rl);overflow:hidden}
+.faq-q{width:100%;text-align:left;padding:20px 24px;background:none;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:color .2s}
+.faq-q:hover{color:var(--teal)}
+.faq-arr{font-size:16px;color:var(--light);transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-arr{transform:rotate(180deg)}
+.faq-item.open .faq-q{color:var(--teal)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s ease;padding:0 24px}
+.faq-item.open .faq-a{max-height:200px;padding:0 24px 20px}
+.faq-a p{font-size:13.5px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border2);padding-top:14px}
+footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0 32px;border-top:1px solid rgba(30,216,200,0.1)}
+.footer-inner{max-width:1100px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.footer-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.f-hui{font-family:'Playfair Display',serif;font-weight:900;font-size:20px;color:var(--teal);letter-spacing:2px}
+.f-sub{font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:2.5px;text-transform:uppercase;margin-top:2px}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--teal)}
+.footer-copy{text-align:center;font-size:12px;color:rgba(255,255,255,0.25);max-width:1100px;margin:40px auto 0;padding:24px 48px 0;border-top:1px solid rgba(255,255,255,0.06)}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}.faq-grid{grid-template-columns:1fr}}
+@media(max-width:640px){nav ul.nl{display:none}.ham{display:flex}nav{padding:14px 24px}.page-hero{padding:130px 24px 60px}.wrap{padding:0 24px}.contact-section{padding:60px 0 80px}.contact-form-wrap{padding:28px 20px}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;align-items:flex-start;padding:0 24px}.footer-copy{padding:24px 24px 0}}
+</style>
+</head>
+<body>
+
+<nav id="topnav">
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo-wrap">
+      <img class="nav-logo-img" src="https://be-hui-website.vercel.app/logo.png" alt="HUI Logo"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div style="display:none;width:46px;height:46px;border-radius:50%;background:var(--grad);align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:18px;color:#fff">H</div>
+    </div>
+    <div><span class="nav-hui">HUI</span><span class="nav-sub">Human United Intelligent</span></div>
+  </a>
+  <ul class="nl">
+    <li>
+      <span>Über uns <span class="nav-arr">&#9660;</span></span>
+      <div class="dd">
+        <a href="ueber-uns.html"><span class="dd-ico">&#127775;</span>Was ist HUI</a>
+        <a href="index.html#team"><span class="dd-ico">&#128101;</span>Team</a>
+        <a href="contact.html"><span class="dd-ico">&#128172;</span>Kontakt</a>
+        <a href="ueber-uns.html"><span class="dd-ico">&#10067;</span>Hilfe</a>
+      </div>
+    </li>
+    <li>
+      <span>HUI App <span class="nav-arr">&#9660;</span></span>
+      <div class="dd dd-wide">
+        <div class="dd-title">Entdecken</div>
+        <a href="hui-app.html"><span class="dd-ico">&#128241;</span>App Übersicht</a>
+        <a href="hui-app.html"><span class="dd-ico">&#9889;</span>Alle Funktionen</a>
+        <div class="dd-div"></div>
+        <div class="dd-title">Mitmachen</div>
+        <a href="community.html"><span class="dd-ico">&#127775;</span>Werde Wirker</a>
+        <a href="hui-app.html"><span class="dd-ico">&#11015;</span>App Download</a>
+        <a href="https://be-hui.vercel.app/Home" target="_blank"><span class="dd-ico">&#128279;</span>Web-App öffnen</a>
+      </div>
+    </li>
+    <li>
+      <span>Impact Pool <span class="nav-arr">&#9660;</span></span>
+      <div class="dd">
+        <a href="impact-pool.html"><span class="dd-ico">&#127807;</span>Wie es funktioniert</a>
+        <a href="impact-pool.html"><span class="dd-ico">&#128200;</span>Pool-Übersicht</a>
+      </div>
+    </li>
+    <li>
+      <span>Projekte <span class="nav-arr">&#9660;</span></span>
+      <div class="dd">
+        <a href="projekte.html"><span class="dd-ico">&#127963;</span>Einer für Alle</a>
+        <a href="projekte.html"><span class="dd-ico">&#128196;</span>Alle Projekte</a>
+        <a href="projekte.html"><span class="dd-ico">&#128444;</span>Galerie</a>
+        <a href="projekte.html"><span class="dd-ico">&#128197;</span>Events</a>
+      </div>
+    </li>
+    <li>
+      <span>Community <span class="nav-arr">&#9660;</span></span>
+      <div class="dd">
+        <a href="community.html"><span class="dd-ico">&#128483;</span>Stimmen</a>
+        <a href="community.html"><span class="dd-ico">&#127775;</span>Werde Wirker</a>
+        <a href="community.html"><span class="dd-ico">&#128247;</span>Galerie</a>
+      </div>
+    </li>
+    <li>
+      <span>Kontakt <span class="nav-arr">&#9660;</span></span>
+      <div class="dd">
+        <a href="contact.html"><span class="dd-ico">&#128140;</span>Schreib uns</a>
+        <a href="contact.html#faq"><span class="dd-ico">&#10067;</span>FAQ</a>
+        <a href="mailto:huiwirken@gmail.com"><span class="dd-ico">&#128231;</span>E-Mail</a>
+      </div>
+    </li>
+    <li><a href="https://be-hui.vercel.app/Home" target="_blank" class="n-login">Login</a></li>
+    <li><a href="community.html" class="n-cta">Starte jetzt</a></li>
+  </ul>
+  <div class="ham" id="hamBtn"><span></span><span></span><span></span></div>
+</nav>
+
+<div id="mmenu">
+  <a href="ueber-uns.html">Über HUI</a>
+  <a href="hui-app.html">HUI App</a>
+  <a href="impact-pool.html">Impact Pool</a>
+  <a href="projekte.html">Projekte</a>
+  <a href="community.html">Community</a>
+  <a href="contact.html">Kontakt</a>
+  <a href="https://be-hui.vercel.app/Home" target="_blank">App öffnen &#8594;</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-eyebrow"><span class="bdot"></span>Gemeinschaft · Wirkung · Menschlichkeit</div>
+  <h1>Wir freuen uns<br>von dir zu <em>hören</em></h1>
+  <p>Jede Frage, jede Idee, jeder Gedanke zählt. Gemeinsam gestalten wir etwas Großes – schreib uns einfach.</p>
+</section>
+
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" height="60">
+    <path d="M0,40 C360,0 1080,60 1440,20 L1440,60 L0,60 Z" fill="#F5F0E8"/>
+  </svg>
+</div>
+
+<section class="contact-section">
+  <div class="wrap">
+    <div class="contact-grid">
+
+      <!-- Links: Nur Titel + Impact-Card (3 Karten entfernt) -->
+      <div class="contact-info">
+        <div class="contact-info-header">
+          <span class="eyebrow">Kontakt</span>
+          <h2 class="section-title">Lass uns <em>verbinden</em></h2>
+          <p class="dsc">HUI steht für echte Verbindung. Wir antworten persönlich – kein Bot, keine leeren Worte.</p>
+        </div>
+        <div class="impact-card">
+          <div class="impact-card-ico">&#127807;</div>
+          <div class="impact-card-title">Jede Nachricht zählt</div>
+          <div class="impact-card-text">Bei HUI entsteht sozialer Impact nicht nur durch große Aktionen – auch jedes Gespräch, jede Idee und jede Zusammenarbeit trägt zur Bewegung bei.</div>
+          <div class="impact-badge"><span class="bdot"></span>Fair. Sicher. Menschlich.</div>
+        </div>
+      </div>
+
+      <!-- Rechts: Formular -->
+      <div class="contact-form-wrap">
+        <div id="formArea">
+          <div class="form-header">
+            <span class="eyebrow">Schreib uns</span>
+            <div class="form-title">Deine Nachricht<br>an das HUI-Team</div>
+            <p class="form-sub">Egal ob Frage, Idee oder Kooperationsanfrage – wir freuen uns auf dich.</p>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Vorname *</label>
+              <input type="text" id="fname" placeholder="z.B. Maria" required/>
+            </div>
+            <div class="form-group">
+              <label for="lname">Nachname *</label>
+              <input type="text" id="lname" placeholder="z.B. Müller" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail-Adresse *</label>
+            <input type="email" id="email" placeholder="deine@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label for="topic">Thema</label>
+            <select id="topic">
+              <option value="" disabled selected>Worum geht es?</option>
+              <option value="Allgemeine Frage">Allgemeine Frage</option>
+              <option value="Talent / Werk anbieten">Talent / Werk anbieten</option>
+              <option value="Erlebnis oder Session">Erlebnis oder Session</option>
+              <option value="Impact Pool &amp; Projekte">Impact Pool &amp; Projekte</option>
+              <option value="Kooperation / Partnership">Kooperation / Partnership</option>
+              <option value="Presse &amp; Medien">Presse &amp; Medien</option>
+              <option value="Sonstiges">Sonstiges</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="msg">Deine Nachricht *</label>
+            <textarea id="msg" placeholder="Erzähl uns, wie wir dir helfen können oder was du dir vorstellst …" required></textarea>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="privacy" required/>
+            <label for="privacy">Ich habe die <a href="#">Datenschutzrichtlinie</a> gelesen und bin damit einverstanden.</label>
+          </div>
+          <!-- Verstecktes Empfänger-Feld – nicht sichtbar für Nutzer -->
+          <input type="hidden" id="hui-dest" value="aHVpd2lya2VuQGdtYWlsLmNvbQ=="/>
+          <button class="btn-submit" id="submitBtn" onclick="handleSubmit(event)">
+            &#10024; Nachricht senden
+          </button>
+          <div class="form-error" id="formError">
+            Es gab ein Problem beim Senden. Bitte schreib uns direkt an
+            <a href="mailto:huiwirken@gmail.com" style="color:var(--teal);font-weight:600">huiwirken@gmail.com</a>.
+          </div>
+        </div>
+        <div class="form-success" id="successMsg">
+          <div class="form-success-ico">&#127807;</div>
+          <div class="form-success-title">Danke für deine Nachricht!</div>
+          <p class="form-success-text">Wir haben deine Anfrage erhalten und melden uns innerhalb von 24 Stunden bei dir. Gemeinsam bewirken wir Veränderung.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="wrap">
+    <div class="faq-header">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2 class="section-title">Wir beantworten deine <em>Fragen</em></h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Was ist HUI genau? <span class="faq-arr">&#9660;</span></button>
+        <div class="faq-a"><p>HUI – Human United Intelligent ist eine Plattform, die Menschen, Talente, Erlebnisse und soziale Projekte verbindet. Jede Aktivität erzeugt automatisch sozialen Impact über den Impact-Pool.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Wie kann ich mein Talent auf HUI anbieten? <span class="faq-arr">&#9660;</span></button>
+        <div class="faq-a"><p>Registriere dich in der HUI-App, erstelle dein Profil und teile deine Werke, Erlebnisse oder Talente. Das HUI-Team begleitet dich beim Onboarding.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Was ist der Impact Pool? <span class="faq-arr">&#9660;</span></button>
+        <div class="faq-a"><p>Der Impact Pool sammelt automatisch einen Teil jeder Transaktion auf der Plattform und verteilt ihn an soziale Projekte und Initiativen – fair, transparent und gemeinschaftlich.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Kann ich mit HUI kooperieren? <span class="faq-arr">&#9660;</span></button>
+        <div class="faq-a"><p>Ja! HUI freut sich über Partnerschaften mit NGOs, Vereinen, Hochschulen und Unternehmen. Schreib uns einfach über das Kontaktformular.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Wie schnell erhalte ich eine Antwort? <span class="faq-arr">&#9660;</span></button>
+        <div class="faq-a"><p>Wir antworten in der Regel innerhalb von 24 Stunden. Für dringende Anfragen erreichst du uns direkt per E-Mail: huiwirken@gmail.com</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Ist HUI kostenlos? <span class="faq-arr">&#9660;</span></button>
+        <div class="faq-a"><p>Die Grundfunktionen von HUI sind kostenlos nutzbar. Für erweiterte Features und professionelle Talentprofile gibt es flexible Optionen – immer fair und transparent.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-brand" href="index.html">
+      <div><div class="f-hui">HUI</div><div class="f-sub">Human United Intelligent</div></div>
+    </a>
+    <div class="footer-links">
+      <a href="index.html">Start</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a href="impact-pool.html">Impact Pool</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="community.html">Community</a>
+      <a href="contact.html">Kontakt</a>
+    </div>
+  </div>
+  <div class="footer-copy">&copy; 2025 HUI – Human United Intelligent · 4VisionGlobal &amp; Liga der Kreativen · Gemeinschaft. Talente. Wirkung.</div>
+</footer>
+
+<script>
+// ── Nav Dropdowns ──
+(function(){
+  const items=document.querySelectorAll('nav ul.nl>li');
+  items.forEach(li=>{
+    const t=li.querySelector(':scope>span');
+    if(!t)return;
+    t.addEventListener('click',e=>{
+      e.stopPropagation();
+      const open=li.classList.contains('dd-open');
+      items.forEach(x=>x.classList.remove('dd-open'));
+      if(!open)li.classList.add('dd-open');
+    });
+  });
+  document.addEventListener('click',e=>{if(!e.target.closest('nav'))items.forEach(li=>li.classList.remove('dd-open'))});
+  window.addEventListener('scroll',()=>items.forEach(li=>li.classList.remove('dd-open')),{passive:true});
+})();
+
+// ── Mobile Menu ──
+document.getElementById('hamBtn').addEventListener('click',e=>{
+  e.stopPropagation();
+  const m=document.getElementById('mmenu');
+  const open=m.style.display==='block';
+  m.style.display=open?'none':'block';
+  const s=document.querySelectorAll('#hamBtn span');
+  if(!open){s[0].style.transform='rotate(45deg) translate(5px,5px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(5px,-5px)'}
+  else{s[0].style.transform='';s[1].style.opacity='';s[2].style.transform=''}
+});
+document.addEventListener('click',e=>{
+  const m=document.getElementById('mmenu');
+  if(!e.target.closest('#topnav')&&!e.target.closest('#mmenu')){
+    m.style.display='none';
+    const s=document.querySelectorAll('#hamBtn span');
+    s[0].style.transform='';s[1].style.opacity='';s[2].style.transform='';
+  }
+});
+
+// ── FAQ ──
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+
+// ── E-Mail Ziel (Base64-kodiert, unsichtbar im DOM) ──
+function getDestination(){
+  return atob(document.getElementById('hui-dest').value);
+}
+
+// ── Form Submit: EmailJS ──
+const EJS_PUB   = 'rn01OjX48srlic_N7';
+const EJS_SVC   = '585lbzh';
+const EJS_TPL   = 'template_6twtdnh';
+
+async function handleSubmit(e){
+  e.preventDefault();
+  const fname = document.getElementById('fname').value.trim();
+  const lname = document.getElementById('lname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const topic = document.getElementById('topic').value || 'Nicht angegeben';
+  const msg   = document.getElementById('msg').value.trim();
+  const priv  = document.getElementById('privacy').checked;
+
+  if(!fname||!email||!msg||!priv){
+    alert('Bitte fülle alle Pflichtfelder aus und stimme den Datenschutzrichtlinien zu.');
+    return;
+  }
+
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true;
+  btn.innerHTML='⏳ Wird gesendet …';
+  document.getElementById('formError').style.display='none';
+
+  const dest = getDestination(); // huiwirken@gmail.com
+
+  // EmailJS Versand
+  try{
+      await emailjs.send(EJS_SVC, EJS_TPL, {
+        to_email:   dest,
+        to_name:    'HUI Team',
+        from_name:  fname+' '+lname,
+        from_email: email,
+        reply_to:   email,
+        name:       fname+' '+lname,
+        email:      email,
+        topic:      topic,
+        thema:      topic,
+        subject:    '[HUI Kontakt] '+topic+' – '+fname+' '+lname,
+        message:    msg,
+        vorname:    fname,
+        nachname:   lname
+      });
+      showSuccess();
+      return;
+  }catch(err){
+    console.warn('EmailJS Fehler, Fallback auf mailto:', err);
+  }
+
+  // Fallback: mailto mit vorausgefülltem Inhalt
+  const subj = encodeURIComponent('[HUI Kontakt] '+topic+' – '+fname+' '+lname);
+  const body = encodeURIComponent(
+    'Von: '+fname+' '+lname+'\nE-Mail: '+email+'\nThema: '+topic+'\n\n'+msg
+  );
+  window.location.href = 'mailto:'+dest+'?subject='+subj+'&body='+body;
+  showSuccess();
+}
+
+function showSuccess(){
+  document.getElementById('formArea').style.display='none';
+  document.getElementById('successMsg').style.display='block';
+}
+
+// ── Scroll Fade-In ──
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}});
+},{threshold:.08});
+document.querySelectorAll('.contact-form-wrap,.faq-item,.impact-card').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(18px)';
+  el.style.transition='opacity .55s ease,transform .55s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
