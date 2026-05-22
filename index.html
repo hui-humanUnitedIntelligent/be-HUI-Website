@@ -138,31 +138,7 @@ nav ul.nl > li.dd-open > span{
 .dd-ico{font-size:15px;width:20px;text-align:center}
 .dd-div{height:1px;background:var(--border2);margin:6px 4px}
 .dd-title{font-size:10px;font-weight:700;color:var(--light);letter-spacing:2px;text-transform:uppercase;padding:8px 13px 4px}
-.dd-wide{min-width:260px
-/* Sub-Dropdown unter Kontakt */
-.dd-sub-wrap{position:relative;}
-.dd-sub-wrap:hover .dd-sub,
-.dd-sub-wrap:focus-within .dd-sub{
-  opacity:1;visibility:visible;pointer-events:auto;
-  transform:translateX(0);
-}
-.dd-sub-parent{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:10px;width:100%;
-}
-.dd-sub-arr{font-size:14px;margin-left:auto;opacity:0.5;}
-.dd-sub{
-  position:absolute;left:calc(100% + 4px);top:0;
-  background:var(--white);
-  border:1px solid var(--border2);
-  border-radius:var(--rl);
-  padding:6px;min-width:190px;
-  opacity:0;visibility:hidden;pointer-events:none;
-  transition:opacity .18s ease,transform .18s ease;
-  box-shadow:0 12px 32px rgba(0,0,0,0.10);
-  z-index:401;
-  transform:translateX(-6px);
-}}
+.dd-wide{min-width:260px}
 
 /* Nav buttons */
 .n-login{
@@ -1128,8 +1104,177 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
       <span>&#220;ber uns <span class="nav-arr">&#9660;</span></span>
       <div class="dd">
         <a href="ueber-uns.html"><span class="dd-ico">&#127775;</span>Was ist HUI</a>
-        <a href="contact.html"><span class="dd-ico">💬</span>Kontakt</a>
-        <a href="contact.html#faq"><span class="dd-ico">❓ </span>FAQ</a>
+        <a href="#team"><span class="dd-ico">&#128101;</span>Team</a>
+        <a href="contact.html"><span class="dd-ico">&#128172;</span>Kontakt</a>
+        <a href="ueber-uns.html"><span class="dd-ico">&#10067;</span>Hilfe</a>
+      
+        <a href="contact.html"><span class="dd-ico">💌</span>Schreib uns</a>
+        <a href="contact.html#faq"><span class="dd-ico">❓</span>FAQ</a>
+        <a href="mailto:huiwirken@gmail.com"><span class="dd-ico">📧</span>E-Mail</a>
+      </div>
+    </li>
+    <li>
+      <span>HUI App <span class="nav-arr">&#9660;</span></span>
+      <div class="dd dd-wide">
+        <div class="dd-title">Entdecken</div>
+        <a href="hui-app.html"><span class="dd-ico">&#128241;</span>App &#252;bersicht</a>
+        <a href="hui-app.html"><span class="dd-ico">&#9889;</span>Alle Funktionen</a>
+        <div class="dd-div"></div>
+        <div class="dd-title">Mitmachen</div>
+        <a href="community.html"><span class="dd-ico">&#127775;</span>Werde Wirker</a>
+        <a href="hui-app.html"><span class="dd-ico">&#11015;</span>App Download</a>
+        <a href="https://be-hui.vercel.app/Home" target="_blank"><span class="dd-ico">&#128279;</span>Web-App &#246;ffnen</a>
+      </div>
+    </li>
+    <li>
+      <span>Impact Pool <span class="nav-arr">&#9660;</span></span>
+      <div class="dd">
+        <a href="impact-pool.html"><span class="dd-ico">&#127807;</span>Wie es funktioniert</a>
+        <a href="impact-pool.html"><span class="dd-ico">&#128200;</span>Pool-&#220;bersicht</a>
+      </div>
+    </li>
+    <li>
+      <span>Projekte <span class="nav-arr">&#9660;</span></span>
+      <div class="dd">
+        <a href="projekte.html"><span class="dd-ico">&#127963;</span>Einer f&#252;r Alle</a>
+        <a href="projekte.html"><span class="dd-ico">&#128196;</span>Alle Projekte</a>
+        <a href="projekte.html"><span class="dd-ico">&#128444;</span>Galerie</a>
+        <a href="projekte.html"><span class="dd-ico">&#128197;</span>Events</a>
+      </div>
+    </li>
+    <li>
+      <span>Community <span class="nav-arr">&#9660;</span></span>
+      <div class="dd">
+        <a href="community.html"><span class="dd-ico">&#128483;</span>Stimmen</a>
+        <a href="community.html"><span class="dd-ico">&#127775;</span>Werde Wirker</a>
+        <a href="community.html"><span class="dd-ico">&#128247;</span>Galerie</a>
+      </div>
+    </li>
+    
+    <li><a href="https://be-hui.vercel.app/Home" target="_blank" class="n-login">Login</a></li>
+    <li><a href="community.html" class="n-cta">Starte jetzt</a></li>
+  </ul>
+
+  <div class="ham" id="hamBtn">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div id="mmenu">
+  <a href="ueber-uns.html">&#220;ber HUI</a>
+  <a href="hui-app.html">HUI App</a>
+  <a href="impact-pool.html">Impact Pool</a>
+  <a href="projekte.html">Projekte</a>
+  <a href="community.html">Community</a>
+  <a href="contact.html">Kontakt</a>
+  <a href="https://be-hui.vercel.app/Home" target="_blank">App &#246;ffnen &#8594;</a>
+</div>
+
+<!-- ══════════════ HERO — Cinematic Nature ══════════════ -->
+<section class="hero" id="start" data-parallax>
+
+  <!-- Natur-Foto Hintergrund -->
+  <div class="hero-nature-bg"></div>
+
+  <!-- Cinematic Overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Licht-Rays -->
+  <div class="hero-light-rays"></div>
+
+  <!-- Ziehende Wolken -->
+  <div class="hero-clouds">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+  </div>
+
+  <!-- Bokeh Lichtpunkte -->
+  <div class="hero-bokeh">
+    <div class="bokeh bokeh-1"></div>
+    <div class="bokeh bokeh-2"></div>
+    <div class="bokeh bokeh-3"></div>
+    <div class="bokeh bokeh-4"></div>
+  </div>
+
+  <!-- Wasser-Wellen unten -->
+  <div class="hero-water">
+    <svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="waterGrad1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(30,216,200,0.18)"/>
+          <stop offset="100%" stop-color="rgba(5,15,15,0.9)"/>
+        </linearGradient>
+        <linearGradient id="waterGrad2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(30,216,200,0.08)"/>
+          <stop offset="100%" stop-color="rgba(5,15,15,0.0)"/>
+        </linearGradient>
+        <!-- Wasser-Verzerrung Filter -->
+        <filter id="waterBlur">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.04" numOctaves="3" seed="2">
+            <animate attributeName="baseFrequency" values="0.012 0.04;0.015 0.05;0.012 0.04" dur="8s" repeatCount="indefinite"/>
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+
+      <!-- Welle 1 — träge, breit -->
+      <path id="wave1" fill="url(#waterGrad1)" opacity="0.7">
+        <animate attributeName="d"
+          values="
+            M0,120 C240,80 480,160 720,110 C960,60 1200,140 1440,100 L1440,220 L0,220 Z;
+            M0,130 C240,100 480,140 720,90 C960,40 1200,130 1440,85 L1440,220 L0,220 Z;
+            M0,115 C240,75 480,155 720,105 C960,55 1200,145 1440,95 L1440,220 L0,220 Z;
+            M0,120 C240,80 480,160 720,110 C960,60 1200,140 1440,100 L1440,220 L0,220 Z
+          "
+          dur="12s" repeatCount="indefinite" calcMode="spline"
+          keySplines="0.45 0.05 0.55 0.95;0.45 0.05 0.55 0.95;0.45 0.05 0.55 0.95"/>
+      </path>
+
+      <!-- Welle 2 — schneller, heller Glanz -->
+      <path id="wave2" fill="url(#waterGrad2)" opacity="0.5">
+        <animate attributeName="d"
+          values="
+            M0,150 C360,110 720,180 1080,130 C1260,105 1380,150 1440,140 L1440,220 L0,220 Z;
+            M0,140 C360,120 720,165 1080,115 C1260,90 1380,140 1440,125 L1440,220 L0,220 Z;
+            M0,155 C360,105 720,175 1080,125 C1260,100 1380,155 1440,135 L1440,220 L0,220 Z;
+            M0,150 C360,110 720,180 1080,130 C1260,105 1380,150 1440,140 L1440,220 L0,220 Z
+          "
+          dur="9s" repeatCount="indefinite" calcMode="spline"
+          keySplines="0.45 0.05 0.55 0.95;0.45 0.05 0.55 0.95;0.45 0.05 0.55 0.95"/>
+      </path>
+
+      <!-- Licht-Reflexe auf Wasser -->
+      <ellipse cx="360" cy="165" rx="120" ry="8" fill="rgba(30,216,200,0.12)" filter="url(#waterBlur)">
+        <animate attributeName="cx" values="360;420;360" dur="6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="6s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="900" cy="155" rx="90" ry="6" fill="rgba(255,248,200,0.15)" filter="url(#waterBlur)">
+        <animate attributeName="cx" values="900;840;900" dur="7s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.4;0.9;0.4" dur="7s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="1200" cy="170" rx="70" ry="5" fill="rgba(30,216,200,0.10)" filter="url(#waterBlur)">
+        <animate attributeName="cx" values="1200;1260;1200" dur="5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.3;0.8;0.3" dur="5s" repeatCount="indefinite"/>
+      </ellipse>
+    </svg>
+  </div>
+
+  <!-- Haupt-Inhalt — unverändert -->
+  <div class="hero-content" id="hero-parallax-content">
+    <div class="hero-badge"><span class="bdot"></span>Gemeinschaft &middot; Talente &middot; Wirkung</div>
+    <h1 id="hero-title">
+      <span class="hero-title-word">Einer f&#252;r Alle,</span><br>
+      <span class="hero-title-word">alle </span><em class="hero-title-em">Fair(ein)t</em>
+    </h1>
+    <p class="hero-tag">Entdecke Menschen, Werke und Erlebnisse. Jede Aktivit&#228;t erzeugt automatisch sozialen Impact &#8212; fair, sicher, menschlich.</p>
+    <div class="hero-acts">
+      <a href="#wirker" class="btn-main">&#10024; Werde Wirker</a>
+      <a href="#app" class="btn-sec">App entdecken</a>
+    </div>
+  </div>
+
+  <div class="h-scroll"><span>Entdecken</span><div class="sbar"></div></div>
 </section>
 <!-- ══════════════ STATS SECTION ══════════════ -->
 <section class="stats-section">
