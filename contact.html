@@ -367,7 +367,7 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
     });
   });
   document.addEventListener('click',e=>{if(!e.target.closest('nav'))items.forEach(li=>li.classList.remove('dd-open'))});
-  window.addEventListener('scroll',()=>items.forEach(li=>li.classList.remove('dd-open')),{passive:true});
+  let _navHov=false;const _tnav=document.getElementById('topnav');_tnav.addEventListener('mouseenter',()=>{_navHov=true});_tnav.addEventListener('mouseleave',()=>{_navHov=false});let _ddST;window.addEventListener('scroll',()=>{if(_navHov)return;clearTimeout(_ddST);_ddST=setTimeout(()=>items.forEach(li=>li.classList.remove('dd-open')),200);},{passive:true});
 })();
 
 // ── Mobile Menu ──
