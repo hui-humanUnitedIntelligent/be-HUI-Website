@@ -131,10 +131,17 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
 <nav id="topnav">
   <a class="nav-brand" href="index.html">
     <div class="nav-logo-wrap">
-      <img class="nav-logo-img" src="https://be-hui-website.vercel.app/logo.png" alt="HUI Logo"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-      <div style="display:none;width:46px;height:46px;border-radius:50%;background:var(--grad);align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:18px;color:#fff">H</div>
-    </div>
+<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:12px;flex-shrink:0">
+                <rect width="46" height="46" rx="12" fill="url(#lg)"/>
+                <defs>
+                                  <linearGradient id="lg" x1="0" y1="0" x2="46" y2="46" gradientUnits="userSpaceOnUse">
+                                                      <stop offset="0%" stop-color="#1ED8C8"/>
+                                                      <stop offset="100%" stop-color="#E8876A"/>
+                                  </linearGradient>
+                </defs>
+                <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="'Playfair Display',serif" font-weight="900" font-size="20" fill="white">H</text>text>
+</svg>
+
     <div><span class="nav-hui">HUI</span><span class="nav-sub">Human United Intelligent</span></div>
   </a>
   <ul class="nl">
