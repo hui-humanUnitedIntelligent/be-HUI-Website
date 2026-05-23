@@ -1119,25 +1119,25 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
     <li>
       <span>&#220;ber uns <span class="nav-arr">&#9660;</span></span>
       <div class="dd">
-        <a href="ueber-uns.html"><span class="dd-ico">🌟</span>Was ist HUI</a>
-        <a href="team.html"><span class="dd-ico">👥</span>Team</a>
+        <a href="ueber-uns.html" data-t-key="nav.was-ist-hui"><span class="dd-ico">🌟</span>Was ist HUI</a>
+        <a href="team.html" data-t-key="nav.team"><span class="dd-ico">👥</span>Team</a>
         <div class="dd-div"></div>
-        <div class="dd-title">Kontakt</div>
-        <a href="contact.html"><span class="dd-ico">💬</span>Schreib uns</a>
-        <a href="contact.html"><span class="dd-ico">📬</span>Kontaktformular</a>
+        <div class="dd-title" data-t-key="nav.kontakt">Kontakt</div>
+        <a href="contact.html" data-t-key="nav.schreib-uns"><span class="dd-ico">💬</span>Schreib uns</a>
+        <a href="contact.html" data-t-key="nav.kontaktformular"><span class="dd-ico">📬</span>Kontaktformular</a>
         <div class="dd-div"></div>
-        <a href="ueber-uns.html#hilfe"><span class="dd-ico">❓</span>Hilfe &amp; FAQ</a>
+        <a href="ueber-uns.html#hilfe" data-t-key="nav.hilfe-faq"><span class="dd-ico">❓</span>Hilfe &amp; FAQ</a>
       </div>
     </li>
     <li>
       <span>HUI App <span class="nav-arr">&#9660;</span></span>
       <div class="dd dd-wide">
-        <div class="dd-title">Entdecken</div>
+        <div class="dd-title" data-t-key="nav.entdecken">Entdecken</div>
         <a href="hui-app.html"><span class="dd-ico">&#128241;</span>App &#252;bersicht</a>
-        <a href="hui-app.html"><span class="dd-ico">&#9889;</span>Alle Funktionen</a>
+        <a href="hui-app.html" data-t-key="nav.alle-funktionen"><span class="dd-ico">&#9889;</span>Alle Funktionen</a>
         <div class="dd-div"></div>
-        <div class="dd-title">Mitmachen</div>
-        <a href="community.html"><span class="dd-ico">&#127775;</span>Werde Wirker</a>
+        <div class="dd-title" data-t-key="nav.mitmachen">Mitmachen</div>
+        <a href="community.html" data-t-key="nav.werde-wirker"><span class="dd-ico">&#127775;</span>Werde Wirker</a>
         <a href="hui-app.html"><span class="dd-ico">&#11015;</span>App Download</a>
         <a href="https://be-hui.vercel.app/Home" target="_blank"><span class="dd-ico">&#128279;</span>Web-App &#246;ffnen</a>
       </div>
@@ -1167,7 +1167,7 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
       </div>
     </li>
     
-    <li><a href="https://be-hui.vercel.app/Home" target="_blank" class="n-login">Login</a></li>
+    <li><a href="https://be-hui.vercel.app/Home" target="_blank" class="n-login" data-t-key="nav.login">Login</a></li>
     <li class="lang-li" id="langSwitcher">
       <button class="lang-btn" id="langBtn" aria-label="Sprache wechseln" aria-expanded="false" aria-haspopup="listbox">
         <span class="lang-flag" id="langFlag">🇩🇪</span>
@@ -1289,14 +1289,14 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
 
   <!-- Haupt-Inhalt — unverändert -->
   <div class="hero-content" id="hero-parallax-content">
-    <div class="hero-badge"><span class="bdot"></span>Gemeinschaft &middot; Talente &middot; Wirkung</div>
-    <h1 id="hero-title">
+    <div class="hero-badge" data-t-key="hero.eyebrow"><span class="bdot"></span>Gemeinschaft &middot; Talente &middot; Wirkung</div>
+    <h1 id="hero-title" data-t-key="hero.h1">
       <span class="hero-title-word">Einer f&#252;r Alle,</span><br>
       <span class="hero-title-word">alle </span><em class="hero-title-em">Fair(ein)t</em>
     </h1>
-    <p class="hero-tag">Entdecke Menschen, Werke und Erlebnisse. Jede Aktivit&#228;t erzeugt automatisch sozialen Impact &#8212; fair, sicher, menschlich.</p>
+    <p class="hero-tag" data-t-key="hero.p">Entdecke Menschen, Werke und Erlebnisse. Jede Aktivit&#228;t erzeugt automatisch sozialen Impact &#8212; fair, sicher, menschlich.</p>
     <div class="hero-acts">
-      <a href="#wirker" class="btn-main">&#10024; Werde Wirker</a>
+      <a href="#wirker" class="btn-main" data-t-key="hero.cta-primary">&#10024; Werde Wirker</a>
       <a href="#app" class="btn-sec">App entdecken</a>
     </div>
   </div>
@@ -1408,7 +1408,7 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
     </div>
     <div class="fbot">
       <p>&#169; 2026 by Be-HUI &middot; Human United Intelligent &middot; Alle Rechte vorbehalten</p>
-      <span class="fm">Gemeinschaft. Talente. Wirkung.</span>
+      <span class="fm" data-t-key="footer.tagline">Gemeinschaft. Talente. Wirkung.</span>
     </div>
   </div>
 </footer>
