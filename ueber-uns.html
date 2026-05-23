@@ -141,22 +141,36 @@ nav ul.nl > li.dd-open > span{
 .dd-wide{min-width:260px}
 
 /* Nav buttons */
-.n-login{
+/* Language Switcher */
+.lang-li{position:relative;list-style:none}
+.lang-btn{
+  display:flex;align-items:center;gap:6px;
   background:var(--teal-l)!important;
   color:var(--teal)!important;
   border:1px solid var(--border)!important;
   font-weight:600!important;
+  padding:8px 14px!important;border-radius:50px!important;
+  cursor:pointer;transition:background .2s,box-shadow .2s;
+  font-size:.9rem;white-space:nowrap;
 }
-.n-cta{
-  background:var(--grad)!important;
-  color:var(--white)!important;font-weight:700!important;
-  padding:10px 22px!important;border-radius:50px!important;
-  box-shadow:0 4px 16px rgba(30,216,200,0.25)!important;
-  transition:transform .2s,box-shadow .2s!important;
+.lang-btn:hover{background:rgba(30,216,200,0.15)!important;box-shadow:0 4px 14px rgba(30,216,200,0.2)!important}
+.lang-flag{font-size:1.1rem;line-height:1}
+.lang-arrow{font-size:.65rem;margin-left:2px;transition:transform .25s}
+.lang-li.open .lang-arrow{transform:rotate(180deg)}
+.lang-dd{
+  display:none;position:absolute;right:0;top:calc(100% + 10px);
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,0.13);
+  min-width:160px;overflow:hidden;z-index:9999;
 }
-.n-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 24px rgba(30,216,200,0.35)!important}
-
-/* Hamburger */
+.lang-li.open .lang-dd{display:block}
+.lang-dd a{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 16px;color:var(--text);text-decoration:none;
+  font-size:.9rem;font-weight:500;transition:background .15s;
+}
+.lang-dd a:hover,.lang-dd a.active{background:var(--teal-l);color:var(--teal)}
+.lang-dd a .lang-dd-flag{font-size:1.15rem}
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
 .ham span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
 #mmenu{display:none;position:fixed;top:70px;left:0;right:0;z-index:250;background:var(--white);padding:16px 24px;border-bottom:1px solid var(--border2);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
@@ -809,7 +823,18 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
     </li>
     
     <li><a href="https://be-hui.vercel.app/Home" target="_blank" class="n-login">Login</a></li>
-    <li><a href="community.html" class="n-cta">Starte jetzt</a></li>
+    <li class="lang-li" id="langSwitcher">
+      <button class="lang-btn" id="langBtn" aria-label="Sprache wechseln" aria-expanded="false" aria-haspopup="listbox">
+        <span class="lang-flag" id="langFlag">🇩🇪</span>
+        <span class="lang-arrow">&#9660;</span>
+      </button>
+      <div class="lang-dd" id="langDd" role="listbox" aria-label="Sprache wählen">
+        <a href="#" data-lang="de" class="active" role="option"><span class="lang-dd-flag">🇩🇪</span> Deutsch</a>
+        <a href="#" data-lang="en" role="option"><span class="lang-dd-flag">🇬🇧</span> English</a>
+        <a href="#" data-lang="fr" role="option"><span class="lang-dd-flag">🇫🇷</span> Français</a>
+        <a href="#" data-lang="es" role="option"><span class="lang-dd-flag">🇪🇸</span> Español</a>
+      </div>
+    </li>
   </ul>
 
   <div class="ham" id="hamBtn">
@@ -1228,5 +1253,6 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 })();
 </script>
 
+<script src="lang/switcher.js"></script>
 </body>
 </html>
