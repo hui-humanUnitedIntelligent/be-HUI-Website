@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>HUI – Human United Intelligence | Gemeinschaft. Talente. Wirkung.</title>
+<title>HUI â Human United Intelligence | Gemeinschaft. Talente. Wirkung.</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  /* ── Exakte App-Farben ── */
+  /* ââ Exakte App-Farben ââ */
   --teal:    #1ED8C8;
   --teal-d:  #17B8AA;
   --teal-l:  #E6FAF8;
@@ -17,19 +17,19 @@
   --grad:    linear-gradient(135deg, #1ED8C8, #E8876A);
   --grad-r:  linear-gradient(135deg, #E8876A, #1ED8C8);
 
-  /* ── Hintergründe (hell, wie App) ── */
+  /* ââ HintergrÃ¼nde (hell, wie App) ââ */
   --bg:      #F5F0E8;   /* App-Hintergrund */
   --bg2:     #FAF7F2;   /* leicht heller */
   --white:   #FFFFFF;
   --card:    #FFFFFF;
 
-  /* ── Text ── */
+  /* ââ Text ââ */
   --text:    #1A1A1A;
   --text2:   #3D3D3D;
   --muted:   #7A7A8A;
   --light:   #B0B0BC;
 
-  /* ── Ränder ── */
+  /* ââ RÃ¤nder ââ */
   --border:  rgba(30,216,200,0.15);
   --border2: rgba(0,0,0,0.06);
 
@@ -41,9 +41,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);ove
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
 
-/* ════════════════════════════════
-   NAV — hell, wie App-Header
-════════════════════════════════ */
+/* ââââââââââââââââââââââââââââââââ
+   NAV â hell, wie App-Header
+ââââââââââââââââââââââââââââââââ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:300;
   display:flex;align-items:center;justify-content:space-between;
@@ -91,7 +91,7 @@ nav ul.nl > li.dd-open > span{color:var(--teal);background:var(--teal-l)}
 .nav-arr{font-size:9px;color:var(--light);transition:transform .3s;display:inline-block}
 nav ul.nl > li.dd-open .nav-arr{transform:rotate(180deg)}
 
-/* Dropdown — click-controlled */
+/* Dropdown â click-controlled */
 .dd{
   position:absolute;top:calc(100% + 10px);left:50%;
   transform:translateX(-50%) translateY(-8px);
@@ -108,7 +108,7 @@ nav ul.nl > li.dd-open .dd{
   opacity:1;visibility:visible;pointer-events:auto;
   transform:translateX(-50%) translateY(0);
 }
-/* Brücke damit Klick-Bereich geschlossen bleibt */
+/* BrÃ¼cke damit Klick-Bereich geschlossen bleibt */
 .dd::before{
   content:'';position:absolute;top:-10px;left:0;right:0;height:10px;
 }
@@ -177,9 +177,9 @@ nav ul.nl > li.dd-open > span{
 #mmenu a{display:block;color:var(--text2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--border2);font-size:15px}
 #mmenu a:last-child{border-bottom:none;color:var(--teal);font-weight:700}
 
-/* ════════════════════════════════
-   HERO — hell & einladend
-════════════════════════════════ */
+/* ââââââââââââââââââââââââââââââââ
+   HERO â hell & einladend
+ââââââââââââââââââââââââââââââââ */
 .hero{
   min-height:100vh;
   background:var(--bg);
@@ -219,7 +219,7 @@ nav ul.nl > li.dd-open > span{
   background:var(--grad);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-/* ══ Parallax Motion ══ */
+/* ââ Parallax Motion ââ */
 .hero-content{
   will-change:transform;
   transition:transform 0.08s cubic-bezier(0.25,0.46,0.45,0.94);
@@ -290,12 +290,12 @@ nav ul.nl > li.dd-open > span{
 }
 @media(max-width:1200px){.hero-phones{display:none}}
 
-/* ════════════════════════════════
-   STRIP — partner logos
-════════════════════════════════ */
-/* ════════════════════════════════
-   STATS SECTION — Moderne Kacheln
-════════════════════════════════ */
+/* ââââââââââââââââââââââââââââââââ
+   STRIP â partner logos
+ââââââââââââââââââââââââââââââââ */
+/* ââââââââââââââââââââââââââââââââ
+   STATS SECTION â Moderne Kacheln
+ââââââââââââââââââââââââââââââââ */
 .stats-section{
   padding:56px 48px;
   background:linear-gradient(160deg,#0f1a1a 0%,#0b1512 40%,#081010 100%);
@@ -397,18 +397,18 @@ nav ul.nl > li.dd-open > span{
 }
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    SHARED UTILS
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .si{max-width:1200px;margin:0 auto;padding:0 56px}
 .lbl{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;color:var(--teal);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
 .lbl::before{content:'';display:block;width:20px;height:2px;background:var(--teal)}
 h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);font-weight:800;line-height:1.12;margin-bottom:16px}
 .dsc{font-size:16.5px;color:var(--muted);line-height:1.75;font-weight:300}
 
-/* ════════════════════════════════
-   ABOUT — hell, Karten-Design
-════════════════════════════════ */
+/* ââââââââââââââââââââââââââââââââ
+   ABOUT â hell, Karten-Design
+ââââââââââââââââââââââââââââââââ */
 .about{padding:120px 0;background:var(--bg2)}
 .about-g{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .acard{
@@ -430,9 +430,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
 .pill{background:var(--teal-l);border:1px solid rgba(30,216,200,0.25);color:var(--teal-d);padding:7px 16px;border-radius:50px;font-size:13px;font-weight:600}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    PILLARS
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .pillars{padding:120px 0;background:var(--bg)}
 .pillars .ttl{color:var(--text)}
 .pillars-h{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;gap:24px;flex-wrap:wrap}
@@ -453,9 +453,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .pc p{font-size:14.5px;color:var(--muted);line-height:1.7}
 .ptag{display:inline-block;margin-top:22px;font-size:11px;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase;font-weight:700}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    APP SECTION
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .app-section{padding:130px 0;background:var(--bg2);overflow:hidden}
 .app-section .ttl{color:var(--text)}
 .app-head{margin-bottom:72px}
@@ -554,9 +554,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .app-cta h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--text)}
 .app-cta h3 span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    IMPACT POOL
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .impact{padding:120px 0;background:var(--bg);position:relative;overflow:hidden}
 .impact::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(30,216,200,0.07),transparent 70%);pointer-events:none}
 .ihead{max-width:620px;margin-bottom:64px}
@@ -578,9 +578,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .i15t h3{font-family:'Playfair Display',serif;font-size:24px;color:#fff;margin-bottom:8px}
 .i15t p{font-size:15px;color:rgba(255,255,255,0.75);max-width:460px;line-height:1.65}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    PROJECT
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .project{padding:120px 0;background:var(--bg2)}
 .project .ttl{color:var(--text)}
 .prg{display:grid;grid-template-columns:3fr 2fr;gap:72px;align-items:start}
@@ -611,9 +611,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .pbadges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .pbadge{background:var(--teal-l);border:1px solid rgba(30,216,200,0.25);border-radius:8px;padding:7px 12px;font-size:11px;color:var(--teal-d);font-weight:600}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    VALUES
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .values{padding:100px 0;background:var(--bg)}
 .vc{max-width:780px;margin:0 auto;text-align:center;margin-bottom:60px}
 .vc h2{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,44px);font-weight:900;color:var(--text);line-height:1.2;margin-bottom:16px}
@@ -631,9 +631,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .vcard h4{font-weight:700;font-size:13.5px;color:var(--text);margin-bottom:7px}
 .vcard p{font-size:12px;color:var(--muted);line-height:1.6}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    REVIEWS
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .reviews{padding:100px 0;background:var(--bg2)}
 .reviews .ttl{color:var(--text);text-align:center;margin-bottom:12px}
 .rev-sub{text-align:center;color:var(--muted);font-size:16px;margin-bottom:56px}
@@ -652,9 +652,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .rname{font-weight:700;font-size:13.5px;color:var(--teal)}
 .rrole{font-size:11.5px;color:var(--muted);margin-top:2px}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    JOIN
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .join{padding:120px 0;background:var(--bg)}
 .join-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .join .ttl{color:var(--text)}.join .dsc{margin-bottom:36px}
@@ -681,17 +681,17 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .jbox p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:32px;position:relative}
 .jbox .btn-main{position:relative}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    QUOTE STRIPE
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .qs{background:var(--grad);padding:76px 0}
 .qsi{max-width:780px;margin:0 auto;text-align:center;padding:0 56px}
 .qsi blockquote{font-family:'Playfair Display',serif;font-size:clamp(20px,4vw,38px);font-weight:700;color:#fff;line-height:1.25;margin-bottom:20px}
 .qsi cite{font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:2px;text-transform:uppercase;font-style:normal}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    FOOTER
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,255,255,0.06)}
 .fg2{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
 .fbrand .fhui{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:2px;display:block;margin-bottom:12px}
@@ -705,9 +705,9 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
 .fbot p{font-size:12.5px;color:rgba(255,255,255,0.25)}
 .fbot .fm{font-size:12.5px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    RESPONSIVE
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 @media(max-width:1024px){
   nav{padding:12px 24px}
   .si{padding:0 24px}
@@ -758,7 +758,7 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
 </style>
 </head>
 <body>
-<!-- ══════════════ NAV ══════════════ -->
+<!-- ââââââââââââââ NAV ââââââââââââââ -->
 <nav id="topnav">
   <a href="index.html" class="nav-brand">
     <div class="nav-logo-wrap">
@@ -774,11 +774,11 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
     <li>
       <span>&#220;ber uns <span class="nav-arr">&#9660;</span></span>
       <div class="dd">
-        <a href="ueber-uns.html" data-t-key="nav.was-ist-hui"><span class="dd-ico">🌟</span>Was ist HUI</a>
-        <a href="index.html#team" data-t-key="nav.team"><span class="dd-ico">👥</span>Team</a>
-        <a href="contact.html" data-t-key="nav.schreib-uns"><span class="dd-ico">💬</span>Schreib uns</a>
+        <a href="ueber-uns.html" data-t-key="nav.was-ist-hui"><span class="dd-ico">ð</span>Was ist HUI</a>
+        <a href="index.html#team" data-t-key="nav.team"><span class="dd-ico">ð¥</span>Team</a>
+        <a href="contact.html" data-t-key="nav.schreib-uns"><span class="dd-ico">ð¬</span>Schreib uns</a>
         <div class="dd-div"></div>
-        <a href="contact.html#faq" data-t-key="nav.hilfe-faq"><span class="dd-ico">❓</span>Hilfe &amp; FAQ</a>
+        <a href="contact.html#faq" data-t-key="nav.hilfe-faq"><span class="dd-ico">â</span>Hilfe &amp; FAQ</a>
       </div>
     </li>
     <li>
@@ -797,7 +797,6 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
       <span>Impact Pool <span class="nav-arr">&#9660;</span></span>
       <div class="dd">
         <a href="impact-pool.html"><span class="dd-ico">&#127807;</span>Wie es funktioniert</a>
-        <a href="impact-pool.html"><span class="dd-ico">&#128200;</span>Pool-&#220;bersicht</a>
       </div>
     </li>
     <li>
@@ -821,14 +820,14 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
     <li><a href="https://be-hui.vercel.app/Home" target="_blank" class="n-login" data-t-key="nav.login">Login</a></li>
     <li class="lang-li" id="langSwitcher">
       <button class="lang-btn" id="langBtn" aria-label="Sprache wechseln" aria-expanded="false" aria-haspopup="listbox">
-        <span class="lang-flag" id="langFlag">🇩🇪</span>
+        <span class="lang-flag" id="langFlag">ð©ðª</span>
         <span class="lang-arrow">&#9660;</span>
       </button>
-      <div class="lang-dd" id="langDd" role="listbox" aria-label="Sprache wählen">
-        <a href="#" data-lang="de" class="active" role="option"><span class="lang-dd-flag">🇩🇪</span> Deutsch</a>
-        <a href="#" data-lang="en" role="option"><span class="lang-dd-flag">🇬🇧</span> English</a>
-        <a href="#" data-lang="fr" role="option"><span class="lang-dd-flag">🇫🇷</span> Français</a>
-        <a href="#" data-lang="es" role="option"><span class="lang-dd-flag">🇪🇸</span> Español</a>
+      <div class="lang-dd" id="langDd" role="listbox" aria-label="Sprache wÃ¤hlen">
+        <a href="#" data-lang="de" class="active" role="option"><span class="lang-dd-flag">ð©ðª</span> Deutsch</a>
+        <a href="#" data-lang="en" role="option"><span class="lang-dd-flag">ð¬ð§</span> English</a>
+        <a href="#" data-lang="fr" role="option"><span class="lang-dd-flag">ð«ð·</span> FranÃ§ais</a>
+        <a href="#" data-lang="es" role="option"><span class="lang-dd-flag">ðªð¸</span> EspaÃ±ol</a>
       </div>
     </li>
   </ul>
@@ -848,13 +847,28 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
   <a href="https://be-hui.vercel.app/Home" target="_blank">App &#246;ffnen &#8594;</a>
 </div>
 
-<!-- ══════════════ IMPACT POOL ══════════════ -->
+<!-- ââââââââââââââ IMPACT POOL ââââââââââââââ -->
 <section class="impact" id="impact">
   <div class="si">
     <div class="ihead">
       <div class="lbl">Wie es funktioniert</div>
       <h2 class="ttl">Der Impact-Pool &#8212;<br>ein Kreislauf der Wirkung.</h2>
       <p class="dsc">Jede Aktivit&#228;t erzeugt automatisch sozialen Impact &#8212; ohne dass du etwas extra tun musst.</p>
+    </div>
+        <div class="itext-extended" style="margin:60px 0 50px 0;padding:48px 56px;background:#ffffff;border-radius:20px;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
+      <div style="max-width:800px;margin:0 auto;">
+        <div class="lbl">Was ist der Impact Pool?</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:var(--text);margin:0 0 24px 0;line-height:1.3;">Deine Aktivit&#228;t ver&#228;ndert die Welt &#8212; ganz automatisch.</h3>
+        <p style="font-size:16px;color:#505050;line-height:1.8;margin:0 0 20px 0;">
+          Der Impact-Pool ist das Herzst&#252;ck der HUI-Plattform. Er verbindet wirtschaftliche Aktivit&#228;t mit gesellschaftlicher Verantwortung &#8212; ohne Mehraufwand f&#252;r dich. Jedes Mal, wenn du eine Session buchst, ein Talent engagierst oder eine Dienstleistung &#252;ber HUI in Anspruch nimmst, flie&#223;en automatisch <strong style="color:var(--teal);">15&#160;% des Umsatzes</strong> in diesen gemeinsamen Wirkungsfonds.
+        </p>
+        <p style="font-size:16px;color:#505050;line-height:1.8;margin:0 0 20px 0;">
+          Was dieses Modell einzigartig macht: Die Verteilung des Geldes liegt nicht bei einem Komitee oder einer Organisation &#8212; sie liegt bei der Community. Alle aktiven Talente auf der Plattform stimmen monatlich ab, welches soziale Projekt als N&#228;chstes vollst&#228;ndig finanziert werden soll. Das schafft Transparenz, Mitgestaltung und echte demokratische Wirkung.
+        </p>
+        <p style="font-size:16px;color:#505050;line-height:1.8;margin:0;">
+          Gef&#246;rderte Projekte m&#252;ssen realistisch finanzierbar sein &#8212; das HUI-Team pr&#252;ft jeden Monat drei konkrete Vorhaben mit klaren Budgets. Der Gewinner erh&#228;lt seinen vollen Wunschbetrag auf einmal. Die &#252;brigen Projekte bleiben im Pool und wachsen weiter, bis auch sie ihr Ziel erreichen. So entsteht ein nachhaltiger Kreislauf: Jede Aktivit&#228;t auf HUI wird zum Teil einer gr&#246;&#223;eren Bewegung.
+        </p>
+      </div>
     </div>
     <div class="isteps">
       <div class="is"><div class="isn">01</div><h4>Aktivit&#228;t erzeugt Impact</h4><p>Bei jeder Buchung oder Session flie&#223;en <strong style="color:var(--teal)">15&#160;%</strong> automatisch in den Impact-Pool.</p></div>
@@ -863,6 +877,61 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
       <div class="is"><div class="isn">04</div><h4>Gewinner erh&#228;lt alles</h4><p>Das Projekt mit den meisten Stimmen erh&#228;lt seinen gesamten Wunschbetrag vollst&#228;ndig.</p></div>
       <div class="is"><div class="isn">05</div><h4>Niemand geht leer aus</h4><p>Der restliche Pool wird anteilig verteilt. Andere Projekte bleiben bis zur vollen Finanzierung aktiv.</p></div>
       <div class="is"><div class="isn">06</div><h4>Kreislauf w&#228;chst weiter</h4><p>Neue 15&#160;% flie&#223;en jeden Monat ein &#8212; der Pool und die Wirkung wachsen stetig weiter.</p></div>
+    </div>
+        <div class="iflow-graphic" style="margin:60px 0 0 0;">
+      <div style="background:#ffffff;border-radius:20px;padding:48px 56px;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
+        <div class="lbl">So funktioniert es</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:var(--text);margin:0 0 40px 0;line-height:1.3;">Der Ablauf in 6 klaren Schritten</h3>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;align-items:flex-start;gap:24px;padding:32px 36px;background:#ffffff;border-radius:16px;border-left:4px solid var(--teal);position:relative;">
+            <div style="min-width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#ffffff;flex-shrink:0;">01</div>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:22px;">&#128179;</span><h4 style="font-size:16px;font-weight:700;color:var(--teal);margin:0;letter-spacing:0.5px;text-transform:uppercase;">Aktivit&#228;t buchen</h4></div>
+              <p style="font-size:15px;color:#505050;line-height:1.7;margin:0;">Du buchst eine Session, engagierst ein Talent oder nutzt eine Dienstleistung auf der HUI-Plattform.</p>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:flex-start;padding-left:63px;"><div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--teal),rgba(30,216,200,0.2));"></div></div>
+          <div style="display:flex;align-items:flex-start;gap:24px;padding:32px 36px;background:rgba(30,216,200,0.06);border-radius:16px;border-left:4px solid var(--teal);position:relative;">
+            <div style="min-width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#ffffff;flex-shrink:0;">02</div>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:22px;">&#127807;</span><h4 style="font-size:16px;font-weight:700;color:var(--teal);margin:0;letter-spacing:0.5px;text-transform:uppercase;">15&#160;% flie&#223;en automatisch</h4></div>
+              <p style="font-size:15px;color:#505050;line-height:1.7;margin:0;">Vom Gesamtumsatz deiner Buchung werden automatisch 15&#160;% in den gemeinsamen Impact-Pool eingezahlt &#8212; ohne weiteren Aufwand.</p>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:flex-start;padding-left:63px;"><div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--teal),rgba(30,216,200,0.2));"></div></div>
+          <div style="display:flex;align-items:flex-start;gap:24px;padding:32px 36px;background:#ffffff;border-radius:16px;border-left:4px solid var(--teal);position:relative;">
+            <div style="min-width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#ffffff;flex-shrink:0;">03</div>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:22px;">&#128193;</span><h4 style="font-size:16px;font-weight:700;color:var(--teal);margin:0;letter-spacing:0.5px;text-transform:uppercase;">3 Projekte werden ausgew&#228;hlt</h4></div>
+              <p style="font-size:15px;color:#505050;line-height:1.7;margin:0;">Das HUI-Team w&#228;hlt jeden Monat drei soziale Projekte mit realistischem, klar definiertem Finanzierungsbedarf aus.</p>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:flex-start;padding-left:63px;"><div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--teal),rgba(30,216,200,0.2));"></div></div>
+          <div style="display:flex;align-items:flex-start;gap:24px;padding:32px 36px;background:rgba(30,216,200,0.06);border-radius:16px;border-left:4px solid var(--teal);position:relative;">
+            <div style="min-width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#ffffff;flex-shrink:0;">04</div>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:22px;">&#128228;</span><h4 style="font-size:16px;font-weight:700;color:var(--teal);margin:0;letter-spacing:0.5px;text-transform:uppercase;">Community stimmt ab</h4></div>
+              <p style="font-size:15px;color:#505050;line-height:1.7;margin:0;">Alle aktiven Talente erhalten je eine Stimme und entscheiden demokratisch, welches Projekt den Pool als Erstes erh&#228;lt.</p>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:flex-start;padding-left:63px;"><div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--teal),rgba(30,216,200,0.2));"></div></div>
+          <div style="display:flex;align-items:flex-start;gap:24px;padding:32px 36px;background:#ffffff;border-radius:16px;border-left:4px solid var(--teal);position:relative;">
+            <div style="min-width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#ffffff;flex-shrink:0;">05</div>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:22px;">&#127942;</span><h4 style="font-size:16px;font-weight:700;color:var(--teal);margin:0;letter-spacing:0.5px;text-transform:uppercase;">Gewinner wird vollst&#228;ndig finanziert</h4></div>
+              <p style="font-size:15px;color:#505050;line-height:1.7;margin:0;">Das Projekt mit den meisten Stimmen erh&#228;lt seinen gesamten Wunschbetrag auf einmal. Die anderen Projekte bleiben aktiv und wachsen weiter.</p>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:flex-start;padding-left:63px;"><div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--teal),rgba(30,216,200,0.2));"></div></div>
+          <div style="display:flex;align-items:flex-start;gap:24px;padding:32px 36px;background:rgba(30,216,200,0.06);border-radius:16px;border-left:4px solid var(--teal);position:relative;">
+            <div style="min-width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#ffffff;flex-shrink:0;">06</div>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:22px;">&#128260;</span><h4 style="font-size:16px;font-weight:700;color:var(--teal);margin:0;letter-spacing:0.5px;text-transform:uppercase;">Kreislauf beginnt neu</h4></div>
+              <p style="font-size:15px;color:#505050;line-height:1.7;margin:0;">Monat f&#252;r Monat flie&#223;en neue 15&#160;% ein. Der Pool w&#228;chst, neue Projekte kommen hinzu &#8212; und die Wirkung vervielf&#228;ltigt sich stetig.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="i15">
       <div class="i15n">15%</div>
@@ -873,7 +942,7 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
     </div>
   </div>
 </section>
-<!-- ══════════════ FOOTER ══════════════ -->
+<!-- ââââââââââââââ FOOTER ââââââââââââââ -->
 <footer>
   <div class="si">
     <div class="fg2">
@@ -901,7 +970,7 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
 </footer>
 
 <script>
-// ── Nav scroll shrink ──
+// ââ Nav scroll shrink ââ
 window.addEventListener('scroll',()=>{
   const n=document.getElementById('topnav');
   if(window.scrollY>50){
@@ -913,7 +982,7 @@ window.addEventListener('scroll',()=>{
   }
 });
 
-// ── Dropdown: click to open/close ──
+// ââ Dropdown: click to open/close ââ
 (function(){
   const items = document.querySelectorAll('nav ul.nl > li');
 
@@ -959,7 +1028,7 @@ window.addEventListener('scroll',()=>{
   }, { passive: true });
 })();
 
-// ── Mobile menu toggle ──
+// ââ Mobile menu toggle ââ
 document.getElementById('hamBtn').addEventListener('click', (e) => {
   e.stopPropagation();
   const m = document.getElementById('mmenu');
@@ -990,7 +1059,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// ── Scroll fade-in ──
+// ââ Scroll fade-in ââ
 const obs = new IntersectionObserver(es => {
   es.forEach(e => {
     if (e.isIntersecting) {
@@ -1009,7 +1078,7 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 </script>
 
 <script>
-// ══ Stats Counter Animation ══
+// ââ Stats Counter Animation ââ
 (function(){
   function animateCard(card){
     const target = parseInt(card.getAttribute('data-target'), 10);
@@ -1065,9 +1134,9 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 </script>
 
 <script>
-// ══════════════════════════════════════════
-//  HERO PARALLAX — Sanfte Maus-Bewegung
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
+//  HERO PARALLAX â Sanfte Maus-Bewegung
+// ââââââââââââââââââââââââââââââââââââââââââ
 (function(){
   const hero = document.querySelector('[data-parallax]');
   if(!hero) return;
@@ -1148,9 +1217,9 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 </html>
 
 <script>
-// ══════════════════════════════════════════
-//  HERO PARALLAX — Sanfte Maus-Bewegung
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
+//  HERO PARALLAX â Sanfte Maus-Bewegung
+// ââââââââââââââââââââââââââââââââââââââââââ
 (function(){
   const hero = document.querySelector('[data-parallax]');
   if(!hero) return;
