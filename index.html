@@ -1102,6 +1102,181 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
   @media(max-width:400px){
     .stats-grid{grid-template-columns:1fr 1fr;gap:8px}
   }
+
+
+  /* ════════════════════════════════════════════════
+     HUI INTRO / WELCOME SECTION
+     ════════════════════════════════════════════════ */
+
+  .hui-intro-section {
+    background: var(--bg);
+    padding: 96px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hui-intro-section::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: -80px;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(30,216,200,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hui-intro-section::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,135,106,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hui-intro-divider-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(30,216,200,0.2), transparent);
+  }
+
+  .hui-intro-transition-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, rgba(15,26,26,0.06));
+    pointer-events: none;
+  }
+
+  .hui-intro-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hui-intro-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: rgba(30,216,200,0.08);
+    border: 1px solid rgba(30,216,200,0.18);
+    padding: 7px 16px 7px 12px;
+    border-radius: 50px;
+    margin-bottom: 32px;
+  }
+
+  .hui-intro-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+  }
+
+  .hui-intro-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .hui-intro-subtext {
+    font-size: 17px;
+    color: var(--text2);
+    line-height: 1.85;
+    max-width: 680px;
+    margin: 0 auto 44px;
+  }
+
+  .hui-intro-subtext strong {
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  .hui-intro-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+
+  .hui-intro-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    border: 1.5px solid var(--border2);
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .hui-intro-pill--accent {
+    background: rgba(30,216,200,0.08);
+    border-color: rgba(30,216,200,0.25);
+    color: var(--teal);
+  }
+
+  .hui-intro-pill-icon {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .hui-intro-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .hui-intro-btn-primary {
+    font-size: 16px !important;
+    padding: 16px 40px !important;
+  }
+
+  .hui-intro-btn-sec {
+    font-size: 15px;
+    padding: 15px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    background: var(--white);
+    color: var(--text);
+    border: 1.5px solid var(--border2);
+    transition: border-color .2s, color .2s, box-shadow .2s;
+    display: inline-block;
+  }
+
+  .hui-intro-btn-sec:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    box-shadow: 0 4px 16px rgba(30,216,200,0.15);
+  }
+
+  @media (max-width:640px) {
+    .hui-intro-section { padding: 72px 24px; }
+    .hui-intro-headline { font-size: 1.9rem; }
+    .hui-intro-subtext { font-size: 15px; }
+    .hui-intro-pills { gap: 8px; }
+    .hui-intro-ctas { flex-direction: column; align-items: center; }
+  }
+
+
 </style>
 </head>
 <body>
@@ -1301,6 +1476,60 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
 
   <div class="h-scroll"><span>Entdecken</span><div class="sbar"></div></div>
 </section>
+
+<!-- ══════════════ WELCOME / INTRO SECTION ══════════════ -->
+<section class="hui-intro-section">
+  <div class="hui-intro-divider-top"></div>
+  <div class="hui-intro-inner">
+
+    <div class="hui-intro-eyebrow">
+      <span class="hui-intro-dot"></span>
+      Willkommen bei HUI
+    </div>
+
+    <h2 class="hui-intro-headline">
+      Du bist genau richtig hier.
+    </h2>
+
+    <p class="hui-intro-subtext">
+      HUI ist die Plattform für Talente, Gemeinschaft und sozialen Impact &mdash; an einem Ort, fair, sicher und menschlich.
+      Entdecke Kreative, buche Workshops und lass dein Geld Gutes tun. Mit jedem Buchen fließen automatisch 15&nbsp;% in den <strong>Impact&nbsp;Pool</strong> &mdash; ohne Aufwand, ohne Extra-Schritt.
+      <br><br>
+      Hol dir die App und starte sofort: Talente finden, Erlebnisse buchen, echte Wirkung erzeugen.
+    </p>
+
+    <div class="hui-intro-pills">
+      <div class="hui-intro-pill">
+        <span class="hui-intro-pill-icon">🎨</span>
+        <span>Talente entdecken</span>
+      </div>
+      <div class="hui-intro-pill">
+        <span class="hui-intro-pill-icon">🔐</span>
+        <span>Sicher buchen</span>
+      </div>
+      <div class="hui-intro-pill">
+        <span class="hui-intro-pill-icon">🌱</span>
+        <span>Impact erzeugen</span>
+      </div>
+      <div class="hui-intro-pill hui-intro-pill--accent">
+        <span class="hui-intro-pill-icon">💚</span>
+        <span>15&nbsp;% Impact Pool</span>
+      </div>
+    </div>
+
+    <div class="hui-intro-ctas">
+      <a href="https://be-hui.vercel.app/Home" class="btn-main hui-intro-btn-primary" target="_blank" rel="noopener">
+        ✨&nbsp;&nbsp;App jetzt öffnen
+      </a>
+      <a href="impact-pool.html" class="hui-intro-btn-sec">
+        Impact Pool entdecken &rarr;
+      </a>
+    </div>
+
+  </div>
+  <div class="hui-intro-transition-bottom"></div>
+</section>
+
 <!-- ══════════════ STATS SECTION ══════════════ -->
 <section class="stats-section">
   <div class="stats-header">
