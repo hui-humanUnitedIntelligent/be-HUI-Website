@@ -241,15 +241,60 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
   </div>
 </nav>
 
-<div id="mmenu" role="navigation" aria-label="Mobile Navigation">
+<div id="mmenu">
   <div class="mm-item">
-    <button class="mm-toggle" data-target="mm-ueber">Über uns <span class="mm-arr">▼</span></button>
-      <a href="ueber-uns.html"><span class="dd-ico">🌟</span>Was ist HUI</a>
-      <a href="index.html#team"><span class="dd-ico">👥</span>Team</a>
-      <a href="contact.html"><span class="dd-ico">💬</span>Schreib uns</a>
-      <a href="contact.html#faq"><span class="dd-ico">❓</span>Hilfe &amp; FAQ</a>
+    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
+      Ãber HUI <span class="mm-arr">â¾</span>
+    </div>
+    <div class="mm-sub">
+      <a href="ueber-uns.html">ð Was ist HUI</a>
+      <a href="team.html">ð¥ Team</a>
+      <a href="contact.html">âï¸ Kontakt</a>
+      <a href="contact.html#faq">â Hilfe &amp; FAQ</a>
     </div>
   </div>
+  <div class="mm-item">
+    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
+      HUI App <span class="mm-arr">â¾</span>
+    </div>
+    <div class="mm-sub">
+      <a href="hui-app.html">ð± App Ãbersicht</a>
+      <a href="werde-wirker.html">â¨ Werde Wirker</a>
+      <a href="app-download.html">â¬ï¸ App Download</a>
+      <a href="https://be-hui.vercel.app/Home" target="_blank">ð Web-App Ã¶ffnen</a>
+    </div>
+  </div>
+  <div class="mm-item">
+    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
+      Impact Pool <span class="mm-arr">â¾</span>
+    </div>
+    <div class="mm-sub">
+      <a href="impact-pool.html">ð¿ Wie es funktioniert</a>
+    </div>
+  </div>
+  <div class="mm-item">
+    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
+      Projekte <span class="mm-arr">â¾</span>
+    </div>
+    <div class="mm-sub">
+      <a href="projekte.html">ð Einer fÃ¼r Alle</a>
+      <a href="projekte.html">ð Alle Projekte</a>
+      <a href="projekte.html">ð¼ Galerie</a>
+      <a href="projekte.html">ð Events</a>
+    </div>
+  </div>
+  <div class="mm-item">
+    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
+      Community <span class="mm-arr">â¾</span>
+    </div>
+    <div class="mm-sub">
+      <a href="community.html">ð£ Stimmen</a>
+      <a href="community.html">ð¸ Galerie</a>
+    </div>
+  </div>
+  <a href="contact.html" class="mm-direct">Kontakt</a>
+  <a href="https://be-hui.vercel.app/Home" target="_blank" class="mm-cta">App Ã¶ffnen â</a>
+</div>
   <div class="mm-item">
     <button class="mm-toggle" data-target="mm-app">HUI App <span class="mm-arr">▼</span></button>
     <div class="mm-sub" id="mm-app">
