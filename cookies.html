@@ -1337,6 +1337,36 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
   margin: 0 auto;
 }
 </style>
+
+<style>
+.ls{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(30,216,200,.15)}
+.ls:last-child{border-bottom:none}
+.ls h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--dark);margin-bottom:14px;padding-left:14px;border-left:3px solid var(--teal)}
+.ls p{color:#444;line-height:1.8;font-size:.97rem;margin-bottom:10px}
+.ls ul{margin:10px 0 10px 20px;color:#444;line-height:1.8;font-size:.97rem}
+.ls ul li{margin-bottom:6px}
+.ls a{color:var(--teal);text-decoration:none;font-weight:500}
+.ls a:hover{text-decoration:underline}
+.ls-note{background:var(--teal-l);border-radius:8px;padding:10px 16px;color:var(--teal-d)!important;font-weight:500;margin-top:10px}
+/* Cookie cards */
+.cookie-cards{display:flex;flex-direction:column;gap:16px;margin-top:16px}
+.cookie-card{border-radius:14px;padding:22px 24px;border:1px solid rgba(0,0,0,.08)}
+.cookie-card--required{background:#f0fffe;border-color:rgba(30,216,200,.3)}
+.cookie-card--functional{background:#f5f0ff;border-color:rgba(130,80,220,.2)}
+.cookie-card--analytics{background:#fffbf0;border-color:rgba(230,180,50,.3)}
+.cookie-card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.cookie-card-head span:first-child{font-size:1.4rem}
+.cookie-card-head strong{font-size:1rem;color:var(--dark)}
+.cookie-badge{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:20px;margin-left:auto}
+.cookie-badge--always{background:var(--teal);color:#fff}
+.cookie-badge--consent{background:#e8e0ff;color:#6030b0}
+.cookie-card p{color:#555;font-size:.9rem;line-height:1.7;margin-bottom:8px}
+.cookie-card ul{margin:0 0 0 18px;color:#555;font-size:.9rem;line-height:1.7}
+/* Browser links */
+.cookie-browsers{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.cb-link{display:inline-block;padding:8px 18px;border-radius:8px;background:var(--teal-l);color:var(--teal-d);font-weight:600;font-size:.88rem;text-decoration:none;transition:background .2s}
+.cb-link:hover{background:var(--teal);color:#fff}
+</style>
 </head>
 <body>
 <nav id="topnav">
@@ -1420,12 +1450,88 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
 </div>
 <!-- ══ CONTENT ══ -->
 <div class="legal-body">
-  <div class="legal-placeholder">
-    <span class="lp-icon">&#9997;</span>
-    <h2>Inhalt folgt in K&#252;rze</h2>
-    <p>Dieser Bereich wird gerade vorbereitet.<br/>
-    Der vollst&#228;ndige Text wird hier eingef&#252;gt.</p>
-  </div>
+
+  <section class="ls">
+    <h2>1. Arten von Cookies</h2>
+    <p>Wir verwenden folgende Cookie-Kategorien:</p>
+    <div class="cookie-cards">
+      <div class="cookie-card cookie-card--required">
+        <div class="cookie-card-head">
+          <span>&#128274;</span>
+          <strong>Technisch notwendig</strong>
+          <span class="cookie-badge cookie-badge--always">Immer aktiv</span>
+        </div>
+        <p>Diese Cookies sind f&#252;r den Betrieb der Plattform unbedingt erforderlich. Sie erm&#246;glichen grundlegende Funktionen wie Login, Session-Verwaltung und Navigation.</p>
+        <ul>
+          <li>Session-Cookies (Login &amp; Authentifizierung)</li>
+          <li>Sicherheits-Tokens (CSRF-Schutz)</li>
+          <li>Navigations-Cookies</li>
+        </ul>
+      </div>
+      <div class="cookie-card cookie-card--functional">
+        <div class="cookie-card-head">
+          <span>&#9881;</span>
+          <strong>Funktionale Cookies</strong>
+          <span class="cookie-badge cookie-badge--consent">Mit Einwilligung</span>
+        </div>
+        <p>Diese Cookies speichern deine Pr&#228;ferenzen f&#252;r eine bessere Nutzererfahrung.</p>
+        <ul>
+          <li>Spracheinstellungen (z.&nbsp;B. DE / EN)</li>
+          <li>Theme- und Darstellungspr&#228;ferenzen</li>
+        </ul>
+      </div>
+      <div class="cookie-card cookie-card--analytics">
+        <div class="cookie-card-head">
+          <span>&#128202;</span>
+          <strong>Analyse-Cookies</strong>
+          <span class="cookie-badge cookie-badge--consent">Mit Einwilligung</span>
+        </div>
+        <p>Diese Cookies helfen uns, die Nutzung der Plattform zu verstehen und zu verbessern. Sie werden nur nach deiner ausdr&#252;cklichen Zustimmung gesetzt.</p>
+        <ul>
+          <li>Seitenaufrufe &amp; Nutzerverhalten (anonymisiert)</li>
+          <li>Performance-Messungen</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="ls">
+    <h2>2. Zweck</h2>
+    <p>Cookies dienen bei HUI folgenden Zwecken:</p>
+    <ul>
+      <li>&#128274;&nbsp; Sicherheit: Schutz deines Kontos vor unbefugtem Zugriff</li>
+      <li>&#9881;&nbsp; Funktionalit&#228;t: Speicherung deiner Einstellungen und Sitzungsdaten</li>
+      <li>&#128200;&nbsp; Verbesserung: Analyse des Nutzerverhaltens zur Optimierung der Plattform</li>
+    </ul>
+    <p class="ls-note">&#10003;&nbsp; Wir setzen keine Cookies f&#252;r Werbezwecke oder zur Weitergabe an Dritte.</p>
+  </section>
+
+  <section class="ls">
+    <h2>3. Einwilligung</h2>
+    <p>Technisch notwendige Cookies werden ohne Zustimmung gesetzt, da sie f&#252;r den Betrieb der Plattform unbedingt erforderlich sind.</p>
+    <p>Alle anderen Cookies &ndash; funktionale und Analyse-Cookies &ndash; werden <strong>erst nach deiner ausdr&#252;cklichen Zustimmung</strong> aktiviert. Du kannst deine Einwilligung jederzeit widerrufen.</p>
+    <p>Grundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO (Einwilligung).</p>
+  </section>
+
+  <section class="ls">
+    <h2>4. Verwaltung &amp; L&#246;schung</h2>
+    <p>Du kannst Cookies jederzeit selbst verwalten:</p>
+    <div class="cookie-browsers">
+      <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener" class="cb-link">&#127760; Chrome</a>
+      <a href="https://support.mozilla.org/de/kb/cookies-erlauben-und-ablehnen" target="_blank" rel="noopener" class="cb-link">&#127760; Firefox</a>
+      <a href="https://support.apple.com/de-de/guide/safari/sfri11471/mac" target="_blank" rel="noopener" class="cb-link">&#127760; Safari</a>
+      <a href="https://support.microsoft.com/de-de/windows/verwalten-von-cookies-in-microsoft-edge" target="_blank" rel="noopener" class="cb-link">&#127760; Edge</a>
+    </div>
+    <p style="margin-top:16px">Bitte beachte: Das Deaktivieren technisch notwendiger Cookies kann die Funktionalit&#228;t der Plattform einschr&#228;nken.</p>
+    <p>Bei Fragen: <a href="mailto:privacy@be-hui.com">privacy@be-hui.com</a></p>
+  </section>
+
+  <section class="ls">
+    <h2>5. &#196;nderungen</h2>
+    <p>Diese Cookie-Richtlinie kann aktualisiert werden. Stand: Mai&nbsp;2026.</p>
+    <p>Weitere Informationen findest du in unserer <a href="datenschutz.html">Datenschutzerkl&#228;rung</a>.</p>
+  </section>
+
 </div>
 <footer>
   <div class="si">
