@@ -1771,80 +1771,55 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 })();
 </script>
 
+
 <script>
-// ══════════════════════════════════════════
-//  HERO PARALLAX — Sanfte Maus-Bewegung
-// ══════════════════════════════════════════
+// ══ HERO PARALLAX — Soft & Slow Mouse Movement ══
 (function(){
   const hero = document.querySelector('[data-parallax]');
   if(!hero) return;
 
   const content = document.getElementById('hero-parallax-content');
   const title   = document.getElementById('hero-title');
-  const blob1   = hero.querySelector('.h-blob1');
-  const blob2   = hero.querySelector('.h-blob2');
-  const blob3   = hero.querySelector('.h-blob3');
 
   let mouseX = 0, mouseY = 0;
   let curX = 0, curY = 0;
   let raf = null;
 
-  // Depth factors (positive = moves WITH mouse, negative = opposite)
+  // Sehr kleine Werte = kaum sichtbare, sanfte Bewegung
   const depths = {
-    content: { x: 0.018, y: 0.014 },
-    title:   { x: 0.028, y: 0.022 },
-    blob1:   { x: -0.05, y: -0.04 },
-    blob2:   { x:  0.06, y:  0.05 },
-    blob3:   { x: -0.03, y: -0.025 }
+    content: { x: 0.006, y: 0.005 },
+    title:   { x: 0.010, y: 0.008 }
   };
 
   function onMouseMove(e){
-    const rect  = hero.getBoundingClientRect();
-    const cx    = rect.left + rect.width  / 2;
-    const cy    = rect.top  + rect.height / 2;
-    mouseX = e.clientX - cx;
-    mouseY = e.clientY - cy;
+    const rect = hero.getBoundingClientRect();
+    mouseX = e.clientX - (rect.left + rect.width  / 2);
+    mouseY = e.clientY - (rect.top  + rect.height / 2);
     if(!raf) raf = requestAnimationFrame(animate);
   }
 
   function animate(){
     raf = null;
-    // Lerp toward target for silky smoothness
-    curX += (mouseX - curX) * 0.07;
-    curY += (mouseY - curY) * 0.07;
+    // Sehr langsames Lerp (0.03 statt 0.07) = träger, weicher
+    curX += (mouseX - curX) * 0.03;
+    curY += (mouseY - curY) * 0.03;
 
     if(content){
-      const tx = curX * depths.content.x;
-      const ty = curY * depths.content.y;
-      content.style.transform = `translate(${tx}px, ${ty}px)`;
+      content.style.transform = `translate(${curX * depths.content.x}px, ${curY * depths.content.y}px)`;
     }
     if(title){
-      const tx = curX * depths.title.x;
-      const ty = curY * depths.title.y;
-      title.style.transform = `translate(${tx}px, ${ty}px)`;
-    }
-    if(blob1){
-      blob1.style.transform = `translate(${curX*depths.blob1.x}px, ${curY*depths.blob1.y}px)`;
-    }
-    if(blob2){
-      blob2.style.transform = `translate(${curX*depths.blob2.x}px, ${curY*depths.blob2.y}px)`;
-    }
-    if(blob3){
-      blob3.style.transform = `translate(${curX*depths.blob3.x}px, ${curY*depths.blob3.y}px)`;
+      title.style.transform = `translate(${curX * depths.title.x}px, ${curY * depths.title.y}px)`;
     }
 
-    // Keep animating while lerping
     const dist = Math.abs(mouseX - curX) + Math.abs(mouseY - curY);
-    if(dist > 0.05) raf = requestAnimationFrame(animate);
+    if(dist > 0.02) raf = requestAnimationFrame(animate);
   }
 
-  // Reset smoothly on mouse leave
   function onMouseLeave(){
     mouseX = 0; mouseY = 0;
     if(!raf) raf = requestAnimationFrame(animate);
   }
 
-  // Only on desktop (no touch)
   if(window.matchMedia('(pointer:fine)').matches){
     hero.addEventListener('mousemove', onMouseMove, {passive:true});
     hero.addEventListener('mouseleave', onMouseLeave, {passive:true});
@@ -1854,86 +1829,7 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 </body>
 </html>
 
-<script>
-// ══════════════════════════════════════════
-//  HERO PARALLAX — Sanfte Maus-Bewegung
-// ══════════════════════════════════════════
-(function(){
-  const hero = document.querySelector('[data-parallax]');
-  if(!hero) return;
 
-  const content = document.getElementById('hero-parallax-content');
-  const title   = document.getElementById('hero-title');
-  const blob1   = hero.querySelector('.h-blob1');
-  const blob2   = hero.querySelector('.h-blob2');
-  const blob3   = hero.querySelector('.h-blob3');
-
-  let mouseX = 0, mouseY = 0;
-  let curX = 0, curY = 0;
-  let raf = null;
-
-  // Depth factors (positive = moves WITH mouse, negative = opposite)
-  const depths = {
-    content: { x: 0.018, y: 0.014 },
-    title:   { x: 0.028, y: 0.022 },
-    blob1:   { x: -0.05, y: -0.04 },
-    blob2:   { x:  0.06, y:  0.05 },
-    blob3:   { x: -0.03, y: -0.025 }
-  };
-
-  function onMouseMove(e){
-    const rect  = hero.getBoundingClientRect();
-    const cx    = rect.left + rect.width  / 2;
-    const cy    = rect.top  + rect.height / 2;
-    mouseX = e.clientX - cx;
-    mouseY = e.clientY - cy;
-    if(!raf) raf = requestAnimationFrame(animate);
-  }
-
-  function animate(){
-    raf = null;
-    // Lerp toward target for silky smoothness
-    curX += (mouseX - curX) * 0.07;
-    curY += (mouseY - curY) * 0.07;
-
-    if(content){
-      const tx = curX * depths.content.x;
-      const ty = curY * depths.content.y;
-      content.style.transform = `translate(${tx}px, ${ty}px)`;
-    }
-    if(title){
-      const tx = curX * depths.title.x;
-      const ty = curY * depths.title.y;
-      title.style.transform = `translate(${tx}px, ${ty}px)`;
-    }
-    if(blob1){
-      blob1.style.transform = `translate(${curX*depths.blob1.x}px, ${curY*depths.blob1.y}px)`;
-    }
-    if(blob2){
-      blob2.style.transform = `translate(${curX*depths.blob2.x}px, ${curY*depths.blob2.y}px)`;
-    }
-    if(blob3){
-      blob3.style.transform = `translate(${curX*depths.blob3.x}px, ${curY*depths.blob3.y}px)`;
-    }
-
-    // Keep animating while lerping
-    const dist = Math.abs(mouseX - curX) + Math.abs(mouseY - curY);
-    if(dist > 0.05) raf = requestAnimationFrame(animate);
-  }
-
-  // Reset smoothly on mouse leave
-  function onMouseLeave(){
-    mouseX = 0; mouseY = 0;
-    if(!raf) raf = requestAnimationFrame(animate);
-  }
-
-  // Only on desktop (no touch)
-  if(window.matchMedia('(pointer:fine)').matches){
-    hero.addEventListener('mousemove', onMouseMove, {passive:true});
-    hero.addEventListener('mouseleave', onMouseLeave, {passive:true});
-  }
-})();
-</script>
 
 <script>
 // ══════════════════════════════════════════
@@ -2110,5 +2006,59 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
 </style>
 <script src="lang/switcher.js"></script>
+<script>
+// ══ HERO PARALLAX — Soft & Slow Mouse Movement ══
+(function(){
+  const hero = document.querySelector('[data-parallax]');
+  if(!hero) return;
+
+  const content = document.getElementById('hero-parallax-content');
+  const title   = document.getElementById('hero-title');
+
+  let mouseX = 0, mouseY = 0;
+  let curX = 0, curY = 0;
+  let raf = null;
+
+  // Sehr kleine Werte = kaum sichtbare, sanfte Bewegung
+  const depths = {
+    content: { x: 0.006, y: 0.005 },
+    title:   { x: 0.010, y: 0.008 }
+  };
+
+  function onMouseMove(e){
+    const rect = hero.getBoundingClientRect();
+    mouseX = e.clientX - (rect.left + rect.width  / 2);
+    mouseY = e.clientY - (rect.top  + rect.height / 2);
+    if(!raf) raf = requestAnimationFrame(animate);
+  }
+
+  function animate(){
+    raf = null;
+    // Sehr langsames Lerp (0.03 statt 0.07) = träger, weicher
+    curX += (mouseX - curX) * 0.03;
+    curY += (mouseY - curY) * 0.03;
+
+    if(content){
+      content.style.transform = `translate(${curX * depths.content.x}px, ${curY * depths.content.y}px)`;
+    }
+    if(title){
+      title.style.transform = `translate(${curX * depths.title.x}px, ${curY * depths.title.y}px)`;
+    }
+
+    const dist = Math.abs(mouseX - curX) + Math.abs(mouseY - curY);
+    if(dist > 0.02) raf = requestAnimationFrame(animate);
+  }
+
+  function onMouseLeave(){
+    mouseX = 0; mouseY = 0;
+    if(!raf) raf = requestAnimationFrame(animate);
+  }
+
+  if(window.matchMedia('(pointer:fine)').matches){
+    hero.addEventListener('mousemove', onMouseMove, {passive:true});
+    hero.addEventListener('mouseleave', onMouseLeave, {passive:true});
+  }
+})();
+</script>
 </body>
 </html>
