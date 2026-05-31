@@ -42,7 +42,7 @@ nav ul.nl>li.dd-open>span{color:var(--teal)!important;background:var(--teal-l)!i
 .dd-title{font-size:10px;font-weight:700;color:var(--light);letter-spacing:2px;text-transform:uppercase;padding:8px 13px 4px}
 .dd-wide{min-width:260px}
 /* Language Switcher */
-.lang-li{position:relative;list-style:none;display:none!important}
+.lang-li{position:relative;list-style:none}
 .lang-btn{
   display:flex;align-items:center;gap:6px;
   background:var(--teal-l)!important;
@@ -54,7 +54,7 @@ nav ul.nl>li.dd-open>span{color:var(--teal)!important;background:var(--teal-l)!i
   font-size:.9rem;white-space:nowrap;
 }
 .lang-btn:hover{background:rgba(30,216,200,0.15)!important;box-shadow:0 4px 14px rgba(30,216,200,0.2)!important}
-.lang-flag{font-size:1.1rem;line-height:1}
+.lang-flag{font-size:1.1rem;line-height:1;display:inline-flex;align-items:center;gap:2px}.lang-label{font-size:.65rem;font-weight:700;letter-spacing:.5px;margin-left:2px;vertical-align:middle}
 .lang-arrow{font-size:.65rem;margin-left:2px;transition:transform .25s}
 .lang-li.open .lang-arrow{transform:rotate(180deg)}
 .lang-dd{
@@ -216,16 +216,14 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
     </li>
     
     <li><a href="https://be-hui.vercel.app/Home" target="_blank" class="n-login" data-t-key="nav.login">Login</a></li>
-    <li class="lang-li" id="langSwitcher">
+        <li class="lang-li" id="langSwitcher">
       <button class="lang-btn" id="langBtn" aria-label="Sprache wechseln" aria-expanded="false" aria-haspopup="listbox">
-        <span class="lang-flag" id="langFlag">&#127465;&#127466;</span>
+        <span class="lang-flag" id="langFlag">&#127465;&#127466;<span class="lang-label">DE</span></span>
         <span class="lang-arrow">&#9660;</span>
       </button>
       <div class="lang-dd" id="langDd" role="listbox" aria-label="Sprache wählen">
         <a href="#" data-lang="de" class="active" role="option"><span class="lang-dd-flag">&#127465;&#127466;</span> Deutsch</a>
         <a href="#" data-lang="en" role="option"><span class="lang-dd-flag">&#127468;&#127463;</span> English</a>
-        <a href="#" data-lang="fr" role="option"><span class="lang-dd-flag">&#127467;&#127479;</span> Français</a>
-        <a href="#" data-lang="es" role="option"><span class="lang-dd-flag">&#127466;&#127480;</span> Español</a>
       </div>
     </li>
   </ul>
