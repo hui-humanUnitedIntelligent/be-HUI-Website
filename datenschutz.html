@@ -1337,6 +1337,22 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
   margin: 0 auto;
 }
 </style>
+
+<style>
+/* ── Legal sections ── */
+.ls{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(30,216,200,.15)}
+.ls:last-child{border-bottom:none}
+.ls h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--dark);margin-bottom:14px;padding-left:14px;border-left:3px solid var(--teal)}
+.ls p{color:#444;line-height:1.8;font-size:.97rem;margin-bottom:10px}
+.ls ul{margin:10px 0 10px 20px;color:#444;line-height:1.8;font-size:.97rem}
+.ls ul li{margin-bottom:6px}
+.ls a{color:var(--teal);text-decoration:none;font-weight:500}
+.ls a:hover{text-decoration:underline}
+.ls-note{background:var(--teal-l);border-radius:8px;padding:10px 16px;color:var(--teal-d)!important;font-weight:500;margin-top:10px}
+.ls-rights{list-style:none;margin-left:0!important;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.ls-rights li{background:var(--teal-l);border-radius:10px;padding:10px 14px;font-weight:500;color:var(--dark)}
+.ls-rights li span{margin-right:8px}
+</style>
 </head>
 <body>
 <nav id="topnav">
@@ -1420,12 +1436,95 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
 </div>
 <!-- ══ CONTENT ══ -->
 <div class="legal-body">
-  <div class="legal-placeholder">
-    <span class="lp-icon">&#9997;</span>
-    <h2>Inhalt folgt in K&#252;rze</h2>
-    <p>Dieser Bereich wird gerade vorbereitet.<br/>
-    Der vollst&#228;ndige Text wird hier eingef&#252;gt.</p>
-  </div>
+
+  <section class="ls">
+    <h2>1. Verantwortlicher</h2>
+    <p><strong>HUI &ndash; Human United Intelligence</strong><br/>
+    E-Mail: <a href="mailto:support@be-hui.com">support@be-hui.com</a><br/>
+    Website: <a href="https://be-hui.com" target="_blank">https://be-hui.com</a></p>
+  </section>
+
+  <section class="ls">
+    <h2>2. Erhebung und Speicherung personenbezogener Daten</h2>
+    <p>Wir verarbeiten folgende Daten:</p>
+    <ul>
+      <li>Name, E-Mail, Profilinformationen</li>
+      <li>Nutzungsdaten innerhalb der App</li>
+      <li>Transaktionsdaten (z.&nbsp;B. Impact-Beitr&#228;ge, Buchungen)</li>
+      <li>Ger&#228;te- und Logdaten</li>
+      <li>Kommunikationsdaten (Support, Kontaktformulare)</li>
+    </ul>
+  </section>
+
+  <section class="ls">
+    <h2>3. Zweck der Verarbeitung</h2>
+    <p>Wir verarbeiten Daten f&#252;r:</p>
+    <ul>
+      <li>Bereitstellung der HUI-Plattform</li>
+      <li>Verwaltung von Talenten, Projekten und Impact-Pool</li>
+      <li>Sicherheit &amp; Missbrauchserkennung</li>
+      <li>Analyse und Verbesserung der Plattform</li>
+      <li>Kommunikation mit Nutzern</li>
+      <li>Erf&#252;llung gesetzlicher Pflichten</li>
+    </ul>
+  </section>
+
+  <section class="ls">
+    <h2>4. Rechtsgrundlagen</h2>
+    <ul>
+      <li><strong>Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO</strong> &ndash; Einwilligung</li>
+      <li><strong>Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO</strong> &ndash; Vertragserf&#252;llung</li>
+      <li><strong>Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO</strong> &ndash; berechtigtes Interesse</li>
+    </ul>
+  </section>
+
+  <section class="ls">
+    <h2>5. Weitergabe von Daten</h2>
+    <p>Wir geben Daten nur weiter an:</p>
+    <ul>
+      <li>Zahlungsdienstleister</li>
+      <li>Hosting- und Infrastrukturpartner</li>
+      <li>Analyse-Tools</li>
+      <li>Beh&#246;rden bei gesetzlicher Verpflichtung</li>
+    </ul>
+    <p class="ls-note">&#10003;&nbsp; Keine Weitergabe an Dritte zu Werbezwecken.</p>
+  </section>
+
+  <section class="ls">
+    <h2>6. Speicherdauer</h2>
+    <p>Daten werden nur so lange gespeichert, wie es f&#252;r den Zweck erforderlich ist. Rechtliche Aufbewahrungsfristen bleiben unber&#252;hrt.</p>
+  </section>
+
+  <section class="ls">
+    <h2>7. Rechte der Nutzer</h2>
+    <p>Du hast das Recht auf:</p>
+    <ul class="ls-rights">
+      <li><span>&#128269;</span> Auskunft</li>
+      <li><span>&#9998;</span> Berichtigung</li>
+      <li><span>&#128465;</span> L&#246;schung</li>
+      <li><span>&#9203;</span> Einschr&#228;nkung</li>
+      <li><span>&#128228;</span> Daten&#252;bertragbarkeit</li>
+      <li><span>&#8617;</span> Widerruf</li>
+      <li><span>&#9940;</span> Widerspruch</li>
+    </ul>
+    <p>Kontakt: <a href="mailto:privacy@be-hui.com">privacy@be-hui.com</a></p>
+  </section>
+
+  <section class="ls">
+    <h2>8. Cookies &amp; Tracking</h2>
+    <p>Wir verwenden technisch notwendige Cookies sowie Analyse-Cookies (mit Einwilligung). Weitere Details findest du in unserer <a href="cookies.html">Cookie-Richtlinie</a>.</p>
+  </section>
+
+  <section class="ls">
+    <h2>9. Datensicherheit</h2>
+    <p>SSL-Verschl&#252;sselung, Zugriffskontrollen, Rollen- und Berechtigungssystem sorgen f&#252;r den Schutz deiner Daten.</p>
+  </section>
+
+  <section class="ls">
+    <h2>10. &#196;nderungen</h2>
+    <p>Diese Datenschutzerkl&#228;rung kann aktualisiert werden. Wesentliche &#196;nderungen werden wir dir mitteilen. Stand: Mai&nbsp;2026.</p>
+  </section>
+
 </div>
 <footer>
   <div class="si">
