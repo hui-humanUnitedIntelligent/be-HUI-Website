@@ -1,61 +1,57 @@
-/* ── HUI Language Switcher ────────────────────────────────────────────
- * External script loaded by all pages.
- * Works with the #langSwitcher, #langBtn, #langFlag, #langDd elements
- * inserted into the nav of each page.
+/* ── HUI Language Switcher v2 — DE / EN only ──────────────────────────
+ * Loaded by all pages via <script src="lang/switcher.js"></script>
+ * Requires: #langSwitcher, #langBtn, #langFlag, #langDd in the nav.
  * ─────────────────────────────────────────────────────────────────── */
-(function(){
+(function () {
   'use strict';
 
-  const LANGS = {
-    de: { flag: '🇩🇪', name: 'Deutsch'  },
-    en: { flag: '🇬🇧', name: 'English'  },
-    fr: { flag: '🇫🇷', name: 'Français' },
-    es: { flag: '🇪🇸', name: 'Español'  }
+  var LANGS = {
+    de: { flag: '&#127465;&#127466;', label: 'DE' },
+    en: { flag: '&#127468;&#127463;', label: 'EN' }
   };
-  const SUPPORTED = Object.keys(LANGS);
 
   /* ── DOM refs ─────────────────────────────────────────────────────── */
-  const li      = document.getElementById('langSwitcher');
-  const btn     = document.getElementById('langBtn');
-  const flagEl  = document.getElementById('langFlag');
-  const dd      = document.getElementById('langDd');
+  var li     = document.getElementById('langSwitcher');
+  var btn    = document.getElementById('langBtn');
+  var flagEl = document.getElementById('langFlag');
+  var dd     = document.getElementById('langDd');
   if (!li || !btn || !dd) return;
 
-  /* ── Toggle dropdown ─────────────────────────────────────────────── */
-  btn.addEventListener('click', function(e) {
+  /* ── Toggle dropdown ──────────────────────────────────────────────── */
+  btn.addEventListener('click', function (e) {
     e.stopPropagation();
     var open = li.classList.toggle('open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-  document.addEventListener('click', function() {
+  document.addEventListener('click', function () {
     li.classList.remove('open');
     btn.setAttribute('aria-expanded', 'false');
   });
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       li.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
     }
   });
 
-  /* ── Update flag + active state ──────────────────────────────────── */
+  /* ── Update flag label + active state ────────────────────────────── */
   function setLangUI(lang) {
     var info = LANGS[lang] || LANGS.de;
-    if (flagEl) flagEl.textContent = info.flag;
-    dd.querySelectorAll('a[data-lang]').forEach(function(a) {
+    if (flagEl) flagEl.innerHTML = info.flag + '<span class="lang-label">' + info.label + '</span>';
+    dd.querySelectorAll('a[data-lang]').forEach(function (a) {
       a.classList.toggle('active', a.dataset.lang === lang);
     });
   }
 
-  /* ── Apply translations from window.HUI_TRANSLATIONS[lang] ──────── */
+  /* ── Apply translations ───────────────────────────────────────────── */
   function applyLang(lang) {
     document.documentElement.lang = lang;
     localStorage.setItem('hui-lang', lang);
     setLangUI(lang);
 
-    /* Restore German (remove translated nodes, restore originals) */
     if (lang === 'de') {
-      document.querySelectorAll('[data-t-key]').forEach(function(el) {
+      /* Restore originals */
+      document.querySelectorAll('[data-t-key]').forEach(function (el) {
         var orig = el.getAttribute('data-orig');
         if (orig !== null) {
           el.innerHTML = orig;
@@ -67,11 +63,11 @@
 
     var dict = window.HUI_TRANSLATIONS && window.HUI_TRANSLATIONS[lang];
     if (!dict) {
-      loadLangFile(lang, function() { applyLang(lang); });
+      loadLangFile(lang, function () { applyLang(lang); });
       return;
     }
 
-    document.querySelectorAll('[data-t-key]').forEach(function(el) {
+    document.querySelectorAll('[data-t-key]').forEach(function (el) {
       var key = el.getAttribute('data-t-key');
       if (dict[key] !== undefined) {
         if (!el.hasAttribute('data-orig')) {
@@ -82,19 +78,22 @@
     });
   }
 
-  /* ── Lazy-load translation file: lang/en.js etc. ─────────────────── */
+  /* ── Lazy-load lang file ──────────────────────────────────────────── */
   function loadLangFile(lang, cb) {
     if (window.HUI_TRANSLATIONS && window.HUI_TRANSLATIONS[lang]) { cb(); return; }
     var s = document.createElement('script');
-    s.src = 'lang/' + lang + '.js';
-    s.onload  = cb;
-    s.onerror = function() { console.warn('HUI: no translation file for', lang); };
+    /* Support both root and subpage paths */
+    var base = document.querySelector('meta[name="lang-base"]');
+    var prefix = base ? base.getAttribute('content') : '';
+    s.src = prefix + 'lang/' + lang + '.js';
+    s.onload = cb;
+    s.onerror = function () { console.warn('HUI: no translation for', lang); };
     document.head.appendChild(s);
   }
 
-  /* ── Handle option clicks ────────────────────────────────────────── */
-  dd.querySelectorAll('a[data-lang]').forEach(function(a) {
-    a.addEventListener('click', function(e) {
+  /* ── Option click handlers ────────────────────────────────────────── */
+  dd.querySelectorAll('a[data-lang]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
       li.classList.remove('open');
@@ -103,16 +102,15 @@
     });
   });
 
-  /* ── Auto-detect on first visit ──────────────────────────────────── */
+  /* ── Auto-detect language ─────────────────────────────────────────── */
   function detectLang() {
     var stored = localStorage.getItem('hui-lang');
-    if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
-    var browser = ((navigator.language || navigator.userLanguage || 'de')
-                    .split('-')[0]).toLowerCase();
-    return SUPPORTED.indexOf(browser) !== -1 ? browser : 'de';
+    if (stored && LANGS[stored]) return stored;
+    var browser = ((navigator.language || navigator.userLanguage || 'de').split('-')[0]).toLowerCase();
+    return LANGS[browser] ? browser : 'de';
   }
 
-  /* ── Init ────────────────────────────────────────────────────────── */
+  /* ── Init ─────────────────────────────────────────────────────────── */
   var initLang = detectLang();
   setLangUI(initLang);
   if (initLang !== 'de') applyLang(initLang);
