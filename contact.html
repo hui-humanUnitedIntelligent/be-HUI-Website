@@ -397,16 +397,48 @@ function toggleFaq(btn){
   if(!open)item.classList.add('open');
 }
 
-// ââ Pflichtfeld-Validierung vor FormSubmit ââ
-document.getElementById('formArea').addEventListener('submit', function(e){
-  const fname = document.getElementById('fname').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const msg   = document.getElementById('msg').value.trim();
-  const priv  = document.getElementById('privacy').checked;
-  if(!fname || !email || !msg || !priv){
-    e.preventDefault();
+// ══ HUI Kontaktformular — sendet via Resend Backend-Funktion ══
+document.getElementById('formArea').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var vorname   = document.getElementById('fname').value.trim();
+  var nachname  = document.getElementById('lname').value.trim();
+  var email     = document.getElementById('email').value.trim();
+  var thema     = document.getElementById('topic').value;
+  var nachricht = document.getElementById('msg').value.trim();
+  var priv      = document.getElementById('privacy').checked;
+
+  if(!vorname || !email || !nachricht || !priv){
     alert('Bitte fülle alle Pflichtfelder aus und stimme den Datenschutzrichtlinien zu.');
+    return;
   }
+
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Wird gesendet…';
+
+  fetch('https://superagent-c4e431a5.base44.app/functions/sendContactForm', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ vorname: vorname, nachname: nachname, email: email, thema: thema, nachricht: nachricht })
+  })
+  .then(function(res){ return res.json().then(function(d){ return {ok: res.ok, data: d}; }); })
+  .then(function(r){
+    if(r.ok && r.data.ok){
+      document.getElementById('formArea').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'flex';
+      document.getElementById('successMsg').style.flexDirection = 'column';
+      document.getElementById('successMsg').style.alignItems = 'center';
+    } else {
+      alert('Fehler beim Senden: ' + (r.data.error || 'Unbekannter Fehler'));
+      btn.disabled = false;
+      btn.innerHTML = '&#10024; Nachricht senden';
+    }
+  })
+  .catch(function(){
+    alert('Verbindungsfehler. Bitte versuche es erneut.');
+    btn.disabled = false;
+    btn.innerHTML = '&#10024; Nachricht senden';
+  });
 });
 
 
