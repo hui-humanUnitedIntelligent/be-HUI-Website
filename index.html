@@ -2030,6 +2030,81 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 })();
 </script>
 
+<script>
+// ══ HUI LIVE STATS — zieht echte Zahlen aus Supabase ══
+(function(){
+  const API = 'https://superagent-c4e431a5.base44.app/functions/huiStats';
+
+  function formatNumber(n) {
+    if (n >= 1000) return n.toLocaleString('de-DE');
+    return n.toString();
+  }
+
+  function animateTo(el, target, isDecimal) {
+    const duration = 1400;
+    const start = performance.now();
+    const from = parseFloat(el.textContent.replace(/[^0-9.,]/g,'').replace(',','.')) || 0;
+
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = from + (target - from) * ease;
+      if (isDecimal) {
+        el.textContent = current.toFixed(1);
+      } else {
+        el.textContent = formatNumber(Math.round(current));
+      }
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = isDecimal ? target.toFixed(1) : formatNumber(target);
+    }
+    requestAnimationFrame(step);
+  }
+
+  fetch(API)
+    .then(r => r.json())
+    .then(data => {
+      const cards = document.querySelectorAll('.stat-card[data-target]');
+      const map = [
+        { key: 'wirker',      suffix: '+',    decimal: false },
+        { key: 'talente',     suffix: '+',    decimal: false },
+        { key: 'impact_pool', suffix: '',     decimal: false, prefix: true },
+        { key: 'projekte',    suffix: '',     decimal: false },
+        { key: 'bewertung',   suffix: '/ 5',  decimal: true  },
+      ];
+
+      cards.forEach((card, i) => {
+        if (!map[i]) return;
+        const cfg = map[i];
+        const val = data[cfg.key];
+        if (val === undefined || val === null) return;
+
+        // data-target aktualisieren
+        card.setAttribute('data-target', cfg.decimal ? (val * 10).toString() : val.toString());
+
+        // Zähler-Element animieren
+        const counter = card.querySelector('.sc-count');
+        if (counter) animateTo(counter, val, cfg.decimal);
+
+        // Trend-Zeile: bei Live-Daten kleinen Hinweis zeigen
+        if (data.using_live_data && data.using_live_data[cfg.key]) {
+          const trend = card.querySelector('.sc-trend');
+          if (trend && !trend.querySelector('.live-dot')) {
+            const dot = document.createElement('span');
+            dot.className = 'live-dot';
+            dot.style.cssText = 'display:inline-block;width:6px;height:6px;background:#1ed8c8;border-radius:50%;margin-right:5px;animation:pulse 1.5s infinite';
+            trend.prepend(dot);
+          }
+        }
+      });
+    })
+    .catch(() => {
+      // Kein Fehler anzeigen — Fallback-Werte aus data-target bleiben
+    });
+})();
+</script>
+<style>
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+</style>
 <script src="lang/switcher.js"></script>
 </body>
 </html>
