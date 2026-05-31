@@ -1,14 +1,14 @@
-Ü<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>HUI – Human United Intelligence | Gemeinschaft. Talente. Wirkung.</title>
+<title>HUI â Human United Intelligence | Gemeinschaft. Talente. Wirkung.</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  /* ── Exakte App-Farben ── */
+  /* ââ Exakte App-Farben ââ */
   --teal:    #1ED8C8;
   --teal-d:  #17B8AA;
   --teal-l:  #E6FAF8;
@@ -17,19 +17,19 @@
   --grad:    linear-gradient(135deg, #1ED8C8, #E8876A);
   --grad-r:  linear-gradient(135deg, #E8876A, #1ED8C8);
 
-  /* ── Hintergründe (hell, wie App) ── */
+  /* ââ HintergrÃ¼nde (hell, wie App) ââ */
   --bg:      #F5F0E8;   /* App-Hintergrund */
   --bg2:     #FAF7F2;   /* leicht heller */
   --white:   #FFFFFF;
   --card:    #FFFFFF;
 
-  /* ── Text ── */
+  /* ââ Text ââ */
   --text:    #1A1A1A;
   --text2:   #3D3D3D;
   --muted:   #7A7A8A;
   --light:   #B0B0BC;
 
-  /* ── Ränder ── */
+  /* ââ RÃ¤nder ââ */
   --border:  rgba(30,216,200,0.15);
   --border2: rgba(0,0,0,0.06);
 
@@ -41,9 +41,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);ove
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
 
-/* ════════════════════════════════
-   NAV — hell, wie App-Header
-════════════════════════════════ */
+/* ââââââââââââââââââââââââââââââââ
+   NAV â hell, wie App-Header
+ââââââââââââââââââââââââââââââââ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:300;
   display:flex;align-items:center;justify-content:space-between;
@@ -91,7 +91,7 @@ nav ul.nl > li.dd-open > span{color:var(--teal);background:var(--teal-l)}
 .nav-arr{font-size:9px;color:var(--light);transition:transform .3s;display:inline-block}
 nav ul.nl > li.dd-open .nav-arr{transform:rotate(180deg)}
 
-/* Dropdown — click-controlled */
+/* Dropdown â click-controlled */
 .dd{
   position:absolute;top:calc(100% + 10px);left:50%;
   transform:translateX(-50%) translateY(-8px);
@@ -108,7 +108,7 @@ nav ul.nl > li.dd-open .dd{
   opacity:1;visibility:visible;pointer-events:auto;
   transform:translateX(-50%) translateY(0);
 }
-/* Brücke damit Klick-Bereich geschlossen bleibt */
+/* BrÃ¼cke damit Klick-Bereich geschlossen bleibt */
 .dd::before{
   content:'';position:absolute;top:-10px;left:0;right:0;height:10px;
 }
@@ -172,9 +172,9 @@ nav ul.nl > li.dd-open > span{
 .lang-dd a:hover,.lang-dd a.active{background:var(--teal-l);color:var(--teal)}
 .lang-dd a .lang-dd-flag{font-size:1.15rem}
 
-/* ════════════════════════════════
-   HERO — hell & einladend
-════════════════════════════════ */
+/* ââââââââââââââââââââââââââââââââ
+   HERO â hell & einladend
+ââââââââââââââââââââââââââââââââ */
 .hero{
   min-height:100vh;
   background:var(--bg);
@@ -214,7 +214,7 @@ nav ul.nl > li.dd-open > span{
   background:var(--grad);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-/* ══ Parallax Motion ══ */
+/* ââ Parallax Motion ââ */
 .hero-content{
   will-change:transform;
   transition:transform 0.08s cubic-bezier(0.25,0.46,0.45,0.94);
@@ -285,12 +285,12 @@ nav ul.nl > li.dd-open > span{
 }
 @media(max-width:1200px){.hero-phones{display:none}}
 
-/* ════════════════════════════════
-   STRIP — partner logos
-════════════════════════════════ */
-/* ════════════════════════════════
-   STATS SECTION — Moderne Kacheln
-════════════════════════════════ */
+/* ââââââââââââââââââââââââââââââââ
+   STRIP â partner logos
+ââââââââââââââââââââââââââââââââ */
+/* ââââââââââââââââââââââââââââââââ
+   STATS SECTION â Moderne Kacheln
+ââââââââââââââââââââââââââââââââ */
 .stats-section{
   padding:56px 48px;
   background:linear-gradient(160deg,#0f1a1a 0%,#0b1512 40%,#081010 100%);
@@ -392,18 +392,18 @@ nav ul.nl > li.dd-open > span{
 }
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    SHARED UTILS
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .si{max-width:1200px;margin:0 auto;padding:0 56px}
 .lbl{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;color:var(--teal);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
 .lbl::before{content:'';display:block;width:20px;height:2px;background:var(--teal)}
 h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);font-weight:800;line-height:1.12;margin-bottom:16px}
 .dsc{font-size:16.5px;color:var(--muted);line-height:1.75;font-weight:300}
 
-/* ════════════════════════════════
-   ABOUT — hell, Karten-Design
-════════════════════════════════ */
+/* ââââââââââââââââââââââââââââââââ
+   ABOUT â hell, Karten-Design
+ââââââââââââââââââââââââââââââââ */
 .about{padding:120px 0;background:var(--bg2)}
 .about-g{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .acard{
@@ -425,9 +425,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
 .pill{background:var(--teal-l);border:1px solid rgba(30,216,200,0.25);color:var(--teal-d);padding:7px 16px;border-radius:50px;font-size:13px;font-weight:600}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    PILLARS
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .pillars{padding:120px 0;background:var(--bg)}
 .pillars .ttl{color:var(--text)}
 .pillars-h{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;gap:24px;flex-wrap:wrap}
@@ -448,9 +448,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .pc p{font-size:14.5px;color:var(--muted);line-height:1.7}
 .ptag{display:inline-block;margin-top:22px;font-size:11px;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase;font-weight:700}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    APP SECTION
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .app-section{padding:130px 0;background:var(--bg2);overflow:hidden}
 .app-section .ttl{color:var(--text)}
 .app-head{margin-bottom:72px}
@@ -549,9 +549,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .app-cta h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--text)}
 .app-cta h3 span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    IMPACT POOL
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .impact{padding:120px 0;background:var(--bg);position:relative;overflow:hidden}
 .impact::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(30,216,200,0.07),transparent 70%);pointer-events:none}
 .ihead{max-width:620px;margin-bottom:64px}
@@ -573,9 +573,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .i15t h3{font-family:'Playfair Display',serif;font-size:24px;color:#fff;margin-bottom:8px}
 .i15t p{font-size:15px;color:rgba(255,255,255,0.75);max-width:460px;line-height:1.65}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    PROJECT
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .project{padding:120px 0;background:var(--bg2)}
 .project .ttl{color:var(--text)}
 .prg{display:grid;grid-template-columns:3fr 2fr;gap:72px;align-items:start}
@@ -606,9 +606,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .pbadges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .pbadge{background:var(--teal-l);border:1px solid rgba(30,216,200,0.25);border-radius:8px;padding:7px 12px;font-size:11px;color:var(--teal-d);font-weight:600}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    VALUES
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .values{padding:100px 0;background:var(--bg)}
 .vc{max-width:780px;margin:0 auto;text-align:center;margin-bottom:60px}
 .vc h2{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,44px);font-weight:900;color:var(--text);line-height:1.2;margin-bottom:16px}
@@ -626,9 +626,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .vcard h4{font-weight:700;font-size:13.5px;color:var(--text);margin-bottom:7px}
 .vcard p{font-size:12px;color:var(--muted);line-height:1.6}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    REVIEWS
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .reviews{padding:100px 0;background:var(--bg2)}
 .reviews .ttl{color:var(--text);text-align:center;margin-bottom:12px}
 .rev-sub{text-align:center;color:var(--muted);font-size:16px;margin-bottom:56px}
@@ -647,9 +647,9 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .rname{font-weight:700;font-size:13.5px;color:var(--teal)}
 .rrole{font-size:11.5px;color:var(--muted);margin-top:2px}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    JOIN
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .join{padding:120px 0;background:var(--bg)}
 .join-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .join .ttl{color:var(--text)}.join .dsc{margin-bottom:36px}
@@ -676,17 +676,17 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .jbox p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:32px;position:relative}
 .jbox .btn-main{position:relative}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    QUOTE STRIPE
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 .qs{background:var(--grad);padding:76px 0}
 .qsi{max-width:780px;margin:0 auto;text-align:center;padding:0 56px}
 .qsi blockquote{font-family:'Playfair Display',serif;font-size:clamp(20px,4vw,38px);font-weight:700;color:#fff;line-height:1.25;margin-bottom:20px}
 .qsi cite{font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:2px;text-transform:uppercase;font-style:normal}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    FOOTER
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,255,255,0.06)}
 .fg2{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
 .fbrand .fhui{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:2px;display:block;margin-bottom:12px}
@@ -700,9 +700,9 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
 .fbot p{font-size:12.5px;color:rgba(255,255,255,0.25)}
 .fbot .fm{font-size:12.5px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
 
-/* ════════════════════════════════
+/* ââââââââââââââââââââââââââââââââ
    RESPONSIVE
-════════════════════════════════ */
+ââââââââââââââââââââââââââââââââ */
 @media(max-width:1024px){
   nav{padding:12px 24px}
   .si{padding:0 24px}
@@ -752,7 +752,7 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
 </style>
 </head>
 <body>
-<!-- ══════════════ NAV ══════════════ -->
+<!-- ââââââââââââââ NAV ââââââââââââââ -->
 <nav id="topnav">
   <a href="index.html" class="nav-brand">
     <div class="nav-logo-wrap">
@@ -768,11 +768,11 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
     <li>
       <span>&#220;ber uns <span class="nav-arr">&#9660;</span></span>
       <div class="dd">
-        <a href="ueber-uns.html" data-t-key="nav.was-ist-hui"><span class="dd-ico">ð</span>Was ist HUI</a>
-        <a href="team.html" data-t-key="nav.team"><span class="dd-ico">ð¥</span>Team</a>
-        <a href="contact.html" data-t-key="nav.schreib-uns"><span class="dd-ico">ð¬</span>Schreib uns</a>
+        <a href="ueber-uns.html" data-t-key="nav.was-ist-hui"><span class="dd-ico">Ã°ÂÂÂ</span>Was ist HUI</a>
+        <a href="team.html" data-t-key="nav.team"><span class="dd-ico">Ã°ÂÂÂ¥</span>Team</a>
+        <a href="contact.html" data-t-key="nav.schreib-uns"><span class="dd-ico">Ã°ÂÂÂ¬</span>Schreib uns</a>
         <div class="dd-div"></div>
-        <a href="contact.html#faq" data-t-key="nav.hilfe-faq"><span class="dd-ico">â</span>Hilfe &amp; FAQ</a>
+        <a href="contact.html#faq" data-t-key="nav.hilfe-faq"><span class="dd-ico">Ã¢ÂÂ</span>Hilfe &amp; FAQ</a>
       </div>
     </li>
     <li>
@@ -814,19 +814,19 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
     <li><a href="https://be-hui.vercel.app/Home" target="_blank" class="n-login" data-t-key="nav.login">Login</a></li>
     <li class="lang-li" id="langSwitcher">
       <button class="lang-btn" id="langBtn" aria-label="Sprache wechseln" aria-expanded="false" aria-haspopup="listbox">
-        <span class="lang-flag" id="langFlag">ð©ðª</span>
+        <span class="lang-flag" id="langFlag">Ã°ÂÂÂ©Ã°ÂÂÂª</span>
         <span class="lang-arrow">&#9660;</span>
       </button>
-      <div class="lang-dd" id="langDd" role="listbox" aria-label="Sprache wÃ¤hlen">
-        <a href="#" data-lang="de" class="active" role="option"><span class="lang-dd-flag">ð©ðª</span> Deutsch</a>
-        <a href="#" data-lang="en" role="option"><span class="lang-dd-flag">ð¬ð§</span> English</a>
-        <a href="#" data-lang="fr" role="option"><span class="lang-dd-flag">ð«ð·</span> FranÃ§ais</a>
-        <a href="#" data-lang="es" role="option"><span class="lang-dd-flag">ðªð¸</span> EspaÃ±ol</a>
+      <div class="lang-dd" id="langDd" role="listbox" aria-label="Sprache wÃÂ¤hlen">
+        <a href="#" data-lang="de" class="active" role="option"><span class="lang-dd-flag">Ã°ÂÂÂ©Ã°ÂÂÂª</span> Deutsch</a>
+        <a href="#" data-lang="en" role="option"><span class="lang-dd-flag">Ã°ÂÂÂ¬Ã°ÂÂÂ§</span> English</a>
+        <a href="#" data-lang="fr" role="option"><span class="lang-dd-flag">Ã°ÂÂÂ«Ã°ÂÂÂ·</span> FranÃÂ§ais</a>
+        <a href="#" data-lang="es" role="option"><span class="lang-dd-flag">Ã°ÂÂÂªÃ°ÂÂÂ¸</span> EspaÃÂ±ol</a>
       </div>
     </li>
   </ul>
 </nav>
-<!-- ══════════════ PILLARS ══════════════ -->
+<!-- ââââââââââââââ PILLARS ââââââââââââââ -->
 <section class="pillars">
   <div class="si">
     <div class="pillars-h">
@@ -843,7 +843,7 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
     </div>
   </div>
 </section>
-<!-- ══════════════ APP SECTION ══════════════ -->
+<!-- ââââââââââââââ APP SECTION ââââââââââââââ -->
 <section class="app-section" id="app">
   <div class="si">
     <div class="app-head">
@@ -860,7 +860,7 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
       </div>
       <div class="pw pw-center">
         <span class="ptag2">&#10024; HUI App</span>
-        <img src="app_home.jpg" alt="HUI App Home – Was bewegst du heute"/>
+        <img src="app_home.jpg" alt="HUI App Home â Was bewegst du heute"/>
         <div class="plabel">Home &amp; HUI Match</div>
       </div>
       <div class="pw">
@@ -882,7 +882,7 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
     <!-- Impact Pool Banner -->
     <div class="ip-banner">
       <div class="ip-img">
-        <img src="app_impact_pool.jpg" alt="HUI Impact Pool – Gemeinsam bewegen wir echte Veränderung"/>
+        <img src="app_impact_pool.jpg" alt="HUI Impact Pool â Gemeinsam bewegen wir echte VerÃ¤nderung"/>
       </div>
       <div class="ip-text">
         <div class="ip-month">&#9679; Impact Pool &middot; Mai 2026</div>
@@ -896,26 +896,26 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
     <!-- 2 Screen Cards -->
     <div class="sc-row">
       <div class="sc">
-        <img src="app_ocean.jpg" alt="Projekt – Schutz der Meere"/>
+        <img src="app_ocean.jpg" alt="Projekt â Schutz der Meere"/>
         <div class="sc-ov">
           <span class="sc-tag">Ozean</span>
           <h4>Schutz der Meere und ihrer Bewohner</h4>
-          <p>„Wir sch&#252;tzen, was uns sch&#252;tzt." &#8212; &#8364;&#8239;36.200 &bull; 45&#160;% erreicht &bull; 876 dabei</p>
+          <p>âWir sch&#252;tzen, was uns sch&#252;tzt." &#8212; &#8364;&#8239;36.200 &bull; 45&#160;% erreicht &bull; 876 dabei</p>
         </div>
       </div>
       <div class="sc">
-        <img src="app_impact_project.jpg" alt="Projekt – Stadtgärten"/>
+        <img src="app_impact_project.jpg" alt="Projekt â StadtgÃ¤rten"/>
         <div class="sc-ov">
           <span class="sc-tag">Impact</span>
           <h4>Stadtg&#228;rten als Begegnungsorte</h4>
-          <p>„Wo Erde w&#228;chst, w&#228;chst Gemeinschaft." &#8212; &#8364;&#8239;12.800 &bull; 32&#160;% erreicht</p>
+          <p>âWo Erde w&#228;chst, w&#228;chst Gemeinschaft." &#8212; &#8364;&#8239;12.800 &bull; 32&#160;% erreicht</p>
         </div>
       </div>
     </div>
 
     <!-- Testimonial -->
     <div class="app-test">
-      <p class="at-q">„Ich buche bei HUI, weil ich wei&#223;, dass mein Geld nicht nur eine Dienstleistung kauft &#8212; es bewegt etwas in der Welt."</p>
+      <p class="at-q">âIch buche bei HUI, weil ich wei&#223;, dass mein Geld nicht nur eine Dienstleistung kauft &#8212; es bewegt etwas in der Welt."</p>
       <div class="at-p">
         <div class="at-av">M</div>
         <div>
@@ -932,7 +932,7 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
     </div>
   </div>
 </section>
-<!-- ══════════════ FOOTER ══════════════ -->
+<!-- ââââââââââââââ FOOTER ââââââââââââââ -->
 <footer>
   <div class="si">
     <div class="fg2">
@@ -960,7 +960,7 @@ body > div.stats-section:first-of-type { margin-top: 82px; }
 </footer>
 
 <script>
-// ── Nav scroll shrink ──
+// ââ Nav scroll shrink ââ
 window.addEventListener('scroll',()=>{
   const n=document.getElementById('topnav');
   if(window.scrollY>50){
@@ -972,7 +972,7 @@ window.addEventListener('scroll',()=>{
   }
 });
 
-// ── Dropdown: click to open/close ──
+// ââ Dropdown: click to open/close ââ
 (function(){
   const items = document.querySelectorAll('nav ul.nl > li');
 
@@ -1016,7 +1016,7 @@ window.addEventListener('scroll',()=>{
   window.addEventListener('scroll', () => {
     items.forEach(li => li.classList.remove('dd-open'));
   }, { passive: true });
-})();// ── Scroll fade-in ──
+})();// ââ Scroll fade-in ââ
 const obs = new IntersectionObserver(es => {
   es.forEach(e => {
     if (e.isIntersecting) {
@@ -1035,7 +1035,7 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 </script>
 
 <script>
-// ══ Stats Counter Animation ══
+// ââ Stats Counter Animation ââ
 (function(){
   function animateCard(card){
     const target = parseInt(card.getAttribute('data-target'), 10);
@@ -1091,9 +1091,9 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 </script>
 
 <script>
-// ══════════════════════════════════════════
-//  HERO PARALLAX — Sanfte Maus-Bewegung
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
+//  HERO PARALLAX â Sanfte Maus-Bewegung
+// ââââââââââââââââââââââââââââââââââââââââââ
 (function(){
   const hero = document.querySelector('[data-parallax]');
   if(!hero) return;
@@ -1174,9 +1174,9 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 </html>
 
 <script>
-// ══════════════════════════════════════════
-//  HERO PARALLAX — Sanfte Maus-Bewegung
-// ══════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââ
+//  HERO PARALLAX â Sanfte Maus-Bewegung
+// ââââââââââââââââââââââââââââââââââââââââââ
 (function(){
   const hero = document.querySelector('[data-parallax]');
   if(!hero) return;
