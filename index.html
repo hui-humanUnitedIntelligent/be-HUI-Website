@@ -199,12 +199,13 @@ nav ul.nl > li.dd-open > span{
 .hero-nature-bg{
   position:absolute;inset:0;
   z-index:1;
-  overflow:hidden;
+  background:url('https://base44.app/api/apps/6a1bd77ed430878cc4e431a5/files/mp/public/6a1bd77ed430878cc4e431a5/7ccf20b70_hero_nature.jpg') center/cover no-repeat;
+  animation:slowZoom 40s ease-in-out infinite alternate;
+  transform-origin:center center;
 }
-.hero-nature-bg video{
-  width:100%;height:100%;
-  object-fit:cover;object-position:center;
-  display:block;
+@keyframes slowZoom{
+  0%{transform:scale(1.0) translateX(0)}
+  100%{transform:scale(1.06) translateX(-8px)}
 }
 
 
@@ -1506,11 +1507,7 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
 <section class="hero" id="start" data-parallax>
 
   <!-- Natur-Foto Hintergrund -->
-  <div class="hero-nature-bg">
-  <video id="hero-bg-video" autoplay muted loop playsinline preload="auto">
-    <source src="https://base44.app/api/apps/6a1bd77ed430878cc4e431a5/files/mp/public/6a1bd77ed430878cc4e431a5/10e3fe63d_8eeb33aa3_Erstelle_eine_sanfte_realistische_Animation_aus_diesem_Bild__Das_Wasser_soll_sich_leicht_bewegen__seed4229781322.mp4" type="video/mp4"/>
-  </video>
-</div>
+  <div class="hero-nature-bg"></div>
 
   <!-- Cinematic Overlay -->
   <div class="hero-overlay"></div>
@@ -1982,15 +1979,6 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   }
 })();
 </script>
-<script>
-// Hero Video — Abspielgeschwindigkeit auf 40% (mehr als halbiert)
-(function(){
-  var v = document.getElementById('hero-bg-video');
-  if(!v) return;
-  v.playbackRate = 0.4;
-  v.addEventListener('play', function(){ v.playbackRate = 0.4; });
-})();
-</script>
 </body>
 </html>
 
@@ -2223,15 +2211,6 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
     hero.addEventListener('mousemove', onMouseMove, {passive:true});
     hero.addEventListener('mouseleave', onMouseLeave, {passive:true});
   }
-})();
-</script>
-<script>
-// Hero Video — Abspielgeschwindigkeit auf 40% (mehr als halbiert)
-(function(){
-  var v = document.getElementById('hero-bg-video');
-  if(!v) return;
-  v.playbackRate = 0.4;
-  v.addEventListener('play', function(){ v.playbackRate = 0.4; });
 })();
 </script>
 </body>
