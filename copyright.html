@@ -1337,6 +1337,24 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
   margin: 0 auto;
 }
 </style>
+
+<style>
+.ls{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(30,216,200,.15)}
+.ls:last-child{border-bottom:none}
+.ls h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--dark);margin-bottom:14px;padding-left:14px;border-left:3px solid var(--teal)}
+.ls p{color:#444;line-height:1.8;font-size:.97rem;margin-bottom:10px}
+.ls ul{margin:10px 0 10px 20px;color:#444;line-height:1.8;font-size:.97rem}
+.ls ul li{margin-bottom:6px}
+.ls a{color:var(--teal);text-decoration:none;font-weight:500}
+.ls a:hover{text-decoration:underline}
+.ls-note{background:var(--teal-l);border-radius:8px;padding:10px 16px;color:var(--teal-d)!important;font-weight:500;margin-top:10px}
+.ls-prohibited{list-style:none;margin-left:0!important}
+.ls-prohibited li{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:#fff5f5;border-radius:8px;margin-bottom:8px;color:#c0392b;font-weight:500}
+.ls-prohibited li span{flex-shrink:0}
+.ls-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.ls-grid-item{background:var(--teal-l);border-radius:12px;padding:16px;display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--dark)}
+.ls-grid-item span{font-size:1.4rem;flex-shrink:0}
+</style>
 </head>
 <body>
 <nav id="topnav">
@@ -1420,12 +1438,50 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
 </div>
 <!-- ══ CONTENT ══ -->
 <div class="legal-body">
-  <div class="legal-placeholder">
-    <span class="lp-icon">&#9997;</span>
-    <h2>Inhalt folgt in K&#252;rze</h2>
-    <p>Dieser Bereich wird gerade vorbereitet.<br/>
-    Der vollst&#228;ndige Text wird hier eingef&#252;gt.</p>
-  </div>
+
+  <section class="ls">
+    <h2>1. Urheberrechtlicher Schutz</h2>
+    <p>Alle Inhalte der HUI-Webseite und App &ndash; einschlie&#223;lich Texte, Logos, Grafiken, Marken, Designs, Software und Datenmodelle &ndash; sind urheberrechtlich gesch&#252;tzt.</p>
+    <div class="ls-grid">
+      <div class="ls-grid-item"><span>&#128250;</span><strong>Texte &amp; Inhalte</strong></div>
+      <div class="ls-grid-item"><span>&#127912;</span><strong>Logos &amp; Grafiken</strong></div>
+      <div class="ls-grid-item"><span>&#128276;</span><strong>Marken &amp; Designs</strong></div>
+      <div class="ls-grid-item"><span>&#128187;</span><strong>Software &amp; Code</strong></div>
+      <div class="ls-grid-item"><span>&#128202;</span><strong>Datenmodelle</strong></div>
+      <div class="ls-grid-item"><span>&#127775;</span><strong>Konzepte &amp; Ideen</strong></div>
+    </div>
+  </section>
+
+  <section class="ls">
+    <h2>2. Nutzungsverbote</h2>
+    <p>Folgende Handlungen sind ohne ausdr&#252;ckliche schriftliche Zustimmung von HUI untersagt:</p>
+    <ul class="ls-prohibited">
+      <li><span>&#10060;</span> Vervielf&#228;ltigung oder Kopie von Inhalten in jeder Form</li>
+      <li><span>&#10060;</span> Bearbeitung, &#220;bersetzung oder Abwandlung von Inhalten</li>
+      <li><span>&#10060;</span> Weitergabe, Ver&#246;ffentlichung oder kommerzielle Nutzung</li>
+      <li><span>&#10060;</span> Verwendung von Marken und Logos ohne schriftliche Genehmigung</li>
+    </ul>
+  </section>
+
+  <section class="ls">
+    <h2>3. Rechte der Nutzer an eigenen Inhalten</h2>
+    <p>Nutzer behalten die vollst&#228;ndigen Urheberrechte an den Inhalten, die sie auf der HUI-Plattform ver&#246;ffentlichen (z.&nbsp;B. Profilbilder, Portfoliowerke, Projektbeschreibungen).</p>
+    <p class="ls-note">&#10003;&nbsp; Mit dem Hochladen gew&#228;hren Nutzer HUI ein nicht-exklusives, unentgeltliches Nutzungsrecht zur Darstellung und Verbreitung innerhalb der Plattform. Dieses Recht erlischt mit L&#246;schung des Inhalts.</p>
+  </section>
+
+  <section class="ls">
+    <h2>4. Meldung von Verletzungen</h2>
+    <p>Wenn du der Ansicht bist, dass Inhalte auf HUI deine Urheberrechte verletzen, wende dich bitte an:</p>
+    <p><a href="mailto:legal@be-hui.com">legal@be-hui.com</a></p>
+    <p>Wir nehmen Urheberrechtsverletzungen ernst und handeln umgehend.</p>
+  </section>
+
+  <section class="ls">
+    <h2>5. Hinweis</h2>
+    <p>&#169; 2026 HUI &ndash; Human United Intelligence. Alle Rechte vorbehalten.<br/>
+    Stand: Mai&nbsp;2026.</p>
+  </section>
+
 </div>
 <footer>
   <div class="si">
