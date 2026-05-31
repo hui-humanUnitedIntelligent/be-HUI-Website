@@ -171,24 +171,6 @@ nav ul.nl > li.dd-open > span{
 }
 .lang-dd a:hover,.lang-dd a.active{background:var(--teal-l);color:var(--teal)}
 .lang-dd a .lang-dd-flag{font-size:1.15rem}
-.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
-.ham span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
-#mmenu{display:none;position:fixed;top:70px;left:0;right:0;z-index:250;background:var(--white);padding:16px 24px;border-bottom:1px solid var(--border2);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
-#mmenu a{display:block;color:var(--text2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--border2);font-size:15px}
-#mmenu a:last-child{border-bottom:none;color:var(--teal);font-weight:700}
-/* === Mobile Menu Akkordeon === */
-.mm-item{border-bottom:1px solid var(--border2)}
-.mm-trigger{display:flex;justify-content:space-between;align-items:center;padding:13px 0;cursor:pointer;color:var(--text2);font-size:15px;font-weight:500;user-select:none}
-.mm-trigger:hover{color:var(--teal)}
-.mm-arr{font-size:12px;transition:transform .25s;color:var(--light)}
-.mm-item.mm-open .mm-arr{transform:rotate(180deg);color:var(--teal)}
-.mm-item.mm-open .mm-trigger{color:var(--teal)}
-.mm-sub{display:none;padding:4px 0 8px 12px;border-left:2px solid var(--teal-l);margin-left:4px}
-.mm-item.mm-open .mm-sub{display:block}
-.mm-sub a{display:block;color:var(--text2);text-decoration:none;padding:8px;font-size:14px;border-bottom:none!important}
-.mm-sub a:hover{color:var(--teal);background:var(--teal-l);border-radius:8px}
-.mm-direct{display:block;color:var(--text2);text-decoration:none;padding:13px 0;border-bottom:1px solid var(--border2);font-size:15px}
-.mm-direct:hover{color:var(--teal)}
 
 /* ════════════════════════════════
    HERO — Cinematic Nature
@@ -1086,7 +1068,6 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
   .sc-row{grid-template-columns:1fr}
 }
 @media(max-width:640px){
-  nav ul.nl{display:none}.ham{display:flex}
   .hero{padding:120px 24px 80px}
   .stats-banner{padding:20px 16px} .stat-item{padding:12px 16px;min-width:120px} .stat-div{display:none}
   .vg,.fg2{grid-template-columns:1fr}
@@ -1184,67 +1165,7 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
       </div>
     </li>
   </ul>
-
-  <div class="ham" id="hamBtn">
-    <span></span><span></span><span></span>
-  </div>
 </nav>
-
-<div id="mmenu">
-  <div class="mm-item">
-    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
-      Ãber HUI <span class="mm-arr">â¾</span>
-    </div>
-    <div class="mm-sub">
-      <a href="ueber-uns.html">ð Was ist HUI</a>
-      <a href="team.html">ð¥ Team</a>
-      <a href="contact.html">âï¸ Kontakt</a>
-      <a href="contact.html#faq">â Hilfe &amp; FAQ</a>
-    </div>
-  </div>
-  <div class="mm-item">
-    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
-      HUI App <span class="mm-arr">â¾</span>
-    </div>
-    <div class="mm-sub">
-      <a href="hui-app.html">ð± App Ãbersicht</a>
-      <a href="werde-wirker.html">â¨ Werde Wirker</a>
-      <a href="app-download.html">â¬ï¸ App Download</a>
-      <a href="https://be-hui.vercel.app/Home" target="_blank">ð Web-App Ã¶ffnen</a>
-    </div>
-  </div>
-  <div class="mm-item">
-    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
-      Impact Pool <span class="mm-arr">â¾</span>
-    </div>
-    <div class="mm-sub">
-      <a href="impact-pool.html">ð¿ Wie es funktioniert</a>
-    </div>
-  </div>
-  <div class="mm-item">
-    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
-      Projekte <span class="mm-arr">â¾</span>
-    </div>
-    <div class="mm-sub">
-      <a href="projekte.html">ð Einer fÃ¼r Alle</a>
-      <a href="projekte.html">ð Alle Projekte</a>
-      <a href="projekte.html">ð¼ Galerie</a>
-      <a href="projekte.html">ð Events</a>
-    </div>
-  </div>
-  <div class="mm-item">
-    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
-      Community <span class="mm-arr">â¾</span>
-    </div>
-    <div class="mm-sub">
-      <a href="community.html">ð£ Stimmen</a>
-      <a href="community.html">ð¸ Galerie</a>
-    </div>
-  </div>
-  <a href="contact.html" class="mm-direct">Kontakt</a>
-  <a href="https://be-hui.vercel.app/Home" target="_blank" class="mm-cta">App Ã¶ffnen â</a>
-</div>
-
 <div style="height:74px"></div>
 <!-- ══════════════ TEAM ══════════════ -->
 <section class="team-section" id="team">
@@ -1505,40 +1426,7 @@ window.addEventListener('scroll',()=>{
   window.addEventListener('scroll', () => {
     items.forEach(li => li.classList.remove('dd-open'));
   }, { passive: true });
-})();
-
-// ── Mobile menu toggle ──
-document.getElementById('hamBtn').addEventListener('click', (e) => {
-  e.stopPropagation();
-  const m = document.getElementById('mmenu');
-  const isOpen = m.style.display === 'block';
-  m.style.display = isOpen ? 'none' : 'block';
-  // Animate hamburger
-  const spans = document.querySelectorAll('#hamBtn span');
-  if (!isOpen) {
-    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-    spans[1].style.opacity = '0';
-    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-  } else {
-    spans[0].style.transform = '';
-    spans[1].style.opacity = '';
-    spans[2].style.transform = '';
-  }
-});
-
-// Close mobile menu on outside click
-document.addEventListener('click', (e) => {
-  const m = document.getElementById('mmenu');
-  if (!e.target.closest('#topnav') && !e.target.closest('#mmenu')) {
-    m.style.display = 'none';
-    const spans = document.querySelectorAll('#hamBtn span');
-    spans[0].style.transform = '';
-    spans[1].style.opacity = '';
-    spans[2].style.transform = '';
-  }
-});
-
-// ── Scroll fade-in ──
+})();// ── Scroll fade-in ──
 const obs = new IntersectionObserver(es => {
   es.forEach(e => {
     if (e.isIntersecting) {
