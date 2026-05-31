@@ -1337,6 +1337,22 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
   margin: 0 auto;
 }
 </style>
+
+<style>
+/* ── Legal sections ── */
+.ls{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(30,216,200,.15)}
+.ls:last-child{border-bottom:none}
+.ls h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--dark);margin-bottom:14px;padding-left:14px;border-left:3px solid var(--teal)}
+.ls p{color:#444;line-height:1.8;font-size:.97rem;margin-bottom:10px}
+.ls ul{margin:10px 0 10px 20px;color:#444;line-height:1.8;font-size:.97rem}
+.ls ul li{margin-bottom:6px}
+.ls a{color:var(--teal);text-decoration:none;font-weight:500}
+.ls a:hover{text-decoration:underline}
+.ls-note{background:var(--teal-l);border-radius:8px;padding:10px 16px;color:var(--teal-d)!important;font-weight:500;margin-top:10px}
+.ls-prohibited{list-style:none;margin-left:0!important}
+.ls-prohibited li{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:#fff5f5;border-radius:8px;margin-bottom:8px;color:#c0392b;font-weight:500}
+.ls-prohibited li span{flex-shrink:0}
+</style>
 </head>
 <body>
 <nav id="topnav">
@@ -1420,12 +1436,75 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
 </div>
 <!-- ══ CONTENT ══ -->
 <div class="legal-body">
-  <div class="legal-placeholder">
-    <span class="lp-icon">&#9997;</span>
-    <h2>Inhalt folgt in K&#252;rze</h2>
-    <p>Dieser Bereich wird gerade vorbereitet.<br/>
-    Der vollst&#228;ndige Text wird hier eingef&#252;gt.</p>
-  </div>
+
+  <section class="ls">
+    <h2>1. Geltungsbereich</h2>
+    <p>Diese Nutzungsbedingungen gelten f&#252;r die Nutzung der HUI-Plattform, der App und aller zugeh&#246;rigen Dienste von <strong>HUI &ndash; Human United Intelligence</strong>.</p>
+  </section>
+
+  <section class="ls">
+    <h2>2. Registrierung</h2>
+    <ul>
+      <li>Nutzer m&#252;ssen korrekte und vollst&#228;ndige Angaben bei der Registrierung machen.</li>
+      <li>Jeder Nutzer ist f&#252;r die Sicherheit seines Kontos und seiner Zugangsdaten selbst verantwortlich.</li>
+      <li>Eine Weitergabe des Kontos an Dritte ist nicht gestattet.</li>
+    </ul>
+  </section>
+
+  <section class="ls">
+    <h2>3. Nutzung der Plattform</h2>
+    <p>Die Nutzung der HUI-Plattform ist nur im Rahmen der geltenden Gesetze und dieser Bedingungen gestattet. Untersagt sind insbesondere:</p>
+    <ul class="ls-prohibited">
+      <li><span>&#10060;</span> Missbr&#228;uchliche Nutzung der Plattform oder ihrer Funktionen</li>
+      <li><span>&#10060;</span> Ver&#246;ffentlichung rechtswidriger, beleidigender oder sch&#228;dlicher Inhalte</li>
+      <li><span>&#10060;</span> Manipulation von Projekten, Votes oder dem Impact-Pool</li>
+    </ul>
+  </section>
+
+  <section class="ls">
+    <h2>4. Talente &amp; Projekte</h2>
+    <ul>
+      <li>Talente m&#252;ssen wahrheitsgem&#228;&#223;e Angaben zu ihren F&#228;higkeiten und Angeboten machen.</li>
+      <li>Projekte m&#252;ssen den HUI-Richtlinien entsprechen und transparent dargestellt werden.</li>
+      <li>HUI beh&#228;lt sich vor, Inhalte zu pr&#252;fen, zu sperren oder zu entfernen, wenn diese gegen diese Bedingungen versto&#223;en.</li>
+    </ul>
+  </section>
+
+  <section class="ls">
+    <h2>5. Zahlungen &amp; Impact</h2>
+    <ul>
+      <li>Impact-Beitr&#228;ge &#252;ber den Impact-Pool sind freiwillig und ein fester Bestandteil des HUI-Modells.</li>
+      <li>Alle Transaktionen werden dokumentiert und k&#246;nnen im Nutzerkonto eingesehen werden.</li>
+      <li>Eine R&#252;ckerstattung erfolgt nur, soweit gesetzlich vorgeschrieben oder vertraglich vereinbart.</li>
+    </ul>
+    <p class="ls-note">&#128179;&nbsp; 15&nbsp;% jeder Buchung flie&#223;en automatisch in den Impact-Pool &ndash; transparent und nachvollziehbar.</p>
+  </section>
+
+  <section class="ls">
+    <h2>6. Haftung</h2>
+    <p>HUI haftet nur f&#252;r Sch&#228;den, die durch <strong>Vorsatz oder grobe Fahrl&#228;ssigkeit</strong> verursacht wurden.</p>
+    <p>Keine Haftung besteht f&#252;r:</p>
+    <ul>
+      <li>Tempor&#228;re Ausf&#228;lle oder Unterbrechungen des Dienstes</li>
+      <li>Datenverlust durch technische St&#246;rungen</li>
+      <li>Handlungen oder Leistungen von Drittanbietern</li>
+    </ul>
+  </section>
+
+  <section class="ls">
+    <h2>7. K&#252;ndigung</h2>
+    <ul>
+      <li>Nutzer k&#246;nnen ihr Konto jederzeit und ohne Angabe von Gr&#252;nden l&#246;schen.</li>
+      <li>HUI ist berechtigt, Konten bei Verst&#246;&#223;en gegen diese Bedingungen zu sperren oder zu l&#246;schen.</li>
+    </ul>
+  </section>
+
+  <section class="ls">
+    <h2>8. &#196;nderungen</h2>
+    <p>HUI kann diese Nutzungsbedingungen jederzeit aktualisieren. Wesentliche &#196;nderungen werden den Nutzern rechtzeitig mitgeteilt. Die fortgesetzte Nutzung der Plattform gilt als Zustimmung zu den ge&#228;nderten Bedingungen.</p>
+    <p>Stand: Mai&nbsp;2026.</p>
+  </section>
+
 </div>
 <footer>
   <div class="si">
