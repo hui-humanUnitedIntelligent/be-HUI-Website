@@ -1579,6 +1579,47 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
     </div>
   </div>
 </footer>
+<script>
+// ── Nav scroll shrink ──
+window.addEventListener('scroll',()=>{
+  const n=document.getElementById('topnav');
+  if(!n) return;
+  if(window.scrollY>50){
+    n.style.padding='10px 52px';
+    n.style.boxShadow='0 4px 24px rgba(0,0,0,0.08)';
+  } else {
+    n.style.padding='14px 52px';
+    n.style.boxShadow='none';
+  }
+});
+
+// ── Dropdown: click to open/close ──
+(function(){
+  const items = document.querySelectorAll('nav ul.nl > li');
+  items.forEach(li => {
+    const trigger = li.querySelector(':scope > span');
+    const dd = li.querySelector('.dd');
+    if (!trigger || !dd) return;
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = li.classList.contains('dd-open');
+      items.forEach(other => other.classList.remove('dd-open'));
+      if (!isOpen) li.classList.add('dd-open');
+    });
+    dd.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => li.classList.remove('dd-open'));
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+      items.forEach(li => li.classList.remove('dd-open'));
+    }
+  });
+  window.addEventListener('scroll', () => {
+    items.forEach(li => li.classList.remove('dd-open'));
+  }, { passive: true });
+})();
+</script>
 <script src="lang/switcher.js"></script>
 </body>
 </html>
