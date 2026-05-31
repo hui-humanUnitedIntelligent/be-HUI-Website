@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>App Download â HUI | Human United Intelligence</title>
+<title>App Download – HUI | Human United Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -17,7 +17,7 @@
   --grad:    linear-gradient(135deg, #1ED8C8, #E8876A);
   --grad-r:  linear-gradient(135deg, #E8876A, #1ED8C8);
 
-  /* ââ HintergrÃ¼nde (hell, wie App) ââ */
+  /* ââ Hintergründe (hell, wie App) ââ */
   --bg:      #F5F0E8;   /* App-Hintergrund */
   --bg2:     #FAF7F2;   /* leicht heller */
   --white:   #FFFFFF;
@@ -29,7 +29,7 @@
   --muted:   #7A7A8A;
   --light:   #B0B0BC;
 
-  /* ââ RÃ¤nder ââ */
+  /* ââ Ränder ââ */
   --border:  rgba(30,216,200,0.15);
   --border2: rgba(0,0,0,0.06);
 
@@ -42,7 +42,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);ove
 ::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
 
 /* ââââââââââââââââââââââââââââââââ
-   NAV â hell, wie App-Header
+   NAV — hell, wie App-Header
 ââââââââââââââââââââââââââââââââ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:300;
@@ -91,7 +91,7 @@ nav ul.nl > li.dd-open > span{color:var(--teal);background:var(--teal-l)}
 .nav-arr{font-size:9px;color:var(--light);transition:transform .3s;display:inline-block}
 nav ul.nl > li.dd-open .nav-arr{transform:rotate(180deg)}
 
-/* Dropdown â click-controlled */
+/* Dropdown — click-controlled */
 .dd{
   position:absolute;top:calc(100% + 10px);left:50%;
   transform:translateX(-50%) translateY(-8px);
@@ -108,7 +108,7 @@ nav ul.nl > li.dd-open .dd{
   opacity:1;visibility:visible;pointer-events:auto;
   transform:translateX(-50%) translateY(0);
 }
-/* BrÃ¼cke damit Klick-Bereich geschlossen bleibt */
+/* Brücke damit Klick-Bereich geschlossen bleibt */
 .dd::before{
   content:'';position:absolute;top:-10px;left:0;right:0;height:10px;
 }
@@ -173,7 +173,7 @@ nav ul.nl > li.dd-open > span{
 .lang-dd a .lang-dd-flag{font-size:1.15rem}
 
 /* ââââââââââââââââââââââââââââââââ
-   HERO â hell & einladend
+   HERO — hell & einladend
 ââââââââââââââââââââââââââââââââ */
 .hero{
   min-height:100vh;
@@ -286,10 +286,10 @@ nav ul.nl > li.dd-open > span{
 @media(max-width:1200px){.hero-phones{display:none}}
 
 /* ââââââââââââââââââââââââââââââââ
-   STRIP â partner logos
+   STRIP — partner logos
 ââââââââââââââââââââââââââââââââ */
 /* ââââââââââââââââââââââââââââââââ
-   STATS SECTION â Moderne Kacheln
+   STATS SECTION — Moderne Kacheln
 ââââââââââââââââââââââââââââââââ */
 .stats-section{
   padding:56px 48px;
@@ -402,7 +402,7 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .dsc{font-size:16.5px;color:var(--muted);line-height:1.75;font-weight:300}
 
 /* ââââââââââââââââââââââââââââââââ
-   ABOUT â hell, Karten-Design
+   ABOUT — hell, Karten-Design
 ââââââââââââââââââââââââââââââââ */
 .about{padding:120px 0;background:var(--bg2)}
 .about-g{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
@@ -978,14 +978,14 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
     <li><a href="https://be-hui.vercel.app/Home" target="_blank" class="n-login" data-t-key="nav.login">Login</a></li>
     <li class="lang-li" id="langSwitcher">
       <button class="lang-btn" id="langBtn" aria-label="Sprache wechseln" aria-expanded="false" aria-haspopup="listbox">
-        <span class="lang-flag" id="langFlag">Ã°ÂÂÂ©Ã°ÂÂÂª</span>
+        <span class="lang-flag" id="langFlag">&#127465;&#127466;</span>
         <span class="lang-arrow">&#9660;</span>
       </button>
-      <div class="lang-dd" id="langDd" role="listbox" aria-label="Sprache wÃÂ¤hlen">
-        <a href="#" data-lang="de" class="active" role="option"><span class="lang-dd-flag">Ã°ÂÂÂ©Ã°ÂÂÂª</span> Deutsch</a>
-        <a href="#" data-lang="en" role="option"><span class="lang-dd-flag">Ã°ÂÂÂ¬Ã°ÂÂÂ§</span> English</a>
-        <a href="#" data-lang="fr" role="option"><span class="lang-dd-flag">Ã°ÂÂÂ«Ã°ÂÂÂ·</span> FranÃÂ§ais</a>
-        <a href="#" data-lang="es" role="option"><span class="lang-dd-flag">Ã°ÂÂÂªÃ°ÂÂÂ¸</span> EspaÃÂ±ol</a>
+      <div class="lang-dd" id="langDd" role="listbox" aria-label="Sprache wählen">
+        <a href="#" data-lang="de" class="active" role="option"><span class="lang-dd-flag">&#127465;&#127466;</span> Deutsch</a>
+        <a href="#" data-lang="en" role="option"><span class="lang-dd-flag">&#127468;&#127463;</span> English</a>
+        <a href="#" data-lang="fr" role="option"><span class="lang-dd-flag">&#127467;&#127479;</span> Français</a>
+        <a href="#" data-lang="es" role="option"><span class="lang-dd-flag">&#127466;&#127480;</span> Español</a>
       </div>
     </li>
   </ul>
@@ -999,9 +999,9 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
     <h1 class="dl-h1">Deine Wirkung.<br><em>In deiner Tasche.</em></h1>
     <p class="dl-sub">
       HUI verbindet Menschen, Talente und soziale Projekte &#8212; 
-      ohne Zwischeninstanzen, ohne HÃ¼rden.
+      ohne Zwischeninstanzen, ohne Hürden.
       Lade die App herunter und werde Teil einer Gemeinschaft,
-      in der <strong>jede Handlung zÃ¤hlt</strong>.
+      in der <strong>jede Handlung zählt</strong>.
     </p>
 
     <div class="dl-buttons">
@@ -1034,7 +1034,7 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
     </div>
 
     <p class="dl-note">
-      Auch verfÃ¼gbar als <a href="https://be-hui.vercel.app/Home" target="_blank">Web-App &#8594;</a> &mdash; direkt im Browser, ohne Installation.
+      Auch verfügbar als <a href="https://be-hui.vercel.app/Home" target="_blank">Web-App &#8594;</a> &mdash; direkt im Browser, ohne Installation.
     </p>
   </div>
 </section>
@@ -1198,7 +1198,7 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 
 <script>
 // ââââââââââââââââââââââââââââââââââââââââââ
-//  HERO PARALLAX â Sanfte Maus-Bewegung
+//  HERO PARALLAX — Sanfte Maus-Bewegung
 // ââââââââââââââââââââââââââââââââââââââââââ
 (function(){
   const hero = document.querySelector('[data-parallax]');
@@ -1281,7 +1281,7 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 
 <script>
 // ââââââââââââââââââââââââââââââââââââââââââ
-//  HERO PARALLAX â Sanfte Maus-Bewegung
+//  HERO PARALLAX — Sanfte Maus-Bewegung
 // ââââââââââââââââââââââââââââââââââââââââââ
 (function(){
   const hero = document.querySelector('[data-parallax]');
