@@ -154,6 +154,110 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
 .footer-copy{text-align:center;font-size:12px;color:rgba(255,255,255,0.25);max-width:1100px;margin:40px auto 0;padding:24px 48px 0;border-top:1px solid rgba(255,255,255,0.06)}
 @media(max-width:900px){.contact-grid{grid-template-columns:1fr}.faq-grid{grid-template-columns:1fr}}
 @media(max-width:640px){nav ul.nl{display:none}.ham{display:flex}nav{padding:14px 24px}.page-hero{padding:130px 24px 60px}.wrap{padding:0 24px}.contact-section{padding:60px 0 80px}.contact-form-wrap{padding:28px 20px}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;align-items:flex-start;padding:0 24px}.footer-copy{padding:24px 24px 0}}
+
+/* ════════════════════════════════════════════════
+   MOBILE NAV — Hamburger + Drawer + Accordion
+   ════════════════════════════════════════════════ */
+.ham{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+  width:40px;height:40px;background:none;border:none;cursor:pointer;z-index:500;padding:4px;border-radius:8px;
+  transition:background .2s}
+.ham:hover{background:var(--teal-l)}
+.ham span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px;
+  transition:transform .3s ease, opacity .2s ease, width .2s ease}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;width:0}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Mobile Drawer */
+.mob-drawer{
+  display:none;
+  position:fixed;top:0;right:0;bottom:0;
+  width:min(320px,90vw);
+  background:var(--white);
+  border-left:1px solid var(--border2);
+  box-shadow:-8px 0 40px rgba(0,0,0,.18);
+  z-index:450;
+  overflow-y:auto;
+  padding:80px 0 40px;
+  transform:translateX(100%);
+  transition:transform .32s cubic-bezier(.4,0,.2,1);
+}
+.mob-drawer.open{transform:translateX(0)}
+
+/* Drawer Backdrop */
+.mob-backdrop{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:440;
+  opacity:0;
+  transition:opacity .3s;
+}
+.mob-backdrop.open{opacity:1}
+
+/* Drawer Nav Items */
+.mob-nav-list{list-style:none;margin:0;padding:0 0 24px}
+.mob-nav-item{border-bottom:1px solid var(--border2)}
+.mob-nav-item:first-child{border-top:1px solid var(--border2)}
+
+.mob-nav-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;padding:16px 24px;
+  background:none;border:none;
+  font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;
+  color:var(--text2);text-align:left;cursor:pointer;
+  transition:background .15s,color .15s;
+}
+.mob-nav-btn:hover{background:var(--teal-l);color:var(--teal)}
+.mob-nav-btn .mob-arr{
+  font-size:11px;color:var(--muted);
+  transition:transform .25s;display:inline-block;
+}
+.mob-nav-item.open .mob-arr{transform:rotate(180deg)}
+.mob-nav-item.open .mob-nav-btn{color:var(--teal)}
+
+.mob-nav-link{
+  display:block;padding:14px 24px;
+  font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;
+  color:var(--text2);text-decoration:none;
+  transition:background .15s,color .15s;
+}
+.mob-nav-link:hover{background:var(--teal-l);color:var(--teal)}
+
+/* Accordion Sub-Menu */
+.mob-sub{
+  max-height:0;overflow:hidden;
+  background:var(--bg);
+  transition:max-height .3s cubic-bezier(.4,0,.2,1);
+}
+.mob-nav-item.open .mob-sub{max-height:400px}
+.mob-sub a{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 24px 12px 36px;
+  font-size:14px;color:var(--text2);text-decoration:none;
+  transition:background .15s,color .15s;
+}
+.mob-sub a:hover{background:var(--teal-l);color:var(--teal)}
+.mob-sub .dd-ico{font-size:16px;width:22px;text-align:center}
+
+/* Login + Divider in drawer */
+.mob-divider{height:1px;background:var(--border2);margin:16px 0}
+.mob-login{
+  display:block;margin:12px 24px;padding:13px 20px;
+  background:var(--grad);color:#fff;border-radius:50px;
+  text-align:center;text-decoration:none;font-weight:700;font-size:14px;
+}
+
+@media(max-width:768px){
+  nav ul.nl{display:none!important}
+  .ham{display:flex}
+  .mob-drawer{display:block}
+  .mob-backdrop{display:block}
+}
+@media(min-width:769px){
+  .mob-drawer,.mob-backdrop,.ham{display:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -229,6 +333,58 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
     </li>
   </ul>
 </nav>
+<!-- ══ MOBILE NAV DRAWER ══ -->
+<button class="ham" id="hamBtn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobDrawer">
+  <span></span><span></span><span></span>
+</button>
+<div class="mob-backdrop" id="mobBackdrop"></div>
+<div class="mob-drawer" id="mobDrawer" role="dialog" aria-label="Navigation">
+  <ul class="mob-nav-list">
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>Über uns <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="ueber-uns.html"><span class="dd-ico">&#127775;</span>Was ist HUI</a>
+        <a href="team.html"><span class="dd-ico">&#128101;</span>Team</a>
+        <a href="contact.html"><span class="dd-ico">&#128172;</span>Schreib uns</a>
+        <a href="contact.html#faq"><span class="dd-ico">&#10067;</span>Hilfe &amp; FAQ</a>
+      </div>
+    </li>
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>HUI App <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="hui-app.html"><span class="dd-ico">&#128241;</span>App Übersicht</a>
+        <a href="werde-wirker.html"><span class="dd-ico">&#127775;</span>Werde Wirker</a>
+        <a href="app-download.html"><span class="dd-ico">&#11015;</span>App Download</a>
+        <a href="https://be-hui.vercel.app/Home" target="_blank"><span class="dd-ico">&#128279;</span>Web-App öffnen</a>
+      </div>
+    </li>
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>Impact Pool <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="impact-pool.html"><span class="dd-ico">&#127807;</span>Wie es funktioniert</a>
+      </div>
+    </li>
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>Projekte <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="projekte.html"><span class="dd-ico">&#127963;</span>Einer für Alle</a>
+        <a href="projekte.html"><span class="dd-ico">&#128196;</span>Alle Projekte</a>
+        <a href="projekte.html"><span class="dd-ico">&#128444;</span>Galerie</a>
+        <a href="projekte.html"><span class="dd-ico">&#128197;</span>Events</a>
+      </div>
+    </li>
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>Community <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="community.html"><span class="dd-ico">&#128483;</span>Stimmen</a>
+        <a href="community.html"><span class="dd-ico">&#128247;</span>Galerie</a>
+      </div>
+    </li>
+  </ul>
+  <div class="mob-divider"></div>
+  <a href="https://be-hui.vercel.app/Home" target="_blank" class="mob-login">&#128274; Login / App öffnen</a>
+</div>
+
 <section class="page-hero">
   <div class="page-hero-bg">
     <video autoplay muted loop playsinline preload="auto" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block">
