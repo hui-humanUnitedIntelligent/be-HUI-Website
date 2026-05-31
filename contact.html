@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8"/>
+ta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kontakt – HUI | Human United Intelligence</title>
+<title>Kontakt â HUI | Human United Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -74,25 +71,7 @@ nav ul.nl>li.dd-open>span{color:var(--teal)!important;background:var(--teal-l)!i
 }
 .lang-dd a:hover,.lang-dd a.active{background:var(--teal-l);color:var(--teal)}
 .lang-dd a .lang-dd-flag{font-size:1.15rem}
-.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
-.ham span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
-#mmenu{display:none;position:fixed;top:70px;left:0;right:0;z-index:250;background:var(--white);padding:16px 24px;border-bottom:1px solid var(--border2);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
-#mmenu a{display:block;color:var(--text2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--border2);font-size:15px}
-#mmenu a:last-child{border-bottom:none;color:var(--teal);font-weight:700}
-/* === Mobile Menu Akkordeon === */
-.mm-item{border-bottom:1px solid var(--border2)}
-.mm-trigger{display:flex;justify-content:space-between;align-items:center;padding:13px 0;cursor:pointer;color:var(--text2);font-size:15px;font-weight:500;user-select:none}
-.mm-trigger:hover{color:var(--teal)}
-.mm-arr{font-size:12px;transition:transform .25s;color:var(--light)}
-.mm-item.mm-open .mm-arr{transform:rotate(180deg);color:var(--teal)}
-.mm-item.mm-open .mm-trigger{color:var(--teal)}
-.mm-sub{display:none;padding:4px 0 8px 12px;border-left:2px solid var(--teal-l);margin-left:4px}
-.mm-item.mm-open .mm-sub{display:block}
-.mm-sub a{display:block;color:var(--text2);text-decoration:none;padding:8px;font-size:14px;border-bottom:none!important}
-.mm-sub a:hover{color:var(--teal);background:var(--teal-l);border-radius:8px}
-.mm-direct{display:block;color:var(--text2);text-decoration:none;padding:13px 0;border-bottom:1px solid var(--border2);font-size:15px}
-.mm-direct:hover{color:var(--teal)}
-/* ── Ken Burns Hero BG ── */
+/* ââ Ken Burns Hero BG ââ */
 @keyframes kenBurns{
   0%{transform:scale(1) translate(0,0)}
   50%{transform:scale(1.08) translate(-1%,-1%)}
@@ -193,11 +172,11 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
     <li>
       <span>&#220;ber uns <span class="nav-arr">&#9660;</span></span>
       <div class="dd">
-        <a href="ueber-uns.html" data-t-key="nav.was-ist-hui"><span class="dd-ico">ð</span>Was ist HUI</a>
-        <a href="team.html" data-t-key="nav.team"><span class="dd-ico">ð¥</span>Team</a>
-        <a href="contact.html" data-t-key="nav.schreib-uns"><span class="dd-ico">ð¬</span>Schreib uns</a>
+        <a href="ueber-uns.html" data-t-key="nav.was-ist-hui"><span class="dd-ico">Ã°ÂÂÂ</span>Was ist HUI</a>
+        <a href="team.html" data-t-key="nav.team"><span class="dd-ico">Ã°ÂÂÂ¥</span>Team</a>
+        <a href="contact.html" data-t-key="nav.schreib-uns"><span class="dd-ico">Ã°ÂÂÂ¬</span>Schreib uns</a>
         <div class="dd-div"></div>
-        <a href="contact.html#faq" data-t-key="nav.hilfe-faq"><span class="dd-ico">â</span>Hilfe &amp; FAQ</a>
+        <a href="contact.html#faq" data-t-key="nav.hilfe-faq"><span class="dd-ico">Ã¢ÂÂ</span>Hilfe &amp; FAQ</a>
       </div>
     </li>
     <li>
@@ -239,88 +218,28 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
     <li><a href="https://be-hui.vercel.app/Home" target="_blank" class="n-login" data-t-key="nav.login">Login</a></li>
     <li class="lang-li" id="langSwitcher">
       <button class="lang-btn" id="langBtn" aria-label="Sprache wechseln" aria-expanded="false" aria-haspopup="listbox">
-        <span class="lang-flag" id="langFlag">ð©ðª</span>
+        <span class="lang-flag" id="langFlag">Ã°ÂÂÂ©Ã°ÂÂÂª</span>
         <span class="lang-arrow">&#9660;</span>
       </button>
-      <div class="lang-dd" id="langDd" role="listbox" aria-label="Sprache wÃ¤hlen">
-        <a href="#" data-lang="de" class="active" role="option"><span class="lang-dd-flag">ð©ðª</span> Deutsch</a>
-        <a href="#" data-lang="en" role="option"><span class="lang-dd-flag">ð¬ð§</span> English</a>
-        <a href="#" data-lang="fr" role="option"><span class="lang-dd-flag">ð«ð·</span> FranÃ§ais</a>
-        <a href="#" data-lang="es" role="option"><span class="lang-dd-flag">ðªð¸</span> EspaÃ±ol</a>
+      <div class="lang-dd" id="langDd" role="listbox" aria-label="Sprache wÃÂ¤hlen">
+        <a href="#" data-lang="de" class="active" role="option"><span class="lang-dd-flag">Ã°ÂÂÂ©Ã°ÂÂÂª</span> Deutsch</a>
+        <a href="#" data-lang="en" role="option"><span class="lang-dd-flag">Ã°ÂÂÂ¬Ã°ÂÂÂ§</span> English</a>
+        <a href="#" data-lang="fr" role="option"><span class="lang-dd-flag">Ã°ÂÂÂ«Ã°ÂÂÂ·</span> FranÃÂ§ais</a>
+        <a href="#" data-lang="es" role="option"><span class="lang-dd-flag">Ã°ÂÂÂªÃ°ÂÂÂ¸</span> EspaÃÂ±ol</a>
       </div>
     </li>
   </ul>
-
-  <div class="ham" id="hamBtn">
-    <span></span><span></span><span></span>
-  </div>
 </nav>
-
-<div id="mmenu">
-  <div class="mm-item">
-    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
-      Ãber HUI <span class="mm-arr">â¾</span>
-    </div>
-    <div class="mm-sub">
-      <a href="ueber-uns.html">ð Was ist HUI</a>
-      <a href="team.html">ð¥ Team</a>
-      <a href="contact.html">âï¸ Kontakt</a>
-      <a href="contact.html#faq">â Hilfe &amp; FAQ</a>
-    </div>
-  </div>
-  <div class="mm-item">
-    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
-      HUI App <span class="mm-arr">â¾</span>
-    </div>
-    <div class="mm-sub">
-      <a href="hui-app.html">ð± App Ãbersicht</a>
-      <a href="werde-wirker.html">â¨ Werde Wirker</a>
-      <a href="app-download.html">â¬ï¸ App Download</a>
-      <a href="https://be-hui.vercel.app/Home" target="_blank">ð Web-App Ã¶ffnen</a>
-    </div>
-  </div>
-  <div class="mm-item">
-    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
-      Impact Pool <span class="mm-arr">â¾</span>
-    </div>
-    <div class="mm-sub">
-      <a href="impact-pool.html">ð¿ Wie es funktioniert</a>
-    </div>
-  </div>
-  <div class="mm-item">
-    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
-      Projekte <span class="mm-arr">â¾</span>
-    </div>
-    <div class="mm-sub">
-      <a href="projekte.html">ð Einer fÃ¼r Alle</a>
-      <a href="projekte.html">ð Alle Projekte</a>
-      <a href="projekte.html">ð¼ Galerie</a>
-      <a href="projekte.html">ð Events</a>
-    </div>
-  </div>
-  <div class="mm-item">
-    <div class="mm-trigger" onclick="this.parentElement.classList.toggle('mm-open')">
-      Community <span class="mm-arr">â¾</span>
-    </div>
-    <div class="mm-sub">
-      <a href="community.html">ð£ Stimmen</a>
-      <a href="community.html">ð¸ Galerie</a>
-    </div>
-  </div>
-  <a href="contact.html" class="mm-direct">Kontakt</a>
-  <a href="https://be-hui.vercel.app/Home" target="_blank" class="mm-cta">App Ã¶ffnen â</a>
-</div>
-
 <section class="page-hero">
   <div class="page-hero-bg">
     <img src="hero-forest.jpg" alt="Nebelwald von oben" loading="eager"/>
   </div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-eyebrow" style="position:relative;z-index:3">
-    <span class="bdot"></span>GEMEINSCHAFT · WIRKUNG · MENSCHLICHKEIT
+    <span class="bdot"></span>GEMEINSCHAFTÂ Â·Â WIRKUNGÂ Â·Â MENSCHLICHKEIT
   </div>
-  <h1 data-t-key="contact.h1" style="position:relative;z-index:3">Wir freuen uns<br>von dir zu <em>hören</em></h1>
-  <p data-t-key="contact.sub" style="position:relative;z-index:3">Jede Frage, jede Idee, jeder Gedanke zählt. Gemeinsam<br>gestalten wir etwas Großes – schreib uns einfach.</p>
+  <h1 data-t-key="contact.h1" style="position:relative;z-index:3">Wir freuen uns<br>von dir zu <em>hÃ¶ren</em></h1>
+  <p data-t-key="contact.sub" style="position:relative;z-index:3">Jede Frage, jede Idee, jeder Gedanke zÃ¤hlt. Gemeinsam<br>gestalten wir etwas GroÃes â schreib uns einfach.</p>
 </section>
 
 <div class="wave-divider">
@@ -338,12 +257,12 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
         <div class="contact-info-header">
           <span class="eyebrow">Kontakt</span>
           <h2 class="section-title">Lass uns <em>verbinden</em></h2>
-          <p class="dsc">HUI steht für echte Verbindung. Wir antworten persönlich – kein Bot, keine leeren Worte.</p>
+          <p class="dsc">HUI steht fÃ¼r echte Verbindung. Wir antworten persÃ¶nlich â kein Bot, keine leeren Worte.</p>
         </div>
         <div class="impact-card">
           <div class="impact-card-ico">&#127807;</div>
-          <div class="impact-card-title">Jede Nachricht zählt</div>
-          <div class="impact-card-text">Bei HUI entsteht sozialer Impact nicht nur durch große Aktionen – auch jedes Gespräch, jede Idee und jede Zusammenarbeit trägt zur Bewegung bei.</div>
+          <div class="impact-card-title">Jede Nachricht zÃ¤hlt</div>
+          <div class="impact-card-text">Bei HUI entsteht sozialer Impact nicht nur durch groÃe Aktionen â auch jedes GesprÃ¤ch, jede Idee und jede Zusammenarbeit trÃ¤gt zur Bewegung bei.</div>
           <div class="impact-badge"><span class="bdot"></span>Fair. Sicher. Menschlich.</div>
         </div>
       </div>
@@ -354,7 +273,7 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
           <div class="form-header">
             <span class="eyebrow">Schreib uns</span>
             <div class="form-title">Deine Nachricht<br>an das HUI-Team</div>
-            <p class="form-sub">Egal ob Frage, Idee oder Kooperationsanfrage – wir freuen uns auf dich.</p>
+            <p class="form-sub">Egal ob Frage, Idee oder Kooperationsanfrage â wir freuen uns auf dich.</p>
           </div>
           <div class="form-row">
             <div class="form-group">
@@ -363,7 +282,7 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
             </div>
             <div class="form-group">
               <label for="lname">Nachname *</label>
-              <input type="text" id="lname" name="Nachname" placeholder="z.B. Müller" required/>
+              <input type="text" id="lname" name="Nachname" placeholder="z.B. MÃ¼ller" required/>
             </div>
           </div>
           <div class="form-group">
@@ -385,7 +304,7 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
           </div>
           <div class="form-group">
             <label for="msg">Deine Nachricht *</label>
-            <textarea id="msg" name="Nachricht" placeholder="Erzähl uns, wie wir dir helfen können oder was du dir vorstellst …" required></textarea>
+            <textarea id="msg" name="Nachricht" placeholder="ErzÃ¤hl uns, wie wir dir helfen kÃ¶nnen oder was du dir vorstellst â¦" required></textarea>
           </div>
           <div class="form-check">
             <input type="checkbox" id="privacy" required/>
@@ -393,7 +312,7 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
           </div>
           <!-- FormSubmit Konfiguration (versteckt) -->
           <input type="hidden" name="_next" value="https://be-hui-website.vercel.app/contact.html?sent=1"/>
-          <input type="hidden" name="_subject" value="[HUI Kontakt] Neue Nachricht über das Formular"/>
+          <input type="hidden" name="_subject" value="[HUI Kontakt] Neue Nachricht Ã¼ber das Formular"/>
           <input type="hidden" name="_captcha" value="false"/>
           <input type="hidden" name="_template" value="table"/>
           <input type="hidden" name="_replyto" id="replyto_field" value=""/>
@@ -403,8 +322,8 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
         </form>
         <div class="form-success" id="successMsg">
           <div class="form-success-ico">&#127807;</div>
-          <div class="form-success-title">Danke für deine Nachricht!</div>
-          <p class="form-success-text">Wir haben deine Anfrage erhalten und melden uns innerhalb von 24 Stunden bei dir. Gemeinsam bewirken wir Veränderung.</p>
+          <div class="form-success-title">Danke fÃ¼r deine Nachricht!</div>
+          <p class="form-success-text">Wir haben deine Anfrage erhalten und melden uns innerhalb von 24 Stunden bei dir. Gemeinsam bewirken wir VerÃ¤nderung.</p>
         </div>
       </div>
 
@@ -415,13 +334,13 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
 <section class="faq-section" id="faq">
   <div class="wrap">
     <div class="faq-header">
-      <span class="eyebrow">Häufige Fragen</span>
+      <span class="eyebrow">HÃ¤ufige Fragen</span>
       <h2 class="section-title">Wir beantworten deine <em>Fragen</em></h2>
     </div>
     <div class="faq-grid">
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Was ist HUI genau? <span class="faq-arr">&#9660;</span></button>
-        <div class="faq-a"><p>HUI – Human United Intelligence ist eine Plattform, die Menschen, Talente, Erlebnisse und soziale Projekte verbindet. Jede Aktivität erzeugt automatisch sozialen Impact über den Impact-Pool.</p></div>
+        <div class="faq-a"><p>HUI â Human United Intelligence ist eine Plattform, die Menschen, Talente, Erlebnisse und soziale Projekte verbindet. Jede AktivitÃ¤t erzeugt automatisch sozialen Impact Ã¼ber den Impact-Pool.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Wie kann ich mein Talent auf HUI anbieten? <span class="faq-arr">&#9660;</span></button>
@@ -429,19 +348,19 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Was ist der Impact Pool? <span class="faq-arr">&#9660;</span></button>
-        <div class="faq-a"><p>Der Impact Pool sammelt automatisch einen Teil jeder Transaktion auf der Plattform und verteilt ihn an soziale Projekte und Initiativen – fair, transparent und gemeinschaftlich.</p></div>
+        <div class="faq-a"><p>Der Impact Pool sammelt automatisch einen Teil jeder Transaktion auf der Plattform und verteilt ihn an soziale Projekte und Initiativen â fair, transparent und gemeinschaftlich.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Kann ich mit HUI kooperieren? <span class="faq-arr">&#9660;</span></button>
-        <div class="faq-a"><p>Ja! HUI freut sich über Partnerschaften mit NGOs, Vereinen, Hochschulen und Unternehmen. Schreib uns einfach über das Kontaktformular.</p></div>
+        <div class="faq-a"><p>Ja! HUI freut sich Ã¼ber Partnerschaften mit NGOs, Vereinen, Hochschulen und Unternehmen. Schreib uns einfach Ã¼ber das Kontaktformular.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Wie schnell erhalte ich eine Antwort? <span class="faq-arr">&#9660;</span></button>
-        <div class="faq-a"><p>Wir antworten in der Regel innerhalb von 24 Stunden. Für dringende Anfragen erreichst du uns direkt per E-Mail: huiwirken@gmail.com</p></div>
+        <div class="faq-a"><p>Wir antworten in der Regel innerhalb von 24 Stunden. FÃ¼r dringende Anfragen erreichst du uns direkt per E-Mail: huiwirken@gmail.com</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Ist HUI kostenlos? <span class="faq-arr">&#9660;</span></button>
-        <div class="faq-a"><p>Die Grundfunktionen von HUI sind kostenlos nutzbar. Für erweiterte Features und professionelle Talentprofile gibt es flexible Optionen – immer fair und transparent.</p></div>
+        <div class="faq-a"><p>Die Grundfunktionen von HUI sind kostenlos nutzbar. FÃ¼r erweiterte Features und professionelle Talentprofile gibt es flexible Optionen â immer fair und transparent.</p></div>
       </div>
     </div>
   </div>
@@ -454,18 +373,18 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
     </a>
     <div class="footer-links">
       <a href="index.html">Start</a>
-      <a href="ueber-uns.html">Über uns</a>
+      <a href="ueber-uns.html">Ãber uns</a>
       <a href="impact-pool.html">Impact Pool</a>
       <a href="projekte.html">Projekte</a>
       <a href="community.html">Community</a>
       <a href="contact.html">Kontakt</a>
     </div>
   </div>
-  <div class="footer-copy">&copy; 2025 HUI – Human United Intelligence · 4VisionGlobal &amp; Liga der Kreativen · Gemeinschaft. Talente. Wirkung.</div>
+  <div class="footer-copy">&copy; 2025 HUI â Human United Intelligence Â· 4VisionGlobal &amp; Liga der Kreativen Â· Gemeinschaft. Talente. Wirkung.</div>
 </footer>
 
 <script>
-// ── Nav Dropdowns ──
+// ââ Nav Dropdowns ââ
 (function(){
   const items=document.querySelectorAll('nav ul.nl>li');
   items.forEach(li=>{
@@ -480,28 +399,7 @@ footer{background:linear-gradient(160deg,#0f1a1a 0%,#081010 100%);padding:60px 0
   });
   document.addEventListener('click',e=>{if(!e.target.closest('nav'))items.forEach(li=>li.classList.remove('dd-open'))});
   let _navHov=false;const _tnav=document.getElementById('topnav');_tnav.addEventListener('mouseenter',()=>{_navHov=true});_tnav.addEventListener('mouseleave',()=>{_navHov=false});let _ddST;window.addEventListener('scroll',()=>{if(_navHov)return;clearTimeout(_ddST);_ddST=setTimeout(()=>items.forEach(li=>li.classList.remove('dd-open')),200);},{passive:true});
-})();
-
-// ── Mobile Menu ──
-document.getElementById('hamBtn').addEventListener('click',e=>{
-  e.stopPropagation();
-  const m=document.getElementById('mmenu');
-  const open=m.style.display==='block';
-  m.style.display=open?'none':'block';
-  const s=document.querySelectorAll('#hamBtn span');
-  if(!open){s[0].style.transform='rotate(45deg) translate(5px,5px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(5px,-5px)'}
-  else{s[0].style.transform='';s[1].style.opacity='';s[2].style.transform=''}
-});
-document.addEventListener('click',e=>{
-  const m=document.getElementById('mmenu');
-  if(!e.target.closest('#topnav')&&!e.target.closest('#mmenu')){
-    m.style.display='none';
-    const s=document.querySelectorAll('#hamBtn span');
-    s[0].style.transform='';s[1].style.opacity='';s[2].style.transform='';
-  }
-});
-
-// ── FAQ ──
+})();// ââ FAQ ââ
 function toggleFaq(btn){
   const item=btn.closest('.faq-item');
   const open=item.classList.contains('open');
@@ -509,7 +407,7 @@ function toggleFaq(btn){
   if(!open)item.classList.add('open');
 }
 
-// ── Pflichtfeld-Validierung vor FormSubmit ──
+// ââ Pflichtfeld-Validierung vor FormSubmit ââ
 document.getElementById('formArea').addEventListener('submit', function(e){
   const fname = document.getElementById('fname').value.trim();
   const email = document.getElementById('email').value.trim();
@@ -517,13 +415,13 @@ document.getElementById('formArea').addEventListener('submit', function(e){
   const priv  = document.getElementById('privacy').checked;
   if(!fname || !email || !msg || !priv){
     e.preventDefault();
-    alert('Bitte fülle alle Pflichtfelder aus und stimme den Datenschutzrichtlinien zu.');
+    alert('Bitte fÃ¼lle alle Pflichtfelder aus und stimme den Datenschutzrichtlinien zu.');
   }
 });
 
 
 
-// ── Scroll Fade-In ──
+// ââ Scroll Fade-In ââ
 const obs=new IntersectionObserver(es=>{
   es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}});
 },{threshold:.08});
