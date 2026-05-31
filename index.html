@@ -1351,7 +1351,7 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
 
   <!-- Natur-Foto Hintergrund -->
   <div class="hero-nature-bg">
-  <video autoplay muted loop playsinline preload="auto">
+  <video id="hero-bg-video" autoplay muted loop playsinline preload="auto">
     <source src="https://base44.app/api/apps/6a1bd77ed430878cc4e431a5/files/mp/public/6a1bd77ed430878cc4e431a5/10e3fe63d_8eeb33aa3_Erstelle_eine_sanfte_realistische_Animation_aus_diesem_Bild__Das_Wasser_soll_sich_leicht_bewegen__seed4229781322.mp4" type="video/mp4"/>
   </video>
 </div>
@@ -1826,6 +1826,15 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   }
 })();
 </script>
+<script>
+// Hero Video — Abspielgeschwindigkeit auf 40% (mehr als halbiert)
+(function(){
+  var v = document.getElementById('hero-bg-video');
+  if(!v) return;
+  v.playbackRate = 0.4;
+  v.addEventListener('play', function(){ v.playbackRate = 0.4; });
+})();
+</script>
 </body>
 </html>
 
@@ -2058,6 +2067,15 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
     hero.addEventListener('mousemove', onMouseMove, {passive:true});
     hero.addEventListener('mouseleave', onMouseLeave, {passive:true});
   }
+})();
+</script>
+<script>
+// Hero Video — Abspielgeschwindigkeit auf 40% (mehr als halbiert)
+(function(){
+  var v = document.getElementById('hero-bg-video');
+  if(!v) return;
+  v.playbackRate = 0.4;
+  v.addEventListener('play', function(){ v.playbackRate = 0.4; });
 })();
 </script>
 </body>
