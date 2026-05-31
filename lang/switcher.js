@@ -1,14 +1,25 @@
 /* ── HUI Language Switcher v2 — DE / EN only ──────────────────────────
  * Loaded by all pages via <script src="lang/switcher.js"></script>
- * Requires: #langSwitcher, #langBtn, #langFlag, #langDd in the nav.
+ * Lang-switcher is currently hidden (display:none) — DE is forced.
+ * When re-enabled, set FORCE_DE = false.
  * ─────────────────────────────────────────────────────────────────── */
 (function () {
   'use strict';
+
+  /* ── Set to false when lang-switcher is made visible again ─────── */
+  var FORCE_DE = true;
 
   var LANGS = {
     de: { flag: '&#127465;&#127466;', label: 'DE' },
     en: { flag: '&#127468;&#127463;', label: 'EN' }
   };
+
+  /* ── Always enforce DE while switcher is hidden ───────────────────── */
+  if (FORCE_DE) {
+    document.documentElement.lang = 'de';
+    localStorage.removeItem('hui-lang');
+    return;
+  }
 
   /* ── DOM refs ─────────────────────────────────────────────────────── */
   var li     = document.getElementById('langSwitcher');
@@ -50,7 +61,6 @@
     setLangUI(lang);
 
     if (lang === 'de') {
-      /* Restore originals */
       document.querySelectorAll('[data-t-key]').forEach(function (el) {
         var orig = el.getAttribute('data-orig');
         if (orig !== null) {
@@ -82,7 +92,6 @@
   function loadLangFile(lang, cb) {
     if (window.HUI_TRANSLATIONS && window.HUI_TRANSLATIONS[lang]) { cb(); return; }
     var s = document.createElement('script');
-    /* Support both root and subpage paths */
     var base = document.querySelector('meta[name="lang-base"]');
     var prefix = base ? base.getAttribute('content') : '';
     s.src = prefix + 'lang/' + lang + '.js';
