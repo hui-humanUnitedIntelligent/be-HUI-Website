@@ -1696,7 +1696,7 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
     <h2 class="stats-title">Gemeinsam bewegen wir&nbsp;<em>Großes</em></h2>
   </div>
   <div class="stats-grid">
-    <div class="stat-card stat-card--teal" data-target="12400" data-suffix="+">
+    <div class="stat-card stat-card--teal" data-target="11" data-suffix="+">
       <div class="sc-bg-shape"></div>
       <div class="sc-icon-wrap">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -1709,7 +1709,7 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
       <div class="sc-trend">↑ 18% diesen Monat</div>
     </div>
 
-    <div class="stat-card stat-card--coral" data-target="3800" data-suffix="+">
+    <div class="stat-card stat-card--coral" data-target="16" data-suffix="+">
       <div class="sc-bg-shape"></div>
       <div class="sc-icon-wrap">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -1737,7 +1737,7 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
       <div class="sc-badge">Live</div>
     </div>
 
-    <div class="stat-card stat-card--purple" data-target="47" data-suffix="">
+    <div class="stat-card stat-card--purple" data-target="11" data-suffix="">
       <div class="sc-bg-shape"></div>
       <div class="sc-icon-wrap">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -2110,75 +2110,74 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 </script>
 
 <script>
-// ══ HUI LIVE STATS — zieht echte Zahlen aus Supabase ══
+// == HUI LIVE STATS — Live Supabase Daten ==
 (function(){
-  const API = 'https://superagent-c4e431a5.base44.app/functions/huiStats';
+  var API = 'https://superagent-c4e431a5.base44.app/functions/huiStats';
 
-  function formatNumber(n) {
+  var MAP = [
+    { key: 'wirker',      prefix: '',      suffix: '+',   decimal: false },
+    { key: 'talente',     prefix: '',      suffix: '+',   decimal: false },
+    { key: 'impact_pool', prefix: '\u20ac\u00a0', suffix: '',    decimal: false },
+    { key: 'projekte',    prefix: '',      suffix: '',    decimal: false },
+    { key: 'bewertung',   prefix: '',      suffix: '/ 5', decimal: true  }
+  ];
+
+  function fmt(n, decimal) {
+    if (decimal) return n.toFixed(1);
     if (n >= 1000) return n.toLocaleString('de-DE');
-    return n.toString();
+    return String(Math.round(n));
   }
 
-  function animateTo(el, target, isDecimal) {
-    const duration = 1400;
-    const start = performance.now();
-    const from = parseFloat(el.textContent.replace(/[^0-9.,]/g,'').replace(',','.')) || 0;
-
-    function step(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const current = from + (target - from) * ease;
-      if (isDecimal) {
-        el.textContent = current.toFixed(1);
-      } else {
-        el.textContent = formatNumber(Math.round(current));
-      }
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = isDecimal ? target.toFixed(1) : formatNumber(target);
+  function animateTo(el, from, to, decimal) {
+    var dur = 1600, t0 = performance.now();
+    function step(t) {
+      var p = Math.min((t - t0) / dur, 1);
+      var ease = 1 - Math.pow(1 - p, 3);
+      var cur = from + (to - from) * ease;
+      el.textContent = fmt(cur, decimal);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = fmt(to, decimal);
     }
     requestAnimationFrame(step);
   }
 
-  fetch(API)
-    .then(r => r.json())
-    .then(data => {
-      const cards = document.querySelectorAll('.stat-card[data-target]');
-      const map = [
-        { key: 'wirker',      suffix: '+',    decimal: false },
-        { key: 'talente',     suffix: '+',    decimal: false },
-        { key: 'impact_pool', suffix: '',     decimal: false, prefix: true },
-        { key: 'projekte',    suffix: '',     decimal: false },
-        { key: 'bewertung',   suffix: '/ 5',  decimal: true  },
-      ];
-
-      cards.forEach((card, i) => {
-        if (!map[i]) return;
-        const cfg = map[i];
-        const val = data[cfg.key];
-        if (val === undefined || val === null) return;
-
-        // data-target aktualisieren
-        card.setAttribute('data-target', cfg.decimal ? (val * 10).toString() : val.toString());
-
-        // Zähler-Element animieren
-        const counter = card.querySelector('.sc-count');
-        if (counter) animateTo(counter, val, cfg.decimal);
-
-        // Trend-Zeile: bei Live-Daten kleinen Hinweis zeigen
-        if (data.using_live_data && data.using_live_data[cfg.key]) {
-          const trend = card.querySelector('.sc-trend');
-          if (trend && !trend.querySelector('.live-dot')) {
-            const dot = document.createElement('span');
-            dot.className = 'live-dot';
-            dot.style.cssText = 'display:inline-block;width:6px;height:6px;background:#1ed8c8;border-radius:50%;margin-right:5px;animation:pulse 1.5s infinite';
-            trend.prepend(dot);
-          }
+  function applyData(data) {
+    var cards = document.querySelectorAll('.stat-card[data-target]');
+    cards.forEach(function(card, i) {
+      var cfg = MAP[i]; if (!cfg) return;
+      var val = data[cfg.key]; if (val == null) return;
+      card.setAttribute('data-target', cfg.decimal ? String(val * 10) : String(val));
+      var counter = card.querySelector('.sc-count'); if (!counter) return;
+      var from = parseFloat(counter.textContent.replace(/[^\d.,]/g,'').replace(',','.')) || 0;
+      animateTo(counter, from, val, cfg.decimal);
+      if (data.using_live_data && data.using_live_data[cfg.key]) {
+        var trend = card.querySelector('.sc-trend');
+        if (trend && !trend.querySelector('.live-dot')) {
+          var dot = document.createElement('span');
+          dot.className = 'live-dot';
+          dot.style.cssText = 'display:inline-block;width:7px;height:7px;background:#1ed8c8;border-radius:50%;margin-right:5px;vertical-align:middle;animation:pulse 1.5s ease-in-out infinite';
+          trend.prepend(dot);
         }
-      });
-    })
-    .catch(() => {
-      // Kein Fehler anzeigen — Fallback-Werte aus data-target bleiben
+      }
     });
+  }
+
+  function loadStats() {
+    fetch(API, { cache: 'no-store' })
+      .then(function(r){ return r.json(); })
+      .then(applyData)
+      .catch(function(){
+        document.querySelectorAll('.stat-card[data-target]').forEach(function(card, i) {
+          var cfg = MAP[i]; if (!cfg) return;
+          var target = parseFloat(card.getAttribute('data-target')) || 0;
+          var counter = card.querySelector('.sc-count');
+          if (counter) animateTo(counter, 0, cfg.decimal ? target/10 : target, cfg.decimal);
+        });
+      });
+  }
+
+  loadStats();
+  setInterval(loadStats, 60000);
 })();
 </script>
 <style>
