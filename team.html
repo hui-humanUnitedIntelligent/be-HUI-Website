@@ -36,7 +36,7 @@
   --r: 16px; --rl: 24px; --rx: 32px;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);padding-top:72px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
@@ -180,7 +180,9 @@ nav ul.nl > li.dd-open > span{
   background:#0d1a1a;
   display:flex;align-items:center;justify-content:center;
   position:relative;overflow:hidden;
-  padding:60px 56px 100px;
+  padding:132px 56px 100px;
+
+  margin-top:-72px;
 }
 
 /* Canvas für Three.js Wasser + Wolken */
@@ -199,6 +201,8 @@ nav ul.nl > li.dd-open > span{
     url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=85&fit=crop') center/cover no-repeat;
   animation:slowZoom 30s ease-in-out infinite alternate;
   transform-origin:center center;
+
+  margin-top:-72px;
 }
 @keyframes slowZoom{
   0%{transform:scale(1.0) translateX(0)}
@@ -217,11 +221,15 @@ nav ul.nl > li.dd-open > span{
     ),
     radial-gradient(ellipse 80% 60% at 20% 30%, rgba(30,216,200,0.07) 0%, transparent 60%),
     radial-gradient(ellipse 60% 50% at 80% 70%, rgba(232,135,106,0.06) 0%, transparent 55%);
+
+  margin-top:-72px;
 }
 
 /* Licht-Rays — Sonneneinstrahlung */
 .hero-light-rays{
   position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;
+
+  margin-top:-72px;
 }
 .hero-light-rays::before{
   content:'';position:absolute;
@@ -239,6 +247,8 @@ nav ul.nl > li.dd-open > span{
   );
   animation:rayShift 18s ease-in-out infinite alternate;
   transform-origin:50% 0%;
+
+  margin-top:-72px;
 }
 @keyframes rayShift{
   0%{opacity:0.6;transform:rotate(-4deg) scaleX(1)}
@@ -249,12 +259,18 @@ nav ul.nl > li.dd-open > span{
 .hero-water{
   position:absolute;bottom:0;left:0;right:0;z-index:4;
   height:220px;pointer-events:none;overflow:hidden;
+
+  margin-top:-72px;
 }
-.hero-water svg{width:100%;height:100%;display:block}
+.hero-water svg{width:100%;height:100%;display:block
+  margin-top:-72px;
+}
 
 /* Wolken Layer */
 .hero-clouds{
   position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;
+
+  margin-top:-72px;
 }
 .cloud{
   position:absolute;
@@ -304,6 +320,8 @@ nav ul.nl > li.dd-open > span{
 /* Licht-Fleck Bokeh */
 .hero-bokeh{
   position:absolute;inset:0;z-index:3;pointer-events:none;
+
+  margin-top:-72px;
 }
 .bokeh{
   position:absolute;border-radius:50%;
@@ -323,22 +341,32 @@ nav ul.nl > li.dd-open > span{
   position:relative;z-index:10;
   max-width:820px;text-align:center;
   animation:up .9s ease both;
+
+  margin-top:-72px;
 }
-.hero h1{color:#fff !important;}
+.hero h1{color:#fff !important;
+  margin-top:-72px;
+}
 .hero h1 em{
   font-style:italic;
   background:linear-gradient(135deg,#1ED8C8,rgba(232,135,106,0.9)) !important;
   -webkit-background-clip:text !important;
   -webkit-text-fill-color:transparent !important;
   background-clip:text !important;
+
+  margin-top:-72px;
 }
 .hero-badge{
   background:rgba(255,255,255,0.12) !important;
   border:1px solid rgba(30,216,200,0.4) !important;
   color:rgba(200,255,252,0.95) !important;
   backdrop-filter:blur(12px);
+
+  margin-top:-72px;
 }
-.hero-tag{color:rgba(240,240,240,0.82) !important}
+.hero-tag{color:rgba(240,240,240,0.82) !important
+  margin-top:-72px;
+}
 .btn-sec{
   background:var(--grad) !important;
   color:var(--white) !important;
@@ -356,7 +384,9 @@ nav ul.nl > li.dd-open > span{
 /* Blobs werden jetzt nicht mehr gebraucht — ausblenden */
 .h-blob1,.h-blob2,.h-blob3{display:none}
 
-.hero-content{position:relative;z-index:2;max-width:820px;text-align:center;animation:up .9s ease both}
+.hero-content{position:relative;z-index:2;max-width:820px;text-align:center;animation:up .9s ease both
+  margin-top:-72px;
+}
 @keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
 .hero-badge{
@@ -365,6 +395,8 @@ nav ul.nl > li.dd-open > span{
   border-radius:50px;padding:8px 20px;
   font-size:11px;color:var(--teal);letter-spacing:2.5px;text-transform:uppercase;font-weight:700;
   margin-bottom:32px;
+
+  margin-top:-72px;
 }
 .bdot{width:7px;height:7px;background:var(--teal);border-radius:50%;animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
@@ -377,16 +409,22 @@ nav ul.nl > li.dd-open > span{
   margin-bottom:14px;
   will-change:transform;
   transition:transform 0.05s linear;
+
+  margin-top:-72px;
 }
 .hero h1 em{
   font-style:italic;
   background:var(--grad);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+
+  margin-top:-72px;
 }
 /* ══ Parallax Motion ══ */
 .hero-content{
   will-change:transform;
   transition:transform 0.08s cubic-bezier(0.25,0.46,0.45,0.94);
+
+  margin-top:-72px;
 }
 .h-blob1,.h-blob2,.h-blob3{
   will-change:transform;
@@ -404,24 +442,34 @@ nav ul.nl > li.dd-open > span{
 .hero-title-word{
   display:inline-block;
   animation:hero-float-slow 4s ease-in-out infinite;
+
+  margin-top:-72px;
 }
 .hero-title-word:nth-child(2){
   animation-delay:0.5s;
   animation-duration:3.5s;
+
+  margin-top:-72px;
 }
 .hero-title-em{
   display:inline-block;
   animation:hero-float 3s ease-in-out infinite;
   animation-delay:0.8s;
   will-change:transform;
+
+  margin-top:-72px;
 }
 
 .hero-tag{
   font-size:clamp(16px,2.2vw,20px);
   color:var(--muted);max-width:580px;margin:0 auto 48px;
   line-height:1.7;font-weight:300;
+
+  margin-top:-72px;
 }
-.hero-acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap
+  margin-top:-72px;
+}
 .btn-main{
   background:var(--grad);color:var(--white);
   padding:15px 34px;border-radius:50px;text-decoration:none;
@@ -451,8 +499,12 @@ nav ul.nl > li.dd-open > span{
   position:absolute;right:56px;top:50%;transform:translateY(-50%);
   display:flex;align-items:flex-end;gap:-12px;
   opacity:.18;pointer-events:none;
+
+  margin-top:-72px;
 }
-@media(max-width:1200px){.hero-phones{display:none}}
+@media(max-width:1200px){.hero-phones{display:none
+  margin-top:-72px;
+}}
 
 /* ════════════════════════════════
    STRIP — partner logos
@@ -809,6 +861,8 @@ h2.ttl{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,52px);fon
 .app-hero-row{
   display:grid;grid-template-columns:1fr 1.15fr 1fr;
   gap:24px;align-items:flex-end;margin-bottom:72px;
+
+  margin-top:-72px;
 }
 .pw{position:relative;display:flex;justify-content:center;flex-direction:column;align-items:center}
 .pw img{
@@ -1063,15 +1117,21 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
   .fg2{grid-template-columns:1fr 1fr}
   .psb{position:static}
   .pra{grid-template-columns:1fr}
-  .app-hero-row{grid-template-columns:1fr 1fr}
+  .app-hero-row{grid-template-columns:1fr 1fr
+  margin-top:-72px;
+}
   .ip-banner{grid-template-columns:1fr}
   .sc-row{grid-template-columns:1fr}
 }
 @media(max-width:640px){
-  .hero{padding:60px 24px 80px}
+  .hero{padding:132px 24px 80px
+  margin-top:-72px;
+}
   .stats-banner{padding:20px 16px} .stat-item{padding:12px 16px;min-width:120px} .stat-div{display:none}
   .vg,.fg2{grid-template-columns:1fr}
-  .app-hero-row{grid-template-columns:1fr}
+  .app-hero-row{grid-template-columns:1fr
+  margin-top:-72px;
+}
   .pw img{max-width:200px}.pw-center img{max-width:200px;transform:none}
   .i15{flex-direction:column;padding:30px 24px;text-align:center}
   .app-cta,.app-test{flex-direction:column;text-align:center}
@@ -1324,19 +1384,41 @@ nav {
 
 /* ── HERO ── */
 @media(max-width:768px){
-  .hero { padding: 60px 20px 70px; min-height: 85vh; }
-  .hero h1 { font-size: clamp(34px,8vw,58px); margin-bottom: 16px; }
-  .hero-tag { font-size: clamp(14px,3.5vw,18px); }
-  .hero-badge { font-size: 10px; padding: 7px 16px; margin-bottom: 20px; }
-  .hero-acts { gap: 10px; margin-top: 24px; flex-direction: column; align-items: center; }
-  .hero-acts a { width: 100%; max-width: 280px; text-align: center; padding: 13px 20px; font-size: 14px; }
-  .hero-water { height: 80px; }
-  .hero-phones { display: none; }
+  .hero { padding: 132px 20px 70px; min-height: 85vh; 
+  margin-top:-72px;
+}
+  .hero h1 { font-size: clamp(34px,8vw,58px); margin-bottom: 16px; 
+  margin-top:-72px;
+}
+  .hero-tag { font-size: clamp(14px,3.5vw,18px); 
+  margin-top:-72px;
+}
+  .hero-badge { font-size: 10px; padding: 7px 16px; margin-bottom: 20px; 
+  margin-top:-72px;
+}
+  .hero-acts { gap: 10px; margin-top: 24px; flex-direction: column; align-items: center; 
+  margin-top:-72px;
+}
+  .hero-acts a { width: 100%; max-width: 280px; text-align: center; padding: 13px 20px; font-size: 14px; 
+  margin-top:-72px;
+}
+  .hero-water { height: 80px; 
+  margin-top:-72px;
+}
+  .hero-phones { display: none; 
+  margin-top:-72px;
+}
 }
 @media(max-width:480px){
-  .hero { padding: 60px 16px 60px; }
-  .hero h1 { font-size: clamp(28px,9vw,46px); }
-  .hero-tag { font-size: 14px; }
+  .hero { padding: 132px 16px 60px; 
+  margin-top:-72px;
+}
+  .hero h1 { font-size: clamp(28px,9vw,46px); 
+  margin-top:-72px;
+}
+  .hero-tag { font-size: 14px; 
+  margin-top:-72px;
+}
 }
 
 /* ── STATS SECTION ── */
@@ -1381,14 +1463,18 @@ nav {
   .is:last-child { border-bottom: none; }
   .vg { grid-template-columns: repeat(2,1fr); }
   .pra { grid-template-columns: 1fr; }
-  .app-hero-row { grid-template-columns: 1fr 1fr; }
+  .app-hero-row { grid-template-columns: 1fr 1fr; 
+  margin-top:-72px;
+}
   .ip-banner { grid-template-columns: 1fr; }
   .sc-row { grid-template-columns: 1fr; }
 }
 @media(max-width:768px){
   .about-g, .join-g, .prg, .pg, .rg, .af-grid { gap: 28px; }
   .vg { grid-template-columns: 1fr; }
-  .app-hero-row { grid-template-columns: 1fr; text-align: center; }
+  .app-hero-row { grid-template-columns: 1fr; text-align: center; 
+  margin-top:-72px;
+}
   .pw img, .pw-center img { max-width: 220px; transform: none; }
   section { padding: 60px 0; }
   .i15 { flex-direction: column; padding: 28px 20px; text-align: center; }
