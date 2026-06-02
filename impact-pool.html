@@ -1230,60 +1230,662 @@ img, video, svg { max-width: 100%; }
   <a href="https://be-hui.vercel.app/Home" target="_blank" class="mob-login">&#128274; Login / App öffnen</a>
 </div>
 </nav>
-<!-- ══════════════ IMPACT POOL ══════════════ -->
-<section class="impact" id="impact">
-  <div class="si">
-    <div class="ihead">
-      <div class="lbl">Wie es funktioniert</div>
-      <h2 class="ttl">Der Impact-Pool &#8212;<br>ein Kreislauf der Wirkung.</h2>
-      <p class="dsc">Jede Aktivit&#228;t erzeugt automatisch sozialen Impact &#8212; ohne dass du etwas extra tun musst.</p>
-    </div>
-        <div class="itext-extended" style="margin:60px 0 50px 0;padding:48px 56px;background:#ffffff;border-radius:20px;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
-      <div style="max-width:800px;margin:0 auto;">
-        <div class="lbl" data-t-key="pool.what.h2">Was ist der Impact Pool?</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:var(--text);margin:0 0 24px 0;line-height:1.3;" data-t-key="pool.what.h3">Deine Aktivität verändert die Welt — ganz automatisch.</h3>
-        <p style="font-size:16px;color:#505050;line-height:1.8;margin:0 0 20px 0;">Der Impact-Pool ist das Herzstück der HUI-Plattform. Er verbindet wirtschaftliche Aktivität mit gesellschaftlicher Verantwortung — ohne Mehraufwand für dich. Jedes Mal, wenn du eine Session buchst, ein Talent engagierst oder eine Dienstleistung über HUI in Anspruch nimmst, fließen automatisch <strong style="color:var(--teal);">15 % des Umsatzes</strong> in diesen gemeinsamen Wirkungsfonds.</p>
-        <p style="font-size:16px;color:#505050;line-height:1.8;margin:0 0 20px 0;">Was dieses Modell einzigartig macht: Die Verteilung des Geldes liegt nicht bei einem Komitee oder einer Organisation — sie liegt bei der Community. Alle aktiven Talente auf der Plattform stimmen monatlich ab, welches soziale Projekt als Nächstes vollständig finanziert werden soll. Das schafft Transparenz, Mitgestaltung und echte demokratische Wirkung.</p>
-        <p style="font-size:16px;color:#505050;line-height:1.8;margin:0;">Geförderte Projekte müssen realistisch finanzierbar sein — das HUI-Team prüft jeden Monat drei konkrete Vorhaben mit klaren Budgets. Der Gewinner erhält seinen vollen Wunschbetrag auf einmal. Die übrigen Projekte bleiben im Pool und wachsen weiter, bis auch sie ihr Ziel erreichen. So entsteht ein nachhaltiger Kreislauf: Jede Aktivität auf HUI wird zum Teil einer größeren Bewegung.</p>
+
+<!-- ══════════════ IMPACT POOL — WIE ES FUNKTIONIERT ══════════════ -->
+
+<style>
+/* ─── RESET & BASE ─── */
+:root {
+  --teal: #1ED8C8;
+  --teal-dark: #0fa89a;
+  --teal-light: rgba(30,216,200,0.10);
+  --teal-glow: rgba(30,216,200,0.25);
+  --text: #0d1f26;
+  --muted: #6b7280;
+  --cream: #F5F0E8;
+  --white: #ffffff;
+  --card-bg: #ffffff;
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,0.12);
+}
+
+/* ─── HERO ─── */
+.ip-hero {
+  min-height: 92vh;
+  background: linear-gradient(155deg, #f5f0e8 0%, #edf8f7 50%, #f0ede8 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 120px 32px 80px;
+}
+.ip-hero-blob-a {
+  position: absolute; width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(30,216,200,0.12) 0%, transparent 70%);
+  top: -200px; right: -200px; pointer-events: none;
+}
+.ip-hero-blob-b {
+  position: absolute; width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(30,216,200,0.08) 0%, transparent 70%);
+  bottom: -150px; left: -100px; pointer-events: none;
+}
+.ip-hero-inner {
+  max-width: 900px; text-align: center; position: relative; z-index: 1;
+}
+.ip-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(30,216,200,0.12); border: 1px solid rgba(30,216,200,0.3);
+  border-radius: 50px; padding: 8px 22px;
+  font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--teal-dark); margin-bottom: 36px;
+  animation: fadeUp 0.6s ease both;
+}
+.ip-hero-eyebrow .dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--teal);
+  animation: blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.ip-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 700; line-height: 1.1; color: var(--text);
+  margin: 0 0 28px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+.ip-hero h1 em { font-style: italic; color: var(--teal); }
+.ip-hero-sub {
+  font-size: clamp(16px, 2vw, 20px); color: var(--muted); line-height: 1.7;
+  max-width: 620px; margin: 0 auto 48px;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+.ip-hero-stats {
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+.ip-hero-stat { text-align: center; }
+.ip-hero-stat-num {
+  display: block; font-family: 'Playfair Display', serif;
+  font-size: 40px; font-weight: 700; color: var(--teal); line-height: 1;
+}
+.ip-hero-stat-lbl {
+  display: block; font-size: 13px; color: var(--muted); margin-top: 6px;
+}
+.ip-hero-stat-div {
+  width: 1px; height: 50px; background: rgba(30,216,200,0.25); align-self: center;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ip-hero-scroll {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+  animation: fadeUp 1s 0.8s ease both;
+}
+.ip-hero-scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--teal), transparent);
+  animation: scrollPulse 2s infinite;
+}
+@keyframes scrollPulse { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(0.6)} }
+
+/* ─── SECTION WRAPPER ─── */
+.ip-section {
+  padding: 100px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.ip-section-head {
+  text-align: center; margin-bottom: 72px;
+}
+.ip-label {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--teal-dark);
+  background: var(--teal-light); border-radius: 20px;
+  padding: 6px 18px; margin-bottom: 20px;
+}
+.ip-section-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 48px); font-weight: 700;
+  color: var(--text); line-height: 1.2; margin: 0 0 16px;
+}
+.ip-section-head p {
+  font-size: 17px; color: var(--muted); line-height: 1.7;
+  max-width: 600px; margin: 0 auto;
+}
+
+/* ─── WHAT IS IT — 2COL ─── */
+.ip-what {
+  background: var(--white);
+  padding: 100px 32px;
+}
+.ip-what-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.ip-what-visual {
+  position: relative;
+}
+.ip-what-card {
+  background: linear-gradient(135deg, #0d1f26 0%, #1a3a47 100%);
+  border-radius: 24px; padding: 48px 40px;
+  color: #fff; position: relative; overflow: hidden;
+}
+.ip-what-card::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(30,216,200,0.2) 0%, transparent 70%);
+}
+.ip-what-card-ico { font-size: 48px; margin-bottom: 20px; }
+.ip-what-card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px; font-weight: 700; color: var(--teal); line-height: 1;
+  margin-bottom: 8px;
+}
+.ip-what-card-label { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 32px; }
+.ip-what-card-bar {
+  background: rgba(255,255,255,0.1); border-radius: 99px; height: 8px; margin-bottom: 12px;
+}
+.ip-what-card-bar-fill {
+  height: 8px; border-radius: 99px;
+  background: linear-gradient(90deg, var(--teal), #0fa89a);
+  width: 68%; transition: width 1.5s ease;
+}
+.ip-what-card-bar-lbl {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: rgba(255,255,255,0.5);
+}
+.ip-what-float {
+  position: absolute; bottom: -20px; right: -20px;
+  background: #fff; border-radius: 16px; padding: 16px 20px;
+  box-shadow: var(--shadow-lg);
+  display: flex; align-items: center; gap: 12px;
+}
+.ip-what-float-ico { font-size: 24px; }
+.ip-what-float-text strong { display: block; font-size: 14px; font-weight: 700; color: var(--text); }
+.ip-what-float-text span { font-size: 12px; color: var(--muted); }
+.ip-what-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3.5vw, 40px); font-weight: 700; color: var(--text);
+  line-height: 1.25; margin: 0 0 24px;
+}
+.ip-what-text p {
+  font-size: 16px; color: var(--muted); line-height: 1.8; margin: 0 0 20px;
+}
+.ip-what-text p strong { color: var(--teal-dark); }
+.ip-what-pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.ip-what-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--teal-light); border-radius: 50px;
+  padding: 8px 18px; font-size: 13px; font-weight: 600; color: var(--teal-dark);
+}
+
+/* ─── STEPS ─── */
+.ip-steps-bg {
+  background: linear-gradient(160deg, #0d1f26 0%, #1a3a47 100%);
+  padding: 100px 32px;
+  position: relative; overflow: hidden;
+}
+.ip-steps-bg::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 800px; height: 800px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(30,216,200,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.ip-steps-inner { max-width: 1200px; margin: 0 auto; }
+.ip-steps-head { text-align: center; margin-bottom: 80px; }
+.ip-steps-head .ip-label { background: rgba(30,216,200,0.15); color: var(--teal); }
+.ip-steps-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 48px); font-weight: 700; color: #fff; line-height: 1.2; margin: 0 0 16px;
+}
+.ip-steps-head p { font-size: 17px; color: rgba(255,255,255,0.55); max-width: 560px; margin: 0 auto; }
+.ip-steps-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+}
+.ip-step-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 40px 32px;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.ip-step-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+}
+.ip-step-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--teal), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.ip-step-card:hover::before { opacity: 1; }
+.ip-step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px; font-weight: 700;
+  color: rgba(30,216,200,0.15); line-height: 1;
+  margin-bottom: 16px;
+}
+.ip-step-ico { font-size: 36px; margin-bottom: 16px; }
+.ip-step-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700; color: #fff; margin: 0 0 12px;
+}
+.ip-step-card p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0; }
+.ip-step-card strong { color: var(--teal); }
+
+/* ─── FLOW / TIMELINE ─── */
+.ip-flow {
+  background: var(--cream); padding: 100px 32px;
+}
+.ip-flow-inner { max-width: 900px; margin: 0 auto; }
+.ip-timeline { display: flex; flex-direction: column; gap: 0; margin-top: 64px; }
+.ip-tl-item {
+  display: grid; grid-template-columns: 80px 1fr; gap: 32px; align-items: start;
+}
+.ip-tl-item:not(:last-child) .ip-tl-line-wrap::after {
+  content: ''; display: block;
+  width: 2px; height: 60px; margin: 0 auto;
+  background: linear-gradient(to bottom, rgba(30,216,200,0.4), rgba(30,216,200,0.05));
+}
+.ip-tl-num-wrap { display: flex; flex-direction: column; align-items: center; }
+.ip-tl-num {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #fff;
+  box-shadow: 0 8px 24px rgba(30,216,200,0.3);
+  flex-shrink: 0;
+}
+.ip-tl-line-wrap { display: flex; flex-direction: column; align-items: center; }
+.ip-tl-body { padding: 4px 0 48px; }
+.ip-tl-body h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700; color: var(--text); margin: 8px 0 10px;
+}
+.ip-tl-body p { font-size: 15px; color: var(--muted); line-height: 1.7; margin: 0; }
+.ip-tl-body strong { color: var(--teal-dark); }
+.ip-tl-tag {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--teal-dark);
+  background: var(--teal-light); border-radius: 20px; padding: 4px 12px; margin-bottom: 6px;
+}
+
+/* ─── FAQ / PRINCIPLES ─── */
+.ip-principles { padding: 100px 32px; background: var(--white); }
+.ip-principles-inner { max-width: 1100px; margin: 0 auto; }
+.ip-princ-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 64px;
+}
+.ip-princ-card {
+  background: var(--cream); border-radius: 20px; padding: 40px 36px;
+  border: 1px solid transparent;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.ip-princ-card:hover {
+  border-color: rgba(30,216,200,0.3);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+.ip-princ-ico { font-size: 36px; margin-bottom: 18px; }
+.ip-princ-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700; color: var(--text); margin: 0 0 12px;
+}
+.ip-princ-card p { font-size: 15px; color: var(--muted); line-height: 1.7; margin: 0; }
+
+/* ─── CTA ─── */
+.ip-cta {
+  background: linear-gradient(135deg, #0d1f26 0%, #1a3a47 50%, #0d2a33 100%);
+  padding: 100px 32px; text-align: center; position: relative; overflow: hidden;
+}
+.ip-cta::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(30,216,200,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.ip-cta-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+.ip-cta-inner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4.5vw, 52px); font-weight: 700;
+  color: #fff; line-height: 1.2; margin: 0 0 20px;
+}
+.ip-cta-inner h2 em { font-style: italic; color: var(--teal); }
+.ip-cta-inner p { font-size: 18px; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0 0 48px; }
+.ip-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.ip-btn-main {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--teal); color: #0d1f26;
+  font-weight: 700; font-size: 15px; padding: 16px 36px; border-radius: 50px;
+  text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 32px rgba(30,216,200,0.35);
+}
+.ip-btn-main:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(30,216,200,0.5); }
+.ip-btn-sec {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.08); color: #fff;
+  font-weight: 600; font-size: 15px; padding: 16px 36px; border-radius: 50px;
+  text-decoration: none; border: 1px solid rgba(255,255,255,0.2);
+  transition: background 0.2s;
+}
+.ip-btn-sec:hover { background: rgba(255,255,255,0.14); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .ip-what-inner { grid-template-columns: 1fr; gap: 48px; }
+  .ip-what-visual { order: -1; }
+  .ip-steps-grid { grid-template-columns: 1fr; }
+  .ip-tl-item { grid-template-columns: 56px 1fr; gap: 20px; }
+  .ip-princ-grid { grid-template-columns: 1fr; }
+  .ip-hero-stats { gap: 24px; }
+  .ip-hero-stat-div { display: none; }
+  .ip-what-float { display: none; }
+}
+@media (max-width: 600px) {
+  .ip-hero { padding: 100px 20px 60px; }
+  .ip-section, .ip-what, .ip-steps-bg, .ip-flow, .ip-principles, .ip-cta { padding: 72px 20px; }
+  .ip-steps-grid { gap: 16px; }
+}
+</style>
+
+<!-- ══ HERO ══ -->
+<section class="ip-hero">
+  <div class="ip-hero-blob-a"></div>
+  <div class="ip-hero-blob-b"></div>
+  <div class="ip-hero-inner">
+    <div class="ip-hero-eyebrow"><span class="dot"></span> Impact Pool</div>
+    <h1>Der Impact-Pool —<br>ein <em>Kreislauf</em> der Wirkung.</h1>
+    <p class="ip-hero-sub">Jede Aktivität auf HUI erzeugt automatisch sozialen Impact — ohne dass du etwas extra tun musst.</p>
+    <div class="ip-hero-stats">
+      <div class="ip-hero-stat">
+        <span class="ip-hero-stat-num">15 %</span>
+        <span class="ip-hero-stat-lbl">jeder Buchung</span>
+      </div>
+      <div class="ip-hero-stat-div"></div>
+      <div class="ip-hero-stat">
+        <span class="ip-hero-stat-num">1</span>
+        <span class="ip-hero-stat-lbl">Stimme pro Talent</span>
+      </div>
+      <div class="ip-hero-stat-div"></div>
+      <div class="ip-hero-stat">
+        <span class="ip-hero-stat-num">100 %</span>
+        <span class="ip-hero-stat-lbl">ans Gewinnerprojekt</span>
       </div>
     </div>
-    <div class="isteps">
-      <div class="is"><div class="isn">01</div><h4>Aktivit&#228;t erzeugt Impact</h4><p>Bei jeder Buchung oder Session flie&#223;en <strong style="color:var(--teal)">15&#160;%</strong> automatisch in den Impact-Pool.</p></div>
-      <div class="is"><div class="isn">02</div><h4>Drei Projekte zur Wahl</h4><p>Das HUI-Team w&#228;hlt monatlich 3 f&#246;rderbare Projekte aus, die realistisch finanzierbar sind.</p></div>
-      <div class="is"><div class="isn">03</div><h4>Community entscheidet</h4><p>Alle Talente haben 1 Stimme pro Monat. Du bestimmst, welches Projekt das Geld zuerst bekommt.</p></div>
-      <div class="is"><div class="isn">04</div><h4>Gewinner erh&#228;lt alles</h4><p>Das Projekt mit den meisten Stimmen erh&#228;lt seinen gesamten Wunschbetrag vollst&#228;ndig.</p></div>
-      <div class="is"><div class="isn">05</div><h4>Niemand geht leer aus</h4><p>Der restliche Pool wird anteilig verteilt. Andere Projekte bleiben bis zur vollen Finanzierung aktiv.</p></div>
-      <div class="is"><div class="isn">06</div><h4>Kreislauf w&#228;chst weiter</h4><p>Neue 15&#160;% flie&#223;en jeden Monat ein &#8212; der Pool und die Wirkung wachsen stetig weiter.</p></div>
-    </div>
-        <div class="iflow-graphic" style="margin:60px 0 0 0;">
-      <div style="background:#ffffff;border-radius:20px;padding:48px 56px;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
-        <div class="lbl">So funktioniert es</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:32px;color:var(--text);margin:0 0 40px 0;line-height:1.3;">Der Ablauf in 6 klaren Schritten</h3>
-        <div style="display:flex;flex-direction:column;">
-          <div style="display:flex;align-items:flex-start;gap:24px;padding:32px 36px;background:#fff;border-radius:16px;border-left:4px solid var(--teal);"><div style="min-width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0;">01</div><div style="flex:1;"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:22px;">💳</span><h4 style="font-size:16px;font-weight:700;color:var(--teal);margin:0;text-transform:uppercase;">Aktivität buchen</h4></div><p style="font-size:15px;color:#505050;line-height:1.7;margin:0;">Du buchst eine Session, engagierst ein Talent oder nutzt eine Dienstleistung auf der HUI-Plattform.</p></div></div>
-          <div style="display:flex;justify-content:flex-start;padding-left:63px;"><div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--teal),rgba(30,216,200,0.2));"></div></div>
-          <div style="display:flex;align-items:flex-start;gap:24px;padding:32px 36px;background:rgba(30,216,200,0.06);border-radius:16px;border-left:4px solid var(--teal);"><div style="min-width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0;">02</div><div style="flex:1;"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:22px;">🌱</span><h4 style="font-size:16px;font-weight:700;color:var(--teal);margin:0;text-transform:uppercase;">15 % fließen automatisch</h4></div><p style="font-size:15px;color:#505050;line-height:1.7;margin:0;">Vom Gesamtumsatz deiner Buchung werden automatisch 15 % in den gemeinsamen Impact-Pool eingezahlt — ohne weiteren Aufwand.</p></div></div>
-          <div style="display:flex;justify-content:flex-start;padding-left:63px;"><div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--teal),rgba(30,216,200,0.2));"></div></div>
-          <div style="display:flex;align-items:flex-start;gap:24px;padding:32px 36px;background:#fff;border-radius:16px;border-left:4px solid var(--teal);"><div style="min-width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0;">03</div><div style="flex:1;"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:22px;">🗂️</span><h4 style="font-size:16px;font-weight:700;color:var(--teal);margin:0;text-transform:uppercase;">3 Projekte werden ausgewählt</h4></div><p style="font-size:15px;color:#505050;line-height:1.7;margin:0;">Das HUI-Team wählt jeden Monat drei soziale Projekte mit realistischem, klar definiertem Finanzierungsbedarf aus.</p></div></div>
-          <div style="display:flex;justify-content:flex-start;padding-left:63px;"><div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--teal),rgba(30,216,200,0.2));"></div></div>
-          <div style="display:flex;align-items:flex-start;gap:24px;padding:32px 36px;background:rgba(30,216,200,0.06);border-radius:16px;border-left:4px solid var(--teal);"><div style="min-width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0;">04</div><div style="flex:1;"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:22px;">🗣️</span><h4 style="font-size:16px;font-weight:700;color:var(--teal);margin:0;text-transform:uppercase;">Community stimmt ab</h4></div><p style="font-size:15px;color:#505050;line-height:1.7;margin:0;">Alle aktiven Talente erhalten je eine Stimme und entscheiden demokratisch, welches Projekt den Pool als Erstes erhält.</p></div></div>
-          <div style="display:flex;justify-content:flex-start;padding-left:63px;"><div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--teal),rgba(30,216,200,0.2));"></div></div>
-          <div style="display:flex;align-items:flex-start;gap:24px;padding:32px 36px;background:#fff;border-radius:16px;border-left:4px solid var(--teal);"><div style="min-width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0;">05</div><div style="flex:1;"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:22px;">🏆</span><h4 style="font-size:16px;font-weight:700;color:var(--teal);margin:0;text-transform:uppercase;">Gewinner wird vollständig finanziert</h4></div><p style="font-size:15px;color:#505050;line-height:1.7;margin:0;">Das Projekt mit den meisten Stimmen erhält seinen gesamten Wunschbetrag auf einmal. Die anderen Projekte bleiben aktiv und wachsen weiter.</p></div></div>
-          <div style="display:flex;justify-content:flex-start;padding-left:63px;"><div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--teal),rgba(30,216,200,0.2));"></div></div>
-          <div style="display:flex;align-items:flex-start;gap:24px;padding:32px 36px;background:rgba(30,216,200,0.06);border-radius:16px;border-left:4px solid var(--teal);"><div style="min-width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0;">06</div><div style="flex:1;"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:22px;">🔄</span><h4 style="font-size:16px;font-weight:700;color:var(--teal);margin:0;text-transform:uppercase;">Kreislauf beginnt neu</h4></div><p style="font-size:15px;color:#505050;line-height:1.7;margin:0;">Monat für Monat fließen neue 15 % ein. Der Pool wächst, neue Projekte kommen hinzu — und die Wirkung vervielfältigt sich stetig.</p></div></div>
+  </div>
+  <div class="ip-hero-scroll">
+    <div class="ip-hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══ WAS IST DER IMPACT POOL ══ -->
+<section class="ip-what">
+  <div class="ip-what-inner">
+    <div class="ip-what-visual">
+      <div class="ip-what-card">
+        <div class="ip-what-card-ico">🌍</div>
+        <div class="ip-what-card-num" id="ip-pool-amount-wef">€124.855</div>
+        <div class="ip-what-card-label">Aktueller Impact-Pool Stand</div>
+        <div class="ip-what-card-bar">
+          <div class="ip-what-card-bar-fill" id="ip-pool-bar-wef"></div>
+        </div>
+        <div class="ip-what-card-bar-lbl">
+          <span>Stadtgärten Berlin</span>
+          <span id="ip-pool-pct-wef">68 %</span>
+        </div>
+      </div>
+      <div class="ip-what-float">
+        <div class="ip-what-float-ico">🗳️</div>
+        <div class="ip-what-float-text">
+          <strong>Community stimmt ab</strong>
+          <span>Jeden Monat neu</span>
         </div>
       </div>
     </div>
-    <div class="i15">
-      <div class="i15n">15%</div>
-      <div class="i15t">
-        <h3>Von jeder Aktivit&#228;t &#8212; automatisch in den Impact-Pool.</h3>
-        <p>Ohne zus&#228;tzliche Spende. Ohne Aufwand. Gemeinsam bewirken wir Ver&#228;nderung &#8212; durch das, was du sowieso tust.</p>
+    <div class="ip-what-text">
+      <div class="ip-label">Was ist der Impact Pool?</div>
+      <h2>Deine Aktivität verändert die Welt — ganz automatisch.</h2>
+      <p>Der Impact-Pool ist das Herzstück der HUI-Plattform. Er verbindet wirtschaftliche Aktivität mit gesellschaftlicher Verantwortung — ohne Mehraufwand für dich.</p>
+      <p>Jedes Mal, wenn du eine Session buchst oder ein Talent engagierst, fließen automatisch <strong>15 % des Umsatzes</strong> in diesen gemeinsamen Wirkungsfonds.</p>
+      <p>Die Verteilung liegt nicht bei einem Komitee — sie liegt bei der <strong>Community</strong>. Alle aktiven Talente stimmen monatlich ab, welches Projekt als Nächstes vollständig finanziert wird.</p>
+      <div class="ip-what-pill-row">
+        <span class="ip-what-pill">✅ Transparent</span>
+        <span class="ip-what-pill">🗳️ Demokratisch</span>
+        <span class="ip-what-pill">🔄 Automatisch</span>
+        <span class="ip-what-pill">💚 Wirkungsvoll</span>
       </div>
     </div>
   </div>
 </section>
-<!-- ══════════════ FOOTER ══════════════ -->
+
+<!-- ══ 6 SCHRITTE ══ -->
+<section class="ip-steps-bg">
+  <div class="ip-steps-inner">
+    <div class="ip-steps-head">
+      <div class="ip-label">Wie es funktioniert</div>
+      <h2>In 6 Schritten zur Wirkung.</h2>
+      <p>So wandelt HUI jede Aktivität in echten sozialen Impact um.</p>
+    </div>
+    <div class="ip-steps-grid">
+      <div class="ip-step-card">
+        <div class="ip-step-num">01</div>
+        <div class="ip-step-ico">💳</div>
+        <h3>Aktivität buchen</h3>
+        <p>Du buchst eine Session, engagierst ein Talent oder nutzt eine Dienstleistung auf der HUI-Plattform.</p>
+      </div>
+      <div class="ip-step-card">
+        <div class="ip-step-num">02</div>
+        <div class="ip-step-ico">🌊</div>
+        <h3>15 % fließen automatisch</h3>
+        <p><strong>15 %</strong> des Umsatzes werden ohne weiteres Zutun direkt in den Impact-Pool eingezahlt.</p>
+      </div>
+      <div class="ip-step-card">
+        <div class="ip-step-num">03</div>
+        <div class="ip-step-ico">🔍</div>
+        <h3>Drei Projekte zur Wahl</h3>
+        <p>Das HUI-Team wählt monatlich 3 förderbare Projekte aus, die realistisch und vollständig finanzierbar sind.</p>
+      </div>
+      <div class="ip-step-card">
+        <div class="ip-step-num">04</div>
+        <div class="ip-step-ico">🗳️</div>
+        <h3>Community entscheidet</h3>
+        <p>Alle Talente haben eine Stimme pro Monat. Du bestimmst, welches Projekt das Geld zuerst bekommt.</p>
+      </div>
+      <div class="ip-step-card">
+        <div class="ip-step-num">05</div>
+        <div class="ip-step-ico">🏆</div>
+        <h3>Gewinner erhält alles</h3>
+        <p>Das Projekt mit den meisten Stimmen erhält seinen gesamten Wunschbetrag — vollständig und auf einmal.</p>
+      </div>
+      <div class="ip-step-card">
+        <div class="ip-step-num">06</div>
+        <div class="ip-step-ico">🔄</div>
+        <h3>Kreislauf wächst weiter</h3>
+        <p>Neue 15 % fließen jeden Monat ein — der Pool und die Wirkung wachsen stetig. Niemand geht leer aus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TIMELINE ══ -->
+<section class="ip-flow">
+  <div class="ip-flow-inner">
+    <div class="ip-section-head">
+      <div class="ip-label">Der Ablauf</div>
+      <h2>Von der Buchung zur Wirkung.</h2>
+      <p>Ein klarer Pfad — von deiner Aktivität bis zum geförderten Projekt.</p>
+    </div>
+    <div class="ip-timeline">
+      <div class="ip-tl-item">
+        <div class="ip-tl-num-wrap">
+          <div class="ip-tl-line-wrap">
+            <div class="ip-tl-num">1</div>
+          </div>
+        </div>
+        <div class="ip-tl-body">
+          <div class="ip-tl-tag">Schritt 1</div>
+          <h4>💳 Du buchst oder bietest an</h4>
+          <p>Jede Transaktion auf der HUI-Plattform — ob Session, Talent-Buchung oder Dienstleistung — löst automatisch den Impact-Mechanismus aus.</p>
+        </div>
+      </div>
+      <div class="ip-tl-item">
+        <div class="ip-tl-num-wrap">
+          <div class="ip-tl-line-wrap">
+            <div class="ip-tl-num">2</div>
+          </div>
+        </div>
+        <div class="ip-tl-body">
+          <div class="ip-tl-tag">Schritt 2</div>
+          <h4>🌊 <strong>15 %</strong> fließen in den Pool</h4>
+          <p>Ohne Klick, ohne Formular. Der Betrag landet direkt im gemeinsamen Wirkungsfonds — transparent und nachverfolgbar für alle.</p>
+        </div>
+      </div>
+      <div class="ip-tl-item">
+        <div class="ip-tl-num-wrap">
+          <div class="ip-tl-line-wrap">
+            <div class="ip-tl-num">3</div>
+          </div>
+        </div>
+        <div class="ip-tl-body">
+          <div class="ip-tl-tag">Schritt 3</div>
+          <h4>🔍 HUI prüft drei Projekte</h4>
+          <p>Jeden Monat wählt das HUI-Team drei konkrete, realistisch finanzierbare Projekte aus — mit klaren Budgets und messbarer Wirkung.</p>
+        </div>
+      </div>
+      <div class="ip-tl-item">
+        <div class="ip-tl-num-wrap">
+          <div class="ip-tl-line-wrap">
+            <div class="ip-tl-num">4</div>
+          </div>
+        </div>
+        <div class="ip-tl-body">
+          <div class="ip-tl-tag">Schritt 4</div>
+          <h4>🗳️ Die Community stimmt ab</h4>
+          <p>Jedes aktive Talent hat eine Stimme. Demokratisch, direkt, ohne Komitee. Du entscheidest, welches Projekt als Nächstes Wirklichkeit wird.</p>
+        </div>
+      </div>
+      <div class="ip-tl-item">
+        <div class="ip-tl-num-wrap">
+          <div class="ip-tl-line-wrap">
+            <div class="ip-tl-num">5</div>
+          </div>
+        </div>
+        <div class="ip-tl-body">
+          <div class="ip-tl-tag">Schritt 5</div>
+          <h4>🏆 Das Gewinnerprojekt erhält alles</h4>
+          <p>Kein Aufteilen, kein Verwässern. Das Projekt mit den meisten Stimmen bekommt seinen gesamten Wunschbetrag auf einmal überwiesen.</p>
+        </div>
+      </div>
+      <div class="ip-tl-item">
+        <div class="ip-tl-num-wrap">
+          <div class="ip-tl-line-wrap">
+            <div class="ip-tl-num">6</div>
+          </div>
+        </div>
+        <div class="ip-tl-body">
+          <div class="ip-tl-tag">Schritt 6</div>
+          <h4>🔄 Der Kreislauf beginnt von vorn</h4>
+          <p>Andere Projekte bleiben aktiv und sammeln weiter. Neue 15 % fließen ein. Die Wirkung wächst — Monat für Monat, Aktivität für Aktivität.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRINZIPIEN ══ -->
+<section class="ip-principles">
+  <div class="ip-principles-inner">
+    <div class="ip-section-head">
+      <div class="ip-label">Unsere Werte</div>
+      <h2>Was den Impact-Pool einzigartig macht.</h2>
+      <p>Vier Prinzipien, die HUI von klassischen Spendenmodellen unterscheiden.</p>
+    </div>
+    <div class="ip-princ-grid">
+      <div class="ip-princ-card">
+        <div class="ip-princ-ico">🔍</div>
+        <h3>Radikale Transparenz</h3>
+        <p>Jeder Cent ist nachverfolgbar. Der aktuelle Pool-Stand ist öffentlich sichtbar — für alle Mitglieder, jederzeit.</p>
+      </div>
+      <div class="ip-princ-card">
+        <div class="ip-princ-ico">🗳️</div>
+        <h3>Echte Demokratie</h3>
+        <p>Keine Stiftung entscheidet. Kein Komitee. Jedes aktive Talent hat eine gleichwertige Stimme bei der Projektauswahl.</p>
+      </div>
+      <div class="ip-princ-card">
+        <div class="ip-princ-ico">⚡</div>
+        <h3>Zero Friction</h3>
+        <p>Du musst nichts extra tun. Der Impact entsteht automatisch bei jeder Buchung — unsichtbar, aber real und messbar.</p>
+      </div>
+      <div class="ip-princ-card">
+        <div class="ip-princ-ico">🌱</div>
+        <h3>Nachhaltiger Kreislauf</h3>
+        <p>Nicht spenden, dann vergessen. Der Pool wächst kontinuierlich und finanziert Projekt für Projekt — solange HUI aktiv ist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="ip-cta">
+  <div class="ip-cta-inner">
+    <div class="ip-label" style="background:rgba(30,216,200,0.15);color:var(--teal);">Jetzt Teil werden</div>
+    <h2>Werde Teil des <em>Kreislaufs.</em></h2>
+    <p>Jede Buchung, jede Session, jedes Talent auf HUI trägt zur Wirkung bei. Starte jetzt — kostenlos.</p>
+    <div class="ip-cta-btns">
+      <a href="https://be-hui.vercel.app/Home" target="_blank" class="ip-btn-main">🚀 Jetzt mitmachen</a>
+      <a href="impact-pool-live.html" class="ip-btn-sec">📊 Impact Pool Live →</a>
+    </div>
+  </div>
+</section>
+
+<script>
+/* Live Pool-Daten in die Hero-Karte injizieren */
+(function(){
+  var API = 'https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/impact_pool_stats?order=created_at.desc&limit=1';
+  var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4enRyaHZoY3hobXVuaGhrZmpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4ODI2NDIsImV4cCI6MjA5MzQ1ODY0Mn0.cq8E_NQkmeTZPIe0G0SSqEzzg6yJhyce5xpW2iwVIbk';
+  fetch(API, { headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY } })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (!data || !data[0]) return;
+      var d = data[0];
+      if (d.total_amount) {
+        var el = document.getElementById('ip-pool-amount-wef');
+        if (el) el.textContent = '€' + Number(d.total_amount).toLocaleString('de-DE');
+      }
+      if (d.current_project_pct) {
+        var bar = document.getElementById('ip-pool-bar-wef');
+        var pct = document.getElementById('ip-pool-pct-wef');
+        if (bar) bar.style.width = d.current_project_pct + '%';
+        if (pct) pct.textContent = d.current_project_pct + ' %';
+      }
+    }).catch(function(){});
+})();
+
+/* Scroll-animierte Elemente */
+(function(){
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.ip-step-card, .ip-tl-item, .ip-princ-card').forEach(function(el, i){
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity 0.6s ' + (i * 0.08) + 's ease, transform 0.6s ' + (i * 0.08) + 's ease';
+    observer.observe(el);
+  });
+})();
+</script>
+
+
 <footer>
   <div class="si">
     <div class="fg2">
