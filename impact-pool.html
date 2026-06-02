@@ -1297,21 +1297,6 @@ img, video, svg { max-width: 100%; }
   max-width: 620px; margin: 0 auto 48px;
   animation: fadeUp 0.7s 0.2s ease both;
 }
-.ip-hero-stats {
-  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
-  animation: fadeUp 0.7s 0.3s ease both;
-}
-.ip-hero-stat { text-align: center; }
-.ip-hero-stat-num {
-  display: block; font-family: 'Playfair Display', serif;
-  font-size: 40px; font-weight: 700; color: var(--teal); line-height: 1;
-}
-.ip-hero-stat-lbl {
-  display: block; font-size: 13px; color: var(--muted); margin-top: 6px;
-}
-.ip-hero-stat-div {
-  width: 1px; height: 50px; background: rgba(30,216,200,0.25); align-self: center;
-}
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -1580,8 +1565,6 @@ img, video, svg { max-width: 100%; }
   .ip-steps-grid { grid-template-columns: 1fr; }
   .ip-tl-item { grid-template-columns: 56px 1fr; gap: 20px; }
   .ip-princ-grid { grid-template-columns: 1fr; }
-  .ip-hero-stats { gap: 24px; }
-  .ip-hero-stat-div { display: none; }
   .ip-what-float { display: none; }
 }
 @media (max-width: 600px) {
@@ -1597,20 +1580,8 @@ img, video, svg { max-width: 100%; }
   <div class="ip-hero-blob-b"></div>
   <div class="ip-hero-inner">
     <div class="ip-hero-eyebrow"><span class="dot"></span> Impact Pool</div>
-    <h1>Der Impact-Pool —<br>ein <em>Kreislauf</em> der Wirkung.</h1>
-    <p class="ip-hero-sub">Jede Aktivität auf HUI erzeugt automatisch sozialen Impact — ohne dass du etwas extra tun musst.</p>
-    </div>
-      <div class="ip-hero-stat-div"></div>
-      <div class="ip-hero-stat">
-        <span class="ip-hero-stat-num">1</span>
-        <span class="ip-hero-stat-lbl">Stimme pro Talent</span>
-      </div>
-      <div class="ip-hero-stat-div"></div>
-      <div class="ip-hero-stat">
-        <span class="ip-hero-stat-num">100 %</span>
-        <span class="ip-hero-stat-lbl">ans Gewinnerprojekt</span>
-      </div>
-    </div>
+    <h1>Der Impact-Pool &mdash;<br>ein <em>Kreislauf</em> der Wirkung.</h1>
+    <p class="ip-hero-sub">Jede Aktivit&auml;t auf HUI erzeugt automatisch sozialen Impact &mdash; ohne dass du etwas extra tun musst.</p>
   </div>
   <div class="ip-hero-scroll">
     <div class="ip-hero-scroll-line"></div>
