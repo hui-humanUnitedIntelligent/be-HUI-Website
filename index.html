@@ -48,9 +48,9 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:300;
   display:flex;align-items:center;justify-content:space-between;
   padding:14px 52px;
-  background:rgba(255,255,255,0.92);
+  background:rgba(245,240,232,0.97);
   backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border2);
+  border-bottom:1px solid rgba(180,160,130,0.15);
   transition:all .3s;
 }
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
@@ -1059,7 +1059,7 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
    RESPONSIVE
 ════════════════════════════════ */
 @media(max-width:1024px){
-  nav{padding:12px 24px}
+  nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:12px 24px}
   .si{padding:0 24px}
   .about-g,.join-g,.prg{grid-template-columns:1fr;gap:40px}
   .pg,.rg,.af-grid{grid-template-columns:1fr}
@@ -1475,7 +1475,7 @@ nav {
   position: fixed; top: 0; z-index: 300;
 }
 @media(max-width:768px){
-  nav { padding: 8px 16px; }
+  nav {position:fixed;top:0;left:0;right:0;z-index:300; padding: 8px 16px; }
   nav ul.nl { display: none !important; }
   .ham { display: flex !important; }
   .mob-drawer { display: block !important; }
