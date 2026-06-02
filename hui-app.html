@@ -1116,6 +1116,267 @@ img, video, svg { max-width: 100%; }
 
 .n-login{background:var(--teal-l);color:var(--teal)!important;font-weight:600!important;border-radius:10px!important;border:1px solid var(--border)!important}
 .n-login:hover{background:var(--teal)!important;color:var(--white)!important}
+
+
+/* ═══════════════════════════════════════════
+   HUI APP PAGE — CSS
+   ═══════════════════════════════════════════ */
+
+/* ── Shared helpers ── */
+.ha-lbl {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+  color:var(--teal,#1ed8c8); margin-bottom:14px;
+}
+.ha-lbl--light { color:rgba(255,255,255,.65); }
+.ha-section-head { text-align:center; max-width:620px; margin:0 auto 56px; }
+.ha-section-head h2 { font-size:clamp(30px,4vw,48px); margin-bottom:14px; line-height:1.15; }
+.ha-section-head p { color:var(--muted,#6b7280); font-size:17px; line-height:1.65; }
+.ha-section-head em { font-style:italic; color:var(--teal,#1ed8c8); }
+.ha-em { font-style:italic; color:var(--teal,#1ed8c8); }
+.ha-em-coral { font-style:italic; color:var(--coral,#e8876a); }
+
+/* ── 1. HERO ── */
+.ha-hero {
+  position:relative; overflow:hidden;
+  background:linear-gradient(155deg,#f8f6f2 0%,#edf8f7 55%,#f5f0ec 100%);
+  padding:100px 0 80px;
+}
+.ha-hero-blob {
+  position:absolute; border-radius:50%; filter:blur(90px); pointer-events:none;
+}
+.ha-hero-blob--a { width:600px;height:600px;background:rgba(30,216,200,.1);top:-150px;right:-100px; }
+.ha-hero-blob--b { width:350px;height:350px;background:rgba(232,135,106,.07);bottom:-80px;left:-60px; }
+.ha-hero-inner {
+  display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+  position:relative; z-index:1;
+}
+.ha-eyebrow {
+  display:inline-block; font-size:12px; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; color:var(--teal,#1ed8c8);
+  background:rgba(30,216,200,.1); padding:7px 16px; border-radius:20px; margin-bottom:22px;
+}
+.ha-hero-text h1 {
+  font-size:clamp(38px,5.5vw,66px); line-height:1.1; margin-bottom:18px; color:#0d1f26;
+}
+.ha-hero-desc {
+  font-size:17px; line-height:1.7; color:var(--muted,#6b7280); margin-bottom:36px; max-width:460px;
+}
+.ha-hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
+
+/* Phone mockups */
+.ha-hero-phones {
+  display:flex; gap:16px; align-items:flex-end; justify-content:center;
+}
+.ha-phone {
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  transition:transform .3s;
+}
+.ha-phone:hover { transform:translateY(-6px); }
+.ha-phone--left,.ha-phone--right { transform:scale(.88); opacity:.85; }
+.ha-phone--left:hover,.ha-phone--right:hover { transform:scale(.88) translateY(-6px); }
+.ha-phone--center { transform:scale(1); opacity:1; z-index:2; }
+.ha-phone-screen {
+  width:150px; height:280px; border-radius:24px;
+  background:#fff; border:1px solid #e2e8f0;
+  box-shadow:0 20px 60px rgba(0,0,0,.12);
+  padding:16px 12px; overflow:hidden;
+  display:flex; flex-direction:column; gap:8px;
+}
+.ha-phone-screen--home { background:linear-gradient(160deg,#0d1f26,#0f2a2a); }
+.ha-phone-screen--impact { background:linear-gradient(160deg,#0a1628,#0d2a1a); }
+.ha-mock-bar { width:50px;height:4px;background:rgba(0,0,0,.08);border-radius:2px;margin:0 auto 4px; }
+.ha-phone-screen--home .ha-mock-bar,
+.ha-phone-screen--impact .ha-mock-bar { background:rgba(255,255,255,.15); }
+.ha-mock-avatar { font-size:32px; text-align:center; margin:8px 0 2px; }
+.ha-mock-name { font-size:13px; font-weight:700; color:#0d1f26; text-align:center; }
+.ha-mock-role { font-size:11px; color:#6b7280; text-align:center; }
+.ha-mock-tag { font-size:11px; color:#1ed8c8; text-align:center; margin-top:4px; }
+.ha-mock-greeting { font-size:13px; font-weight:700; color:#fff; }
+.ha-mock-subtitle { font-size:11px; color:rgba(255,255,255,.6); }
+.ha-mock-card {
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
+  border-radius:10px; padding:8px 10px; font-size:11px; color:#fff;
+}
+.ha-mock-card--2 { background:rgba(30,216,200,.15); border-color:rgba(30,216,200,.3); }
+.ha-mock-pool { font-size:11px; color:#1ed8c8; margin-top:auto; font-weight:600; }
+.ha-mock-proj-ico { font-size:28px; text-align:center; margin-top:8px; }
+.ha-mock-proj-name { font-size:12px; font-weight:700; color:#fff; text-align:center; }
+.ha-mock-prog { height:6px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden; margin:4px 0; }
+.ha-mock-prog-fill { height:100%;background:#1ed8c8;border-radius:3px; }
+.ha-mock-proj-stat { font-size:11px; color:rgba(255,255,255,.6); text-align:center; }
+.ha-phone-label { font-size:12px; color:#6b7280; font-weight:500; }
+.ha-phone-badge {
+  background:var(--teal,#1ed8c8); color:#0d1f26; font-size:11px; font-weight:700;
+  padding:4px 12px; border-radius:12px; letter-spacing:.5px;
+}
+
+/* ── 2. PILLARS ── */
+.ha-pillars { padding:96px 0; background:#fff; }
+.ha-pillars-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+.ha-pillar {
+  border-radius:24px; padding:36px 28px;
+  border:1px solid #e5e7eb;
+  transition:transform .25s, box-shadow .25s;
+  position:relative; overflow:hidden;
+}
+.ha-pillar:hover { transform:translateY(-6px); box-shadow:0 20px 56px rgba(0,0,0,.09); }
+.ha-pillar--1 { background:linear-gradient(145deg,#fff3ee,#fff8f5); }
+.ha-pillar--2 { background:linear-gradient(145deg,#edf8f7,#f5fffe); }
+.ha-pillar--3 { background:linear-gradient(145deg,#f0faf0,#f5fff5); }
+.ha-pillar-ico { font-size:44px; margin-bottom:18px; }
+.ha-pillar h3 { font-size:20px; font-weight:700; color:#0d1f26; margin-bottom:12px; }
+.ha-pillar p { font-size:15px; color:#6b7280; line-height:1.65; margin-bottom:18px; }
+.ha-pillar-cta { font-size:13px; font-weight:700; color:var(--teal,#1ed8c8); }
+
+/* ── 3. FEATURES ── */
+.ha-features { padding:96px 0; background:#f8f6f2; }
+.ha-feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.ha-feat {
+  background:#fff; border-radius:20px; padding:28px 26px;
+  border:1px solid #e5e7eb;
+  box-shadow:0 4px 16px rgba(0,0,0,.04);
+  transition:transform .25s, box-shadow .25s;
+}
+.ha-feat:hover { transform:translateY(-5px); box-shadow:0 16px 48px rgba(0,0,0,.09); }
+.ha-feat-ico {
+  width:52px; height:52px; border-radius:16px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:24px; margin-bottom:16px;
+}
+.ha-feat-ico--teal   { background:rgba(30,216,200,.12); }
+.ha-feat-ico--gold   { background:#fef9e6; }
+.ha-feat-ico--green  { background:#f0faf0; }
+.ha-feat-ico--blue   { background:#eef6ff; }
+.ha-feat-ico--coral  { background:#fff3ee; }
+.ha-feat-ico--purple { background:#fdf0ff; }
+.ha-feat h4 { font-size:17px; font-weight:700; color:#0d1f26; margin-bottom:8px; }
+.ha-feat p  { font-size:14px; color:#6b7280; line-height:1.6; margin:0; }
+
+/* ── 4. IMPACT POOL ── */
+.ha-impact {
+  padding:96px 0;
+  background:linear-gradient(160deg,#0d1f26 0%,#0f2a2a 100%);
+}
+.ha-impact-grid {
+  display:grid; grid-template-columns:1fr 1.4fr; gap:80px; align-items:center;
+}
+.ha-impact-visual { display:flex; flex-direction:column; align-items:center; gap:32px; }
+.ha-impact-orb {
+  width:200px; height:200px; border-radius:50%;
+  background:radial-gradient(circle,rgba(30,216,200,.2) 0%,rgba(30,216,200,.04) 70%);
+  border:2px solid rgba(30,216,200,.3);
+  display:flex; align-items:center; justify-content:center;
+}
+.ha-impact-orb-ico { font-size:72px; }
+.ha-impact-stat-ring {
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+  border-radius:20px; padding:16px 32px; text-align:center;
+}
+.ha-impact-pct { display:block; font-size:36px; font-weight:800; color:#1ed8c8; line-height:1; }
+.ha-impact-pct-label { font-size:12px; color:rgba(255,255,255,.5); margin-top:4px; }
+.ha-impact-text .ha-lbl { color:rgba(255,255,255,.5); }
+.ha-impact-amount { font-size:clamp(40px,5vw,64px); font-weight:900; color:#1ed8c8; line-height:1; margin:8px 0 4px; }
+.ha-impact-delta { font-size:14px; color:rgba(255,255,255,.55); margin-bottom:24px; }
+.ha-impact-text h2 { font-size:clamp(26px,3.5vw,40px); color:#fff; margin-bottom:16px; line-height:1.2; }
+.ha-impact-text h2 em { font-style:italic; color:#1ed8c8; }
+.ha-impact-text p { color:rgba(255,255,255,.65); font-size:16px; line-height:1.7; }
+
+/* ── 5. PROJEKTE ── */
+.ha-projects { padding:96px 0; background:#fff; }
+.ha-proj-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; max-width:900px; margin:0 auto; }
+.ha-proj-card {
+  border-radius:24px; overflow:hidden;
+  border:1px solid #e5e7eb;
+  box-shadow:0 4px 20px rgba(0,0,0,.05);
+  transition:transform .25s, box-shadow .25s;
+}
+.ha-proj-card:hover { transform:translateY(-5px); box-shadow:0 16px 48px rgba(0,0,0,.1); }
+.ha-proj-img { height:140px; display:flex; align-items:center; justify-content:center; font-size:56px; }
+.ha-proj-body { padding:24px 24px 28px; }
+.ha-proj-tag {
+  display:inline-block; font-size:11px; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; background:rgba(30,216,200,.1); color:#1ed8c8;
+  padding:3px 10px; border-radius:12px; margin-bottom:10px;
+}
+.ha-proj-tag--green { background:#f0faf0; color:#2a7a3b; }
+.ha-proj-body h4 { font-size:17px; font-weight:700; color:#0d1f26; margin-bottom:8px; }
+.ha-proj-body p { font-size:14px; color:#6b7280; margin-bottom:16px; font-style:italic; }
+.ha-proj-bar { height:6px; background:#f0f0f0; border-radius:3px; overflow:hidden; margin-bottom:8px; }
+.ha-proj-fill { height:100%; background:#1ed8c8; border-radius:3px; }
+.ha-proj-fill--green { background:#34a853; }
+.ha-proj-stats { font-size:12px; color:#9ca3af; }
+
+/* ── 6. TESTIMONIAL ── */
+.ha-testimonial { padding:80px 0; background:#f8f6f2; }
+.ha-test-box {
+  max-width:720px; margin:0 auto;
+  background:#fff; border-radius:28px; padding:52px 56px;
+  border:1px solid #e5e7eb;
+  box-shadow:0 8px 40px rgba(0,0,0,.06);
+  position:relative;
+}
+.ha-test-quote-mark {
+  font-size:120px; line-height:.6; color:rgba(30,216,200,.15);
+  font-family:Georgia,serif; position:absolute; top:28px; left:36px;
+}
+.ha-test-text {
+  font-size:20px; line-height:1.7; color:#0d1f26;
+  font-style:italic; margin-bottom:32px; position:relative; z-index:1;
+}
+.ha-test-author { display:flex; align-items:center; gap:16px; }
+.ha-test-av {
+  width:48px; height:48px; border-radius:50%;
+  background:linear-gradient(135deg,#1ed8c8,#0fa89a);
+  color:#fff; font-weight:800; font-size:20px;
+  display:flex; align-items:center; justify-content:center;
+}
+.ha-test-name { font-weight:700; color:#0d1f26; font-size:15px; }
+.ha-test-role { font-size:13px; color:#9ca3af; }
+
+/* ── 7. CTA ── */
+.ha-cta {
+  padding:120px 0;
+  background:linear-gradient(155deg,#0d1f26 0%,#0f2a2a 100%);
+  text-align:center; position:relative; overflow:hidden;
+}
+.ha-cta-blob {
+  position:absolute; width:600px; height:600px; border-radius:50%;
+  background:radial-gradient(circle,rgba(30,216,200,.12) 0%,transparent 70%);
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.ha-cta-inner { position:relative; z-index:1; }
+.ha-cta h2 {
+  font-size:clamp(30px,4.5vw,54px); color:#fff;
+  margin:12px 0 36px; line-height:1.2;
+}
+.ha-cta h2 em { font-style:italic; color:#1ed8c8; }
+.ha-cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .ha-feat-grid { grid-template-columns:repeat(2,1fr); }
+  .ha-impact-grid { grid-template-columns:1fr; gap:48px; text-align:center; }
+  .ha-impact-visual { flex-direction:row; justify-content:center; }
+}
+@media(max-width:768px){
+  .ha-hero-inner { grid-template-columns:1fr; }
+  .ha-hero-phones { display:none; }
+  .ha-pillars-grid { grid-template-columns:1fr; }
+  .ha-feat-grid { grid-template-columns:1fr; }
+  .ha-proj-grid { grid-template-columns:1fr; max-width:460px; }
+  .ha-test-box { padding:36px 28px; }
+  .ha-test-quote-mark { font-size:80px; }
+  .ha-impact-visual { flex-direction:column; }
+}
+@media(max-width:480px){
+  .ha-hero-phones { display:none; }
+  .ha-cta-btns { flex-direction:column; align-items:center; }
+  .ha-closing-btns { flex-direction:column; align-items:center; }
+}
+
+
 </style>
 </head>
 <body>
@@ -1242,112 +1503,226 @@ img, video, svg { max-width: 100%; }
 </div>
 </nav>
 <!-- ââââââââââââââ PILLARS ââââââââââââââ -->
-<section class="pillars">
-  <div class="si">
-    <div class="pillars-h">
-      <div>
-        <div class="lbl" data-t-key="app.three.h2">Die drei Bereiche</div>
-        <h2 class="ttl" data-t-key="app.three.sub">Alles auf einer Plattform.</h2>
+
+
+<!-- ═══════════════════════════════════════
+     HUI APP PAGE — REDESIGN (HUI Stil)
+     ═══════════════════════════════════════ -->
+
+<!-- 1 ▸ HERO ──────────────────────────────────────────── -->
+<section class="ha-hero">
+  <div class="ha-hero-blob ha-hero-blob--a"></div>
+  <div class="ha-hero-blob ha-hero-blob--b"></div>
+  <div class="ha-hero-inner si">
+    <div class="ha-hero-text">
+      <span class="ha-eyebrow">📱 HUI App · be-hui.vercel.app</span>
+      <h1>Die App, die Menschen<br><em class="ha-em">verbindet</em> und <em class="ha-em-coral">bewegt.</em></h1>
+      <p class="ha-hero-desc">Talente finden. Sicher buchen. Impact erzeugen. Alles in einer App — klar, schön und menschlich.</p>
+      <div class="ha-hero-btns">
+        <a href="https://be-hui.vercel.app/Home" target="_blank" class="btn-main">Web-App öffnen →</a>
+        <a href="app-download.html" class="btn-sec">App herunterladen</a>
       </div>
-      <p class="dsc" style="max-width:340px">Drei Welten, eine Community &#8212; verbunden durch den Impact-Pool.</p>
     </div>
-    <div class="pg">
-      <div class="pc"><div class="pico i1">&#127912;</div><h3>Talente &amp; Werke</h3><p>Kreative und Macher werden sichtbar. Mit wenigen Klicks ein Profil erstellen, gebucht werden und fair bezahlt werden.</p><span class="ptag">&#8594; Kreativit&#228;t zeigen</span></div>
-      <div class="pc"><div class="pico i2">&#10024;</div><h3>Erlebnisse &amp; Sessions</h3><p>Coaches und Mentoren bieten Workshops an. Lernen, lehren, wachsen &#8212; sicher und fair in einem System.</p><span class="ptag">&#8594; Erlebnisse teilen</span></div>
-      <div class="pc"><div class="pico i3">&#127757;</div><h3>Impact-Pool &amp; Projekte</h3><p>15&#160;% jeder Aktivit&#228;t flie&#223;en automatisch. Die Community stimmt monatlich ab, welches Projekt gef&#246;rdert wird.</p><span class="ptag">&#8594; Wirkung erzielen</span></div>
+    <div class="ha-hero-phones">
+      <div class="ha-phone ha-phone--left">
+        <div class="ha-phone-screen ha-phone-screen--profile">
+          <div class="ha-mock-bar"></div>
+          <div class="ha-mock-avatar">👩‍🎨</div>
+          <div class="ha-mock-name">Lea Sommer</div>
+          <div class="ha-mock-role">Fotografin · Wirker</div>
+          <div class="ha-mock-tag">⭐ 4.9 · 38 Buchungen</div>
+        </div>
+        <div class="ha-phone-label">Wirker-Profile</div>
+      </div>
+      <div class="ha-phone ha-phone--center">
+        <span class="ha-phone-badge">✨ HUI App</span>
+        <div class="ha-phone-screen ha-phone-screen--home">
+          <div class="ha-mock-bar"></div>
+          <div class="ha-mock-greeting">Guten Morgen 👋</div>
+          <div class="ha-mock-subtitle">Was bewegst du heute?</div>
+          <div class="ha-mock-card">🧘 Yoga am Morgen</div>
+          <div class="ha-mock-card ha-mock-card--2">🎨 Atelier-Session</div>
+          <div class="ha-mock-pool">💫 Impact Pool: €124.855</div>
+        </div>
+        <div class="ha-phone-label">Home & HUI Match</div>
+      </div>
+      <div class="ha-phone ha-phone--right">
+        <div class="ha-phone-screen ha-phone-screen--impact">
+          <div class="ha-mock-bar"></div>
+          <div class="ha-mock-proj-ico">🌍</div>
+          <div class="ha-mock-proj-name">Stadtgärten</div>
+          <div class="ha-mock-prog"><div class="ha-mock-prog-fill" style="width:45%"></div></div>
+          <div class="ha-mock-proj-stat">45 % · €36.200</div>
+        </div>
+        <div class="ha-phone-label">Impact-Projekte</div>
+      </div>
     </div>
   </div>
 </section>
-<!-- ââââââââââââââ APP SECTION ââââââââââââââ -->
-<section class="app-section" id="app">
+
+<!-- 2 ▸ DREI BEREICHE ─────────────────────────────────── -->
+<section class="ha-pillars">
   <div class="si">
-    <div class="app-head">
-      <div class="lbl">HUI App &middot; be-hui.vercel.app</div>
-      <h2 class="ttl">Die App, die Menschen<br>verbindet und bewegt.</h2>
-      <p class="dsc">Talente finden. Sicher buchen. Impact erzeugen. Projekte unterst&#252;tzen. Alles in einer App &#8212; klar, sch&#246;n und menschlich.</p>
+    <div class="ha-section-head">
+      <span class="ha-lbl">Die drei Bereiche</span>
+      <h2>Alles auf einer<br><em>Plattform.</em></h2>
+      <p>Drei Welten, eine Community — verbunden durch den Impact-Pool.</p>
     </div>
-
-    <!-- 3 Phones -->
-    <div class="app-hero-row">
-      <div class="pw">
-        <img src="app_profile.jpg" alt="Wirker-Profil Lea Sommer Fotografin"/>
-        <div class="plabel">Wirker-Profile</div>
+    <div class="ha-pillars-grid">
+      <div class="ha-pillar ha-pillar--1">
+        <div class="ha-pillar-ico">🎨</div>
+        <h3>Talente &amp; Werke</h3>
+        <p>Kreative und Macher werden sichtbar. Mit wenigen Klicks ein Profil erstellen, gebucht werden und fair bezahlt werden.</p>
+        <span class="ha-pillar-cta">→ Kreativität zeigen</span>
       </div>
-      <div class="pw pw-center">
-        <span class="ptag2">&#10024; HUI App</span>
-        <img src="app_home.jpg" alt="HUI App Home – Was bewegst du heute"/>
-        <div class="plabel">Home &amp; HUI Match</div>
+      <div class="ha-pillar ha-pillar--2">
+        <div class="ha-pillar-ico">✨</div>
+        <h3>Erlebnisse &amp; Sessions</h3>
+        <p>Coaches und Mentoren bieten Workshops an. Lernen, lehren, wachsen — sicher und fair in einem System.</p>
+        <span class="ha-pillar-cta">→ Erlebnisse teilen</span>
       </div>
-      <div class="pw">
-        <img src="app_impact_project.jpg" alt="Impact-Projekt"/>
-        <div class="plabel">Impact-Projekte</div>
-      </div>
-    </div>
-
-    <!-- 6 Features -->
-    <div class="af-grid">
-      <div class="af"><div class="af-ico">&#10024;</div><h4>HUI Match</h4><p>Die smarte Suche findet passende Talente in deiner N&#228;he &#8212; personalisiert, schnell, unkompliziert.</p></div>
-      <div class="af"><div class="af-ico">&#128272;</div><h4>Treuhand-System</h4><p>Geld wird erst freigegeben, wenn beide Seiten zufrieden sind. Volle Sicherheit f&#252;r alle.</p></div>
-      <div class="af"><div class="af-ico">&#127807;</div><h4>Automatischer Impact</h4><p>15&#160;% jeder Buchung flie&#223;en in den Impact-Pool &#8212; ohne extra Schritt.</p></div>
-      <div class="af"><div class="af-ico">&#128200;</div><h4>Impact-Tracking</h4><p>Sieh jederzeit, wie viel Wirkung du erzeugt hast und welche Projekte gef&#246;rdert werden.</p></div>
-      <div class="af"><div class="af-ico">&#128101;</div><h4>Echte Profile</h4><p>Pers&#246;nlich, vertrauensw&#252;rdig &#8212; jedes Profil zeigt den Menschen hinter dem Talent.</p></div>
-      <div class="af"><div class="af-ico">&#128172;</div><h4>Community Chat</h4><p>Direkter Kontakt, echte Verbindung. Keine Anonymit&#228;t &#8212; nur Menschen, die miteinander sprechen.</p></div>
-    </div>
-
-    <!-- Impact Pool Banner -->
-    <div class="ip-banner">
-      <div class="ip-img">
-        <img src="app_impact_pool.jpg" alt="HUI Impact Pool – Gemeinsam bewegen wir echte Veränderung"/>
-      </div>
-      <div class="ip-text">
-        <div class="ip-month">&#9679; Impact Pool &middot; Mai 2026</div>
-        <div class="ip-num">&#8364;&#8239;124.855</div>
-        <div class="ip-up">&#8593; &#8364; 8.950 diese Woche</div>
-        <h3>Gemeinsam bewegen wir echte Ver&#228;nderung.</h3>
-        <p>Jede Buchung auf HUI flie&#223;t in echte Projekte &#8212; ausgew&#228;hlt von der Community. Der Pool w&#228;chst jeden Monat.</p>
+      <div class="ha-pillar ha-pillar--3">
+        <div class="ha-pillar-ico">🌍</div>
+        <h3>Impact-Pool &amp; Projekte</h3>
+        <p>15 % jeder Aktivität fließen automatisch. Die Community stimmt monatlich ab, welches Projekt gefördert wird.</p>
+        <span class="ha-pillar-cta">→ Wirkung erzielen</span>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- 2 Screen Cards -->
-    <div class="sc-row">
-      <div class="sc">
-        <img src="app_ocean.jpg" alt="Projekt – Schutz der Meere"/>
-        <div class="sc-ov">
-          <span class="sc-tag">Ozean</span>
+<!-- 3 ▸ FEATURES 6er GRID ────────────────────────────── -->
+<section class="ha-features">
+  <div class="si">
+    <div class="ha-section-head">
+      <span class="ha-lbl">App-Features</span>
+      <h2>Was die HUI App<br><em>einzigartig macht.</em></h2>
+    </div>
+    <div class="ha-feat-grid">
+      <div class="ha-feat">
+        <div class="ha-feat-ico ha-feat-ico--teal">✨</div>
+        <h4>HUI Match</h4>
+        <p>Die smarte Suche findet passende Talente in deiner Nähe — personalisiert, schnell, unkompliziert.</p>
+      </div>
+      <div class="ha-feat">
+        <div class="ha-feat-ico ha-feat-ico--gold">🔐</div>
+        <h4>Treuhand-System</h4>
+        <p>Geld wird erst freigegeben, wenn beide Seiten zufrieden sind. Volle Sicherheit für alle.</p>
+      </div>
+      <div class="ha-feat">
+        <div class="ha-feat-ico ha-feat-ico--green">🌱</div>
+        <h4>Automatischer Impact</h4>
+        <p>15 % jeder Buchung fließen in den Impact-Pool — ohne extra Schritt.</p>
+      </div>
+      <div class="ha-feat">
+        <div class="ha-feat-ico ha-feat-ico--blue">📈</div>
+        <h4>Impact-Tracking</h4>
+        <p>Sieh jederzeit, wie viel Wirkung du erzeugt hast und welche Projekte gefördert werden.</p>
+      </div>
+      <div class="ha-feat">
+        <div class="ha-feat-ico ha-feat-ico--coral">👥</div>
+        <h4>Echte Profile</h4>
+        <p>Persönlich, vertrauenswürdig — jedes Profil zeigt den Menschen hinter dem Talent.</p>
+      </div>
+      <div class="ha-feat">
+        <div class="ha-feat-ico ha-feat-ico--purple">💬</div>
+        <h4>Community Chat</h4>
+        <p>Direkter Kontakt, echte Verbindung. Keine Anonymität — nur Menschen, die miteinander sprechen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 ▸ IMPACT POOL BANNER ───────────────────────────── -->
+<section class="ha-impact">
+  <div class="si ha-impact-grid">
+    <div class="ha-impact-visual">
+      <div class="ha-impact-orb">
+        <span class="ha-impact-orb-ico">🌍</span>
+      </div>
+      <div class="ha-impact-stat-ring">
+        <span class="ha-impact-pct">15%</span>
+        <span class="ha-impact-pct-label">jeder Buchung</span>
+      </div>
+    </div>
+    <div class="ha-impact-text">
+      <span class="ha-lbl">● Impact Pool · Mai 2026</span>
+      <div class="ha-impact-amount">€ 124.855</div>
+      <div class="ha-impact-delta">↑ € 8.950 diese Woche</div>
+      <h2>Gemeinsam bewegen wir<br><em>echte Veränderung.</em></h2>
+      <p>Jede Buchung auf HUI fließt in echte Projekte — ausgewählt von der Community. Der Pool wächst jeden Monat.</p>
+      <a href="impact-pool.html" class="btn-main" style="margin-top:28px;display:inline-block;">Impact Pool entdecken →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5 ▸ PROJEKTE CARDS ────────────────────────────────── -->
+<section class="ha-projects">
+  <div class="si">
+    <div class="ha-section-head">
+      <span class="ha-lbl">Aktuelle Projekte</span>
+      <h2>Wofür deine<br><em>Buchungen wirken.</em></h2>
+    </div>
+    <div class="ha-proj-grid">
+      <div class="ha-proj-card">
+        <div class="ha-proj-img" style="background:linear-gradient(135deg,#e6f4ff,#c0e0ff)">🌊</div>
+        <div class="ha-proj-body">
+          <span class="ha-proj-tag">Ozean</span>
           <h4>Schutz der Meere und ihrer Bewohner</h4>
-          <p>âWir sch&#252;tzen, was uns sch&#252;tzt." &#8212; &#8364;&#8239;36.200 &bull; 45&#160;% erreicht &bull; 876 dabei</p>
+          <p>„Wir schützen, was uns schützt."</p>
+          <div class="ha-proj-meta">
+            <div class="ha-proj-bar"><div class="ha-proj-fill" style="width:45%"></div></div>
+            <div class="ha-proj-stats">€ 36.200 · 45 % erreicht · 876 dabei</div>
+          </div>
         </div>
       </div>
-      <div class="sc">
-        <img src="app_impact_project.jpg" alt="Projekt – Stadtgärten"/>
-        <div class="sc-ov">
-          <span class="sc-tag">Impact</span>
-          <h4>Stadtg&#228;rten als Begegnungsorte</h4>
-          <p>âWo Erde w&#228;chst, w&#228;chst Gemeinschaft." &#8212; &#8364;&#8239;12.800 &bull; 32&#160;% erreicht</p>
+      <div class="ha-proj-card">
+        <div class="ha-proj-img" style="background:linear-gradient(135deg,#f0faf0,#c8f0c8)">🌿</div>
+        <div class="ha-proj-body">
+          <span class="ha-proj-tag ha-proj-tag--green">Impact</span>
+          <h4>Stadtgärten als Begegnungsorte</h4>
+          <p>„Wo Erde wächst, wächst Gemeinschaft."</p>
+          <div class="ha-proj-meta">
+            <div class="ha-proj-bar"><div class="ha-proj-fill ha-proj-fill--green" style="width:32%"></div></div>
+            <div class="ha-proj-stats">€ 12.800 · 32 % erreicht</div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- Testimonial -->
-    <div class="app-test">
-      <p class="at-q">âIch buche bei HUI, weil ich wei&#223;, dass mein Geld nicht nur eine Dienstleistung kauft &#8212; es bewegt etwas in der Welt."</p>
-      <div class="at-p">
-        <div class="at-av">M</div>
-        <div>
-          <div class="at-name">Maria K.</div>
-          <div class="at-role">HUI-Entdeckerin seit 2024</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="app-cta">
-      <h3>Bereit f&#252;r <span>HUI Match</span>?</h3>
-      <a href="https://be-hui.vercel.app/Home" target="_blank" class="btn-main">Web-App &#246;ffnen &#8594;</a>
     </div>
   </div>
 </section>
-<!-- ââââââââââââââ FOOTER ââââââââââââââ -->
+
+<!-- 6 ▸ TESTIMONIAL ──────────────────────────────────── -->
+<section class="ha-testimonial">
+  <div class="si">
+    <div class="ha-test-box">
+      <div class="ha-test-quote-mark">"</div>
+      <p class="ha-test-text">Ich buche bei HUI, weil ich weiß, dass mein Geld nicht nur eine Dienstleistung kauft — es bewegt etwas in der Welt.</p>
+      <div class="ha-test-author">
+        <div class="ha-test-av">M</div>
+        <div>
+          <div class="ha-test-name">Maria K.</div>
+          <div class="ha-test-role">HUI-Entdeckerin seit 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 ▸ CTA ─────────────────────────────────────────── -->
+<section class="ha-cta">
+  <div class="ha-cta-inner si">
+    <div class="ha-cta-blob"></div>
+    <span class="ha-lbl ha-lbl--light">Bereit für HUI Match?</span>
+    <h2>Entdecke Talente.<br>Buche sicher. <em>Bewege Wirkung.</em></h2>
+    <div class="ha-cta-btns">
+      <a href="https://be-hui.vercel.app/Home" target="_blank" class="btn-main">Web-App öffnen →</a>
+      <a href="app-download.html" class="btn-sec btn-sec--light">App herunterladen</a>
+    </div>
+  </div>
+</section>
+
+
 <footer>
   <div class="si">
     <div class="fg2">
