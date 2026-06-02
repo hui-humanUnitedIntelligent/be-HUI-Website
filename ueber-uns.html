@@ -18,7 +18,7 @@
   --grad-r:  linear-gradient(135deg, #E8876A, #1ED8C8);
 
   /* ── Hintergründe (hell, wie App) ── */
-  --bg:      #f8f6f2;   /* App-Hintergrund */
+  --bg:      #F5F0E8;   /* App-Hintergrund */
   --bg2:     #FAF7F2;   /* leicht heller */
   --white:   #FFFFFF;
   --card:    #FFFFFF;
@@ -36,7 +36,7 @@
   --r: 16px; --rl: 24px; --rx: 32px;
 }
 html{scroll-behavior:smooth}
-body{padding-top:72px;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
@@ -48,9 +48,9 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:300;
   display:flex;align-items:center;justify-content:space-between;
   padding:14px 52px;
-  background:var(--bg);
-  
-  
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border2);
   transition:all .3s;
 }
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
