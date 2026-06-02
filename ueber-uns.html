@@ -1105,6 +1105,138 @@ img, video, svg { max-width: 100%; }
 
 .n-login{background:var(--teal-l);color:var(--teal)!important;font-weight:600!important;border-radius:10px!important;border:1px solid var(--border)!important}
 .n-login:hover{background:var(--teal)!important;color:var(--white)!important}
+
+
+/* ══ INTRO ══ */
+.hs-intro { background: #fff; padding: 100px 0; }
+
+/* ── Was ist HUI – 2-col layout ── */
+.hs-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.hs-intro-visual {
+  position: relative;
+}
+.hs-intro-card {
+  background: linear-gradient(145deg, #f8f6f2 0%, #edf9f8 100%);
+  border: 1.5px solid #d4ede9;
+  border-radius: 24px;
+  padding: 36px 32px;
+  box-shadow: 0 8px 40px rgba(13,107,99,.08);
+}
+.hs-intro-card-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  color: #0d1f26;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.hs-intro-card-attr {
+  font-size: 0.8rem;
+  color: #7a9aaa;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hs-intro-card-attr::before { content: —; color: #1ed8c8; }
+.hs-intro-minigrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.hs-intro-stat {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 14px;
+  text-align: center;
+  border: 1px solid #e8f4f2;
+}
+.hs-intro-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1ed8c8;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hs-intro-stat-label {
+  font-size: 0.72rem;
+  color: #7a9aaa;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.hs-intro-stat--heart .hs-intro-stat-num { font-size: 1.5rem; }
+
+/* rechte Spalte */
+.hs-intro-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin: 32px 0 36px;
+}
+.hs-intro-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.hs-intro-step-icon {
+  flex-shrink: 0;
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  background: #f0fdfb;
+  border: 1.5px solid #b8f0eb;
+}
+.hs-intro-step-text strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0d1f26;
+  margin-bottom: 2px;
+}
+.hs-intro-step-text span {
+  font-size: 0.875rem;
+  color: #4a6575;
+  line-height: 1.55;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .hs-intro-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hs-intro { padding: 60px 0; }
+}
+.hs-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+.hs-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #f0fdfb;
+  border: 1.5px solid #b8f0eb;
+  color: #0d6b63;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 50px;
+}
+.hs-pill--accent {
+  background: linear-gradient(135deg, #1ed8c8, #0fb8a8);
+  border-color: transparent;
+  color: #fff;
+}
+
+
 </style>
 </head>
 <body>
@@ -1260,6 +1392,79 @@ img, video, svg { max-width: 100%; }
     </div>
   </div>
 </section>
+
+<!-- ══════════════ WAS IST HUI ══════════════ -->
+<section class="hs-section hs-intro">
+  <div class="hs-container">
+    <div class="hs-intro-grid">
+
+      <!-- LINKS: Visual Card -->
+      <div class="hs-intro-visual">
+        <div class="hs-intro-card">
+          <p class="hs-intro-card-quote">&bdquo;Hier bin ich Mensch,<br>hier darf ich sein.&ldquo;</p>
+          <div class="hs-intro-card-attr">Motto · Einer für Alle, alle Fair(ein)t</div>
+          <div class="hs-intro-minigrid">
+            <div class="hs-intro-stat">
+              <div class="hs-intro-stat-num" data-live-key="active_users">11</div>
+              <div class="hs-intro-stat-label">Aktive Wirker</div>
+            </div>
+            <div class="hs-intro-stat">
+              <div class="hs-intro-stat-num">15%</div>
+              <div class="hs-intro-stat-label">jeder Buchung → Impact</div>
+            </div>
+            <div class="hs-intro-stat">
+              <div class="hs-intro-stat-num">1</div>
+              <div class="hs-intro-stat-label">Stimme / Talent / Monat</div>
+            </div>
+            <div class="hs-intro-stat hs-intro-stat--heart">
+              <div class="hs-intro-stat-num">💚</div>
+              <div class="hs-intro-stat-label">Wirkung ohne Aufwand</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECHTS: Text + Steps + CTAs -->
+      <div class="hs-intro-text">
+        <div class="hs-eyebrow">Was ist HUI?</div>
+        <h2 class="hs-headline" style="margin-bottom:16px">Technologie, die<br>Menschen stärkt.</h2>
+        <p class="hs-subtext" style="margin-bottom:0">HUI verbindet Menschen, Talente und soziale Projekte auf völlig neue Weise — fair, sicher und menschlich.</p>
+
+        <div class="hs-intro-steps">
+          <div class="hs-intro-step">
+            <div class="hs-intro-step-icon">🎨</div>
+            <div class="hs-intro-step-text">
+              <strong>Talente entdecken &amp; buchen</strong>
+              <span>Kreative, Coaches, Musiker — direkt aus deiner Region, ohne Zwischenhändler.</span>
+            </div>
+          </div>
+          <div class="hs-intro-step">
+            <div class="hs-intro-step-icon">💚</div>
+            <div class="hs-intro-step-text">
+              <strong>15&nbsp;% fließen automatisch weiter</strong>
+              <span>Jede Buchung stärkt den Impact Pool — du entscheidest mit, welche Projekte gefördert werden.</span>
+            </div>
+          </div>
+          <div class="hs-intro-step">
+            <div class="hs-intro-step-icon">🔐</div>
+            <div class="hs-intro-step-text">
+              <strong>Sicher, transparent, menschlich</strong>
+              <span>Verifizierte Profile, faire Preise, kein verstecktes Kleingedrucktes.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hs-ctas">
+          <a href="https://be-hui.vercel.app/Home" class="hs-btn-primary" target="_blank" rel="noopener">✨&nbsp; App jetzt öffnen</a>
+          <a href="impact-pool.html" class="hs-btn-sec">Impact Pool entdecken &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <!-- ══════════════ VALUES ══════════════ -->
 <section class="values" id="werte">
   <div class="si">
