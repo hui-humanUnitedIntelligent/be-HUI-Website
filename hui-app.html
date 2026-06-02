@@ -1646,9 +1646,9 @@ img, video, svg { max-width: 100%; }
       </div>
     </div>
     <div class="ha-impact-text">
-      <span class="ha-lbl">● Impact Pool · Mai 2026</span>
-      <div class="ha-impact-amount">€ 124.855</div>
-      <div class="ha-impact-delta">↑ € 8.950 diese Woche</div>
+      <span class="ha-lbl" id="ha-pool-label">● Impact Pool · <span id="ha-pool-month">Mai 2026</span></span>
+      <div class="ha-impact-amount" id="ha-pool-amount">€ 124.855</div>
+      <div class="ha-impact-delta" id="ha-pool-delta">↑ € 8.950 diese Woche</div>
       <h2>Gemeinsam bewegen wir<br><em>echte Veränderung.</em></h2>
       <p>Jede Buchung auf HUI fließt in echte Projekte — ausgewählt von der Community. Der Pool wächst jeden Monat.</p>
       <a href="impact-pool.html" class="btn-main" style="margin-top:28px;display:inline-block;">Impact Pool entdecken →</a>
@@ -1957,6 +1957,79 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   window.addEventListener('resize',function(){if(window.innerWidth>768) closeNav();});
 })();
 </script>
+
+<script>
+// == IMPACT POOL LIVE — hui-app.html ==
+(function(){
+  var API = 'https://superagent-c4e431a5.base44.app/functions/huiStats';
+
+  var MONTHS = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+
+  function fmt(n) {
+    return '€ ' + Math.round(n).toLocaleString('de-DE');
+  }
+
+  function animateTo(el, from, to) {
+    var dur = 1800, t0 = performance.now();
+    function step(t) {
+      var p = Math.min((t - t0) / dur, 1);
+      var ease = 1 - Math.pow(1 - p, 3);
+      var cur = from + (to - from) * ease;
+      el.textContent = fmt(cur);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = fmt(to);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function loadPool() {
+    fetch(API, { cache: 'no-store' })
+      .then(function(r){ return r.json(); })
+      .then(function(data) {
+        var amountEl = document.getElementById('ha-pool-amount');
+        var deltaEl  = document.getElementById('ha-pool-delta');
+        var monthEl  = document.getElementById('ha-pool-month');
+
+        // Impact Pool Betrag animieren
+        if (amountEl && data.impact_pool != null) {
+          var from = parseFloat(amountEl.textContent.replace(/[^\d]/g,'')) || 124855;
+          animateTo(amountEl, from, data.impact_pool);
+
+          // Live-Punkt hinzufügen falls noch nicht vorhanden
+          if (!document.getElementById('ha-live-dot')) {
+            var dot = document.createElement('span');
+            dot.id = 'ha-live-dot';
+            dot.style.cssText = 'display:inline-block;width:8px;height:8px;background:#1ed8c8;border-radius:50%;margin-left:8px;vertical-align:middle;animation:pulse 1.5s ease-in-out infinite';
+            if (amountEl.parentNode) amountEl.parentNode.insertBefore(dot, amountEl.nextSibling);
+          }
+        }
+
+        // Wochenänderung
+        if (deltaEl && data.impact_pool_weekly != null) {
+          deltaEl.textContent = '↑ ' + fmt(data.impact_pool_weekly) + ' diese Woche';
+        }
+
+        // Monat aktualisieren
+        if (monthEl) {
+          var now = new Date();
+          monthEl.textContent = MONTHS[now.getMonth()] + ' ' + now.getFullYear();
+        }
+      })
+      .catch(function() {
+        // Fallback: Monat trotzdem live setzen
+        var monthEl = document.getElementById('ha-pool-month');
+        if (monthEl) {
+          var now = new Date();
+          monthEl.textContent = MONTHS[now.getMonth()] + ' ' + now.getFullYear();
+        }
+      });
+  }
+
+  loadPool();
+  setInterval(loadPool, 60000);
+})();
+</script>
+
 </body>
 </html>
 
@@ -2042,5 +2115,78 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 </script>
 
 <script src="lang/switcher.js"></script>
+
+<script>
+// == IMPACT POOL LIVE — hui-app.html ==
+(function(){
+  var API = 'https://superagent-c4e431a5.base44.app/functions/huiStats';
+
+  var MONTHS = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+
+  function fmt(n) {
+    return '€ ' + Math.round(n).toLocaleString('de-DE');
+  }
+
+  function animateTo(el, from, to) {
+    var dur = 1800, t0 = performance.now();
+    function step(t) {
+      var p = Math.min((t - t0) / dur, 1);
+      var ease = 1 - Math.pow(1 - p, 3);
+      var cur = from + (to - from) * ease;
+      el.textContent = fmt(cur);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = fmt(to);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function loadPool() {
+    fetch(API, { cache: 'no-store' })
+      .then(function(r){ return r.json(); })
+      .then(function(data) {
+        var amountEl = document.getElementById('ha-pool-amount');
+        var deltaEl  = document.getElementById('ha-pool-delta');
+        var monthEl  = document.getElementById('ha-pool-month');
+
+        // Impact Pool Betrag animieren
+        if (amountEl && data.impact_pool != null) {
+          var from = parseFloat(amountEl.textContent.replace(/[^\d]/g,'')) || 124855;
+          animateTo(amountEl, from, data.impact_pool);
+
+          // Live-Punkt hinzufügen falls noch nicht vorhanden
+          if (!document.getElementById('ha-live-dot')) {
+            var dot = document.createElement('span');
+            dot.id = 'ha-live-dot';
+            dot.style.cssText = 'display:inline-block;width:8px;height:8px;background:#1ed8c8;border-radius:50%;margin-left:8px;vertical-align:middle;animation:pulse 1.5s ease-in-out infinite';
+            if (amountEl.parentNode) amountEl.parentNode.insertBefore(dot, amountEl.nextSibling);
+          }
+        }
+
+        // Wochenänderung
+        if (deltaEl && data.impact_pool_weekly != null) {
+          deltaEl.textContent = '↑ ' + fmt(data.impact_pool_weekly) + ' diese Woche';
+        }
+
+        // Monat aktualisieren
+        if (monthEl) {
+          var now = new Date();
+          monthEl.textContent = MONTHS[now.getMonth()] + ' ' + now.getFullYear();
+        }
+      })
+      .catch(function() {
+        // Fallback: Monat trotzdem live setzen
+        var monthEl = document.getElementById('ha-pool-month');
+        if (monthEl) {
+          var now = new Date();
+          monthEl.textContent = MONTHS[now.getMonth()] + ' ' + now.getFullYear();
+        }
+      });
+  }
+
+  loadPool();
+  setInterval(loadPool, 60000);
+})();
+</script>
+
 </body>
 </html>
