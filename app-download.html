@@ -1285,6 +1285,188 @@ img, video, svg { max-width: 100%; }
 .dl-btn svg { flex-shrink:0; display:block; }
 .dl-btn-gplay svg path, .dl-btn-apple svg path { /* SVG paths already colored */ }
 
+
+/* ═══ APP-DOWNLOAD REDESIGN ═══ */
+.ad-hero {
+  padding: 80px 0 80px;
+  background: linear-gradient(160deg,#f8f6f2 0%,#edf8f7 55%,#f5f0ec 100%);
+  position: relative; overflow: hidden; min-height: 85vh;
+  display: flex; align-items: center;
+}
+.ad-blob-a { position:absolute;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(30,216,200,.13),transparent 65%);
+  top:-120px;right:-80px;pointer-events:none; }
+.ad-blob-b { position:absolute;width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,135,106,.10),transparent 65%);
+  bottom:-80px;left:-80px;pointer-events:none; }
+.ad-hero-inner {
+  max-width:1400px; margin:0 auto; padding:0 56px;
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px; align-items: center; position:relative; z-index:1;
+}
+.ad-eyebrow {
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(30,216,200,.12);border:1px solid rgba(30,216,200,.3);
+  border-radius:50px;padding:8px 20px;
+  font-size:11px;color:#1ED8C8;letter-spacing:2.5px;
+  text-transform:uppercase;font-weight:700;margin-bottom:28px;
+}
+.ad-eyebrow-dot { width:7px;height:7px;background:#1ED8C8;border-radius:50%;
+  animation:blink 2s infinite; }
+.ad-hero h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(40px,5.5vw,72px); font-weight:900;
+  line-height:1.05; color:#0d1f26; margin-bottom:20px;
+}
+.ad-hero h1 em {
+  font-style:italic;
+  background:linear-gradient(135deg,#1ED8C8,#E8876A);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.ad-sub {
+  font-size:17px; color:#6b7280; line-height:1.75;
+  max-width:540px; margin-bottom:40px; font-weight:300;
+}
+.ad-sub strong { color:#0d1f26; font-weight:600; }
+
+/* Download Buttons */
+.ad-buttons { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:32px; }
+.ad-btn {
+  display:inline-flex; align-items:center; gap:12px;
+  padding:14px 22px; border-radius:16px;
+  text-decoration:none; transition:transform .2s,box-shadow .2s;
+  cursor:pointer; border:none; font-family:'DM Sans',sans-serif;
+}
+.ad-btn:hover { transform:translateY(-3px); }
+.ad-btn-outline {
+  background:#fff; border:1.5px solid rgba(0,0,0,.1);
+  color:#0d1f26;
+  box-shadow:0 4px 16px rgba(0,0,0,.08);
+}
+.ad-btn-outline:hover { box-shadow:0 8px 28px rgba(0,0,0,.13); }
+.ad-btn-dark {
+  background:#1a1a1a; color:#fff;
+  box-shadow:0 4px 20px rgba(0,0,0,.25);
+}
+.ad-btn-dark:hover { box-shadow:0 8px 32px rgba(0,0,0,.35); }
+.ad-btn-teal {
+  background:linear-gradient(135deg,#1ED8C8,#17B8AA);
+  color:#fff;
+  box-shadow:0 4px 20px rgba(30,216,200,.3);
+}
+.ad-btn-teal:hover { box-shadow:0 8px 32px rgba(30,216,200,.45); }
+.ad-btn-labels { display:flex; flex-direction:column; }
+.ad-btn-sub { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; opacity:.6; }
+.ad-btn-name { font-size:15px; font-weight:700; line-height:1.2; }
+.ad-web-link {
+  font-size:14px; color:#6b7280;
+}
+.ad-web-link a { color:#1ED8C8; font-weight:500; text-decoration:none; }
+.ad-web-link a:hover { text-decoration:underline; }
+
+/* Phone Mockup Visual */
+.ad-visual { position:relative; display:flex; align-items:center; justify-content:center; height:520px; }
+.ad-phone {
+  width:240px; height:460px;
+  background:linear-gradient(160deg,#0d1f26,#1a3a30);
+  border-radius:36px;
+  box-shadow:0 40px 100px rgba(0,0,0,.22), 0 0 0 8px rgba(255,255,255,.08);
+  position:relative; overflow:hidden;
+  animation:ad-float 5s ease-in-out infinite;
+}
+@keyframes ad-float {
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-18px) rotate(-2deg)}
+}
+.ad-phone-screen {
+  position:absolute; inset:12px; border-radius:26px;
+  background:linear-gradient(160deg,#edf8f7,#f8f6f2);
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; padding:24px 16px; gap:12px;
+}
+.ad-phone-logo {
+  font-family:'Playfair Display',serif; font-size:22px;
+  font-weight:900; color:#1ED8C8; letter-spacing:2px;
+}
+.ad-phone-tagline {
+  font-size:10px; color:#6b7280; letter-spacing:1.5px;
+  text-transform:uppercase; text-align:center;
+}
+.ad-phone-card {
+  width:100%; background:#fff; border-radius:12px;
+  padding:10px 12px; box-shadow:0 4px 16px rgba(0,0,0,.08);
+  display:flex; align-items:center; gap:8px;
+  font-size:11px; font-weight:600; color:#0d1f26;
+}
+.ad-phone-card span { font-size:16px; }
+.ad-phone-pill {
+  background:rgba(30,216,200,.12); border:1px solid rgba(30,216,200,.3);
+  border-radius:50px; padding:6px 14px;
+  font-size:10px; color:#1ED8C8; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase;
+}
+/* Floating badges */
+.ad-badge {
+  position:absolute; background:#fff; border-radius:14px;
+  padding:10px 16px; box-shadow:0 8px 28px rgba(0,0,0,.12);
+  border:1px solid rgba(0,0,0,.06);
+  font-size:12px; font-weight:600; color:#0d1f26;
+  display:flex; align-items:center; gap:8px;
+  animation:ad-float2 4s ease-in-out infinite;
+  white-space:nowrap;
+}
+@keyframes ad-float2 {
+  0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}
+}
+.ad-badge-1 { top:50px; left:-20px; animation-delay:0s; }
+.ad-badge-2 { bottom:80px; right:-30px; animation-delay:1.5s; }
+.ad-badge-ico { font-size:18px; }
+.ad-badge-val { font-size:18px; font-weight:800; color:#1ED8C8; }
+
+/* Features Section */
+.ad-features {
+  padding:80px 0; background:#fff;
+}
+.ad-features-inner {
+  max-width:1200px; margin:0 auto; padding:0 56px;
+}
+.ad-features-header { text-align:center; margin-bottom:56px; }
+.ad-features-header h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,3.5vw,42px); font-weight:800;
+  color:#0d1f26; margin-bottom:12px;
+}
+.ad-features-header p { font-size:16px; color:#6b7280; max-width:500px; margin:0 auto; }
+.ad-features-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
+}
+.ad-feature-card {
+  background:#f8f6f2; border-radius:20px; padding:28px 24px;
+  border:1px solid rgba(0,0,0,.06);
+  transition:transform .2s,box-shadow .2s;
+}
+.ad-feature-card:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(0,0,0,.08); }
+.ad-feature-ico {
+  width:48px; height:48px; border-radius:14px;
+  background:linear-gradient(135deg,rgba(30,216,200,.15),rgba(30,216,200,.05));
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; margin-bottom:16px;
+}
+.ad-feature-card h3 { font-size:16px; font-weight:700; color:#0d1f26; margin-bottom:8px; }
+.ad-feature-card p { font-size:14px; color:#6b7280; line-height:1.65; }
+
+/* Responsive */
+@media(max-width:900px){
+  .ad-hero-inner { grid-template-columns:1fr; gap:40px; padding:0 24px; }
+  .ad-visual { display:none; }
+  .ad-features-grid { grid-template-columns:1fr; }
+  .ad-features-inner { padding:0 24px; }
+  .ad-hero { padding:80px 0 60px; min-height:auto; }
+}
+@media(max-width:600px){
+  .ad-buttons { flex-direction:column; }
+  .ad-btn { width:100%; justify-content:center; }
+}
 </style>
 </head>
 <body>
@@ -1410,62 +1592,139 @@ img, video, svg { max-width: 100%; }
   <a href="https://be-hui.vercel.app/Home" target="_blank" class="mob-login">&#128274; Login / App öffnen</a>
 </div>
 </nav>
-<!-- ââââââââââââââ APP DOWNLOAD HERO ââââââââââââââ -->
-<section class="dl-hero">
-  <div class="dl-blob1"></div>
-  <div class="dl-blob2"></div>
-  <div class="dl-hero-inner">
-    <span class="dl-eyebrow">&#11015; App Download</span>
-    <h1 class="dl-h1">Deine Wirkung.<br><em>In deiner Tasche.</em></h1>
-    <p class="dl-sub">
-      HUI verbindet Menschen, Talente und soziale Projekte &#8212; 
-      ohne Zwischeninstanzen, ohne Hürden.
-      Lade die App herunter und werde Teil einer Gemeinschaft,
-      in der <strong>jede Handlung zählt</strong>.
-    </p>
 
-    <div class="dl-buttons">
+<!-- ═══ APP DOWNLOAD HERO ═══ -->
+<section class="ad-hero">
+  <div class="ad-blob-a"></div>
+  <div class="ad-blob-b"></div>
+  <div class="ad-hero-inner">
 
-      <!-- Google Play -->
-      <a href="#" class="dl-btn dl-btn-outline dl-btn-gplay" aria-label="Google Play Download">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
-          <path fill="#ea4335" d="M3.18 1.09L13.54 12 3.18 22.91A2 2 0 0 1 2 21.17V2.83a2 2 0 0 1 1.18-1.74z"/>
-          <path fill="#fbbc04" d="M20.5 10.47l-3.13-1.8-4.09 3.33 4.09 3.33 3.17-1.83a2 2 0 0 0-.04-3.03z"/>
-          <path fill="#34a853" d="M3.18 22.91l10.89-10.91 3.3 3.3-11.08 6.4a2 2 0 0 1-3.11-2.79z"/>
-          <path fill="#4285f4" d="M3.18 1.09A2 2 0 0 1 6.29.45L17.37 6.7l-3.83 3.3z"/>
-        </svg>
-        <span class="dl-btn-labels">
-          <span class="dl-btn-sub">JETZT BEI</span>
-          <span class="dl-btn-name">Google Play</span>
-        </span>
-      </a>
+    <!-- TEXT LINKS -->
+    <div class="ad-text">
+      <span class="ad-eyebrow"><span class="ad-eyebrow-dot"></span>App Download</span>
+      <h1>Deine Wirkung.<br><em>In deiner Tasche.</em></h1>
+      <p class="ad-sub">
+        HUI verbindet Menschen, Talente und soziale Projekte &mdash;
+        ohne Zwischeninstanzen, ohne Hürden.
+        Lade die App herunter und werde Teil einer Gemeinschaft,
+        in der <strong>jede Handlung zählt</strong>.
+      </p>
 
-      <!-- Apple App Store -->
-      <a href="#" class="dl-btn dl-btn-dark dl-btn-apple" aria-label="App Store Download">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
-          <path fill="#fff" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-        </svg>
-        <span class="dl-btn-labels">
-          <span class="dl-btn-sub">LADEN IM</span>
-          <span class="dl-btn-name">App Store</span>
-        </span>
-      </a>
+      <div class="ad-buttons">
+        <!-- Google Play -->
+        <a href="#" class="ad-btn ad-btn-outline" aria-label="Google Play">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
+            <path fill="#ea4335" d="M3.18 1.09L13.54 12 3.18 22.91A2 2 0 0 1 2 21.17V2.83a2 2 0 0 1 1.18-1.74z"/>
+            <path fill="#fbbc04" d="M20.5 10.47l-3.13-1.8-4.09 3.33 4.09 3.33 3.17-1.83a2 2 0 0 0-.04-3.03z"/>
+            <path fill="#34a853" d="M3.18 22.91l10.89-10.91 3.3 3.3-11.08 6.4a2 2 0 0 1-3.11-2.79z"/>
+            <path fill="#4285f4" d="M3.18 1.09A2 2 0 0 1 6.29.45L17.37 6.7l-3.83 3.3z"/>
+          </svg>
+          <span class="ad-btn-labels">
+            <span class="ad-btn-sub">JETZT BEI</span>
+            <span class="ad-btn-name">Google Play</span>
+          </span>
+        </a>
 
-      <!-- Android APK -->
-      <a href="#" class="dl-btn dl-btn-outline dl-btn-apk" aria-label="Android APK Download">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
-          <path fill="#3ddc84" d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48A5.84 5.84 0 0 0 12 1.5c-.69 0-1.35.12-1.97.33L8.88.35c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31A5.983 5.983 0 0 0 6 7h12a5.983 5.983 0 0 0-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>
-        </svg>
-        <span class="dl-btn-labels">
-          <span class="dl-btn-sub">DIREKT ALS</span>
-          <span class="dl-btn-name">Android APK</span>
-        </span>
-      </a>
+        <!-- App Store -->
+        <a href="#" class="ad-btn ad-btn-dark" aria-label="App Store">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
+            <path fill="#fff" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <span class="ad-btn-labels">
+            <span class="ad-btn-sub">LADEN IM</span>
+            <span class="ad-btn-name">App Store</span>
+          </span>
+        </a>
+
+        <!-- Android APK -->
+        <a href="#" class="ad-btn ad-btn-outline" aria-label="Android APK">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
+            <path fill="#3ddc84" d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.45 1.45A5.9 5.9 0 0 0 12 2.5c-.71 0-1.39.13-2.02.36L8.53 1.41c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.3 1.3C7.68 4.28 6.5 5.97 6.5 8h11c0-2.03-1.18-3.72-2.97-4.84zM10 6H9V5h1v1zm5 0h-1V5h1v1z"/>
+          </svg>
+          <span class="ad-btn-labels">
+            <span class="ad-btn-sub">DIREKT ALS</span>
+            <span class="ad-btn-name">Android APK</span>
+          </span>
+        </a>
+      </div>
+
+      <p class="ad-web-link">
+        Auch verfügbar als <a href="https://be-hui.vercel.app" target="_blank">Web-App &rarr;</a>
+        &mdash; direkt im Browser, ohne Installation.
+      </p>
     </div>
 
-    <p class="dl-note">
-      Auch verfügbar als <a href="https://be-hui.vercel.app/Home" target="_blank">Web-App &#8594;</a> &mdash; direkt im Browser, ohne Installation.
-    </p>
+    <!-- VISUAL RECHTS -->
+    <div class="ad-visual">
+      <div class="ad-phone">
+        <div class="ad-phone-screen">
+          <div class="ad-phone-logo">HUI</div>
+          <div class="ad-phone-tagline">Human United Intelligence</div>
+          <div class="ad-phone-card">
+            <span>🧘</span> Yoga am Morgen
+          </div>
+          <div class="ad-phone-card">
+            <span>🎨</span> Gemalte Bilder
+          </div>
+          <div class="ad-phone-pill">Impact Pool aktiv</div>
+          <div class="ad-phone-card">
+            <span>💫</span> 15 % → Wirkung
+          </div>
+        </div>
+      </div>
+      <!-- Floating Badges -->
+      <div class="ad-badge ad-badge-1">
+        <span class="ad-badge-ico">⭐</span>
+        <div><div class="ad-badge-val">4.9</div><div style="font-size:10px;color:#6b7280">Bewertung</div></div>
+      </div>
+      <div class="ad-badge ad-badge-2">
+        <span class="ad-badge-ico">🌍</span>
+        <div><div class="ad-badge-val">15%</div><div style="font-size:10px;color:#6b7280">Impact Pool</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ FEATURES ═══ -->
+<section class="ad-features">
+  <div class="ad-features-inner">
+    <div class="ad-features-header">
+      <h2>Alles in einer App</h2>
+      <p>Entdecke, buche, wirke &mdash; vollständig in deiner Tasche.</p>
+    </div>
+    <div class="ad-features-grid">
+      <div class="ad-feature-card">
+        <div class="ad-feature-ico">🔍</div>
+        <h3>Talente entdecken</h3>
+        <p>Finde geprüfte Wirker in deiner Nähe — von Yoga bis Grafikdesign.</p>
+      </div>
+      <div class="ad-feature-card">
+        <div class="ad-feature-ico">📅</div>
+        <h3>Sicher buchen</h3>
+        <p>Buchungen, Bezahlung und Kommunikation — alles sicher auf einer Plattform.</p>
+      </div>
+      <div class="ad-feature-card">
+        <div class="ad-feature-ico">🌍</div>
+        <h3>Impact erzeugen</h3>
+        <p>15 % jeder Buchung fließen automatisch in den Community Impact Pool.</p>
+      </div>
+      <div class="ad-feature-card">
+        <div class="ad-feature-ico">🎨</div>
+        <h3>Werke teilen</h3>
+        <p>Lade deine Werke hoch und zeige der Community, was du erschaffst.</p>
+      </div>
+      <div class="ad-feature-card">
+        <div class="ad-feature-ico">🤝</div>
+        <h3>Community</h3>
+        <p>Vernetze dich mit Gleichgesinnten, diskutiere Projekte und wachse gemeinsam.</p>
+      </div>
+      <div class="ad-feature-card">
+        <div class="ad-feature-ico">🔔</div>
+        <h3>Live-Updates</h3>
+        <p>Echtzeit-Benachrichtigungen für Buchungen, Nachrichten und Impact-Ereignisse.</p>
+      </div>
+    </div>
   </div>
 </section>
 
