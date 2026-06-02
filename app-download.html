@@ -1280,6 +1280,11 @@ img, video, svg { max-width: 100%; }
 
 .n-login{background:var(--teal-l);color:var(--teal)!important;font-weight:600!important;border-radius:10px!important;border:1px solid var(--border)!important}
 .n-login:hover{background:var(--teal)!important;color:var(--white)!important}
+
+/* ── Download Button Logo-SVG ── */
+.dl-btn svg { flex-shrink:0; display:block; }
+.dl-btn-gplay svg path, .dl-btn-apple svg path { /* SVG paths already colored */ }
+
 </style>
 </head>
 <body>
@@ -1420,29 +1425,39 @@ img, video, svg { max-width: 100%; }
     </p>
 
     <div class="dl-buttons">
+
       <!-- Google Play -->
-      <a href="#" class="dl-btn dl-btn-dark" aria-label="Google Play Download">
-        <span class="dl-btn-logo">&#9654;</span>
+      <a href="#" class="dl-btn dl-btn-dark dl-btn-gplay" aria-label="Google Play Download">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+          <path fill="#ea4335" d="M3.18 1.09L13.54 12 3.18 22.91A2 2 0 0 1 2 21.17V2.83a2 2 0 0 1 1.18-1.74z"/>
+          <path fill="#fbbc04" d="M20.5 10.47l-3.13-1.8-4.09 3.33 4.09 3.33 3.17-1.83a2 2 0 0 0-.04-3.03z"/>
+          <path fill="#34a853" d="M3.18 22.91l10.89-10.91 3.3 3.3-11.08 6.4a2 2 0 0 1-3.11-2.79z"/>
+          <path fill="#4285f4" d="M3.18 1.09A2 2 0 0 1 6.29.45L17.37 6.7l-3.83 3.3z"/>
+        </svg>
         <span class="dl-btn-labels">
-          <span class="dl-btn-sub">Jetzt bei</span>
+          <span class="dl-btn-sub">JETZT BEI</span>
           <span class="dl-btn-name">Google Play</span>
         </span>
       </a>
 
       <!-- Apple App Store -->
-      <a href="#" class="dl-btn dl-btn-dark" aria-label="App Store Download">
-        <span class="dl-btn-logo">&#63743;</span>
+      <a href="#" class="dl-btn dl-btn-dark dl-btn-apple" aria-label="App Store Download">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+          <path fill="#fff" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
         <span class="dl-btn-labels">
-          <span class="dl-btn-sub">Laden im</span>
+          <span class="dl-btn-sub">LADEN IM</span>
           <span class="dl-btn-name">App Store</span>
         </span>
       </a>
 
       <!-- Android APK -->
-      <a href="#" class="dl-btn dl-btn-outline" aria-label="Android APK Download">
-        <span class="dl-btn-logo">&#11015;</span>
+      <a href="#" class="dl-btn dl-btn-outline dl-btn-apk" aria-label="Android APK Download">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+          <path fill="#3ddc84" d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48A5.84 5.84 0 0 0 12 1.5c-.69 0-1.35.12-1.97.33L8.88.35c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31A5.983 5.983 0 0 0 6 7h12a5.983 5.983 0 0 0-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>
+        </svg>
         <span class="dl-btn-labels">
-          <span class="dl-btn-sub">Direkt als</span>
+          <span class="dl-btn-sub">DIREKT ALS</span>
           <span class="dl-btn-name">Android APK</span>
         </span>
       </a>
