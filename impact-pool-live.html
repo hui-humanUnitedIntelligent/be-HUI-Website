@@ -1209,7 +1209,6 @@ img, video, svg { max-width: 100%; }
 .ip-dial-stat .ds-lbl {
   font-size:11px; color:var(--muted); letter-spacing:1.5px; text-transform:uppercase; margin-top:2px;
 }
-.ip-dial-stat.ds-coral .ds-num { color:var(--coral); }
 
 /* ── Main Wrap ── */
 .ip-main { max-width:1200px; margin:0 auto; padding:56px 52px 80px; }
@@ -1511,10 +1510,6 @@ img, video, svg { max-width: 100%; }
           <div class="ds-num" id="ipGrossValue">0 €</div>
           <div class="ds-lbl">Pool Brutto</div>
         </div>
-        <div class="ip-dial-stat ds-coral">
-          <div class="ds-num" id="ipFirmValue">0 €</div>
-          <div class="ds-lbl">Firmenanteil</div>
-        </div>
       </div>
     </div>
 
@@ -1814,19 +1809,13 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 /* ══ IMPACT POOL LIVE ══ */
 (function(){
 
-  /* ── Konfiguration ──
-     Formel: Netto = Brutto × 0.15 × 0.85
-     15% jeder Transaktion → Pool, davon 15% Firmanteil abgezogen
-  ─────────────────────────── */
+  /* ── Konfiguration ── */
   var POOL_GROSS_PCT = 0.15;
-  var FIRM_PCT       = 0.15;
-  var NET_FACTOR     = POOL_GROSS_PCT * (1 - FIRM_PCT); // = 0.1275
 
   /* State */
   var state = {
     rawTotal:    0,    // Summe aller Transaktionen
     poolGross:   0,    // rawTotal × 15%
-    firmShare:   0,    // poolGross × 15%
     poolNet:     0,    // poolGross - firmShare
     activeProj:  [],
     waitlist:    [],
@@ -1862,7 +1851,6 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   function renderValues() {
     var netEl    = document.getElementById('ipNetValue');
     var grossEl  = document.getElementById('ipGrossValue');
-    var firmEl   = document.getElementById('ipFirmValue');
     var updateEl = document.getElementById('ipLastUpdate');
 
     if (netEl)   animateCounter(netEl, state.poolNet, '', ' €', 1800);
@@ -1941,11 +1929,9 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
       .then(function(data) {
         var raw       = data.total || 0;
         var gross     = raw * POOL_GROSS_PCT;
-        var firm      = gross * FIRM_PCT;
         state.rawTotal   = raw;
         state.poolGross  = Math.round(gross);
-        state.firmShare  = Math.round(firm);
-        state.poolNet    = Math.round(gross - firm);
+        state.poolNet    = Math.round(gross);
         state.activeProj = data.activeProjects || [];
         state.waitlist   = data.waitlist || [];
         state.lastUpdate = new Date();
