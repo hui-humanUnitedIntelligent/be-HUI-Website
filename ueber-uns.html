@@ -1244,8 +1244,362 @@ img, video, svg { max-width: 100%; }
 
 
 </style>
+
+<style>
+/* ══════════════════════════════════════
+   ÜBER UNS — WAS IST HUI  |  HUI Design
+══════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #F5F0E8;
+  color: #0d1f26;
+  padding-top: 72px;
+}
+
+/* ── HERO ── */
+.wu-hero {
+  min-height: 72vh;
+  background: linear-gradient(140deg, #0d1f26 0%, #0a3040 50%, #0d4a3a 100%);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 40px;
+}
+.wu-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(30,216,200,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 30%, rgba(232,135,106,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.wu-hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(30,216,200,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,216,200,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.wu-hero-inner {
+  position: relative; z-index: 2;
+  max-width: 780px;
+}
+.wu-hero-label {
+  display: inline-block;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: #1ed8c8;
+  background: rgba(30,216,200,0.1);
+  border: 1px solid rgba(30,216,200,0.25);
+  border-radius: 999px;
+  padding: 7px 20px;
+  margin-bottom: 28px;
+}
+.wu-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 7vw, 82px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.08;
+  margin-bottom: 24px;
+}
+.wu-hero h1 em {
+  font-style: italic;
+  background: linear-gradient(135deg, #1ed8c8, #e8876a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.wu-hero-sub {
+  font-size: clamp(16px, 2vw, 19px);
+  color: rgba(255,255,255,0.68);
+  max-width: 560px; margin: 0 auto 40px;
+  line-height: 1.7; font-weight: 300;
+}
+.wu-hero-ctas {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+}
+.wu-hero-ctas a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 999px;
+  font-size: 15px; font-weight: 600;
+  text-decoration: none; transition: all .2s;
+}
+.wu-cta-primary {
+  background: #1ed8c8; color: #0d1f26;
+}
+.wu-cta-primary:hover { background: #17c4b5; transform: translateY(-2px); }
+.wu-cta-sec {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+}
+.wu-cta-sec:hover { background: rgba(255,255,255,0.14); }
+
+/* ── STATS STRIP ── */
+.wu-stats {
+  background: #fff;
+  border-bottom: 1px solid #e8e4dc;
+}
+.wu-stats-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 40px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.wu-stat {
+  padding: 32px 24px;
+  text-align: center;
+  border-right: 1px solid #e8e4dc;
+}
+.wu-stat:last-child { border-right: none; }
+.wu-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem; font-weight: 900;
+  color: #1ed8c8; line-height: 1;
+  margin-bottom: 6px;
+}
+.wu-stat-label {
+  font-size: 0.78rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .06em;
+  color: #7a9aaa;
+}
+
+/* ── SECTION BASE ── */
+.wu-section {
+  padding: 96px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.wu-section-full {
+  padding: 96px 40px;
+}
+.wu-eyebrow {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 3px;
+  color: #1ed8c8; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.wu-eyebrow::before {
+  content: ''; display: block;
+  width: 28px; height: 2px;
+  background: #1ed8c8; border-radius: 2px;
+}
+.wu-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 900; line-height: 1.1;
+  color: #0d1f26; margin-bottom: 20px;
+}
+.wu-h2 em {
+  font-style: italic;
+  background: linear-gradient(135deg, #1ed8c8, #0d9e91);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.wu-lead {
+  font-size: clamp(16px, 1.8vw, 18px);
+  color: #4a6575; line-height: 1.75;
+  max-width: 560px;
+}
+
+/* ── WIE ES FUNKTIONIERT ── */
+.wu-how {
+  background: #fff;
+}
+.wu-how-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 96px 40px;
+}
+.wu-how-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px; align-items: center;
+  margin-top: 56px;
+}
+.wu-steps {
+  display: flex; flex-direction: column; gap: 0;
+}
+.wu-step {
+  display: flex; gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid #f0ebe0;
+  position: relative;
+}
+.wu-step:last-child { border-bottom: none; }
+.wu-step-num {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1ed8c8, #0d9e91);
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+}
+.wu-step-content strong {
+  display: block;
+  font-size: 1rem; font-weight: 700;
+  color: #0d1f26; margin-bottom: 5px;
+}
+.wu-step-content span {
+  font-size: 0.875rem;
+  color: #4a6575; line-height: 1.6;
+}
+/* Quote Card */
+.wu-quote-card {
+  background: linear-gradient(145deg, #0d1f26, #0a3040);
+  border-radius: 28px;
+  padding: 48px 44px;
+  position: relative;
+  overflow: hidden;
+}
+.wu-quote-card::before {
+  content: 'C';
+  position: absolute; top: -20px; left: 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 200px; font-weight: 900;
+  color: rgba(30,216,200,0.08);
+  line-height: 1;
+  pointer-events: none;
+}
+.wu-quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-style: italic;
+  color: #fff;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  position: relative; z-index: 1;
+}
+.wu-quote-attr {
+  font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: rgba(255,255,255,0.4);
+}
+.wu-quote-pills {
+  margin-top: 32px;
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.wu-pill {
+  background: rgba(30,216,200,0.12);
+  border: 1px solid rgba(30,216,200,0.25);
+  color: #1ed8c8;
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-size: 0.8rem; font-weight: 600;
+}
+
+/* ── WERTE GRID ── */
+.wu-values-bg {
+  background: #F5F0E8;
+}
+.wu-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+.wu-value-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 36px 30px;
+  border: 1px solid #e8e4dc;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+}
+.wu-value-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #1ed8c8, #0d9e91);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.wu-value-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(13,31,38,.08);
+  border-color: rgba(30,216,200,0.2);
+}
+.wu-value-card:hover::before { opacity: 1; }
+.wu-value-icon {
+  font-size: 2rem; margin-bottom: 16px;
+  display: block;
+}
+.wu-value-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 700;
+  color: #0d1f26; margin-bottom: 10px;
+}
+.wu-value-text {
+  font-size: 0.875rem;
+  color: #4a6575; line-height: 1.65;
+}
+
+/* ── MANIFEST STRIP ── */
+.wu-manifest {
+  background: linear-gradient(135deg, #0d1f26 0%, #0d4a3a 100%);
+  padding: 96px 40px;
+  text-align: center;
+}
+.wu-manifest-inner {
+  max-width: 700px; margin: 0 auto;
+}
+.wu-manifest h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900;
+  color: #fff; line-height: 1.2;
+  margin-bottom: 20px;
+}
+.wu-manifest h2 em {
+  font-style: italic;
+  background: linear-gradient(135deg, #1ed8c8, #e8876a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.wu-manifest p {
+  color: rgba(255,255,255,0.65);
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 1.8; margin-bottom: 36px;
+}
+.wu-manifest-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-style: italic;
+  color: rgba(255,255,255,0.9);
+  border-left: 3px solid #1ed8c8;
+  padding: 16px 24px;
+  text-align: left;
+  background: rgba(255,255,255,0.04);
+  border-radius: 0 12px 12px 0;
+  margin: 0 auto 40px;
+  max-width: 600px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .wu-stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .wu-stat { border-right: none; border-bottom: 1px solid #e8e4dc; }
+  .wu-stat:nth-child(odd) { border-right: 1px solid #e8e4dc; }
+  .wu-how-grid { grid-template-columns: 1fr; gap: 40px; }
+  .wu-values-grid { grid-template-columns: 1fr; }
+  .wu-section { padding: 64px 20px; }
+  .wu-how-inner { padding: 64px 20px; }
+  .wu-manifest { padding: 64px 20px; }
+  .wu-hero { padding: 60px 20px; }
+  .wu-stats-inner { padding: 0 20px; }
+}
+</style>
 </head>
 <body>
+
 <!-- ══════════════ NAV ══════════════ -->
 <nav id="topnav">
   <a href="index.html" class="nav-brand">
@@ -1368,94 +1722,142 @@ img, video, svg { max-width: 100%; }
   <a href="https://be-hui.vercel.app/Home" target="_blank" class="mob-login">&#128274; Login / App öffnen</a>
 </div>
 </nav>
-<!-- ══════════════ WAS IST HUI ══════════════ -->
-<section class="hs-section hs-intro">
-  <div class="hs-container">
-    <div class="hs-intro-grid">
 
-      <!-- LINKS: Visual Card -->
-      <div class="hs-intro-visual">
-        <div class="hs-intro-card">
-          <p class="hs-intro-card-quote">&bdquo;Hier bin ich Mensch,<br>hier darf ich sein.&ldquo;</p>
-          <div class="hs-intro-card-attr">Motto · Einer für Alle, alle Fair(ein)t</div>
-          <div class="hs-intro-minigrid">
-            <div class="hs-intro-stat">
-              <div class="hs-intro-stat-num" data-live-key="active_users">11</div>
-              <div class="hs-intro-stat-label">Aktive Wirker</div>
-            </div>
-            <div class="hs-intro-stat">
-              <div class="hs-intro-stat-num">15%</div>
-              <div class="hs-intro-stat-label">jeder Buchung → Impact</div>
-            </div>
-            <div class="hs-intro-stat">
-              <div class="hs-intro-stat-num">1</div>
-              <div class="hs-intro-stat-label">Stimme / Talent / Monat</div>
-            </div>
-            <div class="hs-intro-stat hs-intro-stat--heart">
-              <div class="hs-intro-stat-num">💚</div>
-              <div class="hs-intro-stat-label">Wirkung ohne Aufwand</div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- RECHTS: Text + Steps + CTAs -->
-      <div class="hs-intro-text">
-        <div class="hs-eyebrow">Was ist HUI?</div>
-        <h2 class="hs-headline" style="margin-bottom:16px">Wo Talente wirken,<br><em>entsteht Wirkung.</em></h2>
-        <p class="hs-subtext" style="margin-bottom:0">HUI verbindet Menschen, Talente und soziale Projekte auf völlig neue Weise — fair, sicher und menschlich.</p>
-
-        <div class="hs-intro-steps">
-          <div class="hs-intro-step">
-            <div class="hs-intro-step-icon">🎨</div>
-            <div class="hs-intro-step-text">
-              <strong>Talente entdecken &amp; buchen</strong>
-              <span>Kreative, Coaches, Musiker — direkt aus deiner Region, ohne Zwischenhändler.</span>
-            </div>
-          </div>
-          <div class="hs-intro-step">
-            <div class="hs-intro-step-icon">💚</div>
-            <div class="hs-intro-step-text">
-              <strong>15&nbsp;% fließen automatisch weiter</strong>
-              <span>Jede Buchung stärkt den Impact Pool — du entscheidest mit, welche Projekte gefördert werden.</span>
-            </div>
-          </div>
-          <div class="hs-intro-step">
-            <div class="hs-intro-step-icon">🔐</div>
-            <div class="hs-intro-step-text">
-              <strong>Sicher, transparent, menschlich</strong>
-              <span>Verifizierte Profile, faire Preise, kein verstecktes Kleingedrucktes.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hs-ctas">
-          <a href="https://be-hui.vercel.app/Home" class="hs-btn-primary" target="_blank" rel="noopener">✨&nbsp; App jetzt öffnen</a>
-          <a href="impact-pool.html" class="hs-btn-sec">Impact Pool entdecken &rarr;</a>
-        </div>
-      </div>
-
+<!-- ══════════════ HERO ══════════════ -->
+<section class="wu-hero">
+  <div class="wu-hero-grid"></div>
+  <div class="wu-hero-inner">
+    <span class="wu-hero-label">Was ist HUI?</span>
+    <h1>Wo Talente wirken,<br><em>entsteht Wirkung.</em></h1>
+    <p class="wu-hero-sub">HUI verbindet Menschen, Talente und soziale Projekte auf völlig neue Weise — fair, sicher und menschlich.</p>
+    <div class="wu-hero-ctas">
+      <a href="hui-app.html" class="wu-cta-primary">✨ App jetzt öffnen</a>
+      <a href="impact-pool.html" class="wu-cta-sec">Impact Pool entdecken →</a>
     </div>
   </div>
 </section>
 
-
-<!-- ══════════════ VALUES ══════════════ -->
-<section class="values" id="werte">
-  <div class="si">
-    <div class="vc">
-      <h2 data-t-key="ueber.q.h2">Was kannst du heute tun, um die Welt zu einem <span class="g">sch&#246;neren Ort</span> zu machen?</h2>
-      <p>Kleine Schritte bewegen Gro&#223;es. Bei HUI f&#228;ngt Ver&#228;nderung mit dir an.</p>
+<!-- ══════════════ STATS ══════════════ -->
+<div class="wu-stats">
+  <div class="wu-stats-inner">
+    <div class="wu-stat">
+      <div class="wu-stat-num">11</div>
+      <div class="wu-stat-label">Aktive Wirker</div>
     </div>
-    <div class="vg">
-      <div class="vcard"><span class="vico">&#129368;</span><h4>Achtsam leben</h4><p>Zeit f&#252;r dich. Echtes Interesse an anderen. Ein L&#228;cheln ver&#228;ndert viel.</p></div>
-      <div class="vcard"><span class="vico">&#127807;</span><h4>Nachhaltig handeln</h4><p>Regional einkaufen, Plastik vermeiden &#8212; f&#252;r Umwelt und Gesellschaft.</p></div>
-      <div class="vcard"><span class="vico">&#129309;</span><h4>Gemeinsam gestalten</h4><p>Zeit geben, Freude teilen, Wissen weitergeben.</p></div>
-      <div class="vcard"><span class="vico">&#9728;</span><h4>Positiv denken</h4><p>Vorbild sein f&#252;r Offenheit, Mitmenschlichkeit und Mut.</p></div>
-      <div class="vcard"><span class="vico">&#10024;</span><h4>Bewusst entscheiden</h4><p>„Auch der kleinste Stein kann gro&#223;e Kreise ziehen."</p></div>
+    <div class="wu-stat">
+      <div class="wu-stat-num">15%</div>
+      <div class="wu-stat-label">Jede Buchung → Impact</div>
+    </div>
+    <div class="wu-stat">
+      <div class="wu-stat-num">1</div>
+      <div class="wu-stat-label">Stimme / Talent / Monat</div>
+    </div>
+    <div class="wu-stat">
+      <div class="wu-stat-num">💚</div>
+      <div class="wu-stat-label">Wirkung ohne Aufwand</div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- ══════════════ WIE ES FUNKTIONIERT ══════════════ -->
+<div class="wu-how">
+  <div class="wu-how-inner">
+    <div class="wu-eyebrow">Wie es funktioniert</div>
+    <h2 class="wu-h2">Drei Schritte.<br><em>Echte Wirkung.</em></h2>
+    <div class="wu-how-grid">
+      <div class="wu-steps">
+        <div class="wu-step">
+          <div class="wu-step-num">1</div>
+          <div class="wu-step-content">
+            <strong>🎨 Talente entdecken &amp; buchen</strong>
+            <span>Kreative, Coaches, Musiker — direkt aus deiner Region, ohne Zwischenhändler.</span>
+          </div>
+        </div>
+        <div class="wu-step">
+          <div class="wu-step-num">2</div>
+          <div class="wu-step-content">
+            <strong>💚 15 % fließen automatisch weiter</strong>
+            <span>Jede Buchung stärkt den Impact Pool — du entscheidest mit, welche Projekte gefördert werden.</span>
+          </div>
+        </div>
+        <div class="wu-step">
+          <div class="wu-step-num">3</div>
+          <div class="wu-step-content">
+            <strong>🔐 Sicher, transparent, menschlich</strong>
+            <span>Verifizierte Profile, faire Preise, kein verstecktes Kleingedrucktes.</span>
+          </div>
+        </div>
+      </div>
+      <div class="wu-quote-card">
+        <p class="wu-quote-text">„Hier bin ich Mensch,<br>hier darf ich sein."</p>
+        <p class="wu-quote-attr">Motto · Einer für Alle, alle Fair(ein)t</p>
+        <div class="wu-quote-pills">
+          <span class="wu-pill">🌿 Fair</span>
+          <span class="wu-pill">🔐 Sicher</span>
+          <span class="wu-pill">🧡 Menschlich</span>
+          <span class="wu-pill">🎨 Kreativ</span>
+          <span class="wu-pill">🌍 Wirkungsorientiert</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ WERTE ══════════════ -->
+<div class="wu-values-bg">
+  <div class="wu-section">
+    <div class="wu-eyebrow">Unsere Werte</div>
+    <h2 class="wu-h2">Was HUI antreibt.</h2>
+    <p class="wu-lead">Kleine Schritte bewegen Großes. Bei HUI fängt Veränderung mit dir an.</p>
+    <div class="wu-values-grid">
+      <div class="wu-value-card">
+        <span class="wu-value-icon">🧘</span>
+        <div class="wu-value-title">Achtsam leben</div>
+        <p class="wu-value-text">Zeit für dich. Echtes Interesse an anderen. Ein Lächeln verändert viel.</p>
+      </div>
+      <div class="wu-value-card">
+        <span class="wu-value-icon">🌿</span>
+        <div class="wu-value-title">Nachhaltig handeln</div>
+        <p class="wu-value-text">Regional einkaufen, Plastik vermeiden — für Umwelt und Gesellschaft.</p>
+      </div>
+      <div class="wu-value-card">
+        <span class="wu-value-icon">🤝</span>
+        <div class="wu-value-title">Gemeinsam gestalten</div>
+        <p class="wu-value-text">Zeit geben, Freude teilen, Wissen weitergeben.</p>
+      </div>
+      <div class="wu-value-card">
+        <span class="wu-value-icon">☀️</span>
+        <div class="wu-value-title">Positiv denken</div>
+        <p class="wu-value-text">Vorbild sein für Offenheit, Mitmenschlichkeit und Mut.</p>
+      </div>
+      <div class="wu-value-card">
+        <span class="wu-value-icon">✨</span>
+        <div class="wu-value-title">Bewusst entscheiden</div>
+        <p class="wu-value-text">„Auch der kleinste Stein kann große Kreise ziehen."</p>
+      </div>
+      <div class="wu-value-card">
+        <span class="wu-value-icon">💡</span>
+        <div class="wu-value-title">Kreativ wirken</div>
+        <p class="wu-value-text">Ideen in Taten umwandeln — für dich und für alle.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ MANIFEST ══════════════ -->
+<div class="wu-manifest">
+  <div class="wu-manifest-inner">
+    <div class="wu-eyebrow" style="justify-content:center;color:#1ed8c8">Unser Manifest</div>
+    <h2>Was kannst du heute tun,<br>um die Welt zu einem <em>schöneren Ort</em> zu machen?</h2>
+    <p>Jede Buchung, jeder Workshop, jedes Talent-Angebot stärkt die Community und erzeugt automatisch Wirkung — ohne extra Aufwand, ohne leere Versprechen.</p>
+    <blockquote class="wu-manifest-quote">
+      „Auch der kleinste Stein kann große Kreise ziehen."
+    </blockquote>
+    <a href="hui-app.html" class="wu-cta-primary" style="display:inline-flex;align-items:center;gap:8px;padding:16px 36px;border-radius:999px;font-size:16px;font-weight:700;background:#1ed8c8;color:#0d1f26;text-decoration:none;transition:all .2s;">✨ Jetzt Teil von HUI werden</a>
+  </div>
+</div>
+
 <!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="si">
