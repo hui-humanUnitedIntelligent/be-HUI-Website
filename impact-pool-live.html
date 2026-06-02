@@ -1816,7 +1816,7 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   var state = {
     rawTotal:    0,    // Summe aller Transaktionen
     poolGross:   0,    // rawTotal × 15%
-    poolNet:     0,    // poolGross - firmShare
+    poolNet:     0,
     activeProj:  [],
     waitlist:    [],
     lastUpdate:  null
@@ -1855,7 +1855,6 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 
     if (netEl)   animateCounter(netEl, state.poolNet, '', ' €', 1800);
     if (grossEl) animateCounter(grossEl, state.poolGross, '', ' €', 1600);
-    if (firmEl)  animateCounter(firmEl, state.firmShare, '', ' €', 1600);
 
     animateDial(state.poolNet, Math.max(state.poolNet * 1.5, 50000));
 
