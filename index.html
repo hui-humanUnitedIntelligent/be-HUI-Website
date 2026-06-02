@@ -2669,21 +2669,21 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 .hs-stats-section { background: #f9f7f4; }
 .hs-stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
   margin-top: 48px;
 }
 .hs-stat-card {
   background: #fff;
-  border-radius: 20px;
-  padding: 32px 28px;
+  border-radius: 16px;
+  padding: 20px 18px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 2px 16px rgba(0,0,0,.06);
   transition: transform .25s, box-shadow .25s;
 }
 .hs-stat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,.1); }
-.hs-stat--large { grid-column: span 2; }
+.hs-stat--large { grid-column: span 1; }
 .hs-stat-badge {
   position: absolute;
   top: 18px; right: 18px;
@@ -2697,10 +2697,10 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   border-radius: 50px;
 }
 .hs-stat-icon {
-  width: 48px; height: 48px;
-  border-radius: 14px;
+  width: 38px; height: 38px;
+  border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 .hs-stat--teal  .hs-stat-icon { background: #e8faf9; color: #0fb8a8; }
 .hs-stat--coral .hs-stat-icon { background: #fff0ee; color: #e5806a; }
@@ -2709,7 +2709,7 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 .hs-stat--gold  .hs-stat-icon { background: #fffbea; color: #c4900d; }
 .hs-stat-num {
   font-family: 'Playfair Display', serif;
-  font-size: 2.6rem;
+  font-size: 1.9rem;
   font-weight: 700;
   color: #0d1f26;
   line-height: 1;
@@ -3008,8 +3008,8 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 @media (max-width: 900px) {
   .hs-section { padding: 64px 0; }
   .hs-container { padding: 0 24px; }
-  .hs-stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .hs-stat--large { grid-column: span 2; }
+  .hs-stats-grid { grid-template-columns: repeat(3, 1fr); }
+  .hs-stat--large { grid-column: span 1; }
   .hs-why-grid { grid-template-columns: repeat(2, 1fr); }
   .hs-app-inner { grid-template-columns: 1fr; }
   .hs-app-mockup { display: none; }
