@@ -20,7 +20,7 @@
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
-nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:14px 52px;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);transition:all .3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:14px 52px;background:rgba(245,240,232,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(180,160,130,0.15);transition:all .3s}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-logo-wrap{width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative}
 .nav-logo-img{width:46px;height:46px;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.08));transition:filter .2s,transform .2s}
@@ -137,7 +137,7 @@ footer{background:var(--text);padding:72px 0 32px;border-top:1px solid rgba(255,
 .fbot{border-top:1px solid rgba(255,255,255,0.06);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
 .fbot p{font-size:12.5px;color:rgba(255,255,255,0.25)}
 .fm{font-size:12.5px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
-@media(max-width:1024px){nav{padding:12px 24px}.si{padding:0 24px}.fg2{grid-template-columns:1fr 1fr}}
+@media(max-width:1024px){nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:12px 24px}.si{padding:0 24px}.fg2{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){nav ul.nl{display:none}.ham{display:flex}.ww-hero{padding:132px 24px 80px}.ww-what-g,.ww-how-g{grid-template-columns:1fr;gap:48px}.ww-can-grid{grid-template-columns:1fr}.ww-gallery-grid{grid-template-columns:repeat(2,1fr)}.fg2{grid-template-columns:1fr}.ww-closing-inner{padding:0 24px}}
 @media(max-width:400px){.ww-gallery-grid{grid-template-columns:1fr}}
 
@@ -342,7 +342,7 @@ nav {
   position: fixed; top: 0; z-index: 300;
 }
 @media(max-width:768px){
-  nav { padding: 8px 16px; }
+  nav {position:fixed;top:0;left:0;right:0;z-index:300; padding: 8px 16px; }
   nav ul.nl { display: none !important; }
   .ham { display: flex !important; }
   .mob-drawer { display: block !important; }
