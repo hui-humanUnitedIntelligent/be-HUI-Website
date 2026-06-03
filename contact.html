@@ -80,7 +80,7 @@ nav ul.nl>li.dd-open>span{color:var(--teal)!important;background:var(--teal-l)!i
   50%{transform:scale(1.08) translate(-1%,-1%)}
   100%{transform:scale(1) translate(0,0)}
 }
-.page-hero{padding:132px 52px 80px;position:relative;overflow:hidden;text-align:center;background:linear-gradient(160deg,#f8f6f2 0%,#edf8f7 55%,#f5f0ec 100%)}
+.page-hero{padding:132px 52px 80px;position:relative;overflow:hidden;text-align:center;background:linear-gradient(160deg,#f8f6f2 0%,#edf8f7 55%,#f5f0ec 100%);display:flex;flex-direction:column;align-items:center}
 .page-hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
 .page-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;will-change:transform}
 .page-hero-bg video{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
@@ -88,6 +88,7 @@ nav ul.nl>li.dd-open>span{color:var(--teal)!important;background:var(--teal-l)!i
 .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% -10%,rgba(30,216,200,0.15) 0%,transparent 60%);pointer-events:none;z-index:2}
 .page-hero-eyebrow{
   display:inline-flex;align-items:center;gap:6px;
+  width:fit-content;max-width:100%;
   background:rgba(30,216,200,0.08);
   border:1px solid rgba(30,216,200,0.18);
   border-radius:999px;
@@ -98,11 +99,8 @@ nav ul.nl>li.dd-open>span{color:var(--teal)!important;background:var(--teal-l)!i
   color:var(--teal);
   letter-spacing:3.5px;
   text-transform:uppercase;
-  margin-bottom:28px;
+  margin:0 auto 28px;
 }
-/* ── page-hero wrapper zentriert den eyebrow ── */
-.page-hero{text-align:center;}
-.page-hero > .page-hero-eyebrow{margin-left:auto;margin-right:auto;}
 .bdot{width:7px;height:7px;background:var(--teal);border-radius:50%;animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,72px);font-weight:900;line-height:1.08;color:#0d1f26;margin-bottom:20px}
