@@ -1494,19 +1494,12 @@ img, video, svg { max-width: 100%; }
 .n-login:hover{background:var(--teal)!important;color:var(--white)!important}
 </style>
 
-<!-- ═══ TYPOGRAFIE-SYNC (Referenz: index.html) ═══ -->
+
+
+<!-- ═══ TYPOGRAFIE-SYNC v2 (Referenz: index.html) ═══ -->
 <style id="hui-typo-sync">
-/* Fonts */
-/* Playfair Display + DM Sans — via Google Fonts im Head bereits geladen */
 
-/* ── Body ── */
-body {
-  font-family: 'DM Sans', sans-serif !important;
-  color: #1A1A1A !important;
-  -webkit-font-smoothing: antialiased !important;
-}
-
-/* ── CSS Custom Properties (falls noch nicht vorhanden) ── */
+/* ── CSS Variables (global sicherstellen) ── */
 :root {
   --teal:   #1ED8C8;
   --teal-d: #17B8AA;
@@ -1524,35 +1517,102 @@ body {
   --border2:rgba(0,0,0,0.06);
 }
 
-/* ── Headlines ── */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif !important;
+/* ── Body ── */
+body {
+  font-family: 'DM Sans', sans-serif !important;
   color: var(--text) !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 
+/* ── Alle Headlines: Playfair Display ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif !important;
+}
+
+/* ── h1 (Hero-Kontext: hell auf dunkel) ── */
+.hero h1,
+[class*="-hero"] h1,
+section[class*="hero"] h1,
+section[style*="background:#0"] h1,
+section[style*="background: #0"] h1 {
+  color: #ffffff !important;
+}
+
+/* ── h1 Standard (heller Hintergrund) ── */
+h1 {
+  font-size: clamp(36px, 6vw, 72px) !important;
+  font-weight: 900 !important;
+  line-height: 1.1 !important;
+  color: var(--text) !important;
+  text-align: center !important;
+}
+
+/* ── h2 ── */
 h2 {
+  font-family: 'Playfair Display', serif !important;
   font-size: clamp(24px, 4vw, 44px) !important;
   font-weight: 900 !important;
   line-height: 1.2 !important;
+  color: var(--text) !important;
+  text-align: center !important;
 }
 
+/* ── h3 ── */
 h3 {
-  font-size: clamp(20px, 2.5vw, 26px) !important;
+  font-family: 'Playfair Display', serif !important;
+  font-size: clamp(18px, 2.5vw, 26px) !important;
   font-weight: 700 !important;
   line-height: 1.3 !important;
+  color: var(--text) !important;
 }
 
+/* ── h4 ── */
 h4 {
+  font-family: 'Playfair Display', serif !important;
   font-size: 16px !important;
   font-weight: 700 !important;
   line-height: 1.4 !important;
+  color: var(--text) !important;
 }
 
-h5 {
+/* ── h5, h6 ── */
+h5, h6 {
+  font-family: 'DM Sans', sans-serif !important;
   font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: 2.5px !important;
   text-transform: uppercase !important;
+  color: var(--muted) !important;
+}
+
+/* ── Helle Schrift auf dunklen Hintergründen ── */
+section[style*="background:#0d"],
+section[style*="background: #0d"],
+section[style*="background:#0a"],
+section[style*="background:#1a"],
+[class*="dark"] h1, [class*="dark"] h2, [class*="dark"] h3,
+[class*="dark"] h4, [class*="dark"] p,
+.dark-bg h1, .dark-bg h2, .dark-bg h3, .dark-bg h4, .dark-bg p {
+  color: #ffffff !important;
+}
+
+/* Dunkle Sektionen via Klassen erkennen */
+.hero h1, .hero h2, .hero h3, .hero p,
+[class*="-hero"] h1, [class*="-hero"] h2, [class*="-hero"] p,
+.ip-hero h1, .ip-hero h2, .ip-hero p,
+.cm-hero h1, .cm-hero h2, .cm-hero p,
+.hs-hero h1, .hs-hero h2, .hs-hero p,
+section.dark h1, section.dark h2, section.dark p,
+.cta h2, .cta h3, .cta p,
+.cm-cta h2, .cm-cta p,
+.join h2, .join h3 {
+  color: #ffffff !important;
+}
+
+/* Ausnahmen: Labels (--teal) bleiben teal */
+.lbl, .cm-eyebrow, .cm-label, [class*="eyebrow"],
+[class*="label"], .ip-hero-eyebrow {
+  color: var(--teal) !important;
 }
 
 /* ── Utility-Klassen ── */
@@ -1562,6 +1622,7 @@ h5 {
   font-weight: 800 !important;
   line-height: 1.12 !important;
   color: var(--text) !important;
+  text-align: center !important;
 }
 
 .lbl {
@@ -1579,9 +1640,16 @@ h5 {
   color: var(--muted) !important;
   line-height: 1.75 !important;
   font-weight: 300 !important;
+  text-align: center !important;
 }
 
-/* ── Nav Typography ── */
+/* ── Fließtext ── */
+p {
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.7;
+}
+
+/* ── Nav-Typografie ── */
 .nav-hui {
   font-family: 'Playfair Display', serif !important;
   font-weight: 900 !important;
@@ -1601,30 +1669,22 @@ nav ul.nl > li > a {
   font-family: 'DM Sans', sans-serif !important;
   font-size: 13.5px !important;
   font-weight: 500 !important;
-  color: var(--text2) !important;
-}
-
-/* ── Fliesstext / paragraphs ── */
-p {
-  font-family: 'DM Sans', sans-serif;
-  color: var(--muted);
-  line-height: 1.7;
 }
 
 /* ── Buttons ── */
-.btn-main, .btn-sec {
+.btn-main, .btn-sec, [class*="btn-"] {
   font-family: 'DM Sans', sans-serif !important;
   font-weight: 700 !important;
-  font-size: 14.5px !important;
   letter-spacing: 0.2px !important;
 }
 
-/* ── Section-Inner max-width ── */
-.si {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 32px;
+/* ── Section-Heads zentriert ── */
+.section-head, .cm-section-head, .hs-section-head,
+[class*="-head"] h2, [class*="-head"] p,
+.si > h2, .si > p.rev-sub {
+  text-align: center !important;
 }
+
 </style>
 <!-- ═══ /TYPOGRAFIE-SYNC ═══ -->
 </head>
