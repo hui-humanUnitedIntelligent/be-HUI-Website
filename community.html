@@ -1113,10 +1113,12 @@ img, video, svg { max-width: 100%; }
 
 
 
-<!-- ═══ TYPOGRAFIE-SYNC v2 (Referenz: index.html) ═══ -->
+
+
+<!-- ═══ TYPOGRAFIE-SYNC v3 (Referenz: index.html) ═══ -->
 <style id="hui-typo-sync">
 
-/* ── CSS Variables (global sicherstellen) ── */
+/* ── CSS Variables ── */
 :root {
   --teal:   #1ED8C8;
   --teal-d: #17B8AA;
@@ -1146,16 +1148,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif !important;
 }
 
-/* ── h1 (Hero-Kontext: hell auf dunkel) ── */
-.hero h1,
-[class*="-hero"] h1,
-section[class*="hero"] h1,
-section[style*="background:#0"] h1,
-section[style*="background: #0"] h1 {
-  color: #ffffff !important;
-}
-
-/* ── h1 Standard (heller Hintergrund) ── */
+/* ── h1 Standard ── */
 h1 {
   font-size: clamp(36px, 6vw, 72px) !important;
   font-weight: 900 !important;
@@ -1202,36 +1195,6 @@ h5, h6 {
   color: var(--muted) !important;
 }
 
-/* ── Helle Schrift auf dunklen Hintergründen ── */
-section[style*="background:#0d"],
-section[style*="background: #0d"],
-section[style*="background:#0a"],
-section[style*="background:#1a"],
-[class*="dark"] h1, [class*="dark"] h2, [class*="dark"] h3,
-[class*="dark"] h4, [class*="dark"] p,
-.dark-bg h1, .dark-bg h2, .dark-bg h3, .dark-bg h4, .dark-bg p {
-  color: #ffffff !important;
-}
-
-/* Dunkle Sektionen via Klassen erkennen */
-.hero h1, .hero h2, .hero h3, .hero p,
-[class*="-hero"] h1, [class*="-hero"] h2, [class*="-hero"] p,
-.ip-hero h1, .ip-hero h2, .ip-hero p,
-.cm-hero h1, .cm-hero h2, .cm-hero p,
-.hs-hero h1, .hs-hero h2, .hs-hero p,
-section.dark h1, section.dark h2, section.dark p,
-.cta h2, .cta h3, .cta p,
-.cm-cta h2, .cm-cta p,
-.join h2, .join h3 {
-  color: #ffffff !important;
-}
-
-/* Ausnahmen: Labels (--teal) bleiben teal */
-.lbl, .cm-eyebrow, .cm-label, [class*="eyebrow"],
-[class*="label"], .ip-hero-eyebrow {
-  color: var(--teal) !important;
-}
-
 /* ── Utility-Klassen ── */
 .ttl {
   font-family: 'Playfair Display', serif !important;
@@ -1242,22 +1205,94 @@ section.dark h1, section.dark h2, section.dark p,
   text-align: center !important;
 }
 
-.lbl {
+/* ── Labels / Eyebrows: IMMER zentriert ── */
+.lbl,
+.wu-eyebrow,
+[class*="eyebrow"],
+[class*="-label"],
+[class*="-lbl"],
+[class*="-eyebrow"],
+.cm-label,
+.cm-eyebrow,
+.ip-hero-eyebrow,
+.hs-label,
+.rev-lbl,
+.join-lbl {
   font-family: 'DM Sans', sans-serif !important;
   font-size: 11px !important;
   font-weight: 700 !important;
   color: var(--teal) !important;
   letter-spacing: 3px !important;
   text-transform: uppercase !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
 }
 
-.dsc {
+/* ── wu-eyebrow spezifisch (flex -> block für Zentrierung) ── */
+.wu-eyebrow {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* ── wu-h2 zentriert ── */
+.wu-h2 {
+  text-align: center !important;
+  color: var(--text) !important;
+}
+
+/* ── Alle Section-Wrapper zentriert ── */
+.wu-section,
+.si,
+.hs-section,
+[class*="-section"] {
+  text-align: center;
+}
+
+/* ── Ausnahmen: Cards und Grids bleiben linksbündig ── */
+.wu-section .wu-value-card,
+.wu-section .wu-intro-grid,
+.wu-section .wu-team-grid,
+.si .rg,
+.si .join-g,
+[class*="-grid"],
+[class*="-card"] {
+  text-align: left;
+}
+
+/* ── dsc / Subtext ── */
+.dsc, .wu-lead, .rev-sub, .hs-sub,
+[class*="-sub"]:not([class*="-nav"]):not([class*="-mob"]) {
   font-family: 'DM Sans', sans-serif !important;
   font-size: 16px !important;
   color: var(--muted) !important;
   line-height: 1.75 !important;
   font-weight: 300 !important;
   text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* ── Helle Schrift auf dunklen Sektionen ── */
+.hero h1, .hero h2, .hero h3, .hero p,
+.ip-hero h1, .ip-hero h2, .ip-hero p,
+.cm-hero h1, .cm-hero h2, .cm-hero p,
+.hs-hero h1, .hs-hero h2, .hs-hero p,
+.wu-manifest h2, .wu-manifest p,
+.cta h2, .cta h3, .cta p,
+.cm-cta h2, .cm-cta p,
+section.dark h1, section.dark h2, section.dark p {
+  color: #ffffff !important;
+}
+
+/* wu-manifest Gradient-em bleibt */
+.wu-manifest h2 em {
+  background: linear-gradient(135deg, #1ed8c8, #e8876a) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
 }
 
 /* ── Fließtext ── */
@@ -1281,25 +1316,12 @@ p {
   letter-spacing: 2.5px !important;
   text-transform: uppercase !important;
 }
-nav ul.nl > li > span,
-nav ul.nl > li > a {
-  font-family: 'DM Sans', sans-serif !important;
-  font-size: 13.5px !important;
-  font-weight: 500 !important;
-}
 
 /* ── Buttons ── */
 .btn-main, .btn-sec, [class*="btn-"] {
   font-family: 'DM Sans', sans-serif !important;
   font-weight: 700 !important;
   letter-spacing: 0.2px !important;
-}
-
-/* ── Section-Heads zentriert ── */
-.section-head, .cm-section-head, .hs-section-head,
-[class*="-head"] h2, [class*="-head"] p,
-.si > h2, .si > p.rev-sub {
-  text-align: center !important;
 }
 
 </style>
