@@ -551,6 +551,8 @@ img, video, svg { max-width: 100%; }
 /* ═══════════════════════════════════════
    WIE ES FUNKTIONIERT — Page Styles
 ═══════════════════════════════════════ */
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 /* Hero */
 .wef-hero {
@@ -559,6 +561,7 @@ img, video, svg { max-width: 100%; }
   text-align: center;
   position: relative;
   overflow: hidden;
+  margin-top: -72px;
 }
 .wef-hero::before {
   content: '';
@@ -579,6 +582,7 @@ img, video, svg { max-width: 100%; }
   font-weight: 700; color: var(--teal);
   letter-spacing: 3px; text-transform: uppercase;
   margin-bottom: 28px;
+  animation: fadeUp .6s ease both;
 }
 .wef-hero h1 {
   font-family: 'Playfair Display', serif;
@@ -587,14 +591,16 @@ img, video, svg { max-width: 100%; }
   line-height: 1.05;
   color: var(--text);
   margin-bottom: 20px;
+  animation: fadeUp .6s .1s ease both;
 }
 .wef-hero h1 em { font-style: italic; color: var(--teal); }
-.wef-hero p {
+.wef-hero > p {
   font-size: clamp(15px, 1.5vw, 18px);
   color: var(--muted);
   max-width: 560px;
   margin: 0 auto 36px;
   line-height: 1.7;
+  animation: fadeUp .6s .2s ease both;
 }
 .wef-hero-cta {
   display: inline-flex; align-items: center; gap: 8px;
@@ -605,6 +611,7 @@ img, video, svg { max-width: 100%; }
   text-decoration: none;
   transition: background .2s, transform .2s, box-shadow .2s;
   box-shadow: 0 4px 20px rgba(30,216,200,0.3);
+  animation: fadeUp .6s .3s ease both;
 }
 .wef-hero-cta:hover {
   background: var(--teal-d);
@@ -615,18 +622,18 @@ img, video, svg { max-width: 100%; }
 /* ── OVERVIEW STRIP ── */
 .overview-strip {
   background: #0d1f26;
-  padding: 32px 52px;
+  padding: 28px 52px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
   flex-wrap: wrap;
+  gap: 0;
 }
 .overview-item {
   display: flex; align-items: center; gap: 10px;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.8);
   font-size: 13px; font-weight: 500;
-  padding: 0 28px;
+  padding: 6px 32px;
 }
 .overview-item .ov-num {
   font-family: 'Playfair Display', serif;
@@ -635,7 +642,8 @@ img, video, svg { max-width: 100%; }
 }
 .overview-sep {
   width: 1px; height: 28px;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.1);
+  flex-shrink: 0;
 }
 
 /* ── STEPS SECTION ── */
@@ -643,11 +651,11 @@ img, video, svg { max-width: 100%; }
   padding: 100px 52px;
   background: var(--bg);
 }
-.steps-header {
+.section-header {
   text-align: center;
-  margin-bottom: 72px;
+  margin-bottom: 64px;
 }
-.steps-header .lbl {
+.section-header .lbl {
   display: inline-block;
   font-size: 10px; font-weight: 700;
   letter-spacing: 3px; text-transform: uppercase;
@@ -658,19 +666,20 @@ img, video, svg { max-width: 100%; }
   padding: 5px 14px;
   margin-bottom: 16px;
 }
-.steps-header h2 {
+.section-header h2 {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
   font-size: clamp(30px, 4vw, 52px);
-  color: var(--text);
-  line-height: 1.1;
+  color: var(--text); line-height: 1.1;
 }
-.steps-header h2 em { font-style: italic; color: var(--teal); }
-.steps-header p {
+.section-header h2 em { font-style: italic; color: var(--teal); }
+.section-header p {
   font-size: 16px; color: var(--muted);
   max-width: 500px; margin: 14px auto 0;
   line-height: 1.7;
 }
+.section-header.light h2 { color: #fff; }
+.section-header.light p { color: rgba(255,255,255,0.5); }
 
 /* Steps Grid */
 .steps-grid {
@@ -687,57 +696,47 @@ img, video, svg { max-width: 100%; }
   background: var(--white);
   padding: 44px 36px;
   position: relative;
-  transition: background .3s, transform .3s;
-  cursor: default;
+  transition: background .3s;
 }
-.step-card:hover {
-  background: #0d1f26;
-  z-index: 2;
-}
-.step-card:hover .step-num { color: rgba(30,216,200,0.15); }
+.step-card:hover { background: #0d1f26; }
+.step-card:hover .step-num { color: rgba(30,216,200,0.12); }
 .step-card:hover .step-title { color: #fff; }
-.step-card:hover .step-text { color: rgba(255,255,255,0.65); }
-.step-card:hover .step-icon-wrap { background: rgba(30,216,200,0.15); border-color: rgba(30,216,200,0.3); }
-.step-card:hover .step-icon { color: var(--teal); }
-.step-card:hover .step-top-line { background: var(--teal); }
-.step-top-line {
+.step-card:hover .step-text { color: rgba(255,255,255,0.55); }
+.step-card:hover .step-icon-wrap { background: rgba(30,216,200,0.12); border-color: rgba(30,216,200,0.25); }
+.step-card:hover .step-bar { background: var(--teal); }
+.step-bar {
   position: absolute; top: 0; left: 0; right: 0;
-  height: 3px;
-  background: transparent;
+  height: 3px; background: transparent;
   transition: background .3s;
 }
 .step-num {
   font-family: 'Playfair Display', serif;
-  font-weight: 900; font-size: 56px;
-  color: rgba(30,216,200,0.10);
-  line-height: 1;
-  margin-bottom: 12px;
+  font-weight: 900; font-size: 52px;
+  color: rgba(30,216,200,0.09);
+  line-height: 1; margin-bottom: 16px;
   transition: color .3s;
 }
 .step-icon-wrap {
-  width: 48px; height: 48px;
-  border-radius: 14px;
+  width: 46px; height: 46px; border-radius: 13px;
   background: rgba(30,216,200,0.07);
-  border: 1px solid rgba(30,216,200,0.15);
+  border: 1px solid rgba(30,216,200,0.14);
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 18px;
   transition: background .3s, border-color .3s;
 }
-.step-icon { font-size: 22px; transition: color .3s; }
+.step-icon { font-size: 20px; }
 .step-title {
   font-family: 'Playfair Display', serif;
-  font-weight: 900; font-size: 20px;
-  color: var(--text); margin-bottom: 10px;
-  line-height: 1.2;
+  font-weight: 900; font-size: 19px;
+  color: var(--text); margin-bottom: 10px; line-height: 1.2;
   transition: color .3s;
 }
 .step-text {
-  font-size: 14px; line-height: 1.65;
-  color: var(--muted);
-  transition: color .3s;
+  font-size: 13.5px; line-height: 1.65;
+  color: var(--muted); transition: color .3s;
 }
 
-/* ── VISUAL FLOW SECTION (dark) ── */
+/* ── FLOW SECTION (dark) ── */
 .flow-section {
   background: #0d1f26;
   padding: 100px 52px;
@@ -748,133 +747,81 @@ img, video, svg { max-width: 100%; }
   content: '';
   position: absolute;
   top: -200px; right: -200px;
-  width: 600px; height: 600px;
+  width: 550px; height: 550px;
   background: radial-gradient(circle, rgba(30,216,200,0.06) 0%, transparent 65%);
   pointer-events: none;
 }
-.flow-header {
-  text-align: center;
-  margin-bottom: 72px;
-}
-.flow-header .lbl {
-  display: inline-block;
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 3px; text-transform: uppercase;
-  color: var(--teal);
-  background: rgba(30,216,200,0.1);
-  border: 1px solid rgba(30,216,200,0.25);
-  border-radius: 999px;
-  padding: 5px 14px;
-  margin-bottom: 16px;
-}
-.flow-header h2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  font-size: clamp(28px, 3.5vw, 46px);
-  color: #fff; line-height: 1.15;
-}
-.flow-header h2 em { font-style: italic; color: var(--teal); }
-.flow-header p {
-  font-size: 15px; color: rgba(255,255,255,0.5);
-  max-width: 480px; margin: 14px auto 0;
-  line-height: 1.7;
-}
 
-/* Flow Pillars */
 .flow-pillars {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   max-width: 1100px;
-  margin: 0 auto 60px;
+  margin: 0 auto 52px;
 }
 .flow-pillar {
-  border: 1px solid rgba(30,216,200,0.12);
+  border: 1px solid rgba(30,216,200,0.11);
   border-radius: 20px;
-  padding: 32px 24px;
+  padding: 32px 22px;
   text-align: center;
   position: relative;
-  overflow: hidden;
   transition: border-color .3s, transform .3s;
 }
 .flow-pillar:hover {
-  border-color: rgba(30,216,200,0.35);
+  border-color: rgba(30,216,200,0.32);
   transform: translateY(-4px);
 }
-.flow-pillar::before {
+.flow-pillar::after {
   content: attr(data-step);
   position: absolute;
-  top: 16px; right: 20px;
-  font-family: 'Playfair Display', serif;
-  font-weight: 900; font-size: 11px;
-  color: rgba(30,216,200,0.3);
+  top: 14px; right: 18px;
+  font-size: 10px; font-weight: 700;
+  color: rgba(30,216,200,0.28);
   letter-spacing: 1px;
+  font-family: 'DM Sans', sans-serif;
 }
-.pillar-icon { font-size: 32px; margin-bottom: 14px; display: block; }
+.pillar-icon { font-size: 30px; margin-bottom: 14px; display: block; }
 .pillar-title {
   font-family: 'Playfair Display', serif;
   font-weight: 900; font-size: 16px;
   color: #fff; margin-bottom: 8px;
 }
 .pillar-text {
-  font-size: 13px; color: rgba(255,255,255,0.45);
+  font-size: 13px; color: rgba(255,255,255,0.42);
   line-height: 1.6;
 }
-.flow-arrow {
-  display: flex; align-items: center; justify-content: center;
-  margin-top: -10px;
-}
-.flow-arrow-line {
-  display: flex; align-items: center; gap: 12px;
+.flow-tagline {
+  text-align: center;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
   color: rgba(30,216,200,0.4);
-  font-size: 13px; font-weight: 600; letter-spacing: 2px;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
 }
-.flow-arrow-line::before,
-.flow-arrow-line::after {
+.flow-tagline::before, .flow-tagline::after {
   content: '';
-  flex: 1; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(30,216,200,0.3), transparent);
-  min-width: 60px;
+  width: 80px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(30,216,200,0.25));
+}
+.flow-tagline::after {
+  background: linear-gradient(270deg, transparent, rgba(30,216,200,0.25));
 }
 
-/* ── VALUES SECTION ── */
+/* ── VALUES ── */
 .values-section {
   padding: 100px 52px;
   background: var(--bg2);
 }
-.values-header {
-  text-align: center;
-  margin-bottom: 64px;
-}
-.values-header .lbl {
-  display: inline-block;
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 3px; text-transform: uppercase;
-  color: var(--teal);
-  background: rgba(30,216,200,0.08);
-  border: 1px solid rgba(30,216,200,0.18);
-  border-radius: 999px;
-  padding: 5px 14px;
-  margin-bottom: 16px;
-}
-.values-header h2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  font-size: clamp(28px, 3.5vw, 46px);
-  color: var(--text); line-height: 1.15;
-}
-.values-header h2 em { font-style: italic; color: var(--teal); }
 .values-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 22px;
   max-width: 1100px;
   margin: 0 auto;
 }
 .value-card {
   background: var(--white);
   border-radius: 20px;
-  padding: 36px;
+  padding: 34px;
   border: 1px solid var(--border2);
   transition: box-shadow .3s, transform .3s;
 }
@@ -882,64 +829,59 @@ img, video, svg { max-width: 100%; }
   box-shadow: 0 16px 48px rgba(0,0,0,0.07);
   transform: translateY(-3px);
 }
-.value-emoji { font-size: 28px; margin-bottom: 14px; }
+.value-emoji { font-size: 26px; margin-bottom: 14px; }
 .value-title {
   font-family: 'Playfair Display', serif;
-  font-weight: 900; font-size: 20px;
+  font-weight: 900; font-size: 19px;
   color: var(--text); margin-bottom: 10px;
 }
 .value-text {
-  font-size: 14px; line-height: 1.7;
-  color: var(--muted);
+  font-size: 13.5px; line-height: 1.7; color: var(--muted);
 }
 
-/* ── FAQ / QUOTE SECTION ── */
+/* ── QUOTE ── */
 .quote-section {
   padding: 100px 52px;
   background: var(--bg);
   text-align: center;
 }
 .quote-wrap {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 760px; margin: 0 auto;
   background: #0d1f26;
   border-radius: 28px;
   padding: 64px 72px;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
 .quote-wrap::before {
   content: '"';
   position: absolute;
-  top: -10px; left: 32px;
+  top: -20px; left: 28px;
   font-family: 'Playfair Display', serif;
   font-size: 200px; line-height: 1;
-  color: rgba(30,216,200,0.05);
+  color: rgba(30,216,200,0.04);
   pointer-events: none;
 }
 .quote-text {
   font-family: 'Playfair Display', serif;
   font-style: italic; font-weight: 700;
-  font-size: clamp(20px, 2.5vw, 30px);
-  color: #fff; line-height: 1.45;
+  font-size: clamp(20px, 2.5vw, 28px);
+  color: #fff; line-height: 1.5;
   margin-bottom: 24px;
   position: relative; z-index: 1;
 }
 .quote-text em { color: var(--teal); font-style: normal; }
 .quote-author {
-  font-size: 12px; font-weight: 700;
+  font-size: 11px; font-weight: 700;
   letter-spacing: 2.5px; text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.35);
   position: relative; z-index: 1;
 }
 
-/* ── CTA SECTION ── */
+/* ── CTA ── */
 .cta-section {
   padding: 100px 52px;
   background: linear-gradient(135deg, #0d1f26 0%, #0a1a20 100%);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+  text-align: center; position: relative; overflow: hidden;
 }
 .cta-section::before {
   content: '';
@@ -947,7 +889,7 @@ img, video, svg { max-width: 100%; }
   bottom: -150px; left: 50%;
   transform: translateX(-50%);
   width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(30,216,200,0.1) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(30,216,200,0.09) 0%, transparent 65%);
 }
 .cta-section .lbl {
   display: inline-block;
@@ -956,22 +898,18 @@ img, video, svg { max-width: 100%; }
   color: var(--teal);
   background: rgba(30,216,200,0.1);
   border: 1px solid rgba(30,216,200,0.25);
-  border-radius: 999px;
-  padding: 5px 14px;
-  margin-bottom: 20px;
+  border-radius: 999px; padding: 5px 14px; margin-bottom: 20px;
 }
 .cta-section h2 {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
   font-size: clamp(28px, 4vw, 52px);
-  color: #fff; line-height: 1.1;
-  margin-bottom: 16px;
+  color: #fff; line-height: 1.1; margin-bottom: 16px;
 }
 .cta-section h2 em { font-style: italic; color: var(--teal); }
-.cta-section p {
-  font-size: 16px; color: rgba(255,255,255,0.5);
-  max-width: 480px; margin: 0 auto 36px;
-  line-height: 1.7;
+.cta-section > p {
+  font-size: 16px; color: rgba(255,255,255,0.45);
+  max-width: 460px; margin: 0 auto 36px; line-height: 1.7;
 }
 .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .btn-primary {
@@ -984,34 +922,34 @@ img, video, svg { max-width: 100%; }
   transition: background .2s, transform .2s, box-shadow .2s;
   box-shadow: 0 4px 20px rgba(30,216,200,0.35);
 }
-.btn-primary:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(30,216,200,0.4); }
+.btn-primary:hover { background: #fff; transform: translateY(-2px); }
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
   background: transparent;
-  border: 1.5px solid rgba(255,255,255,0.2);
-  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.8);
   font-family: 'DM Sans', sans-serif;
   font-weight: 600; font-size: 14px;
   padding: 14px 30px; border-radius: 999px;
   text-decoration: none;
-  transition: border-color .2s, background .2s;
+  transition: border-color .2s, background .2s, color .2s;
 }
-.btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+.btn-ghost:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
 
 /* ── RESPONSIVE ── */
-@media(max-width: 900px) {
-  .steps-grid { grid-template-columns: 1fr 1fr; }
-  .flow-pillars { grid-template-columns: 1fr 1fr; }
-  .values-grid { grid-template-columns: 1fr 1fr; }
-  .overview-strip { padding: 24px 24px; gap: 16px; }
-  .quote-wrap { padding: 44px 36px; }
+@media(max-width:900px){
+  .steps-grid{grid-template-columns:1fr 1fr}
+  .flow-pillars{grid-template-columns:1fr 1fr}
+  .values-grid{grid-template-columns:1fr 1fr}
+  .overview-strip{padding:20px 24px}
+  .quote-wrap{padding:44px 36px}
 }
-@media(max-width: 600px) {
-  .wef-hero, .steps-section, .flow-section,
-  .values-section, .quote-section, .cta-section { padding-left: 24px; padding-right: 24px; }
-  .steps-grid, .flow-pillars, .values-grid { grid-template-columns: 1fr; }
-  .overview-item { padding: 8px 16px; }
-  .cta-btns { flex-direction: column; align-items: center; }
+@media(max-width:600px){
+  .wef-hero,.steps-section,.flow-section,
+  .values-section,.quote-section,.cta-section{padding-left:24px;padding-right:24px}
+  .steps-grid,.flow-pillars,.values-grid{grid-template-columns:1fr}
+  .overview-item{padding:8px 16px}
+  .cta-btns{flex-direction:column;align-items:center}
 }
 
 </style>
@@ -1091,7 +1029,108 @@ img, video, svg { max-width: 100%; }
 <button class="ham" id="hamBtn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobDrawer">
   <span></span><span></span><span></span>
 </button>
-<div class="mob-backdrop" id="mobBackdrop">
+<div class="mob-backdrop" id="mobBackdrop"></div>
+<div class="mob-drawer" id="mobDrawer" role="dialog" aria-label="Navigation">
+  <ul class="mob-nav-list">
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>Über uns <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="ueber-uns.html"><span class="dd-ico">&#127775;</span>Was ist HUI</a>
+        <a href="team.html"><span class="dd-ico">&#128101;</span>Team</a>
+        <a href="contact.html"><span class="dd-ico">&#128172;</span>Schreib uns</a>
+        <a href="contact.html#faq"><span class="dd-ico">&#10067;</span>Hilfe &amp; FAQ</a>
+      </div>
+    </li>
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>HUI App <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="hui-app.html"><span class="dd-ico">&#128241;</span>App Übersicht</a>
+        <a href="werde-wirker.html"><span class="dd-ico">&#127775;</span>Werde Wirker</a>
+        <a href="app-download.html"><span class="dd-ico">&#11015;</span>App Download</a>
+        <a href="https://be-hui.vercel.app/Home" target="_blank"><span class="dd-ico">&#128279;</span>Web-App öffnen</a>
+      </div>
+    </li>
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>Impact Pool <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="impact-pool.html"><span class="dd-ico">&#127807;</span>Wie es funktioniert</a>
+        <a href="impact-pool-live.html"><span class="dd-ico">&#128200;</span>Impact Pool Live</a>
+      </div>
+    </li>
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>Projekte <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="alle-projekte.html"><span class="dd-ico">&#128196;</span>Alle Projekte</a>
+      </div>
+    </li>
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>Community <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="community.html"><span class="dd-ico">&#128483;</span>Stimmen</a>
+        <a href="galerie.html"><span class="dd-ico">&#128247;</span>Galerie</a>
+      </div>
+    </li>
+  </ul>
+  <div class="mob-divider"></div>
+  <a href="https://be-hui.vercel.app/Home" target="_blank" class="mob-login">&#128274; Login / App öffnen</a>
+</div>
+</nav>
+
+<!-- ══ MOBILE NAV DRAWER ══ -->
+<button class="ham" id="hamBtn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobDrawer">
+  <span></span><span></span><span></span>
+</button>
+<div class="mob-backdrop" id="mobBackdrop"></div>
+<div class="mob-drawer" id="mobDrawer" role="dialog" aria-label="Navigation">
+  <ul class="mob-nav-list">
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>Über uns <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="ueber-uns.html"><span class="dd-ico">&#127775;</span>Was ist HUI</a>
+        <a href="team.html"><span class="dd-ico">&#128101;</span>Team</a>
+        <a href="contact.html"><span class="dd-ico">&#128172;</span>Schreib uns</a>
+        <a href="contact.html#faq"><span class="dd-ico">&#10067;</span>Hilfe &amp; FAQ</a>
+      </div>
+    </li>
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>HUI App <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="hui-app.html"><span class="dd-ico">&#128241;</span>App Übersicht</a>
+        <a href="werde-wirker.html"><span class="dd-ico">&#127775;</span>Werde Wirker</a>
+        <a href="app-download.html"><span class="dd-ico">&#11015;</span>App Download</a>
+        <a href="https://be-hui.vercel.app/Home" target="_blank"><span class="dd-ico">&#128279;</span>Web-App öffnen</a>
+      </div>
+    </li>
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>Impact Pool <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="impact-pool.html"><span class="dd-ico">&#127807;</span>Wie es funktioniert</a>
+        <a href="impact-pool-live.html"><span class="dd-ico">&#128200;</span>Impact Pool Live</a>
+      </div>
+    </li>
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>Projekte <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="alle-projekte.html"><span class="dd-ico">&#128196;</span>Alle Projekte</a>
+      </div>
+    </li>
+    <li class="mob-nav-item">
+      <button class="mob-nav-btn" data-mob-toggle>Community <span class="mob-arr">&#9660;</span></button>
+      <div class="mob-sub">
+        <a href="community.html"><span class="dd-ico">&#128483;</span>Stimmen</a>
+        <a href="galerie.html"><span class="dd-ico">&#128247;</span>Galerie</a>
+      </div>
+    </li>
+  </ul>
+  <div class="mob-divider"></div>
+  <a href="https://be-hui.vercel.app/Home" target="_blank" class="mob-login">&#128274; Login / App öffnen</a>
+</div>
+</nav>
+<!-- ══ MOBILE NAV DRAWER ══ -->
+<button class="ham" id="hamBtn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobDrawer">
+  <span></span><span></span><span></span>
+</button>
+<div class="mob-backdrop" id="mobBackdrop"></div>
 <div class="mob-drawer" id="mobDrawer" role="dialog" aria-label="Navigation">
   <ul class="mob-nav-list">
     <li class="mob-nav-item">
@@ -1167,8 +1206,8 @@ img, video, svg { max-width: 100%; }
   </div>
   <div class="overview-sep"></div>
   <div class="overview-item">
-    <span class="ov-num">0€</span>
-    <span>Hürde zum Starten</span>
+    <span class="ov-num">0&thinsp;€</span>
+    <span>H&uuml;rde zum Starten</span>
   </div>
 </div>
 
@@ -1176,73 +1215,73 @@ img, video, svg { max-width: 100%; }
      6 SCHRITTE GRID
 ══════════════════════════ -->
 <section class="steps-section">
-  <div class="steps-header">
+  <div class="section-header">
     <span class="lbl">Der Prozess</span>
     <h2>In 6 Schritten zur<br><em>echten Wirkung</em></h2>
-    <p>Von der Idee bis zum messbaren Ergebnis — strukturiert, fair und gemeinschaftlich.</p>
+    <p>Von der Idee bis zum messbaren Ergebnis &mdash; strukturiert, fair und gemeinschaftlich.</p>
   </div>
 
   <div class="steps-grid">
 
     <div class="step-card">
-      <div class="step-top-line"></div>
+      <div class="step-bar"></div>
       <div class="step-num">01</div>
       <div class="step-icon-wrap"><span class="step-icon">&#128269;</span></div>
       <div class="step-title">Projekt entdecken</div>
-      <div class="step-text">Durchstöbere laufende HUI-Projekte in der App oder auf der Website. Jedes Projekt zeigt dir transparent, was gebraucht wird und welche Wirkung es entfaltet.</div>
+      <div class="step-text">Durchst&ouml;bere laufende HUI-Projekte in der App oder auf der Website. Jedes Projekt zeigt dir transparent, was gebraucht wird und welche Wirkung es entfaltet.</div>
     </div>
 
     <div class="step-card">
-      <div class="step-top-line"></div>
+      <div class="step-bar"></div>
       <div class="step-num">02</div>
       <div class="step-icon-wrap"><span class="step-icon">&#9989;</span></div>
       <div class="step-title">Buchen &amp; beitreten</div>
-      <div class="step-text">Mit wenigen Klicks buchst du deine Teilnahme. Kein langer Anmeldeprozess — einfach Platz sichern und Teil der Gemeinschaft werden.</div>
+      <div class="step-text">Mit wenigen Klicks buchst du deine Teilnahme. Kein langer Anmeldeprozess &mdash; einfach Platz sichern und Teil der Gemeinschaft werden.</div>
     </div>
 
     <div class="step-card">
-      <div class="step-top-line"></div>
+      <div class="step-bar"></div>
       <div class="step-num">03</div>
       <div class="step-icon-wrap"><span class="step-icon">&#127775;</span></div>
       <div class="step-title">Gemeinsam wirken</div>
-      <div class="step-text">Du wirkst aktiv mit — sei es durch Zeit, Energie oder Expertise. Jede Handlung zählt und wird der Gemeinschaft und dem Projekt gutgeschrieben.</div>
+      <div class="step-text">Du wirkst aktiv mit &mdash; sei es durch Zeit, Energie oder Expertise. Jede Handlung z&auml;hlt und wird der Gemeinschaft und dem Projekt gutgeschrieben.</div>
     </div>
 
     <div class="step-card">
-      <div class="step-top-line"></div>
+      <div class="step-bar"></div>
       <div class="step-num">04</div>
       <div class="step-icon-wrap"><span class="step-icon">&#128200;</span></div>
       <div class="step-title">Wirkung messen</div>
-      <div class="step-text">HUI macht Wirkung sichtbar. Du siehst in Echtzeit, was eure gemeinsame Aktivität bewirkt — transparent, nachvollziehbar und ehrlich.</div>
+      <div class="step-text">HUI macht Wirkung sichtbar. Du siehst in Echtzeit, was eure gemeinsame Aktivit&auml;t bewirkt &mdash; transparent, nachvollziehbar und ehrlich.</div>
     </div>
 
     <div class="step-card">
-      <div class="step-top-line"></div>
+      <div class="step-bar"></div>
       <div class="step-num">05</div>
       <div class="step-icon-wrap"><span class="step-icon">&#127942;</span></div>
       <div class="step-title">Impact Pool gewinnen</div>
-      <div class="step-text">Der Wirker mit dem größten Beitrag gewinnt den gesamten Impact Pool. Wirkung wird nicht aufgeteilt — sie wird belohnt. Fair, klar, motivierend.</div>
+      <div class="step-text">Der Wirker mit dem gr&ouml;&szlig;ten Beitrag gewinnt den gesamten Impact Pool. Wirkung wird nicht aufgeteilt &mdash; sie wird belohnt. Fair, klar, motivierend.</div>
     </div>
 
     <div class="step-card">
-      <div class="step-top-line"></div>
+      <div class="step-bar"></div>
       <div class="step-num">06</div>
       <div class="step-icon-wrap"><span class="step-icon">&#127757;</span></div>
       <div class="step-title">Wirkung weitergeben</div>
-      <div class="step-text">Deine Erfahrungen bereichern die Community. Jedes abgeschlossene Projekt stärkt das Netzwerk und inspiriert das nächste Projekt.</div>
+      <div class="step-text">Deine Erfahrungen bereichern die Community. Jedes abgeschlossene Projekt st&auml;rkt das Netzwerk und inspiriert das n&auml;chste Vorhaben.</div>
     </div>
 
   </div>
 </section>
 
 <!-- ══════════════════════════
-     VISUAL FLOW (DARK)
+     FLOW (DARK)
 ══════════════════════════ -->
 <section class="flow-section">
-  <div class="flow-header">
+  <div class="section-header light">
     <span class="lbl">Das System</span>
-    <h2>Wie HUI<br><em>zusammenwächst</em></h2>
-    <p>Vier Säulen bilden das Fundament — aufeinander aufbauend, sich gegenseitig verstärkend.</p>
+    <h2>Wie HUI<br><em>zusammenw&auml;chst</em></h2>
+    <p>Vier S&auml;ulen bilden das Fundament &mdash; aufeinander aufbauend, sich gegenseitig verst&auml;rkend.</p>
   </div>
 
   <div class="flow-pillars">
@@ -1250,7 +1289,7 @@ img, video, svg { max-width: 100%; }
     <div class="flow-pillar" data-step="I">
       <span class="pillar-icon">&#128101;</span>
       <div class="pillar-title">Gemeinschaft</div>
-      <div class="pillar-text">Menschen mit geteilten Werten finden sich — unabhängig von Herkunft, Alter oder Status.</div>
+      <div class="pillar-text">Menschen mit geteilten Werten finden sich &mdash; unabh&auml;ngig von Herkunft, Alter oder Status.</div>
     </div>
 
     <div class="flow-pillar" data-step="II">
@@ -1268,21 +1307,19 @@ img, video, svg { max-width: 100%; }
     <div class="flow-pillar" data-step="IV">
       <span class="pillar-icon">&#128516;</span>
       <div class="pillar-title">Menschlichkeit</div>
-      <div class="pillar-text">Fairness, Offenheit und Vertrauen sind keine Werte auf Papier — sie sind das Fundament jedes Schritts.</div>
+      <div class="pillar-text">Fairness, Offenheit und Vertrauen sind keine Werte auf Papier &mdash; sie sind das Fundament jedes Schritts.</div>
     </div>
 
   </div>
 
-  <div class="flow-arrow">
-    <div class="flow-arrow-line">Der Kreislauf der Wirkung</div>
-  </div>
+  <div class="flow-tagline">Der Kreislauf der Wirkung</div>
 </section>
 
 <!-- ══════════════════════════
-     WERTE GRID
+     WERTE
 ══════════════════════════ -->
 <section class="values-section">
-  <div class="values-header">
+  <div class="section-header">
     <span class="lbl">Warum HUI</span>
     <h2>Was uns <em>unterscheidet</em></h2>
   </div>
@@ -1292,37 +1329,37 @@ img, video, svg { max-width: 100%; }
     <div class="value-card">
       <div class="value-emoji">&#128275;</div>
       <div class="value-title">Radikale Transparenz</div>
-      <div class="value-text">Jeder Euro, jede Stunde, jedes Ergebnis wird öffentlich dokumentiert. Keine Hidden Fees, keine Blackboxen.</div>
+      <div class="value-text">Jeder Euro, jede Stunde, jedes Ergebnis wird &ouml;ffentlich dokumentiert. Keine Hidden Fees, keine Blackboxen.</div>
     </div>
 
     <div class="value-card">
       <div class="value-emoji">&#9878;</div>
       <div class="value-title">Faire Regeln</div>
-      <div class="value-text">Klare Strukturen, die für alle gleich gelten. Der Impact Pool gehört dem, der am meisten beiträgt — nicht dem, der am lautesten schreit.</div>
+      <div class="value-text">Klare Strukturen, die f&uuml;r alle gleich gelten. Der Impact Pool geh&ouml;rt dem, der am meisten beitr&auml;gt &mdash; nicht dem, der am lautesten schreit.</div>
     </div>
 
     <div class="value-card">
       <div class="value-emoji">&#128640;</div>
-      <div class="value-title">Niedrige Hürden</div>
-      <div class="value-text">Du brauchst keine Voraussetzungen außer dem Willen zu wirken. HUI ist so gestaltet, dass der erste Schritt so einfach wie möglich ist.</div>
+      <div class="value-title">Niedrige H&uuml;rden</div>
+      <div class="value-text">Du brauchst keine Voraussetzungen au&szlig;er dem Willen zu wirken. HUI ist so gestaltet, dass der erste Schritt so einfach wie m&ouml;glich ist.</div>
     </div>
 
     <div class="value-card">
       <div class="value-emoji">&#128205;</div>
       <div class="value-title">Lokal &amp; Global</div>
-      <div class="value-text">Projekte starten lokal, Wirkung strahlt global aus. HUI vernetzt Gemeinschaften über Grenzen hinweg.</div>
+      <div class="value-text">Projekte starten lokal, Wirkung strahlt global aus. HUI vernetzt Gemeinschaften &uuml;ber Grenzen hinweg.</div>
     </div>
 
     <div class="value-card">
       <div class="value-emoji">&#128172;</div>
       <div class="value-title">Echte Verbindungen</div>
-      <div class="value-text">Nicht nur Likes und Follower — HUI schafft echte, bedeutungsvolle Beziehungen zwischen Menschen, die gemeinsam handeln.</div>
+      <div class="value-text">Nicht nur Likes und Follower &mdash; HUI schafft echte, bedeutungsvolle Beziehungen zwischen Menschen, die gemeinsam handeln.</div>
     </div>
 
     <div class="value-card">
-      <div class="value-emoji">&#9878;&#65039;</div>
+      <div class="value-emoji">&#127807;</div>
       <div class="value-title">Langfristig denken</div>
-      <div class="value-text">Wirkung entsteht nicht über Nacht. HUI begleitet Projekte nachhaltig und baut auf dauerhaften Veränderungen auf.</div>
+      <div class="value-text">Wirkung entsteht nicht &uuml;ber Nacht. HUI begleitet Projekte nachhaltig und baut auf dauerhaften Ver&auml;nderungen auf.</div>
     </div>
 
   </div>
@@ -1334,7 +1371,7 @@ img, video, svg { max-width: 100%; }
 <section class="quote-section">
   <div class="quote-wrap">
     <div class="quote-text">
-      "Wirkung ist kein Zufall. Sie entsteht, wenn <em>Menschen zusammenkommen</em> — mit einem klaren Ziel und dem Willen, wirklich etwas zu verändern."
+      &#8222;Wirkung ist kein Zufall. Sie entsteht, wenn <em>Menschen zusammenkommen</em> &mdash; mit einem klaren Ziel und dem Willen, wirklich etwas zu ver&auml;ndern.&#8220;
     </div>
     <div class="quote-author">Das HUI-Prinzip</div>
   </div>
@@ -1370,6 +1407,8 @@ img, video, svg { max-width: 100%; }
   <div class="footer-legal" style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px 24px;padding:16px 24px;border-top:1px solid rgba(255,255,255,.08)"><a href="datenschutz.html" style="color:rgba(255,255,255,.5);font-size:.8rem;text-decoration:none">Datenschutz</a><a href="impressum.html" style="color:rgba(255,255,255,.5);font-size:.8rem;text-decoration:none">Impressum</a><a href="agb.html" style="color:rgba(255,255,255,.5);font-size:.8rem;text-decoration:none">AGB</a><a href="copyright.html" style="color:rgba(255,255,255,.5);font-size:.8rem;text-decoration:none">Copyright</a><a href="cookies.html" style="color:rgba(255,255,255,.5);font-size:.8rem;text-decoration:none">Cookies</a></div>
 <div class="footer-copy">&copy; 2025 HUI – Human United Intelligence &middot; 4VisionGlobal &amp; Liga der Kreativen &middot; Gemeinschaft. Talente. Wirkung.</div>
 </footer>
+
+
 
 <script>
 // ââ Nav Dropdowns ââ
@@ -1493,7 +1532,6 @@ document.querySelectorAll('.contact-form-wrap,.faq-item,.impact-card').forEach(e
   window.addEventListener('resize',function(){if(window.innerWidth>768) closeNav();});
 })();
 </script>
-</body>
 
 
 </body>
