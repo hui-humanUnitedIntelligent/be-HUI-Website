@@ -2975,11 +2975,20 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   .hs-impact-card { padding: 28px 20px; }
   .hs-impact-right { flex-direction: column; gap: 20px; }
   .hs-ctas { flex-direction: column; align-items: flex-start; gap: 16px; }
-}
-
-
-/* === MOBILE NAV FIX: Drawer über Header, eierschalenweiß, nicht fullscreen === */
+}/* === MOBILE NAV FIX === */
 @media(max-width:768px){
+  nav,#topnav{
+    left:50%!important;
+    right:auto!important;
+    transform:translateX(-50%)!important;
+    width:62%!important;
+    max-width:360px!important;
+    border-radius:50px!important;
+    padding:8px 18px!important;
+    top:12px!important;
+    box-shadow:0 4px 24px rgba(0,0,0,0.12)!important;
+    z-index:300!important;
+  }
   .mob-drawer{
     position:fixed!important;
     top:75px!important;
@@ -3012,7 +3021,6 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
     inset:0!important;
     z-index:99998!important;
   }
-  nav,#topnav{z-index:300!important}
   .mob-drawer-header{display:none!important}
   .mob-nav-btn{color:#1a2c2c!important}
   .mob-nav-btn:active,.mob-nav-item.open .mob-nav-btn{background:rgba(30,216,200,0.1)!important;color:#1ed8c8!important}
@@ -3024,8 +3032,7 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   .hero-acts{align-items:center!important;justify-content:center!important}
   .hero-acts a{width:auto!important;max-width:200px!important;min-width:160px!important;padding:12px 28px!important;text-align:center!important;justify-content:center!important}
 }
-/* === END MOBILE NAV FIX === */
-</style>
+/* === END MOBILE NAV FIX */style>
 <script src="lang/switcher.js"></script>
 <script>
 // ══ HERO PARALLAX — Soft & Slow Mouse Movement ══
