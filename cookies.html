@@ -1541,7 +1541,9 @@ img, video, svg { max-width: 100%; }
 
 
 
-<!-- ═══ TYPOGRAFIE-SYNC v3 (Referenz: index.html) ═══ -->
+
+
+<!-- ═══ TYPOGRAFIE-SYNC v4 (Referenz: index.html) ═══ -->
 <style id="hui-typo-sync">
 
 /* ── CSS Variables ── */
@@ -1621,29 +1623,25 @@ h5, h6 {
   color: var(--muted) !important;
 }
 
-/* ── Utility-Klassen ── */
-.ttl {
-  font-family: 'Playfair Display', serif !important;
-  font-size: clamp(28px, 4.5vw, 52px) !important;
-  font-weight: 800 !important;
-  line-height: 1.12 !important;
-  color: var(--text) !important;
-  text-align: center !important;
-}
-
-/* ── Labels / Eyebrows: IMMER zentriert ── */
-.lbl,
+/* ══════════════════════════════════════
+   ALLE EYEBROWS / LABELS — zentriert
+══════════════════════════════════════ */
+.hs-eyebrow,
 .wu-eyebrow,
-[class*="eyebrow"],
-[class*="-label"],
-[class*="-lbl"],
-[class*="-eyebrow"],
+.lbl,
 .cm-label,
 .cm-eyebrow,
 .ip-hero-eyebrow,
 .hs-label,
 .rev-lbl,
-.join-lbl {
+.join-lbl,
+.ha-eyebrow,
+.ww-eyebrow,
+.wu-hero-label,
+[class*="eyebrow"],
+[class*="-label"]:not(nav *):not(.dd *),
+[class*="-lbl"]:not(nav *):not(.dd *),
+[class*="-eyebrow"] {
   font-family: 'DM Sans', sans-serif !important;
   font-size: 11px !important;
   font-weight: 700 !important;
@@ -1651,46 +1649,70 @@ h5, h6 {
   letter-spacing: 3px !important;
   text-transform: uppercase !important;
   text-align: center !important;
-  display: block !important;
-  width: 100% !important;
-}
-
-/* ── wu-eyebrow spezifisch (flex -> block für Zentrierung) ── */
-.wu-eyebrow {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  text-align: center !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-/* ── wu-h2 zentriert ── */
-.wu-h2 {
+/* ══════════════════════════════════════
+   ALLE SECTION-HEADLINES — zentriert
+══════════════════════════════════════ */
+.hs-headline,
+.wu-h2,
+.ttl,
+.cm-headline,
+.ha-headline,
+.ww-headline,
+.ip-headline,
+[class*="-headline"],
+[class*="-h2"],
+[class*="-ttl"] {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 900 !important;
   text-align: center !important;
   color: var(--text) !important;
 }
 
-/* ── Alle Section-Wrapper zentriert ── */
+/* ── .hs-headline spezifisch ── */
+.hs-headline {
+  font-size: clamp(28px, 4vw, 48px) !important;
+  color: var(--text) !important;
+}
+
+/* ── .ttl ── */
+.ttl {
+  font-size: clamp(28px, 4.5vw, 52px) !important;
+  font-weight: 800 !important;
+  line-height: 1.12 !important;
+}
+
+/* ── Section-Wrapper zentriert ── */
+.hs-section,
 .wu-section,
 .si,
-.hs-section,
-[class*="-section"] {
+[class*="-section"]:not(nav):not(.dd) {
   text-align: center;
 }
 
-/* ── Ausnahmen: Cards und Grids bleiben linksbündig ── */
-.wu-section .wu-value-card,
-.wu-section .wu-intro-grid,
-.wu-section .wu-team-grid,
-.si .rg,
-.si .join-g,
+/* ── Ausnahmen: Grids/Cards bleiben links ── */
 [class*="-grid"],
-[class*="-card"] {
+[class*="-card"],
+[class*="-cards"],
+[class*="-list"],
+.wu-intro-grid,
+.wu-team-grid,
+.rg,
+.join-g {
   text-align: left;
 }
 
 /* ── dsc / Subtext ── */
 .dsc, .wu-lead, .rev-sub, .hs-sub,
-[class*="-sub"]:not([class*="-nav"]):not([class*="-mob"]) {
+.wu-hero-sub, .ha-hero-desc, .ww-hero-sub,
+[class*="-sub"]:not(nav *):not(.dd *):not([class*="-nav"]):not([class*="-mob"]) {
   font-family: 'DM Sans', sans-serif !important;
   font-size: 16px !important;
   color: var(--muted) !important;
@@ -1701,19 +1723,31 @@ h5, h6 {
   margin-right: auto !important;
 }
 
-/* ── Helle Schrift auf dunklen Sektionen ── */
+/* ══════════════════════════════════════
+   DUNKLE HINTERGRÜNDE → WEISSE SCHRIFT
+══════════════════════════════════════ */
 .hero h1, .hero h2, .hero h3, .hero p,
+.wu-hero h1, .wu-hero h2, .wu-hero h3, .wu-hero p,
 .ip-hero h1, .ip-hero h2, .ip-hero p,
 .cm-hero h1, .cm-hero h2, .cm-hero p,
 .hs-hero h1, .hs-hero h2, .hs-hero p,
 .wu-manifest h2, .wu-manifest p,
 .cta h2, .cta h3, .cta p,
-.cm-cta h2, .cm-cta p,
-section.dark h1, section.dark h2, section.dark p {
+.cm-cta h2, .cm-cta p {
   color: #ffffff !important;
 }
 
-/* wu-manifest Gradient-em bleibt */
+/* ── wu-hero em-Gradient ── */
+.wu-hero h1 em,
+.hero h1 em {
+  font-style: italic !important;
+  background: linear-gradient(135deg, #1ed8c8, #e8876a) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* ── wu-manifest em-Gradient ── */
 .wu-manifest h2 em {
   background: linear-gradient(135deg, #1ed8c8, #e8876a) !important;
   -webkit-background-clip: text !important;
@@ -1721,13 +1755,16 @@ section.dark h1, section.dark h2, section.dark p {
   background-clip: text !important;
 }
 
+/* ── wu-hero-sub ── */
+.wu-hero-sub { color: rgba(255,255,255,0.80) !important; }
+
 /* ── Fließtext ── */
 p {
   font-family: 'DM Sans', sans-serif;
   line-height: 1.7;
 }
 
-/* ── Nav-Typografie ── */
+/* ── Nav ── */
 .nav-hui {
   font-family: 'Playfair Display', serif !important;
   font-weight: 900 !important;
