@@ -1229,43 +1229,516 @@ img, video, svg { max-width: 100%; }
   <a href="https://be-hui.vercel.app/Home" target="_blank" class="mob-login">&#128274; Login / App öffnen</a>
 </div>
 </nav>
-<!-- ══════════════ REVIEWS ══════════════ -->
-<section class="reviews" id="community">
-  <div class="si">
-    <div class="lbl" style="justify-content:center;display:flex;margin-bottom:12px">Was die Community sagt</div>
-    <h2 class="ttl" data-t-key="community.h1">Echte Stimmen.<br>Echte Wirkung.</h2>
-    <p class="rev-sub" data-t-key="community.sub">Menschen, die HUI erleben und Teil der Bewegung sind.</p>
-    <div class="rg">
-      <div class="rc"><div class="rqm">"</div><p>HUI hat mir geholfen, endlich sichtbar zu werden. Ich bekomme faire Anfragen, werde sicher bezahlt und tue gleichzeitig Gutes.</p><div class="rer"><div class="rav">A</div><div><div class="rname">Alex Smith</div><div class="rrole">Talent &middot; Community Member</div></div></div></div>
-      <div class="rc"><div class="rqm">"</div><p>Ich habe &#252;ber HUI schnell Unterst&#252;tzung gefunden &#8211; sicher, freundlich, unkompliziert. Dass jede Buchung auch soziale Projekte st&#228;rkt, macht es noch besser.</p><div class="rer"><div class="rav">D</div><div><div class="rname">Drew Carlyle</div><div class="rrole">Nutzer &middot; Impact-Supporter</div></div></div></div>
-      <div class="rc"><div class="rqm">"</div><p>Ich buche bei HUI, weil ich wei&#223;, dass mein Geld nicht nur eine Dienstleistung kauft &#8212; es bewegt etwas in der Welt.</p><div class="rer"><div class="rav">M</div><div><div class="rname">Maria K.</div><div class="rrole">HUI-Entdeckerin seit 2024</div></div></div></div>
+
+<style>
+/* ─── COMMUNITY PAGE ─── */
+:root {
+  --teal: #1ED8C8;
+  --teal-dark: #0fa89a;
+  --teal-light: rgba(30,216,200,0.10);
+  --text: #0d1f26;
+  --muted: #6b7280;
+  --cream: #F5F0E8;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,0.12);
+}
+
+/* ─── HERO ─── */
+.cm-hero {
+  min-height: 88vh;
+  background: linear-gradient(155deg, #f5f0e8 0%, #edf8f7 55%, #f0ede8 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 120px 32px 80px;
+  margin-top: -72px;
+}
+.cm-hero-blob {
+  position: absolute; border-radius: 50%; pointer-events: none;
+}
+.cm-hero-blob-a {
+  width: 600px; height: 600px; top: -200px; right: -150px;
+  background: radial-gradient(circle, rgba(30,216,200,0.13) 0%, transparent 70%);
+}
+.cm-hero-blob-b {
+  width: 400px; height: 400px; bottom: -120px; left: -80px;
+  background: radial-gradient(circle, rgba(30,216,200,0.08) 0%, transparent 70%);
+}
+.cm-hero-inner {
+  max-width: 860px; text-align: center; position: relative; z-index: 1;
+}
+.cm-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(30,216,200,0.12); border: 1px solid rgba(30,216,200,0.3);
+  border-radius: 50px; padding: 8px 22px;
+  font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--teal-dark); margin-bottom: 36px;
+  animation: cmFadeUp 0.6s ease both;
+}
+.cm-eyebrow .dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--teal);
+  animation: cmBlink 2s infinite;
+}
+@keyframes cmBlink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.cm-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 6vw, 68px); font-weight: 700;
+  line-height: 1.1; color: var(--text); margin: 0 0 24px;
+  animation: cmFadeUp 0.7s 0.1s ease both;
+}
+.cm-hero h1 em { font-style: italic; color: var(--teal); }
+.cm-hero-sub {
+  font-size: clamp(16px, 2vw, 19px); color: var(--muted); line-height: 1.7;
+  max-width: 580px; margin: 0 auto 48px;
+  animation: cmFadeUp 0.7s 0.2s ease both;
+}
+.cm-hero-btns {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  animation: cmFadeUp 0.7s 0.3s ease both;
+}
+.cm-btn-main {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--teal); color: #0d1f26; font-weight: 700; font-size: 15px;
+  padding: 15px 32px; border-radius: 50px; text-decoration: none;
+  box-shadow: 0 8px 28px rgba(30,216,200,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cm-btn-main:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(30,216,200,0.5); }
+.cm-btn-sec {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--text); font-weight: 600; font-size: 15px;
+  padding: 15px 32px; border-radius: 50px; text-decoration: none;
+  border: 1.5px solid rgba(13,31,38,0.2);
+  transition: border-color 0.2s, background 0.2s;
+}
+.cm-btn-sec:hover { border-color: var(--teal); background: var(--teal-light); }
+@keyframes cmFadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ─── SECTION SHARED ─── */
+.cm-section { padding: 100px 32px; }
+.cm-inner { max-width: 1200px; margin: 0 auto; }
+.cm-inner-narrow { max-width: 860px; margin: 0 auto; }
+.cm-label {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--teal-dark);
+  background: var(--teal-light); border-radius: 20px;
+  padding: 6px 18px; margin-bottom: 20px;
+}
+.cm-section-head { text-align: center; margin-bottom: 72px; }
+.cm-section-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 48px); font-weight: 700;
+  color: var(--text); line-height: 1.2; margin: 0 0 16px;
+}
+.cm-section-head p { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 580px; margin: 0 auto; }
+
+/* ─── WHAT IS COMMUNITY ─── */
+.cm-what { background: var(--white); }
+.cm-what-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.cm-what-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3.5vw, 40px); font-weight: 700;
+  color: var(--text); line-height: 1.25; margin: 0 0 24px;
+}
+.cm-what-text p { font-size: 16px; color: var(--muted); line-height: 1.8; margin: 0 0 20px; }
+.cm-what-text p strong { color: var(--teal-dark); }
+.cm-what-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.cm-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--teal-light); border-radius: 50px;
+  padding: 8px 18px; font-size: 13px; font-weight: 600; color: var(--teal-dark);
+}
+.cm-what-visual {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.cm-info-card {
+  background: var(--cream); border-radius: 20px; padding: 32px 28px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.cm-info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.cm-info-card:first-child {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #0d1f26, #1a3a47);
+  color: #fff;
+}
+.cm-info-card-ico { font-size: 32px; margin-bottom: 14px; }
+.cm-info-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700; color: var(--text); margin: 0 0 8px;
+}
+.cm-info-card:first-child h4 { color: #fff; }
+.cm-info-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; }
+.cm-info-card:first-child p { color: rgba(255,255,255,0.6); }
+.cm-info-card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px; font-weight: 700; color: var(--teal); line-height: 1; margin-bottom: 4px;
+}
+
+/* ─── ROLLEN ─── */
+.cm-rollen { background: var(--cream); }
+.cm-rollen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.cm-rollen-card {
+  background: var(--white); border-radius: 24px; padding: 44px 36px;
+  border: 1px solid transparent; position: relative; overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.cm-rollen-card:hover {
+  transform: translateY(-6px); border-color: rgba(30,216,200,0.3);
+  box-shadow: var(--shadow-lg);
+}
+.cm-rollen-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--teal), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.cm-rollen-card:hover::before { opacity: 1; }
+.cm-rollen-ico { font-size: 44px; margin-bottom: 20px; }
+.cm-rollen-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--text); margin: 0 0 12px;
+}
+.cm-rollen-card p { font-size: 15px; color: var(--muted); line-height: 1.7; margin: 0 0 24px; }
+.cm-rollen-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.cm-rollen-list li {
+  font-size: 14px; color: var(--muted); padding-left: 20px; position: relative;
+}
+.cm-rollen-list li::before {
+  content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700;
+}
+
+/* ─── TESTIMONIALS ─── */
+.cm-testimonials { background: var(--white); }
+.cm-testi-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px;
+}
+.cm-testi-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 820px; margin: 0 auto; }
+.cm-testi-card {
+  background: var(--cream); border-radius: 20px; padding: 36px 32px;
+  position: relative; transition: transform 0.3s, box-shadow 0.3s;
+}
+.cm-testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.cm-testi-quote {
+  font-size: 52px; line-height: 1; color: var(--teal); font-family: 'Playfair Display', serif;
+  margin-bottom: 12px; display: block;
+}
+.cm-testi-card p {
+  font-size: 15px; color: var(--text); line-height: 1.75; margin: 0 0 24px;
+  font-style: italic;
+}
+.cm-testi-author { display: flex; align-items: center; gap: 14px; }
+.cm-testi-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0;
+}
+.cm-testi-name { font-size: 14px; font-weight: 700; color: var(--text); }
+.cm-testi-role { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.cm-testi-card.cm-testi-featured {
+  background: linear-gradient(135deg, #0d1f26, #1a3a47);
+}
+.cm-testi-card.cm-testi-featured p { color: rgba(255,255,255,0.85); }
+.cm-testi-card.cm-testi-featured .cm-testi-quote { color: var(--teal); }
+.cm-testi-card.cm-testi-featured .cm-testi-name { color: #fff; }
+.cm-testi-card.cm-testi-featured .cm-testi-role { color: rgba(255,255,255,0.5); }
+
+/* ─── HOW TO JOIN ─── */
+.cm-join { background: var(--cream); }
+.cm-join-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 64px; }
+.cm-join-step { text-align: center; }
+.cm-join-step-num {
+  width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #fff;
+  box-shadow: 0 8px 24px rgba(30,216,200,0.3);
+}
+.cm-join-step h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700; color: var(--text); margin: 0 0 10px;
+}
+.cm-join-step p { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; }
+.cm-join-connector {
+  display: flex; align-items: center; justify-content: center;
+  padding-top: 32px;
+}
+.cm-join-line {
+  height: 2px; flex: 1;
+  background: linear-gradient(90deg, rgba(30,216,200,0.3), rgba(30,216,200,0.05));
+}
+
+/* ─── CTA ─── */
+.cm-cta {
+  background: linear-gradient(135deg, #0d1f26 0%, #1a3a47 50%, #0d2a33 100%);
+  padding: 100px 32px; text-align: center; position: relative; overflow: hidden;
+}
+.cm-cta::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(30,216,200,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cm-cta-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+.cm-cta-inner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4.5vw, 52px); font-weight: 700;
+  color: #fff; line-height: 1.2; margin: 0 0 20px;
+}
+.cm-cta-inner h2 em { font-style: italic; color: var(--teal); }
+.cm-cta-inner p { font-size: 18px; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0 0 48px; }
+.cm-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.cm-cta-btn-main {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--teal); color: #0d1f26; font-weight: 700; font-size: 15px;
+  padding: 16px 36px; border-radius: 50px; text-decoration: none;
+  box-shadow: 0 8px 32px rgba(30,216,200,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cm-cta-btn-main:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(30,216,200,0.5); }
+.cm-cta-btn-sec {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.08); color: #fff; font-weight: 600; font-size: 15px;
+  padding: 16px 36px; border-radius: 50px; text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2); transition: background 0.2s;
+}
+.cm-cta-btn-sec:hover { background: rgba(255,255,255,0.14); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1000px) {
+  .cm-what-grid { grid-template-columns: 1fr; gap: 48px; }
+  .cm-rollen-grid { grid-template-columns: 1fr; }
+  .cm-testi-grid { grid-template-columns: 1fr; }
+  .cm-testi-grid-2 { grid-template-columns: 1fr; }
+  .cm-join-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .cm-hero, .cm-section { padding: 80px 20px; }
+  .cm-what-visual { grid-template-columns: 1fr; }
+  .cm-info-card:first-child { grid-column: 1; }
+  .cm-join-steps { grid-template-columns: 1fr; }
+}
+</style>
+
+<!-- ══ HERO ══ -->
+<section class="cm-hero">
+  <div class="cm-hero-blob cm-hero-blob-a"></div>
+  <div class="cm-hero-blob cm-hero-blob-b"></div>
+  <div class="cm-hero-inner">
+    <div class="cm-eyebrow"><span class="dot"></span> Community</div>
+    <h1>Echte Stimmen.<br><em>Echte Wirkung.</em></h1>
+    <p class="cm-hero-sub">Menschen, die HUI erleben — als Talente, Unterstützer und Teil einer Bewegung, die wirklich etwas verändert.</p>
+    <div class="cm-hero-btns">
+      <a href="https://be-hui.vercel.app/Home" target="_blank" class="cm-btn-main">🚀 Jetzt Teil werden</a>
+      <a href="#cm-rollen" class="cm-btn-sec">Mehr erfahren ↓</a>
     </div>
   </div>
 </section>
-<!-- ══════════════ JOIN ══════════════ -->
-<section class="join" id="wirker">
-  <div class="si">
-    <div class="join-g">
-      <div>
-        <div class="lbl">Werde Wirker</div>
-        <h2 class="ttl">Dein Talent.<br>Deine Wirkung.</h2>
-        <p class="dsc">Als Wirker bietest du deine F&#228;higkeiten an, wirst fair bezahlt und tr&#228;gst automatisch zur Ver&#228;nderung bei.</p>
-        <div class="steps">
-          <div class="step"><div class="sbub">1</div><div><h4>Profil erstellen</h4><p>Deine Talente sichtbar machen &#8212; in wenigen Minuten.</p></div></div>
-          <div class="step"><div class="sbub">2</div><div><h4>Anfragen erhalten</h4><p>Menschen buchen dich &#8212; sicher &#252;ber das HUI-Treuhand-System.</p></div></div>
-          <div class="step"><div class="sbub">3</div><div><h4>Impact erzeugen</h4><p>15&#160;% flie&#223;en in den Pool &#8212; du stimmst monatlich ab.</p></div></div>
-          <div class="step"><div class="sbub">4</div><div><h4>Teil der Bewegung sein</h4><p>Du bist Wirker &#8212; Teil einer Community, die gemeinsam Gutes bewirkt.</p></div></div>
+
+<!-- ══ WAS IST DIE COMMUNITY ══ -->
+<section class="cm-what cm-section">
+  <div class="cm-inner">
+    <div class="cm-what-grid">
+      <div class="cm-what-text">
+        <div class="cm-label">Was ist HUI Community?</div>
+        <h2>Mehr als eine Plattform — eine Gemeinschaft mit Wirkung.</h2>
+        <p>HUI verbindet Menschen, die ihre Talente einbringen wollen, mit denen, die Unterstützung suchen. Was uns unterscheidet: <strong>Jede Aktivität erzeugt automatisch sozialen Impact.</strong></p>
+        <p>Kein Komitee entscheidet, wem das Geld zugute kommt — die Community stimmt monatlich ab. Du bist nicht nur Nutzer, du bist <strong>Mitgestalter</strong> einer Bewegung.</p>
+        <div class="cm-what-pills">
+          <span class="cm-pill">🎯 Sinnvolle Arbeit</span>
+          <span class="cm-pill">💚 Automatischer Impact</span>
+          <span class="cm-pill">🗳️ Demokratisch</span>
+          <span class="cm-pill">🤝 Faire Vergütung</span>
         </div>
       </div>
-      <div class="jbox">
-        <h3 data-t-key="community.cta.h3">Bereit, Teil von HUI zu werden?</h3>
-        <p>Ob Kreative, Coach oder Community-Mensch: Bei HUI z&#228;hlt, wer du bist und was du bewirkst. Fair. Sicher. Menschlich.</p>
-        <a href="https://be-hui.vercel.app/Home" target="_blank" class="btn-main" data-t-key="community.cta.btn">Jetzt starten &#8594;</a>
+      <div class="cm-what-visual">
+        <div class="cm-info-card">
+          <div class="cm-info-card-ico">🌍</div>
+          <div class="cm-info-card-num">15 %</div>
+          <h4>Automatischer Impact</h4>
+          <p>Jede Buchung auf HUI fließt automatisch in den Impact-Pool — ohne Mehraufwand für dich.</p>
+        </div>
+        <div class="cm-info-card">
+          <div class="cm-info-card-ico">🧑‍🎨</div>
+          <h4>Talente</h4>
+          <p>Kreative, Coaches, Experten — sichtbar werden und fair bezahlt werden.</p>
+        </div>
+        <div class="cm-info-card">
+          <div class="cm-info-card-ico">🤝</div>
+          <h4>Unterstützer</h4>
+          <p>Menschen, die Talent buchen und dabei Gutes tun — ganz automatisch.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
-<!-- ══════════════ FOOTER ══════════════ -->
+
+<!-- ══ ROLLEN ══ -->
+<section class="cm-rollen cm-section" id="cm-rollen">
+  <div class="cm-inner">
+    <div class="cm-section-head">
+      <div class="cm-label">Deine Rolle bei HUI</div>
+      <h2>Für wen ist HUI?</h2>
+      <p>Ob Talent, Entdecker oder Impact-Supporter — bei HUI zählt, wer du bist und was du bewirkst.</p>
+    </div>
+    <div class="cm-rollen-grid">
+      <div class="cm-rollen-card">
+        <div class="cm-rollen-ico">🧑‍🎨</div>
+        <h3>Wirker & Talente</h3>
+        <p>Du hast Fähigkeiten, die andere brauchen. Auf HUI wirst du sichtbar, fair bezahlt — und trägst automatisch zur Veränderung bei.</p>
+        <ul class="cm-rollen-list">
+          <li>Profil erstellen & Angebote platzieren</li>
+          <li>Sichere Buchungen über das Treuhand-System</li>
+          <li>Monatlich über Projekte abstimmen</li>
+          <li>Teil einer wachsenden Community sein</li>
+        </ul>
+      </div>
+      <div class="cm-rollen-card">
+        <div class="cm-rollen-ico">🔍</div>
+        <h3>Entdecker & Nutzer</h3>
+        <p>Du suchst Talente, Kreative oder Expertise — und willst gleichzeitig wissen, dass dein Geld etwas bewegt.</p>
+        <ul class="cm-rollen-list">
+          <li>Talente entdecken & direkt buchen</li>
+          <li>Jede Buchung stärkt soziale Projekte</li>
+          <li>Transparente Preise ohne Überraschungen</li>
+          <li>Sichere Abwicklung & Support</li>
+        </ul>
+      </div>
+      <div class="cm-rollen-card">
+        <div class="cm-rollen-ico">💚</div>
+        <h3>Impact-Supporter</h3>
+        <p>Du glaubst an die HUI-Vision und willst aktiv Teil der Bewegung sein — als Botschafter, Partner oder einfach treuer Nutzer.</p>
+        <ul class="cm-rollen-list">
+          <li>Impact-Pool-Abstimmungen mitgestalten</li>
+          <li>Projekte vorschlagen & begleiten</li>
+          <li>HUI in deinem Netzwerk empfehlen</li>
+          <li>Exklusive Community-Updates erhalten</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="cm-testimonials cm-section">
+  <div class="cm-inner">
+    <div class="cm-section-head">
+      <div class="cm-label">Was die Community sagt</div>
+      <h2>Stimmen aus der Bewegung.</h2>
+      <p>Menschen, die HUI erleben und jeden Tag Teil von etwas Größerem sind.</p>
+    </div>
+    <div class="cm-testi-grid">
+      <div class="cm-testi-card cm-testi-featured">
+        <span class="cm-testi-quote">"</span>
+        <p>HUI hat mir geholfen, endlich sichtbar zu werden. Ich bekomme faire Anfragen, werde sicher bezahlt — und tue gleichzeitig Gutes. Das ist die Plattform, auf die ich gewartet habe.</p>
+        <div class="cm-testi-author">
+          <div class="cm-testi-avatar">A</div>
+          <div>
+            <div class="cm-testi-name">Alex Smith</div>
+            <div class="cm-testi-role">Talent · Community Member</div>
+          </div>
+        </div>
+      </div>
+      <div class="cm-testi-card">
+        <span class="cm-testi-quote">"</span>
+        <p>Ich habe über HUI schnell Unterstützung gefunden — sicher, freundlich, unkompliziert. Dass jede Buchung auch soziale Projekte stärkt, macht es noch besser.</p>
+        <div class="cm-testi-author">
+          <div class="cm-testi-avatar">D</div>
+          <div>
+            <div class="cm-testi-name">Drew Carlyle</div>
+            <div class="cm-testi-role">Nutzer · Impact-Supporter</div>
+          </div>
+        </div>
+      </div>
+      <div class="cm-testi-card">
+        <span class="cm-testi-quote">"</span>
+        <p>Ich buche bei HUI, weil ich weiß, dass mein Geld nicht nur eine Dienstleistung kauft — es bewegt etwas in der Welt.</p>
+        <div class="cm-testi-author">
+          <div class="cm-testi-avatar">M</div>
+          <div>
+            <div class="cm-testi-name">Maria K.</div>
+            <div class="cm-testi-role">HUI-Entdeckerin seit 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SO WIRST DU TEIL ══ -->
+<section class="cm-join cm-section">
+  <div class="cm-inner">
+    <div class="cm-section-head">
+      <div class="cm-label">So einfach geht's</div>
+      <h2>In 4 Schritten dabei.</h2>
+      <p>Von der Registrierung bis zum ersten Impact — unkompliziert und schnell.</p>
+    </div>
+    <div class="cm-join-steps">
+      <div class="cm-join-step">
+        <div class="cm-join-step-num">1</div>
+        <h4>Profil erstellen</h4>
+        <p>Deine Talente sichtbar machen — in wenigen Minuten. Kostenlos und ohne Risiko.</p>
+      </div>
+      <div class="cm-join-step">
+        <div class="cm-join-step-num">2</div>
+        <h4>Angebote platzieren</h4>
+        <p>Definiere, was du anbietest — flexibel, zu deinen eigenen Konditionen.</p>
+      </div>
+      <div class="cm-join-step">
+        <div class="cm-join-step-num">3</div>
+        <h4>Anfragen erhalten</h4>
+        <p>Menschen buchen dich sicher über das HUI-Treuhand-System. Fair & transparent.</p>
+      </div>
+      <div class="cm-join-step">
+        <div class="cm-join-step-num">4</div>
+        <h4>Impact erzeugen</h4>
+        <p>15 % fließen in den Pool — du stimmst monatlich ab, welches Projekt das Geld bekommt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cm-cta">
+  <div class="cm-cta-inner">
+    <div class="cm-label" style="background:rgba(30,216,200,0.15);color:var(--teal);">Jetzt einsteigen</div>
+    <h2>Werde Teil der <em>Bewegung.</em></h2>
+    <p>Ob Kreative, Coach oder Community-Mensch: Bei HUI zählt, wer du bist und was du bewirkst. Fair. Sicher. Menschlich.</p>
+    <div class="cm-cta-btns">
+      <a href="https://be-hui.vercel.app/Home" target="_blank" class="cm-cta-btn-main">🚀 Jetzt mitmachen</a>
+      <a href="impact-pool.html" class="cm-cta-btn-sec">📊 Impact Pool entdecken →</a>
+    </div>
+  </div>
+</section>
+
+<script>
+/* Scroll-Animationen */
+(function(){
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.cm-rollen-card, .cm-testi-card, .cm-join-step, .cm-info-card').forEach(function(el, i){
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity 0.6s ' + (i * 0.07) + 's ease, transform 0.6s ' + (i * 0.07) + 's ease';
+    observer.observe(el);
+  });
+})();
+</script>
+
+
 <footer>
   <div class="si">
     <div class="fg2">
