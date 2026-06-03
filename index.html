@@ -2974,8 +2974,7 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   .hs-why-grid { grid-template-columns: 1fr; }
   .hs-impact-card { padding: 28px 20px; }
   .hs-impact-right { flex-direction: column; gap: 20px; }
-  .hs-ctas { flex-direction: column; align-items: flex-start; gap: 16px; }
-}/* === MOBILE NAV FIX === */
+  .hs-ctas { flex-direction: column; align-items: flex-start; gap: 16px; /* === MOBILE NAV FIX === */
 @media(max-width:768px){
   nav,#topnav{
     left:50%!important;
@@ -2991,29 +2990,32 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   }
   .mob-drawer{
     position:fixed!important;
-    top:75px!important;
-    left:0!important;
-    right:0!important;
+    top:68px!important;
+    left:50%!important;
+    transform:translateX(-50%) translateY(-110%)!important;
+    right:auto!important;
     bottom:auto!important;
-    width:100vw!important;
+    width:92vw!important;
+    max-width:420px!important;
     height:auto!important;
-    max-height:60vh!important;
+    max-height:58vh!important;
     min-height:unset!important;
     z-index:99999!important;
     background:rgba(245,240,232,0.98)!important;
     backdrop-filter:blur(20px)!important;
     -webkit-backdrop-filter:blur(20px)!important;
-    border-left:none!important;
-    border-bottom:1px solid rgba(180,160,130,0.2)!important;
-    box-shadow:0 12px 40px rgba(0,0,0,.15)!important;
-    transform:translateY(-110%)!important;
+    border:1px solid rgba(180,160,130,0.2)!important;
+    border-radius:20px!important;
+    box-shadow:0 12px 48px rgba(0,0,0,0.18)!important;
     overflow-y:auto!important;
     overflow-x:hidden!important;
-    transition:transform .35s cubic-bezier(.4,0,.2,1)!important;
+    transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s!important;
+    opacity:0!important;
     pointer-events:none!important;
   }
   .mob-drawer.open{
-    transform:translateY(0)!important;
+    transform:translateX(-50%) translateY(0)!important;
+    opacity:1!important;
     pointer-events:auto!important;
   }
   .mob-backdrop{
