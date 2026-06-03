@@ -1577,10 +1577,12 @@ p {
    SHARED: LABEL & SECTION-HEAD
 ══════════════════════════════ */
 .ip-label {
-  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--teal-dark);
-  background: var(--teal-light); border-radius: 999px;
-  padding: 4px 14px; margin-bottom: 14px;
+  display: inline-block !important; font-size: 10px !important; font-weight: 700 !important; letter-spacing: 3px !important;
+  text-transform: uppercase !important; color: var(--teal-dark) !important;
+  background: var(--teal-light) !important; border-radius: 999px !important;
+  padding: 4px 14px !important; margin-bottom: 14px !important;
+  width: auto !important; max-width: fit-content !important;
+  flex: none !important; justify-content: center !important;
 }
 .ip-section-head {
   text-align: center; margin-bottom: 64px;
@@ -1690,8 +1692,8 @@ p {
   text-align: center; margin-bottom: 64px;
 }
 .ip-steps-head .ip-label {
-  background: rgba(30,216,200,0.12); color: var(--teal);
-  font-size: 10px; padding: 4px 14px;
+  background: rgba(30,216,200,0.12) !important; color: var(--teal) !important;
+  font-size: 10px !important; padding: 4px 14px !important;
 }
 .ip-steps-head h2 {
   font-family: 'Playfair Display', serif;
