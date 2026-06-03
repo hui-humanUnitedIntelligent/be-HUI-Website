@@ -1146,7 +1146,7 @@ img, video, svg { max-width: 100%; }
   background:linear-gradient(135deg,#1ed8c8,#e8876a);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
 }
-.ip-hero p { font-size:16px; color:var(--muted); line-height:1.7; max-width:460px; margin-bottom:28px; }
+.ip-hero p { font-size:16px; color:var(--muted) !important; line-height:1.7; max-width:460px; margin-bottom:28px; }
 .ip-live-badge {
   display:inline-flex; align-items:center; gap:7px;
   background:rgba(30,216,200,.08); border:1.5px solid rgba(30,216,200,.22);
@@ -1560,6 +1560,14 @@ h5, h6 {
 
 /* ── wu-hero-sub ── */
 .wu-hero-sub { color: rgba(255,255,255,0.80) !important; }
+/* ══ ip-hero Override: heller Hintergrund → dunkle Schrift ══ */
+.ip-hero h1, .ip-hero h2, .ip-hero p {
+  color: var(--text) !important;
+}
+.ip-hero h1 em {
+  -webkit-text-fill-color: transparent !important;
+}
+
 
 /* ── Fließtext ── */
 p {
