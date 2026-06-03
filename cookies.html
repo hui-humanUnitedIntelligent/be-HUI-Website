@@ -1361,6 +1361,22 @@ nav {
   nav ul.nl { display: none !important; }
   .ham { display: flex !important; }
   .mob-drawer { display: block !important; }
+.mob-drawer{
+  position:fixed!important;top:0!important;right:0!important;
+  left:auto!important;bottom:auto!important;
+  width:min(300px,82vw)!important;
+  max-height:60vh!important;height:auto!important;min-height:0!important;
+  background:rgba(245,240,232,0.98)!important;
+  border-left:1px solid rgba(30,216,200,0.15)!important;
+  border-radius:0 0 0 16px!important;
+  box-shadow:-12px 8px 50px rgba(0,0,0,.3)!important;
+  z-index:99999!important;
+  overflow-y:auto!important;overflow-x:hidden!important;
+  padding:0 0 40px!important;
+  transform:translateX(105%)!important;
+  transition:transform .35s cubic-bezier(.4,0,.2,1)!important;
+  pointer-events:none!important;
+}
   .mob-backdrop { display: block !important; }
   .nav-hui { font-size: 17px; }
   .nav-sub { font-size: 7px; }
