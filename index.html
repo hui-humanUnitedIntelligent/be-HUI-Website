@@ -2977,6 +2977,54 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   .hs-ctas { flex-direction: column; align-items: flex-start; gap: 16px; }
 }
 
+
+/* === MOBILE NAV FIX: Drawer über Header, eierschalenweiß, nicht fullscreen === */
+@media(max-width:768px){
+  .mob-drawer{
+    position:fixed!important;
+    top:75px!important;
+    left:0!important;
+    right:0!important;
+    bottom:auto!important;
+    width:100vw!important;
+    height:auto!important;
+    max-height:60vh!important;
+    min-height:unset!important;
+    z-index:99999!important;
+    background:rgba(245,240,232,0.98)!important;
+    backdrop-filter:blur(20px)!important;
+    -webkit-backdrop-filter:blur(20px)!important;
+    border-left:none!important;
+    border-bottom:1px solid rgba(180,160,130,0.2)!important;
+    box-shadow:0 12px 40px rgba(0,0,0,.15)!important;
+    transform:translateY(-110%)!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    transition:transform .35s cubic-bezier(.4,0,.2,1)!important;
+    pointer-events:none!important;
+  }
+  .mob-drawer.open{
+    transform:translateY(0)!important;
+    pointer-events:auto!important;
+  }
+  .mob-backdrop{
+    position:fixed!important;
+    inset:0!important;
+    z-index:99998!important;
+  }
+  nav,#topnav{z-index:300!important}
+  .mob-drawer-header{display:none!important}
+  .mob-nav-btn{color:#1a2c2c!important}
+  .mob-nav-btn:active,.mob-nav-item.open .mob-nav-btn{background:rgba(30,216,200,0.1)!important;color:#1ed8c8!important}
+  .mob-arr{background:rgba(0,0,0,0.06)!important;color:rgba(0,0,0,0.35)!important}
+  .mob-nav-item.open .mob-arr{background:rgba(30,216,200,0.15)!important;color:#1ed8c8!important}
+  .mob-sub a{color:#4a5568!important}
+  .mob-sub a:hover,.mob-sub a:active{background:rgba(30,216,200,0.1)!important;color:#1ed8c8!important}
+  .mob-divider{background:linear-gradient(90deg,transparent,rgba(180,160,130,0.3),transparent)!important}
+  .hero-acts{align-items:center!important;justify-content:center!important}
+  .hero-acts a{width:auto!important;max-width:200px!important;min-width:160px!important;padding:12px 28px!important;text-align:center!important;justify-content:center!important}
+}
+/* === END MOBILE NAV FIX === */
 </style>
 <script src="lang/switcher.js"></script>
 <script>
@@ -3075,6 +3123,16 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
       fadeObs.observe(s);
     });
   })();
+</script>
+
+<script>
+/* FIX: mob-drawer aus nav herauslösen (backdrop-filter erzeugt sonst Containing Block) */
+(function(){
+  var d=document.getElementById('mobDrawer');
+  var b=document.getElementById('mobBackdrop');
+  if(d&&d.parentElement!==document.body)document.body.appendChild(d);
+  if(b&&b.parentElement!==document.body)document.body.appendChild(b);
+})();
 </script>
 </body>
 </html>
