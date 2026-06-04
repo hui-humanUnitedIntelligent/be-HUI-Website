@@ -1851,6 +1851,53 @@ p {
   .ip-cta-btns { flex-direction: column; align-items: center; }
   .ip-what-card-num { font-size: 48px; }
 }
+
+/* ══════ FOOTER MOBILE OPTIMIERUNG ══════ */
+@media(max-width:768px){
+  footer { padding: 32px 0 20px; }
+  .fg2 { grid-template-columns: 1fr; gap: 0; margin-bottom: 24px; }
+  .fbrand { padding: 0 20px 20px; border-bottom: 1px solid rgba(30,216,200,0.12); margin-bottom: 4px; }
+  .fbrand-logo { margin-bottom: 10px; }
+  .fbrand p { font-size: 12.5px; line-height: 1.6; max-width: 100%; color: #7A7A8A; }
+  .forgs { margin-top: 10px; gap: 5px; }
+  .fob { font-size: 9.5px; padding: 2px 7px; }
+  .fsocial { margin-top: 12px; gap: 7px; }
+  .fsoc-btn { width: 34px; height: 34px; border-radius: 9px; }
+
+  /* Accordion fcol */
+  .fcol { border-bottom: 1px solid rgba(30,216,200,0.12); }
+  .fcol h5 {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 13px 20px; margin-bottom: 0; cursor: pointer;
+    font-size: 9.5px; letter-spacing: 2.5px;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .fcol h5::after {
+    content: '+'; font-size: 16px; font-weight: 300; color: var(--teal);
+    line-height: 1; transition: transform .25s ease; font-family: 'DM Sans', sans-serif;
+  }
+  .fcol.f-open h5::after { transform: rotate(45deg); }
+  .fcol ul {
+    max-height: 0; overflow: hidden;
+    transition: max-height .3s ease, padding .3s ease;
+    padding: 0 20px;
+  }
+  .fcol.f-open ul { max-height: 300px; padding: 2px 20px 14px; }
+  .fcol ul li { margin-bottom: 7px; }
+  .fcol ul a { font-size: 13px; color: #3D3D3D; }
+
+  .fbot { padding: 16px 20px 4px; margin-top: 20px; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .fbot p { font-size: 11px; }
+  .fbot .fm { font-size: 11px; }
+}
+@media(max-width:480px){
+  footer { padding: 28px 0 16px; }
+  .fbrand { padding: 0 16px 16px; }
+  .fcol h5 { padding: 12px 16px; font-size: 9px; }
+  .fcol ul { padding: 0 16px; }
+  .fcol.f-open ul { padding: 2px 16px 12px; }
+}
 </style>
 
 <!-- ══ HERO ══ -->
