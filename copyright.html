@@ -1065,19 +1065,28 @@ footer{background:#F5F0E8;padding:56px 0 28px;border-top:1px solid rgba(30,216,2
 }
 
   @media(max-width:1000px){
-    .stats-section{padding:40px 20px}
+    .stats-section{padding:36px 20px}
     .stats-grid{grid-template-columns:repeat(3,1fr);gap:10px}
     .stat-card--large{grid-column:span 1}
     .stats-title{font-size:22px}
-    .stats-header{margin-bottom:24px}
+    .stats-header{margin-bottom:20px}
   }
   @media(max-width:640px){
-    .stats-grid{grid-template-columns:repeat(2,1fr);gap:8px}
-    .stat-card{padding:16px 14px 14px}
-    .sc-number{font-size:20px}
+    .stats-section{padding:28px 14px}
+    .stats-grid{grid-template-columns:repeat(2,1fr);gap:7px}
+    .stat-card{padding:12px 12px 10px;border-radius:12px}
+    .sc-icon-wrap{width:28px;height:28px;border-radius:8px;margin-bottom:8px}
+    .sc-icon-wrap svg{width:14px;height:14px}
+    .sc-number{font-size:17px;margin-bottom:4px}
+    .sc-label{font-size:8.5px;letter-spacing:1.2px;margin-bottom:3px}
+    .sc-trend{font-size:10px}
+    .stats-header{margin-bottom:16px}
+    .stats-title{font-size:18px}
   }
   @media(max-width:400px){
-    .stats-grid{grid-template-columns:1fr 1fr;gap:8px}
+    .stats-grid{grid-template-columns:1fr 1fr;gap:6px}
+    .stat-card{padding:10px 10px 9px}
+    .sc-number{font-size:16px}
   }
 
 
@@ -1580,26 +1589,31 @@ nav {
 
 /* ── STATS SECTION ── */
 @media(max-width:1000px){
-  .stats-section { padding: 48px 24px; }
-  .stats-grid { grid-template-columns: repeat(3,1fr); gap: 12px; }
+  .stats-section { padding: 36px 24px; }
+  .stats-grid { grid-template-columns: repeat(3,1fr); gap: 10px; }
   .stat-card--large { grid-column: span 1; }
-  .stats-title { font-size: 24px; }
+  .stats-title { font-size: 22px; }
 }
 @media(max-width:768px){
-  .stats-section { padding: 40px 16px; }
-  .stats-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
-  .stat-card { padding: 18px 14px 14px; }
-  .sc-number { font-size: 22px; }
-  .sc-label { font-size: 9px; }
+  .stats-section { padding: 28px 14px; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); gap: 7px; }
+  .stat-card { padding: 12px 12px 10px; border-radius: 12px; }
+  .sc-icon-wrap { width: 28px; height: 28px; border-radius: 8px; margin-bottom: 8px; }
+  .sc-icon-wrap svg { width: 14px; height: 14px; }
+  .sc-number { font-size: 17px; margin-bottom: 4px; }
+  .sc-label { font-size: 8.5px; letter-spacing: 1.2px; margin-bottom: 3px; }
+  .sc-trend { font-size: 10px; }
+  .stats-header { margin-bottom: 16px; }
+  .stats-title { font-size: 18px; }
 }
 @media(max-width:480px){
-  .stats-grid { grid-template-columns: repeat(2,1fr); gap: 8px; }
-  .stat-card { padding: 14px 12px; }
-  .sc-number { font-size: 20px; }
-  .sc-icon-wrap { width: 36px; height: 36px; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); gap: 6px; }
+  .stat-card { padding: 10px 10px 9px; }
+  .sc-number { font-size: 16px; }
+  .sc-icon-wrap { width: 26px; height: 26px; }
 }
 @media(max-width:360px){
-  .stats-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
 }
 
 /* ── HUI INTRO SECTION ── */
