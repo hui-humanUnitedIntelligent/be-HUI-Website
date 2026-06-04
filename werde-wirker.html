@@ -6,43 +6,31 @@
 <title>Werde Wirker | HUI</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-
-/* ══════════════════════════════════════════════════════
-   WERDE WIRKER — vollständiges CSS
-══════════════════════════════════════════════════════ */
-
-/* ── Reset & Root ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --teal:#1ED8C8;--teal-d:#17B8AA;--teal-l:#E6FAF8;
-  --coral:#E8876A;--orange:#F4793B;
+  --coral:#E8876A;
   --grad:linear-gradient(135deg,#1ED8C8,#E8876A);
-  --grad-r:linear-gradient(135deg,#E8876A,#1ED8C8);
-  --bg:#F5F0E8;--bg2:#FAF7F2;--white:#FFFFFF;--card:#FFFFFF;
+  --bg:#F5F0E8;--bg2:#FAF7F2;--white:#fff;
   --text:#1A1A1A;--text2:#3D3D3D;--muted:#7A7A8A;--light:#B0B0BC;
-  --border:rgba(30,216,200,0.15);--border2:rgba(0,0,0,0.06);
-  --rx:16px;--rl:20px;--rr:24px;
-  --sh:0 4px 24px rgba(0,0,0,0.07);
+  --border2:rgba(0,0,0,0.06);
+  --rx:16px;--rl:20px;
 }
-
-/* ── Body ── */
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
+.si{max-width:1160px;margin:0 auto;padding:0 48px}
 
-/* ── Container ── */
-.si{max-width:1160px;margin:0 auto;padding:0 40px}
+/* Buttons */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;padding:14px 30px;border-radius:50px;transition:background .2s,transform .2s;white-space:nowrap}
+.btn-primary:hover{background:var(--teal-d);transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--text);font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;padding:13px 28px;border-radius:50px;border:1.5px solid rgba(0,0,0,0.14);transition:border-color .2s,transform .2s;white-space:nowrap}
+.btn-outline:hover{border-color:var(--teal);transform:translateY(-2px)}
+.btn-outline-light{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.28);color:#fff}
+.btn-outline-light:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.45)}
 
-/* ── Buttons ── */
-.btn-main{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;padding:14px 28px;border-radius:50px;transition:background .25s,transform .2s;white-space:nowrap}
-.btn-main:hover{background:var(--teal-d);transform:translateY(-2px)}
-.btn-sec{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--text);font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;padding:13px 28px;border-radius:50px;border:1.5px solid rgba(0,0,0,0.12);transition:border-color .25s,transform .2s}
-.btn-sec:hover{border-color:var(--teal);transform:translateY(-2px)}
-.btn-sec--light{background:rgba(255,255,255,0.12)!important;border-color:rgba(255,255,255,0.22)!important;color:#fff!important}
-.btn-sec--light:hover{background:rgba(255,255,255,0.22)!important;border-color:rgba(255,255,255,0.38)!important}
-
-/* ══ NAV ══════════════════════════════════════════════ */
+/* Nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:9000;background:rgba(245,240,232,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06)}
-.nav-wrap{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:72px;gap:0}
+.nav-wrap{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:72px}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:auto}
 .nav-logo-wrap{display:flex;align-items:center;gap:10px}
 .nav-logo-wrap img{height:36px;width:auto}
@@ -52,10 +40,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9000;background:rgba(245,240,232
 .nav-list{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
 .nav-item{position:relative}
 .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;color:var(--text2);border-radius:8px;transition:background .2s,color .2s;white-space:nowrap}
-.nav-btn:hover,.nav-item:hover .nav-btn{background:rgba(30,216,200,0.08);color:var(--teal-d)}
-.nav-arr{font-size:8px;opacity:0.5;transition:transform .25s}
+.nav-btn:hover,.nav-item:hover>.nav-btn{background:rgba(30,216,200,0.08);color:var(--teal-d)}
+.nav-arr{font-size:8px;opacity:.5;transition:transform .25s}
 .nav-item:hover .nav-arr{transform:rotate(180deg)}
-.dd{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1px solid var(--border2);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,0.1);min-width:200px;padding:8px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s;z-index:100}
+.dd{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1px solid var(--border2);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.1);min-width:200px;padding:8px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s;z-index:100}
 .nav-item:hover .dd{opacity:1;visibility:visible;transform:translateY(0)}
 .dd a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:9px;font-size:13.5px;font-weight:500;color:var(--text2);transition:background .15s,color .15s}
 .dd a:hover{background:rgba(30,216,200,0.07);color:var(--teal-d)}
@@ -63,588 +51,198 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9000;background:rgba(245,240,232
 .nav-login{margin-left:12px;display:inline-flex;align-items:center;gap:7px;background:var(--teal);color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;padding:9px 18px;border-radius:50px;transition:background .2s}
 .nav-login:hover{background:var(--teal-d)}
 
-/* ══ MOBILE NAV ════════════════════════════════════════ */
+/* Mobile Nav */
 .ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto;z-index:10001}
 .ham span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s}
 .ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0}
 .ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mob-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:9998;opacity:0;transition:opacity .3s}
+.mob-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:9998;opacity:0;transition:opacity .3s}
 .mob-backdrop.open{opacity:1}
-.mob-drawer{position:fixed;top:72px;right:0;width:300px;max-height:60vh;overflow-y:auto;background:rgba(245,240,232,0.98);z-index:9999;transform:translateX(110%);transition:transform .35s cubic-bezier(.4,0,.2,1);padding:16px 0 24px;border-bottom-left-radius:18px;box-shadow:-4px 8px 32px rgba(0,0,0,0.12)}
+.mob-drawer{position:fixed;top:72px;right:0;width:300px;max-height:60vh;overflow-y:auto;background:rgba(245,240,232,.98);z-index:9999;transform:translateX(110%);transition:transform .35s cubic-bezier(.4,0,.2,1);padding:16px 0 24px;border-bottom-left-radius:18px;box-shadow:-4px 8px 32px rgba(0,0,0,.12)}
 .mob-drawer.open{transform:translateX(0)}
 .mob-nav-list{list-style:none;padding:0 12px;margin:0}
-.mob-nav-item{border-bottom:1px solid rgba(30,216,200,0.1)}
+.mob-nav-item{border-bottom:1px solid rgba(30,216,200,.1)}
 .mob-nav-btn{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:13px 8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--text);border-radius:8px;transition:background .2s;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-.mob-nav-btn:hover{background:rgba(30,216,200,0.06)}
-.mob-arr{font-size:10px;opacity:0.45;transition:transform .25s}
+.mob-nav-btn:hover{background:rgba(30,216,200,.06)}
+.mob-arr{font-size:10px;opacity:.45;transition:transform .25s}
 .mob-sub{max-height:0;overflow:hidden;transition:max-height .3s ease}
 .mob-sub a{display:flex;align-items:center;gap:9px;padding:9px 8px;font-size:13px;color:var(--text2);border-radius:8px;transition:background .15s;-webkit-tap-highlight-color:transparent}
-.mob-sub a:hover{background:rgba(30,216,200,0.07)}
-.mob-divider{height:1px;background:rgba(30,216,200,0.12);margin:12px 16px}
+.mob-sub a:hover{background:rgba(30,216,200,.07)}
+.mob-divider{height:1px;background:rgba(30,216,200,.12);margin:12px 16px}
 .mob-login{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 12px;padding:11px;background:var(--teal);color:#fff;font-size:13px;font-weight:700;border-radius:50px;font-family:'DM Sans',sans-serif}
-.mob-drawer-header{background:rgba(245,240,232,0.0)}
 
-/* ══ FOOTER ════════════════════════════════════════════ */
-footer{background:var(--bg);padding:64px 0 0;border-top:1px solid rgba(30,216,200,0.12)}
+/* Footer */
+footer{background:var(--bg);padding:64px 0 0;border-top:1px solid rgba(30,216,200,.12)}
 .fg2{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
 .fbrand-logo{margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .fbrand-logo img{height:32px}
 .fbrand p{font-size:13px;color:var(--muted);line-height:1.75;max-width:240px}
 .forgs{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.fob{display:inline-flex;align-items:center;gap:5px;background:rgba(30,216,200,0.08);border:1px solid rgba(30,216,200,0.18);color:var(--teal-d);font-size:10px;font-weight:700;padding:4px 10px;border-radius:50px;letter-spacing:0.8px}
+.fob{display:inline-flex;align-items:center;gap:5px;background:rgba(30,216,200,.08);border:1px solid rgba(30,216,200,.18);color:var(--teal-d);font-size:10px;font-weight:700;padding:4px 10px;border-radius:50px;letter-spacing:.8px}
 .fsocial{display:flex;gap:10px;margin-top:20px}
-.fsoc-btn{display:flex;align-items:center;justify-content:center;width:38px;height:38px;background:rgba(30,216,200,0.07);border:1px solid rgba(30,216,200,0.15);border-radius:11px;color:var(--teal-d);font-size:16px;transition:background .2s}
-.fsoc-btn:hover{background:rgba(30,216,200,0.14)}
+.fsoc-btn{display:flex;align-items:center;justify-content:center;width:38px;height:38px;background:rgba(30,216,200,.07);border:1px solid rgba(30,216,200,.15);border-radius:11px;color:var(--teal-d);font-size:16px;transition:background .2s}
+.fsoc-btn:hover{background:rgba(30,216,200,.14)}
 .fcol h5{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
 .fcol ul{list-style:none}
 .fcol ul li{margin-bottom:11px}
 .fcol ul a{font-size:13.5px;color:#3D3D3D;transition:color .2s}
 .fcol ul a:hover{color:var(--teal-d)}
-.fbot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(30,216,200,0.12);padding:20px 0 28px;margin-top:4px}
+.fbot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(30,216,200,.12);padding:20px 0 28px;margin-top:4px}
 .fbot p{font-size:12px;color:var(--light)}
 .fm{display:flex;gap:16px}
 .fm a{font-size:12px;color:var(--light);transition:color .2s}
 .fm a:hover{color:var(--teal-d)}
 
-/* ══ 1. HERO ════════════════════════════════════════════ */
-.ww-hero {
-  min-height: 100vh;
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  padding: 132px 0 100px;
-  position: relative;
-  overflow: hidden;
-}
-.ww-hero::before {
-  content: '';
-  position: absolute;
-  top: -200px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 900px;
-  height: 900px;
-  background: radial-gradient(circle, rgba(30,216,200,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-.ww-hero-blob {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-.ww-hero-blob--a {
-  top: 15%;
-  left: -8%;
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, rgba(30,216,200,0.07), transparent 70%);
-}
-.ww-hero-blob--b {
-  bottom: 10%;
-  right: -6%;
-  width: 360px;
-  height: 360px;
-  background: radial-gradient(circle, rgba(232,135,106,0.07), transparent 70%);
-}
-.ww-hero-inner {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 64px;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
-.ww-hero-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.ww-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(30,216,200,0.12);
-  border: 1px solid rgba(30,216,200,0.3);
-  color: var(--teal-d);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  padding: 7px 16px;
-  border-radius: 50px;
-  margin-bottom: 28px;
-}
-.ww-hero-text h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(40px, 6vw, 72px);
-  font-weight: 900;
-  line-height: 1.05;
-  color: var(--text);
-  margin-bottom: 20px;
-  text-align: left;
-}
-.ww-em-teal {
-  font-style: italic;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.ww-dot { color: var(--teal); }
-.ww-hero-sub {
-  font-size: clamp(17px, 2vw, 21px);
-  color: var(--muted);
-  font-weight: 300;
-  line-height: 1.55;
-  margin-bottom: 14px;
-  text-align: left;
-}
-.ww-hero-desc {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.75;
-  font-weight: 300;
-  margin-bottom: 40px;
-  text-align: left;
-}
-.ww-hero-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  align-items: center;
-}
-.ww-hero-visual {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px;
-}
-.ww-hero-orb {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 260px;
-  height: 260px;
-  background: radial-gradient(circle, rgba(30,216,200,0.12) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
-.ww-hero-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: #fff;
-  border: 1px solid rgba(30,216,200,0.18);
-  border-radius: 16px;
-  padding: 18px 22px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-  position: relative;
-  z-index: 1;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.ww-hero-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 32px rgba(30,216,200,0.13);
-}
-.ww-hero-card--1 { margin-left: 0; }
-.ww-hero-card--2 { margin-left: 32px; }
-.ww-hero-card--3 { margin-left: 16px; }
-.ww-hc-ico {
-  font-size: 28px;
-  flex-shrink: 0;
-}
-.ww-hero-card strong {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--text);
-  display: block;
-}
-.ww-hc-tag {
-  display: inline-block;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--teal-d);
-  background: rgba(30,216,200,0.1);
-  padding: 2px 8px;
-  border-radius: 50px;
-  margin-top: 4px;
-}
+/* ══ PAGE CONTENT ══ */
 
-/* ══ 2. STATS-LEISTE ═══════════════════════════════════ */
-.ww-stats-bar {
-  background: linear-gradient(135deg, #0d1f26 0%, #1a2a32 100%);
-  padding: 0;
-}
-.ww-stats-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 36px 40px;
-  gap: 20px;
-}
-.ww-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 6px;
-  flex: 1;
-}
-.ww-stat-n {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(22px, 3vw, 34px);
-  font-weight: 900;
-  color: var(--teal) !important;
-  line-height: 1;
-}
-.ww-stat-l {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  color: rgba(255,255,255,0.65) !important;
-  font-weight: 400;
-  line-height: 1.4;
-}
-.ww-stat-div {
-  width: 1px;
-  height: 40px;
-  background: rgba(255,255,255,0.12);
-  flex-shrink: 0;
-}
+/* Eyebrow Label */
+.ww-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(30,216,200,.12);border:1px solid rgba(30,216,200,.3);color:var(--teal-d);font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:7px 16px;border-radius:50px;margin-bottom:24px}
+.ww-lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
 
-/* ══ 3. WAS IST WIRKER ═════════════════════════════════ */
-.ww-what { padding: 100px 0; background: var(--bg2); }
-.ww-what-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 72px;
-  align-items: center;
-}
-.ww-what-visual {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 28px;
-}
-.ww-what-orb {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(30,216,200,0.15), rgba(30,216,200,0.05));
-  border: 2px solid rgba(30,216,200,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.ww-what-orb-ico { font-size: 72px; }
-.ww-pill-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  max-width: 320px;
-}
-.ww-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(30,216,200,0.1);
-  border: 1px solid rgba(30,216,200,0.22);
-  color: var(--teal-d);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 7px 14px;
-  border-radius: 50px;
-}
-.ww-pill--teal { background: rgba(30,216,200,0.2); border-color: rgba(30,216,200,0.35); }
-.ww-what-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.ww-lbl {
-  display: inline-block;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 16px;
-}
-.ww-what-text h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(26px, 3.5vw, 40px);
-  font-weight: 900;
-  line-height: 1.2;
-  color: var(--text);
-  margin-bottom: 20px;
-  text-align: left;
-}
-.ww-what-text h2 em {
-  font-style: italic;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.ww-what-text p {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.75;
-  margin-bottom: 16px;
-  text-align: left;
-}
+/* ── 1. HERO ── */
+.ww-hero{min-height:100vh;background:var(--bg);display:flex;align-items:center;padding:132px 0 100px;position:relative;overflow:hidden}
+.ww-hero::before{content:'';position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(circle,rgba(30,216,200,.08),transparent 70%);pointer-events:none}
+.ww-hero-blob{position:absolute;border-radius:50%;pointer-events:none}
+.ww-hero-blob--a{top:15%;left:-8%;width:420px;height:420px;background:radial-gradient(circle,rgba(30,216,200,.07),transparent 70%)}
+.ww-hero-blob--b{bottom:10%;right:-6%;width:360px;height:360px;background:radial-gradient(circle,rgba(232,135,106,.07),transparent 70%)}
+.ww-hero-inner{display:grid;grid-template-columns:1.15fr 0.85fr;gap:72px;align-items:center;position:relative;z-index:2}
+.ww-hero-text{display:flex;flex-direction:column;align-items:flex-start}
+.ww-hero-text h1{font-family:'Playfair Display',serif;font-size:clamp(42px,6.5vw,78px);font-weight:900;line-height:1.04;color:var(--text);margin-bottom:22px;text-align:left}
+.ww-hero-text h1 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ww-hero-sub{font-size:clamp(17px,2vw,22px);color:var(--muted);font-weight:300;line-height:1.5;margin-bottom:16px;text-align:left}
+.ww-hero-desc{font-size:16px;color:var(--muted);line-height:1.78;font-weight:300;margin-bottom:44px;text-align:left}
+.ww-hero-btns{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 
-/* ══ 4. WAS WIRKER KÖNNEN ═══════════════════════════════ */
-.ww-can { padding: 100px 0; background: var(--bg); }
-.ww-section-head {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto 64px;
-}
-.ww-section-head h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(26px, 3.5vw, 42px);
-  font-weight: 900;
-  color: var(--text);
-  margin-bottom: 16px;
-  line-height: 1.15;
-}
-.ww-section-head h2 em {
-  font-style: italic;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.ww-section-head p {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.7;
-}
-.ww-can-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-.ww-can-card {
-  background: #fff;
-  border: 1px solid var(--border2);
-  border-radius: 20px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-}
-.ww-can-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(30,216,200,0.1);
-  border-color: rgba(30,216,200,0.2);
-}
-.ww-can-icon {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 44px;
-}
-.ww-can-body {
-  padding: 24px 28px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.ww-tag {
-  display: inline-block;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 50px;
-}
-.ww-tag--teal { background: rgba(30,216,200,0.12); color: var(--teal-d); }
-.ww-tag--coral { background: rgba(232,135,106,0.12); color: #C0623A; }
-.ww-tag--green { background: rgba(80,200,120,0.12); color: #2A8A4A; }
-.ww-tag--gold  { background: rgba(230,180,60,0.12); color: #A07820; }
-.ww-can-body h3 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 19px;
-  color: var(--text);
-  line-height: 1.2;
-}
-.ww-can-body p {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.7;
-}
+/* Hero Visual — Float-Karten */
+.ww-hero-visual{position:relative;display:flex;flex-direction:column;gap:14px;padding:24px 16px}
+.ww-hero-orb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:280px;height:280px;background:radial-gradient(circle,rgba(30,216,200,.12),transparent 70%);border-radius:50%;pointer-events:none;z-index:0}
+.ww-hcard{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid rgba(30,216,200,.18);border-radius:16px;padding:16px 20px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;z-index:1;transition:transform .3s,box-shadow .3s}
+.ww-hcard:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(30,216,200,.13)}
+.ww-hcard--2{margin-left:28px}
+.ww-hcard--3{margin-left:14px}
+.ww-hcard-ico{font-size:26px;flex-shrink:0}
+.ww-hcard-title{font-family:'Playfair Display',serif;font-weight:700;font-size:14px;color:var(--text);display:block}
+.ww-hcard-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal-d);background:rgba(30,216,200,.1);padding:2px 8px;border-radius:50px;margin-top:3px}
 
-/* ══ 5. STEPS ═══════════════════════════════════════════ */
-.ww-steps { padding: 100px 0; background: var(--bg2); }
-.ww-steps-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 72px;
-  align-items: start;
-}
-.ww-steps-left {
-  position: sticky;
-  top: 100px;
-}
-.ww-steps-left h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(26px, 3.5vw, 42px);
-  font-weight: 900;
-  color: var(--text);
-  line-height: 1.15;
-  margin-bottom: 20px;
-  text-align: left;
-}
-.ww-steps-left h2 em {
-  font-style: italic;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.ww-steps-left p {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.75;
-  text-align: left;
-}
-.ww-steps-right {
-  display: flex;
-  flex-direction: column;
-}
-.ww-step {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  padding: 24px 0;
-  border-bottom: 1px solid rgba(30,216,200,0.1);
-}
-.ww-step--last { border-bottom: none; }
-.ww-step-num {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  font-size: 28px;
-  color: rgba(30,216,200,0.3);
-  line-height: 1;
-  flex-shrink: 0;
-  width: 36px;
-  text-align: right;
-  padding-top: 3px;
-}
-.ww-step-num--teal { color: var(--teal); }
-.ww-step-body { flex: 1; }
-.ww-step-body h4 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 17px;
-  color: var(--text);
-  margin-bottom: 6px;
-  text-align: left;
-}
-.ww-step-body p {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.7;
-  text-align: left;
-}
+/* ── 2. STATS ── */
+.ww-stats{background:linear-gradient(135deg,#0d1f26,#1a2a32);padding:0}
+.ww-stats-inner{display:flex;align-items:center;justify-content:space-between;padding:40px 48px;gap:16px}
+.ww-stat{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;flex:1}
+.ww-stat-n{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,38px);font-weight:900;color:var(--teal);line-height:1}
+.ww-stat-l{font-size:13px;color:rgba(255,255,255,.62);font-weight:400;line-height:1.4}
+.ww-stat-sep{width:1px;height:44px;background:rgba(255,255,255,.12);flex-shrink:0}
 
-/* ══ 6. JOIN BOX ═══════════════════════════════════════ */
-.ww-join { padding: 80px 0; background: var(--bg2); }
-.ww-join-box {
-  background: linear-gradient(135deg, #0d1f26 0%, #1a2a32 100%);
-  border-radius: 28px;
-  padding: 56px 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 48px;
-}
-.ww-join-text { flex: 1; }
-.ww-join-text .ww-lbl { color: rgba(30,216,200,0.7); }
-.ww-join-text h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(24px, 3vw, 38px);
-  font-weight: 900;
-  color: #fff;
-  text-align: left;
-  margin-bottom: 14px;
-  line-height: 1.15;
-}
-.ww-join-text h2 em { color: var(--teal); font-style: italic; }
-.ww-join-text p { color: rgba(255,255,255,0.65); font-size: 16px; line-height: 1.7; }
-.ww-join-btns { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+/* ── 3. WAS IST WIRKER ── */
+.ww-what{padding:108px 0;background:var(--bg2)}
+.ww-what-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:center}
+.ww-what-visual{display:flex;flex-direction:column;align-items:center;gap:24px}
+.ww-what-orb{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,rgba(30,216,200,.16),rgba(30,216,200,.04));border:2px solid rgba(30,216,200,.22);display:flex;align-items:center;justify-content:center;font-size:68px}
+.ww-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:300px}
+.ww-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(30,216,200,.1);border:1px solid rgba(30,216,200,.22);color:var(--teal-d);font-size:13px;font-weight:600;padding:7px 14px;border-radius:50px}
+.ww-pill--main{background:rgba(30,216,200,.2);border-color:rgba(30,216,200,.38)}
+.ww-what-text h2{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,42px);font-weight:900;line-height:1.15;color:var(--text);margin-bottom:20px;text-align:left}
+.ww-what-text h2 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ww-what-text p{font-size:16px;color:var(--muted);line-height:1.78;margin-bottom:16px;text-align:left}
+.ww-what-text p:last-child{margin-bottom:0}
+.ww-what-text strong{color:var(--text);font-weight:600}
 
-/* ══ Keyframes ═════════════════════════════════════════ */
-@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fade{from{opacity:0}to{opacity:1}}
+/* ── 4. KANN-RASTER ── */
+.ww-can{padding:108px 0;background:var(--bg)}
+.ww-section-head{text-align:center;max-width:580px;margin:0 auto 64px}
+.ww-section-head h2{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,44px);font-weight:900;color:var(--text);margin-bottom:14px;line-height:1.12}
+.ww-section-head h2 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ww-section-head p{font-size:16px;color:var(--muted);line-height:1.7}
+.ww-can-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.ww-can-card{background:#fff;border:1px solid var(--border2);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s}
+.ww-can-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(30,216,200,.1);border-color:rgba(30,216,200,.2)}
+.ww-can-icon{width:100%;height:96px;display:flex;align-items:center;justify-content:center;font-size:44px}
+.ww-can-body{padding:22px 26px 28px;display:flex;flex-direction:column;gap:8px}
+.ww-can-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:50px}
+.ww-can-tag--teal{background:rgba(30,216,200,.12);color:var(--teal-d)}
+.ww-can-tag--coral{background:rgba(232,135,106,.12);color:#C0623A}
+.ww-can-tag--green{background:rgba(80,200,120,.12);color:#2A8A4A}
+.ww-can-tag--gold{background:rgba(230,180,60,.12);color:#A07820}
+.ww-can-body h3{font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--text);line-height:1.2}
+.ww-can-body p{font-size:14px;color:var(--muted);line-height:1.72}
 
-/* ══ RESPONSIVE ═════════════════════════════════════════ */
-@media(max-width:900px){
+/* ── 5. SCHRITTE ── */
+.ww-steps{padding:108px 0;background:var(--bg2)}
+.ww-steps-grid{display:grid;grid-template-columns:1fr 1.45fr;gap:80px;align-items:start}
+.ww-steps-sticky{position:sticky;top:100px}
+.ww-steps-sticky h2{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,44px);font-weight:900;color:var(--text);line-height:1.12;margin-bottom:20px;text-align:left}
+.ww-steps-sticky h2 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ww-steps-sticky p{font-size:16px;color:var(--muted);line-height:1.78;text-align:left}
+.ww-steps-list{display:flex;flex-direction:column}
+.ww-step{display:flex;gap:20px;align-items:flex-start;padding:22px 0;border-bottom:1px solid rgba(30,216,200,.1)}
+.ww-step:last-child{border-bottom:none}
+.ww-step-n{font-family:'Playfair Display',serif;font-weight:900;font-size:26px;color:rgba(30,216,200,.28);line-height:1;flex-shrink:0;width:34px;text-align:right;padding-top:2px}
+.ww-step-n--act{color:var(--teal)}
+.ww-step-body h4{font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:var(--text);margin-bottom:5px;text-align:left}
+.ww-step-body p{font-size:14px;color:var(--muted);line-height:1.7;text-align:left}
+
+/* ── 6. CTA-BOX ── */
+.ww-cta{padding:80px 0;background:var(--bg2)}
+.ww-cta-box{background:linear-gradient(135deg,#0d1f26,#1a2a32);border-radius:28px;padding:56px 64px;display:flex;align-items:center;justify-content:space-between;gap:48px}
+.ww-cta-text{flex:1}
+.ww-cta-text .ww-lbl{color:rgba(30,216,200,.7)}
+.ww-cta-text h2{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,40px);font-weight:900;color:#fff;line-height:1.12;margin-bottom:14px;text-align:left}
+.ww-cta-text h2 em{color:var(--teal);font-style:italic}
+.ww-cta-text p{color:rgba(255,255,255,.62);font-size:16px;line-height:1.72}
+.ww-cta-btns{display:flex;flex-direction:column;gap:12px;flex-shrink:0}
+
+/* ── Keyframes ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ════ RESPONSIVE ════ */
+@media(max-width:960px){
   .nav-list,.nav-login{display:none}
   .ham{display:flex}
   .mob-backdrop{display:block}
-  .ww-hero-inner { grid-template-columns: 1fr; text-align: center; }
-  .ww-hero-text { align-items: center; }
-  .ww-hero-text h1,.ww-hero-sub,.ww-hero-desc { text-align: center; }
-  .ww-hero-btns { justify-content: center; }
-  .ww-hero-visual { display: none; }
-  .ww-what-grid { grid-template-columns: 1fr; gap: 48px; }
-  .ww-what-visual { order: -1; }
-  .ww-what-text { align-items: center; }
-  .ww-what-text h2,.ww-what-text p { text-align: center; }
-  .ww-steps-grid { grid-template-columns: 1fr; gap: 48px; }
-  .ww-steps-left { position: static; text-align: center; }
-  .ww-steps-left h2,.ww-steps-left p { text-align: center; }
+  .ww-hero-inner{grid-template-columns:1fr;text-align:center;gap:48px}
+  .ww-hero-text{align-items:center}
+  .ww-hero-text h1,.ww-hero-sub,.ww-hero-desc{text-align:center}
+  .ww-hero-btns{justify-content:center}
+  .ww-hero-visual{display:none}
+  .ww-what-grid{grid-template-columns:1fr;gap:48px}
+  .ww-what-visual{order:-1}
+  .ww-what-text{align-items:center}
+  .ww-what-text h2,.ww-what-text p{text-align:center}
+  .ww-steps-grid{grid-template-columns:1fr;gap:48px}
+  .ww-steps-sticky{position:static;text-align:center}
+  .ww-steps-sticky h2,.ww-steps-sticky p{text-align:center}
+  .ww-steps-sticky h2{text-align:center}
 }
-
 @media(max-width:768px){
-  .ww-hero { padding: 100px 0 72px; }
-  .ww-stats-inner { flex-direction: column; padding: 32px 24px; gap: 24px; }
-  .ww-stat-div { width: 60px; height: 1px; }
-  .ww-can-grid { grid-template-columns: 1fr; }
-  .ww-join-box { flex-direction: column; padding: 36px 28px; text-align: center; }
-  .ww-join-text h2 { text-align: center; }
-  .ww-join-btns { width: 100%; }
-  .ww-join-btns a { width: 100%; justify-content: center; }
-  .si { padding: 0 24px; }
-  footer { padding: 32px 0 20px; }
-  .fg2 { grid-template-columns: 1fr; gap: 0; margin-bottom: 24px; }
-  .fbrand { padding: 0 20px 20px; border-bottom: 1px solid rgba(30,216,200,0.12); margin-bottom: 4px; }
-  .fcol { border-bottom: 1px solid rgba(30,216,200,0.12); }
-  .fcol h5 { display: flex; justify-content: space-between; align-items: center; padding: 13px 20px; margin-bottom: 0; cursor: pointer; font-size: 9.5px; letter-spacing: 2.5px; -webkit-tap-highlight-color: transparent; user-select: none; }
-  .fcol h5::after { content: '+'; font-size: 16px; font-weight: 300; color: var(--teal); line-height: 1; transition: transform .25s ease; font-family: 'DM Sans', sans-serif; }
-  .fcol.f-open h5::after { transform: rotate(45deg); }
-  .fcol ul { max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s ease; padding: 0 20px; }
-  .fcol.f-open ul { max-height: 300px; padding: 2px 20px 14px; }
-  .fbot { padding: 16px 20px 4px; margin-top: 20px; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .si{padding:0 24px}
+  .ww-hero{padding:100px 0 72px}
+  .ww-stats-inner{flex-direction:column;padding:32px 24px;gap:20px}
+  .ww-stat-sep{width:60px;height:1px}
+  .ww-what{padding:72px 0}
+  .ww-can{padding:72px 0}
+  .ww-can-grid{grid-template-columns:1fr}
+  .ww-steps{padding:72px 0}
+  .ww-cta{padding:56px 0}
+  .ww-cta-box{flex-direction:column;padding:36px 28px;text-align:center;gap:32px}
+  .ww-cta-text h2{text-align:center}
+  .ww-cta-btns{width:100%}
+  .ww-cta-btns a{width:100%;justify-content:center}
+  footer{padding:32px 0 20px}
+  .fg2{grid-template-columns:1fr;gap:0;margin-bottom:24px}
+  .fbrand{padding:0 20px 20px;border-bottom:1px solid rgba(30,216,200,.12);margin-bottom:4px}
+  .fcol{border-bottom:1px solid rgba(30,216,200,.12)}
+  .fcol h5{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;margin-bottom:0;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
+  .fcol h5::after{content:'+';font-size:16px;font-weight:300;color:var(--teal);line-height:1;transition:transform .25s;font-family:'DM Sans',sans-serif}
+  .fcol.f-open h5::after{transform:rotate(45deg)}
+  .fcol ul{max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;padding:0 20px}
+  .fcol.f-open ul{max-height:300px;padding:2px 20px 14px}
+  .fbot{padding:16px 20px 4px;margin-top:20px;flex-direction:column;align-items:flex-start;gap:6px}
 }
-
 @media(max-width:480px){
-  footer { padding: 28px 0 16px; }
-  .fcol h5 { padding: 12px 16px; font-size: 9px; }
-  .si { padding: 0 16px; }
+  .si{padding:0 16px}
+  .ww-cta-box{padding:28px 20px}
 }
-
 </style>
-
 <!-- ═══ TYPOGRAFIE-SYNC v4 (Referenz: index.html) ═══ -->
 <style id="hui-typo-sync">
 
@@ -1047,6 +645,7 @@ p {
 <!-- ═══ /TYPOGRAFIE-SYNC ═══ -->
 </head>
 <body>
+
 <nav id="topnav">
   <a href="index.html" class="nav-brand">
     <div class="nav-logo-wrap">
@@ -1229,195 +828,244 @@ p {
      WERDE WIRKER — HUI Stil
      ═══════════════════════════════════════════════════ -->
 
+<!-- ── 1. HERO ───────────────────────────────────────── -->
 <section class="ww-hero">
   <div class="ww-hero-blob ww-hero-blob--a"></div>
   <div class="ww-hero-blob ww-hero-blob--b"></div>
-  <div class="ww-hero-inner si">
+  <div class="si ww-hero-inner">
+
+    <!-- Text-Seite -->
     <div class="ww-hero-text">
       <span class="ww-eyebrow">✨ Werde Wirker</span>
-      <h1>Werde <em class="ww-em-teal">Wirker</em><span class="ww-dot">.</span></h1>
+      <h1>Werde <em>Wirker</em>.</h1>
       <p class="ww-hero-sub">Wirke sichtbar. Wirke menschlich. Wirke mit HUI.</p>
-      <p class="ww-hero-desc">Ein Wirker lebt seine Fähigkeiten, teilt Erlebnisse, erschafft Werke — und erzeugt damit echte Wirkung. Fair, sicher, eingebettet in eine Gemeinschaft, in der <strong>jede Handlung zählt.</strong></p>
+      <p class="ww-hero-desc">
+        Ein Wirker lebt seine Fähigkeiten, teilt Erlebnisse, erschafft Werke — und erzeugt damit echte Wirkung.
+        Fair, sicher, eingebettet in eine Gemeinschaft, in der <strong>jede Handlung zählt.</strong>
+      </p>
       <div class="ww-hero-btns">
-        <a href="https://be-hui.vercel.app" target="_blank" class="btn-main">Jetzt Wirker werden →</a>
-        <a href="app-download.html" class="btn-sec">App herunterladen</a>
+        <a href="https://be-hui.vercel.app" target="_blank" class="btn-primary">Jetzt Wirker werden →</a>
+        <a href="app-download.html" class="btn-outline">App herunterladen</a>
       </div>
     </div>
+
+    <!-- Float-Karten -->
     <div class="ww-hero-visual">
-      <div class="ww-hero-card ww-hero-card--1">
-        <span class="ww-hc-ico">🧘</span>
-        <div><strong>Yoga am Morgen</strong><span class="ww-hc-tag">Erlebnis</span></div>
-      </div>
-      <div class="ww-hero-card ww-hero-card--2">
-        <span class="ww-hc-ico">🎨</span>
-        <div><strong>Gemalte Bilder</strong><span class="ww-hc-tag">Werk</span></div>
-      </div>
-      <div class="ww-hero-card ww-hero-card--3">
-        <span class="ww-hc-ico">💫</span>
-        <div><strong>15 % → Impact Pool</strong><span class="ww-hc-tag">Wirkung</span></div>
-      </div>
       <div class="ww-hero-orb"></div>
+      <div class="ww-hcard">
+        <span class="ww-hcard-ico">🧘</span>
+        <div>
+          <strong class="ww-hcard-title">Yoga am Morgen</strong>
+          <span class="ww-hcard-tag">Erlebnis</span>
+        </div>
+      </div>
+      <div class="ww-hcard ww-hcard--2">
+        <span class="ww-hcard-ico">🎨</span>
+        <div>
+          <strong class="ww-hcard-title">Gemalte Bilder</strong>
+          <span class="ww-hcard-tag">Werk</span>
+        </div>
+      </div>
+      <div class="ww-hcard ww-hcard--3">
+        <span class="ww-hcard-ico">💫</span>
+        <div>
+          <strong class="ww-hcard-title">15 % → Impact Pool</strong>
+          <span class="ww-hcard-tag">Wirkung</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 2 ▸ STATS-LEISTE ──────────────────────────────────── -->
-<div class="ww-stats-bar">
+<!-- ── 2. STATS-LEISTE ────────────────────────────────── -->
+<div class="ww-stats">
   <div class="si ww-stats-inner">
-    <div class="ww-stat"><span class="ww-stat-n">15 %</span><span class="ww-stat-l">Jeder Buchung → Impact Pool</span></div>
-    <div class="ww-stat-div"></div>
-    <div class="ww-stat"><span class="ww-stat-n">100 %</span><span class="ww-stat-l">Dein Profil, deine Regeln</span></div>
-    <div class="ww-stat-div"></div>
-    <div class="ww-stat"><span class="ww-stat-n">1 App</span><span class="ww-stat-l">Erlebnisse · Werke · Wirkung</span></div>
-    <div class="ww-stat-div"></div>
-    <div class="ww-stat"><span class="ww-stat-n">0 €</span><span class="ww-stat-l">Keine versteckten Kosten</span></div>
+    <div class="ww-stat">
+      <span class="ww-stat-n">15 %</span>
+      <span class="ww-stat-l">Jeder Buchung → Impact Pool</span>
+    </div>
+    <div class="ww-stat-sep"></div>
+    <div class="ww-stat">
+      <span class="ww-stat-n">100 %</span>
+      <span class="ww-stat-l">Dein Profil, deine Regeln</span>
+    </div>
+    <div class="ww-stat-sep"></div>
+    <div class="ww-stat">
+      <span class="ww-stat-n">1 App</span>
+      <span class="ww-stat-l">Erlebnisse · Werke · Wirkung</span>
+    </div>
+    <div class="ww-stat-sep"></div>
+    <div class="ww-stat">
+      <span class="ww-stat-n">0 €</span>
+      <span class="ww-stat-l">Keine versteckten Kosten</span>
+    </div>
   </div>
 </div>
 
-<!-- 3 ▸ WAS BEDEUTET WIRKER SEIN ─────────────────────── -->
+<!-- ── 3. WAS IST WIRKER ──────────────────────────────── -->
 <section class="ww-what">
   <div class="si ww-what-grid">
+
+    <!-- Visual -->
     <div class="ww-what-visual">
-      <div class="ww-what-orb">
-        <span class="ww-what-orb-ico">🌱</span>
-      </div>
-      <div class="ww-pill-cloud">
+      <div class="ww-what-orb">🌱</div>
+      <div class="ww-pills">
         <span class="ww-pill">✨ Resonanz</span>
         <span class="ww-pill">🌱 Gemeinschaft</span>
-        <span class="ww-pill">🎯 Wirkung</span>
+        <span class="ww-pill ww-pill--main">🎯 Wirkung</span>
         <span class="ww-pill">🔍 Sichtbarkeit</span>
-        <span class="ww-pill ww-pill--teal">🤝 Fairness</span>
+        <span class="ww-pill">🤝 Fairness</span>
       </div>
     </div>
+
+    <!-- Text -->
     <div class="ww-what-text">
       <span class="ww-lbl">Was bedeutet Wirker sein?</span>
       <h2>Fähigkeiten leben.<br><em>Wirkung erzeugen.</em></h2>
-      <p>Wirker sind Menschen, die nicht einfach Dienstleistungen anbieten — sie leben ihre Fähigkeiten. Sie teilen Erlebnisse, erschaffen Werke, bauen Gemeinschaft auf und erzeugen Resonanz, die über den Moment hinausgeht.</p>
-      <p style="margin-top:16px;">Jede Buchung trägt automatisch zur Gemeinschaft bei: <strong>15 % fließen in den Impact-Pool</strong> — ausgewählt und gesteuert von den Wirker:innen selbst. Dein Tun wird sichtbar. Deine Wirkung bleibt.</p>
+      <p>Wirker sind Menschen, die nicht einfach Dienstleistungen anbieten — sie leben ihre Fähigkeiten.
+         Sie teilen Erlebnisse, erschaffen Werke, bauen Gemeinschaft auf und erzeugen Resonanz,
+         die über den Moment hinausgeht.</p>
+      <p>Jede Buchung trägt automatisch zur Gemeinschaft bei:
+         <strong>15 % fließen in den Impact-Pool</strong> — ausgewählt und gesteuert von den
+         Wirker:innen selbst. Dein Tun wird sichtbar. Deine Wirkung bleibt.</p>
     </div>
   </div>
 </section>
 
-<!-- 4 ▸ WAS WIRKER TUN KÖNNEN ────────────────────────── -->
+<!-- ── 4. WAS WIRKER KÖNNEN ───────────────────────────── -->
 <section class="ww-can">
   <div class="si">
     <div class="ww-section-head">
       <span class="ww-lbl">Was Wirker tun können</span>
       <h2>Dein Talent.<br><em>Deine Bühne.</em></h2>
-      <p>Ob du Erlebnisse schenkst, Werke teilst, Communities aufbaust oder Wirkung erschaffst — bei HUI findest du deinen Weg.</p>
+      <p>Ob du Erlebnisse schenkst, Werke teilst, Communities aufbaust oder Wirkung erschaffst —
+         bei HUI findest du deinen Weg.</p>
     </div>
     <div class="ww-can-grid">
+
       <div class="ww-can-card">
-        <div class="ww-can-icon" style="background:linear-gradient(135deg,#E6FAF8,#b2f0e8);">🧘</div>
+        <div class="ww-can-icon" style="background:rgba(30,216,200,0.07)">🌅</div>
         <div class="ww-can-body">
-          <span class="ww-tag ww-tag--teal">Erlebnisse</span>
+          <span class="ww-can-tag ww-can-tag--teal">Erlebnisse</span>
           <h3>Erlebnisse anbieten</h3>
-          <p>Yoga am Morgen, Töpfern im Atelier, Natur-Workshops, Musik-Sessions — teile das, was dich lebendig macht.</p>
+          <p>Yoga am Morgen, Töpfern im Atelier, Natur-Workshops, Musik-Sessions —
+             teile das, was dich lebendig macht.</p>
         </div>
       </div>
+
       <div class="ww-can-card">
-        <div class="ww-can-icon" style="background:linear-gradient(135deg,#fff3ee,#fde0d4);">🎨</div>
+        <div class="ww-can-icon" style="background:rgba(232,135,106,0.08)">🎨</div>
         <div class="ww-can-body">
-          <span class="ww-tag ww-tag--coral">Werke</span>
+          <span class="ww-can-tag ww-can-tag--coral">Werke</span>
           <h3>Werke teilen</h3>
-          <p>Malerei, Keramik, Fotografie, Handwerk oder digitale Kunst — deine Werke verdienen Sichtbarkeit.</p>
+          <p>Malerei, Keramik, Fotografie, Handwerk oder digitale Kunst —
+             deine Werke verdienen Sichtbarkeit.</p>
         </div>
       </div>
+
       <div class="ww-can-card">
-        <div class="ww-can-icon" style="background:linear-gradient(135deg,#f0faf0,#c8f0c8);">🌿</div>
+        <div class="ww-can-icon" style="background:rgba(80,200,120,0.08)">🤝</div>
         <div class="ww-can-body">
-          <span class="ww-tag ww-tag--green">Community</span>
+          <span class="ww-can-tag ww-can-tag--green">Community</span>
           <h3>Communities aufbauen</h3>
-          <p>Verbinde Menschen mit ähnlichen Werten. Als Wirker bist du nicht nur Anbieter — du bist Knotenpunkt.</p>
+          <p>Verbinde Menschen mit ähnlichen Werten. Als Wirker bist du nicht nur Anbieter —
+             du bist Knotenpunkt.</p>
         </div>
       </div>
+
       <div class="ww-can-card">
-        <div class="ww-can-icon" style="background:linear-gradient(135deg,#fef9e6,#fdefc3);">💫</div>
+        <div class="ww-can-icon" style="background:rgba(230,180,60,0.08)">💫</div>
         <div class="ww-can-body">
-          <span class="ww-tag ww-tag--gold">Impact Pool</span>
+          <span class="ww-can-tag ww-can-tag--gold">Impact Pool</span>
           <h3>Wirkung erschaffen</h3>
-          <p>15 % jeder Buchung fließen in den Impact-Pool. Du stimmst ab, welches Projekt gefördert wird.</p>
+          <p>15 % jeder Buchung fließen in den Impact-Pool.
+             Du stimmst ab, welches Projekt gefördert wird.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- 5 ▸ WIE WIRD MAN WIRKER — STEPS ─────────────────── -->
+<!-- ── 5. SCHRITTE ────────────────────────────────────── -->
 <section class="ww-steps">
   <div class="si ww-steps-grid">
-    <div class="ww-steps-left">
+
+    <!-- Sticky Text -->
+    <div class="ww-steps-sticky">
       <span class="ww-lbl">Wie wird man Wirker?</span>
       <h2>In wenigen<br><em>Schritten dabei.</em></h2>
-      <p>Der Weg zum Wirker ist bewusst einfach gehalten. Keine langen Formulare, keine Hürden — nur du, deine Fähigkeiten und eine Gemeinschaft, die auf dich wartet.</p>
+      <p>Der Weg zum Wirker ist bewusst einfach gehalten. Keine langen Formulare,
+         keine Hürden — nur du, deine Fähigkeiten und eine Gemeinschaft, die auf dich wartet.</p>
     </div>
-    <div class="ww-steps-right">
+
+    <!-- Schritte -->
+    <div class="ww-steps-list">
       <div class="ww-step">
-        <div class="ww-step-num">1</div>
+        <span class="ww-step-n ww-step-n--act">01</span>
         <div class="ww-step-body">
           <h4>App öffnen</h4>
           <p>Öffne die HUI Web-App oder lade die App auf dein Gerät — kostenlos und in wenigen Sekunden.</p>
         </div>
       </div>
       <div class="ww-step">
-        <div class="ww-step-num">2</div>
+        <span class="ww-step-n">02</span>
         <div class="ww-step-body">
           <h4>Profil anlegen</h4>
           <p>Erstelle dein persönliches Profil. Zeige, wer du bist — nicht nur, was du anbietest.</p>
         </div>
       </div>
       <div class="ww-step">
-        <div class="ww-step-num">3</div>
+        <span class="ww-step-n">03</span>
         <div class="ww-step-body">
           <h4>Mitglied werden</h4>
           <p>Werde Teil der HUI-Gemeinschaft. Ein Ort, an dem Menschen sich kennen und vertrauen.</p>
         </div>
       </div>
       <div class="ww-step">
-        <div class="ww-step-num">4</div>
+        <span class="ww-step-n">04</span>
         <div class="ww-step-body">
           <h4>Fähigkeiten sichtbar machen</h4>
           <p>Beschreibe deine Talente, Erlebnisse und Werke — klar, ehrlich, menschlich.</p>
         </div>
       </div>
       <div class="ww-step">
-        <div class="ww-step-num">5</div>
+        <span class="ww-step-n">05</span>
         <div class="ww-step-body">
           <h4>Erlebnisse oder Werke veröffentlichen</h4>
           <p>Stelle dein erstes Angebot ein. HUI sorgt für faire Bezahlung und sicheres Treuhand-System.</p>
         </div>
       </div>
-      <div class="ww-step ww-step--last">
-        <div class="ww-step-num ww-step-num--teal">6</div>
+      <div class="ww-step">
+        <span class="ww-step-n">06</span>
         <div class="ww-step-body">
           <h4>Wirkung entfalten</h4>
           <p>Jede Buchung trägt zur Gemeinschaft bei. Deine Arbeit bewegt mehr als du denkst.</p>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- 7 ▸ GALERIE ───────────────────────────────────────── -->
-
-<!-- 6 ▸ JOIN BOX ──────────────────────────────────────── -->
-<section class="ww-join">
+<!-- ── 6. CTA ─────────────────────────────────────────── -->
+<section class="ww-cta">
   <div class="si">
-    <div class="ww-join-box">
-      <div class="ww-join-text">
+    <div class="ww-cta-box">
+      <div class="ww-cta-text">
         <span class="ww-lbl">Bereit?</span>
         <h2>Werde Teil der<br><em>HUI-Gemeinschaft.</em></h2>
-        <p>Tausende Wirker:innen teilen ihre Fähigkeiten, erschaffen Werke und erzeugen gemeinsam echte Wirkung. Du gehörst dazu.</p>
+        <p>Tausende Wirker:innen teilen ihre Fähigkeiten, erschaffen Werke und erzeugen gemeinsam
+           echte Wirkung. Du gehörst dazu.</p>
       </div>
-      <div class="ww-join-btns">
-        <a href="https://be-hui.vercel.app" target="_blank" class="btn-main">Jetzt Wirker werden →</a>
-        <a href="app-download.html" class="btn-sec btn-sec--light">App herunterladen</a>
+      <div class="ww-cta-btns">
+        <a href="https://be-hui.vercel.app" target="_blank" class="btn-primary">Jetzt Wirker werden →</a>
+        <a href="app-download.html" class="btn-outline btn-outline-light">App herunterladen</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="si">
     <div class="fg2">
@@ -1517,6 +1165,5 @@ p {
   }
 })();
 </script>
-
 </body>
 </html>
