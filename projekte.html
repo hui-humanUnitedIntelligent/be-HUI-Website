@@ -1595,6 +1595,25 @@ p {
       <span class="fm" data-t-key="footer.tagline">Gemeinschaft. Talente. Wirkung.</span>
     </div>
   </div>
+<script>
+(function(){
+  function initFooterAccordion(){
+    var cols = document.querySelectorAll('footer .fcol');
+    cols.forEach(function(col){
+      var h5 = col.querySelector('h5');
+      if(!h5) return;
+      h5.addEventListener('click', function(){
+        col.classList.toggle('f-open');
+      });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initFooterAccordion);
+  } else {
+    initFooterAccordion();
+  }
+})();
+</script>
 </footer>
 
 <script>
