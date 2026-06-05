@@ -360,8 +360,7 @@ nav ul.nl > li.dd-open > span{
 
 /* ── Media Queries ── */
 @media(max-width:768px){
-  nav ul.nl{display:none!important}
-  .ham{display:flex!important}
+  nav ul  .ham{display:flex!important}
 }
 @media(min-width:769px){
   .mob-drawer,.mob-backdrop,.ham{display:none!important}
@@ -875,10 +874,6 @@ p {
 .proj-hero h1,.proj-hero h2,.proj-hero h3,.proj-hero p { color:#ffffff !important; }
 .proj-detail-hero h1,.proj-detail-hero h2,.proj-detail-hero h3,.proj-detail-hero p { color:#ffffff !important; }
 
-
-@media(max-width:768px){
-  .ww-hero{padding-top:12px!important}
-}
 </style>
 <!-- ═══ /TYPOGRAFIE-SYNC ═══ -->
 </head>
@@ -1180,7 +1175,7 @@ p {
       <span class="ww-label">Was bedeutet Wirker sein?</span>
       <h2>Fähigkeiten leben.<br><em>Wirkung erzeugen.</em></h2>
       <p>Wirker sind Menschen, die nicht einfach Dienstleistungen anbieten — sie leben ihre Fähigkeiten. Sie teilen Erlebnisse, erschaffen Werke, bauen Gemeinschaft auf und erzeugen Resonanz, die über den Moment hinausgeht.</p>
-      <p>Jede Buchung trägt automatisch zur Gemeinschaft bei: <strong>15 % fließen in den Impact-Pool</strong> — ausgewählt und gesteuert von den Wirker:innen selbst. Dein Tun wird sichtbar. Deine Wirkung bleibt.</p>
+      <p>Jede Buchung trägt automatisch zur Gemeinschaft bei: <strong>15% der Einnahmen fliessen zum Impact Pool</strong> — ausgewählt und gesteuert von den Wirker:innen selbst. Dein Tun wird sichtbar. Deine Wirkung bleibt.</p>
     </div>
   </div>
 </section>
@@ -1208,7 +1203,7 @@ p {
       </div>
       <div class="ww-can-card">
         <div class="ww-can-icon" style="background:rgba(230,180,60,0.08)">💫</div>
-        <div class="ww-can-body"><span class="ww-can-tag ww-can-tag--gold">Impact Pool</span><h3>Wirkung erschaffen</h3><p>15 % jeder Buchung fließen in den Impact-Pool. Du stimmst ab, welches Projekt gefördert wird.</p></div>
+        <div class="ww-can-body"><span class="ww-can-tag ww-can-tag--gold">Impact Pool</span><h3>Wirkung erschaffen</h3><p>15% der Einnahmen fliessen zum Impact Pool. Du stimmst ab, welches Projekt gefördert wird.</p></div>
       </div>
     </div>
   </div>
@@ -1421,48 +1416,6 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   } else {
     initFooterAccordion();
   }
-})();
-</script>
-<script id="mob-nav-script">
-(function(){
-  var ham=document.getElementById('hamBtn'),
-      drawer=document.getElementById('mobDrawer'),
-      backdrop=document.getElementById('mobBackdrop'),
-      closeBtn=document.getElementById('mobDrawerClose');
-  if(!ham||!drawer||!backdrop) return;
-
-  function openNav(){
-    drawer.classList.add('open');
-    backdrop.classList.add('open');
-    ham.classList.add('open');
-    document.body.style.overflow='hidden';
-    ham.setAttribute('aria-expanded','true');
-  }
-  function closeNav(){
-    drawer.classList.remove('open');
-    backdrop.classList.remove('open');
-    ham.classList.remove('open');
-    document.body.style.overflow='';
-    ham.setAttribute('aria-expanded','false');
-  }
-
-  ham.addEventListener('click',function(e){e.stopPropagation();drawer.classList.contains('open')?closeNav():openNav();});
-  backdrop.addEventListener('click',closeNav);
-  if(closeBtn) closeBtn.addEventListener('click',closeNav);
-
-  document.querySelectorAll('[data-mob-toggle]').forEach(function(btn){
-    btn.addEventListener('click',function(e){
-      e.stopPropagation();
-      var item=btn.closest('.mob-nav-item');
-      if(!item) return;
-      var wasOpen=item.classList.contains('open');
-      document.querySelectorAll('.mob-nav-item.open').forEach(function(el){el.classList.remove('open')});
-      if(!wasOpen) item.classList.add('open');
-    });
-  });
-
-  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeNav);});
-  window.addEventListener('resize',function(){if(window.innerWidth>768) closeNav();});
 })();
 </script>
 </body>
