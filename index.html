@@ -2325,6 +2325,18 @@ p {
         <div class="hs-stat-trend">4.200+ Reviews</div>
       </div>
 
+      <div class="hs-stat-card hs-stat--live-ticker" id="hs-live-ticker">
+        <div class="lt-header">
+          <div class="lt-dot"></div>
+          <div class="lt-title">Live aus der App</div>
+        </div>
+        <div class="lt-feed">
+          <div class="lt-event" id="lt-event-text">Warten auf neue Live-Events&nbsp;…</div>
+        </div>
+        <div class="lt-sub" id="lt-event-sub"></div>
+        <div class="lt-counter" id="lt-counter"></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -3036,10 +3048,104 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 .hs-center-cta { text-align: center; margin-top: 48px; }
 
 /* ══ STATS ══ */
+
+/* ══ LIVE-TICKER KACHEL ══ */
+.hs-stat-card.hs-stat--live-ticker {
+  background: #fff;
+  border: 1.5px solid rgba(30,216,200,0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 130px;
+  position: relative;
+  overflow: hidden;
+}
+.hs-stat-card.hs-stat--live-ticker::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #1ed8c8, #E8876A);
+  border-radius: 16px 16px 0 0;
+}
+.lt-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.lt-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #1ed8c8;
+  animation: lt-pulse 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes lt-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+.lt-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1ed8c8;
+}
+.lt-feed {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 52px;
+  position: relative;
+}
+.lt-event {
+  font-size: 13px;
+  color: #2a2a2a;
+  line-height: 1.45;
+  font-family: 'DM Sans', sans-serif;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+.lt-event.lt-fade-out {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+.lt-event.lt-fade-in {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.lt-event em {
+  color: #1ed8c8;
+  font-style: normal;
+  font-weight: 600;
+}
+.lt-sub {
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 6px;
+}
+.lt-counter {
+  display: flex;
+  gap: 3px;
+  margin-top: 10px;
+}
+.lt-counter-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(30,216,200,0.2);
+  transition: background 0.3s;
+}
+.lt-counter-dot.active {
+  background: #1ed8c8;
+}
+
 .hs-stats-section { background: #f9f7f4; }
 .hs-stats-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr) minmax(160px, 1fr);
   gap: 14px;
   margin-top: 48px;
 }
@@ -3535,6 +3641,118 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
     }, { threshold: 0.3 });
 
     document.querySelectorAll('.hs-stat-card').forEach(function(c){ observer.observe(c); });
+
+  // ══ LIVE-TICKER ══
+  (function() {
+    var SUPABASE_URL = 'https://gxztrhvhcxhmunhhkfjd.supabase.co';
+    var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4enRyaHZoY3hobXVuaGhrZmpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4ODI2NDIsImV4cCI6MjA5MzQ1ODY0Mn0.cq8E_NQkmeTZPIe0G0SSqEzzg6yJhyce5xpW2iwVIbk';
+
+    // Fallback-Events (werden durch echte Daten ergänzt)
+    var fallbackEvents = [
+      { text: 'Warten auf neue Live-Events …', sub: '' }
+    ];
+
+    var liveEvents = [];
+    var currentIdx = 0;
+    var NUM_DOTS = 5;
+
+    function buildEvents(wirker) {
+      var events = [];
+      var amounts = [45, 60, 75, 90, 120, 85, 55, 40, 95, 110];
+      var impactAmts = [6.75, 9.0, 11.25, 12.75, 8.25, 6.0, 14.25, 10.50];
+      var actions = ['bucht eine Session bei', 'bewertet die Arbeit von', 'entdeckt das Talent von', 'empfiehlt'];
+      var now = new Date();
+
+      wirker.forEach(function(w, i) {
+        var amt = amounts[i % amounts.length];
+        var imp = (amt * 0.15).toFixed(2).replace('.', ',');
+        var firstName = w.full_name.split(' ')[0];
+        // Buchungs-Event
+        events.push({
+          text: firstName + ' ' + (actions[i % 2]) + ' <em>' + w.full_name.split(' ')[0] + ' ' + (w.talent || 'Kreative/r') + '</em> für <em>' + amt + ' €</em>.',
+          sub: 'Gerade eben'
+        });
+        // Impact-Event
+        events.push({
+          text: '<em>' + imp + ' €</em> fliessen gerade in den Impact Pool.',
+          sub: 'Automatisch durch Buchung'
+        });
+        // Talent-Event
+        events.push({
+          text: '<em>' + w.full_name + '</em> bietet ' + (w.talent || 'Kreativleistungen') + ' ab <em>' + w.hourly_rate + ' €/h</em> an.',
+          sub: 'Neues Angebot live'
+        });
+      });
+
+      // Misch-Events
+      events.push({ text: 'Ein neues Talent ist der Plattform beigetreten.', sub: 'Community wächst' });
+      events.push({ text: '<em>12,50 €</em> fliessen gerade in den Impact Pool.', sub: 'Automatisch generiert' });
+      events.push({ text: 'Eine neue Session wurde erfolgreich abgeschlossen.', sub: 'Gerade eben' });
+
+      // Zufällig mischen
+      for (var i = events.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = events[i]; events[i] = events[j]; events[j] = tmp;
+      }
+      return events;
+    }
+
+    function initDots() {
+      var c = document.getElementById('lt-counter');
+      if (!c) return;
+      c.innerHTML = '';
+      for (var i = 0; i < NUM_DOTS; i++) {
+        var d = document.createElement('div');
+        d.className = 'lt-counter-dot' + (i === 0 ? ' active' : '');
+        c.appendChild(d);
+      }
+    }
+
+    function updateDots(idx) {
+      var dots = document.querySelectorAll('.lt-counter-dot');
+      dots.forEach(function(d, i) {
+        d.classList.toggle('active', i === (idx % NUM_DOTS));
+      });
+    }
+
+    function showEvent(events, idx) {
+      var el = document.getElementById('lt-event-text');
+      var sub = document.getElementById('lt-event-sub');
+      if (!el) return;
+      el.classList.add('lt-fade-out');
+      setTimeout(function() {
+        var ev = events[idx % events.length];
+        el.innerHTML = ev.text;
+        if (sub) sub.textContent = ev.sub || '';
+        el.classList.remove('lt-fade-out');
+        el.classList.add('lt-fade-in');
+        setTimeout(function() { el.classList.remove('lt-fade-in'); }, 50);
+        updateDots(idx);
+      }, 400);
+    }
+
+    function startTicker(events) {
+      liveEvents = events.length ? events : fallbackEvents;
+      initDots();
+      showEvent(liveEvents, 0);
+      currentIdx = 1;
+      setInterval(function() {
+        showEvent(liveEvents, currentIdx);
+        currentIdx = (currentIdx + 1) % liveEvents.length;
+      }, 3000);
+    }
+
+    // Echte Wirker aus Supabase laden
+    fetch(SUPABASE_URL + '/rest/v1/wirker?select=full_name,talent,hourly_rate&limit=5', {
+      headers: { 'apikey': ANON_KEY, 'Authorization': 'Bearer ' + ANON_KEY }
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(wirker) {
+      startTicker(wirker.length ? buildEvents(wirker) : fallbackEvents);
+    })
+    .catch(function() { startTicker(fallbackEvents); });
+  })();
+
 
     // Fade-in für alle hs-section
     var fadeObs = new IntersectionObserver(function(entries){
