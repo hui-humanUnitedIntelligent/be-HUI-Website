@@ -8,6 +8,138 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WF2BRPN9');</script>
 <!-- End Google Tag Manager -->
+
+<!-- ═══════════════════════════════════════════════════
+     CONSENT MODE v2 (EU-Pflicht, Standard: denied)
+     ═══════════════════════════════════════════════════ -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Consent Mode v2 — Standardzustand: alles verweigert
+  gtag('consent', 'default', {
+    'ad_storage':              'denied',
+    'ad_user_data':            'denied',
+    'ad_personalization':      'denied',
+    'analytics_storage':       'denied',
+    'functionality_storage':   'denied',
+    'personalization_storage': 'denied',
+    'security_storage':        'granted',
+    'wait_for_update':         500
+  });
+
+  // Consent Update — wird aufgerufen wenn User zustimmt (z.B. Cookie-Banner)
+  window.huiGrantConsent = function(categories) {
+    var update = {};
+    if (categories.analytics) {
+      update['analytics_storage']       = 'granted';
+      update['functionality_storage']   = 'granted';
+      update['personalization_storage'] = 'granted';
+    }
+    if (categories.marketing) {
+      update['ad_storage']         = 'granted';
+      update['ad_user_data']       = 'granted';
+      update['ad_personalization'] = 'granted';
+    }
+    if (Object.keys(update).length) gtag('consent', 'update', update);
+  };
+</script>
+<!-- End Consent Mode v2 -->
+
+<!-- ═══════════════════════════════════════════════════
+     META PIXEL (Facebook/Instagram)
+     Pixel-ID: 000000000000000 — bitte ersetzen
+     ═══════════════════════════════════════════════════ -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', '000000000000000'); // ← Pixel-ID ersetzen
+  fbq('track', 'PageView');
+
+  // Erweiterte Events (werden per JS-Aufruf ausgelöst)
+  // fbq('track', 'ViewContent');
+  // fbq('track', 'SignUp');
+  // fbq('track', 'Purchase', {value: 0.00, currency: 'CHF'});
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=000000000000000&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel -->
+
+<!-- ═══════════════════════════════════════════════════
+     GOOGLE ADS CONVERSION TRACKING
+     Conversion-ID: AW-XXXXXXXXX — bitte ersetzen
+     ═══════════════════════════════════════════════════ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-XXXXXXXXX'); // ← Conversion-ID ersetzen
+
+  // Conversion-Tracking-Funktion (aufrufen bei Conversion-Event)
+  window.huiTrackConversion = function(label, value) {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-XXXXXXXXX/' + (label || 'XXXXXXXX'),
+      'value':    value || 0.0,
+      'currency': 'CHF'
+    });
+  };
+</script>
+<!-- End Google Ads Conversion Tracking -->
+
+<!-- ═══════════════════════════════════════════════════
+     EVENT-TRACKING VORBEREITUNG (GTM DataLayer Events)
+     Auslösung per window.huiEvent('event_name', {...})
+     ═══════════════════════════════════════════════════ -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  // Universeller Event-Helper
+  window.huiEvent = function(eventName, params) {
+    window.dataLayer.push(Object.assign({ event: eventName }, params || {}));
+  };
+
+  // Vordefinierte Event-Funktionen
+  window.huiEvents = {
+    pageView:              function(p){ window.huiEvent('page_view', p); },
+    scroll:                function(p){ window.huiEvent('scroll', p); },
+    click:                 function(p){ window.huiEvent('click', p); },
+    viewItem:              function(p){ window.huiEvent('view_item', p); },
+    signUp:                function(p){ window.huiEvent('sign_up', p); },
+    login:                 function(p){ window.huiEvent('login', p); },
+    appDownloadClick:      function(p){ window.huiEvent('app_download_click', p); },
+    servicePurchase:       function(p){ window.huiEvent('service_purchase', p); },
+    serviceSale:           function(p){ window.huiEvent('service_sale', p); },
+    impactpoolContribution:function(p){ window.huiEvent('impactpool_contribution', p); },
+    wirkerSignup:          function(p){ window.huiEvent('wirker_signup', p); }
+  };
+
+  // Automatisches Scroll-Tracking (25%, 50%, 75%, 90%)
+  (function(){
+    var milestones = [25, 50, 75, 90];
+    var reached = {};
+    window.addEventListener('scroll', function(){
+      var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      milestones.forEach(function(m){
+        if (pct >= m && !reached[m]) {
+          reached[m] = true;
+          window.huiEvents.scroll({ scroll_depth: m, page: window.location.pathname });
+        }
+      });
+    }, { passive: true });
+  })();
+</script>
+<!-- End Event-Tracking -->
+
 <meta charset="UTF-8"/>
   <meta name="google-site-verification" content="PLACEHOLDER" />
   <meta name="description" content="Verfolge den HUI Impact Pool in Echtzeit. Sieh, wie jede Buchung sofort soziale Wirkung erzeugt." />
