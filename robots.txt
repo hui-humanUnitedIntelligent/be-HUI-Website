@@ -7,4 +7,4 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://be-hui-website.vercel.app/sitemap.xml
+Sitemap: https://www.be-hui.com/sitemap.xml
