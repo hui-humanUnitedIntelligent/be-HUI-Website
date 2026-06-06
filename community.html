@@ -1717,19 +1717,13 @@ p {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .cm-info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.cm-info-card:first-child {
-  grid-column: 1 / -1;
-  background: linear-gradient(135deg, #0d1f26, #1a3a47);
-  color: #fff;
-}
+
 .cm-info-card-ico { font-size: 32px; margin-bottom: 14px; }
 .cm-info-card h4 {
   font-family: 'Playfair Display', serif;
   font-size: 18px; font-weight: 700; color: var(--text); margin: 0 0 8px;
 }
-.cm-info-card:first-child h4 { color: #fff; }
 .cm-info-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; }
-.cm-info-card:first-child p { color: rgba(255,255,255,0.6); }
 .cm-info-card-num {
   font-family: 'Playfair Display', serif;
   font-size: 40px; font-weight: 700; color: var(--teal); line-height: 1; margin-bottom: 4px;
@@ -1876,7 +1870,6 @@ p {
 @media (max-width: 600px) {
   .cm-hero, .cm-section { padding: 80px 20px; }
   .cm-what-visual { grid-template-columns: 1fr; }
-  .cm-info-card:first-child { grid-column: 1; }
   .cm-join-steps { grid-template-columns: 1fr; }
 }
 
@@ -1960,12 +1953,6 @@ p {
         </div>
       </div>
       <div class="cm-what-visual">
-        <div class="cm-info-card">
-          <div class="cm-info-card-ico">🌍</div>
-          <div class="cm-info-card-num">15 %</div>
-          <h4 style="color:#ffffff;">Automatischer Impact</h4>
-          <p style="color:#ffffff;">15% der Einnahmen fliessen in den Impact Pool.</p>
-        </div>
         <div class="cm-info-card">
           <div class="cm-info-card-ico">🧑‍🎨</div>
           <h4>Talente</h4>
