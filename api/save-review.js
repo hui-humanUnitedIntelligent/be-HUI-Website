@@ -20,6 +20,7 @@ module.exports = async function handler(req, res) {
   const EJS_SERVICE  = 'service_c24pcce';
   const EJS_TEMPLATE = 'template_6twtdnh';
   const EJS_PUBLIC   = 'rn01OjX48srlic_N7';
+  const EJS_PRIVATE  = process.env.EMAILJS_PRIVATE_KEY || '';
 
   if (!GH_TOKEN) return res.status(500).json({ error: 'GH_TOKEN missing' });
 
@@ -90,6 +91,7 @@ module.exports = async function handler(req, res) {
       service_id:   EJS_SERVICE,
       template_id:  EJS_TEMPLATE,
       user_id:      EJS_PUBLIC,
+      accessToken:  EJS_PRIVATE,
       template_params: {
         reviewer_name: name,
         name:          name,
