@@ -1607,6 +1607,7 @@ p {
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -2117,51 +2118,282 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ══ TESTIMONIALS ══ -->
-<section class="cm-testimonials cm-section">
+<!-- ══ COMMUNITY REVIEWS ══ -->
+<section class="cm-reviews cm-section" id="cm-reviews">
   <div class="cm-inner">
     <div class="cm-section-head">
-      <div class="cm-label">Was die Community sagt</div>
-      <h2>Stimmen aus der Bewegung.</h2>
-      <p>Menschen, die HUI erleben und jeden Tag Teil von etwas Größerem sind.</p>
+      <div class="cm-label">Bewertungen</div>
+      <h2>Bewertungen der Community</h2>
     </div>
-    <div class="cm-testi-grid">
-      <div class="cm-testi-card cm-testi-featured">
-        <span class="cm-testi-quote">"</span>
-        <p>HUI hat mir geholfen, endlich sichtbar zu werden. Ich bekomme faire Anfragen, werde sicher bezahlt — und tue gleichzeitig Gutes. Das ist die Plattform, auf die ich gewartet habe.</p>
-        <div class="cm-testi-author">
-          <div class="cm-testi-avatar">A</div>
-          <div>
-            <div class="cm-testi-name">Alex Smith</div>
-            <div class="cm-testi-role">Talent · Community Member</div>
-          </div>
+
+    <!-- Review-Formular -->
+    <div class="cm-review-form-wrap">
+      <form id="cmReviewForm" onsubmit="cmSubmitReview(event)">
+        <div class="cm-form-group">
+          <label for="cmRName">Name <span class="cm-req">*</span></label>
+          <input type="text" id="cmRName" name="cmRName" required placeholder="Dein Name" />
         </div>
-      </div>
-      <div class="cm-testi-card">
-        <span class="cm-testi-quote">"</span>
-        <p>Ich habe über HUI schnell Unterstützung gefunden — sicher, freundlich, unkompliziert. Dass jede Buchung auch soziale Projekte stärkt, macht es noch besser.</p>
-        <div class="cm-testi-author">
-          <div class="cm-testi-avatar">D</div>
-          <div>
-            <div class="cm-testi-name">Drew Carlyle</div>
-            <div class="cm-testi-role">Nutzer · Impact-Supporter</div>
+        <div class="cm-form-group">
+          <label>Bewertung <span class="cm-req">*</span></label>
+          <div class="cm-star-input" id="cmStarInput">
+            <button type="button" class="cm-star" data-val="1" onclick="cmSetStars(1)">★</button>
+            <button type="button" class="cm-star" data-val="2" onclick="cmSetStars(2)">★</button>
+            <button type="button" class="cm-star" data-val="3" onclick="cmSetStars(3)">★</button>
+            <button type="button" class="cm-star" data-val="4" onclick="cmSetStars(4)">★</button>
+            <button type="button" class="cm-star" data-val="5" onclick="cmSetStars(5)">★</button>
           </div>
+          <input type="hidden" id="cmRStars" value="0" />
         </div>
-      </div>
-      <div class="cm-testi-card">
-        <span class="cm-testi-quote">"</span>
-        <p>Ich buche bei HUI, weil ich weiß, dass mein Geld nicht nur eine Dienstleistung kauft — es bewegt etwas in der Welt.</p>
-        <div class="cm-testi-author">
-          <div class="cm-testi-avatar">M</div>
-          <div>
-            <div class="cm-testi-name">Maria K.</div>
-            <div class="cm-testi-role">HUI-Entdeckerin seit 2024</div>
-          </div>
+        <div class="cm-form-group">
+          <label for="cmRText">Deine Erfahrung <span class="cm-req">*</span></label>
+          <textarea id="cmRText" name="cmRText" rows="4" required placeholder="Erzähl uns von deiner Erfahrung mit HUI..."></textarea>
         </div>
-      </div>
+        <button type="submit" class="cm-btn-review-submit" id="cmReviewBtn">Bewertung absenden ⭐</button>
+        <div class="cm-review-success" id="cmReviewSuccess" style="display:none;">
+          ✅ Danke! Deine Bewertung wurde eingereicht und wird nach Freigabe veröffentlicht.
+        </div>
+        <div class="cm-review-error" id="cmReviewError" style="display:none;"></div>
+      </form>
     </div>
+
+    <!-- Veröffentlichte Reviews -->
+    <div class="cm-reviews-list" id="cmReviewsList"></div>
+    <p class="cm-no-reviews" id="cmNoReviews" style="display:none;">Noch keine Bewertungen vorhanden.</p>
   </div>
 </section>
+
+<style>
+/* ── CM REVIEW SYSTEM ── */
+.cm-reviews { background: var(--white, #fff); }
+.cm-review-form-wrap {
+  background: var(--cream, #f7f5f0);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 16px;
+  padding: 2rem 2rem 1.5rem;
+  max-width: 620px;
+  margin: 0 auto 3rem;
+}
+.cm-form-group { margin-bottom: 1.25rem; }
+.cm-form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text, #1a1a1a);
+  margin-bottom: .5rem;
+}
+.cm-req { color: var(--teal, #1ed8c8); }
+.cm-form-group input[type="text"],
+.cm-form-group textarea {
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 10px;
+  padding: .75rem 1rem;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--text, #1a1a1a);
+  outline: none;
+  transition: border-color .2s;
+  box-sizing: border-box;
+}
+.cm-form-group input[type="text"]:focus,
+.cm-form-group textarea:focus { border-color: var(--teal, #1ed8c8); }
+.cm-star-input { display: flex; gap: .25rem; margin-bottom: .25rem; }
+.cm-star {
+  background: none; border: none; cursor: pointer;
+  font-size: 2rem; color: rgba(0,0,0,0.18);
+  transition: color .15s, transform .15s; padding: 0; line-height: 1;
+}
+.cm-star.active { color: #f5a623; }
+.cm-btn-review-submit {
+  width: 100%;
+  background: var(--teal, #1ed8c8);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: .85rem 1.5rem;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity .2s;
+  margin-top: .5rem;
+}
+.cm-btn-review-submit:hover { opacity: .88; }
+.cm-btn-review-submit:disabled { opacity: .5; cursor: not-allowed; }
+.cm-review-success {
+  margin-top: 1rem;
+  background: rgba(30,216,200,0.12);
+  border: 1px solid var(--teal, #1ed8c8);
+  border-radius: 10px;
+  padding: .75rem 1rem;
+  font-size: 14px;
+  color: var(--text, #1a1a1a);
+  text-align: center;
+}
+.cm-review-error {
+  margin-top: .75rem;
+  color: #c0392b;
+  font-size: 13px;
+  text-align: center;
+}
+/* Reviews Liste */
+.cm-reviews-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.cm-review-card {
+  background: var(--cream, #f7f5f0);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: transform .2s, box-shadow .2s;
+}
+.cm-review-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+.cm-review-card-stars { color: #f5a623; font-size: 1rem; margin-bottom: .5rem; letter-spacing: .05em; }
+.cm-review-card-text {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text, #1a1a1a);
+  margin: 0 0 1rem;
+}
+.cm-review-card-meta { display: flex; align-items: center; gap: 12px; }
+.cm-review-card-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--teal, #1ed8c8);
+  color: #fff; font-weight: 700; font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.cm-review-card-name { font-size: 14px; font-weight: 700; color: var(--text, #1a1a1a); }
+.cm-review-card-date { font-size: 12px; color: var(--muted, #888); margin-top: 2px; }
+.cm-no-reviews { text-align: center; color: var(--muted, #888); font-size: 15px; margin-top: 1rem; }
+@media (max-width: 600px) {
+  .cm-review-form-wrap { padding: 1.5rem 1rem; }
+  .cm-reviews-list { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+/* ── HUI Community Review System ── */
+(function(){
+  var cmSelectedStars = 0;
+
+  window.cmSetStars = function(val) {
+    cmSelectedStars = val;
+    document.getElementById('cmRStars').value = val;
+    document.querySelectorAll('.cm-star').forEach(function(s){
+      s.classList.toggle('active', parseInt(s.getAttribute('data-val')) <= val);
+    });
+  };
+
+  function cmGenerateId() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c){
+      var r = Math.random() * 16 | 0;
+      return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+  }
+
+  window.cmSubmitReview = function(e) {
+    e.preventDefault();
+    var name  = document.getElementById('cmRName').value.trim();
+    var text  = document.getElementById('cmRText').value.trim();
+    var stars = cmSelectedStars;
+    var errEl = document.getElementById('cmReviewError');
+    errEl.style.display = 'none';
+
+    if (!name || !text) {
+      errEl.textContent = 'Bitte fülle alle Pflichtfelder aus.';
+      errEl.style.display = 'block';
+      return;
+    }
+    if (stars === 0) {
+      errEl.textContent = 'Bitte wähle eine Sterne-Bewertung aus.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    var btn = document.getElementById('cmReviewBtn');
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet…';
+
+    var reviewId  = cmGenerateId();
+    var starsText = '★'.repeat(stars) + '☆'.repeat(5 - stars);
+    var today     = new Date().toLocaleDateString('de-DE');
+
+    var params = {
+      reviewer_name: name,
+      stars:         starsText,
+      stars_count:   String(stars),
+      message:       text,
+      date:          today,
+      review_id:     reviewId,
+      email:         'huiwirken@gmail.com',
+      to_email:      'huiwirken@gmail.com'
+    };
+
+    if (typeof emailjs !== 'undefined') {
+      emailjs.send('service_c24pcce', 'template_6twtdnh', params, 'rn01OjX48srlic_N7')
+        .then(function(){
+          document.getElementById('cmReviewSuccess').style.display = 'block';
+          document.getElementById('cmReviewForm').reset();
+          window.cmSetStars(0);
+        })
+        .catch(function(err){
+          errEl.textContent = 'Fehler beim Senden. Bitte versuche es erneut. (' + (err.text || err.message || 'Unbekannter Fehler') + ')';
+          errEl.style.display = 'block';
+        })
+        .finally(function(){
+          btn.disabled = false;
+          btn.textContent = 'Bewertung absenden ⭐';
+        });
+    } else {
+      errEl.textContent = 'EmailJS konnte nicht geladen werden. Bitte Seite neu laden.';
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Bewertung absenden ⭐';
+    }
+  };
+
+  // Reviews aus reviews.json laden und anzeigen
+  function cmLoadReviews() {
+    fetch('/data/reviews.json?v=' + Date.now())
+      .then(function(r){ return r.ok ? r.json() : []; })
+      .then(function(reviews){
+        var listEl  = document.getElementById('cmReviewsList');
+        var noEl    = document.getElementById('cmNoReviews');
+        if (!Array.isArray(reviews) || reviews.length === 0) {
+          listEl.innerHTML = '';
+          noEl.style.display = 'block';
+          return;
+        }
+        noEl.style.display = 'none';
+        var sorted = reviews.slice().reverse();
+        listEl.innerHTML = sorted.map(function(r){
+          var initial = (r.name || '?').charAt(0).toUpperCase();
+          var starsHtml = '★'.repeat(r.stars || 0) + '☆'.repeat(5 - (r.stars || 0));
+          var safeText = (r.message || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+          var safeName = (r.name || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+          return '<div class="cm-review-card">'
+            + '<div class="cm-review-card-stars">' + starsHtml + '</div>'
+            + '<p class="cm-review-card-text">' + safeText + '</p>'
+            + '<div class="cm-review-card-meta">'
+            + '<div class="cm-review-card-avatar">' + initial + '</div>'
+            + '<div><div class="cm-review-card-name">' + safeName + '</div>'
+            + '<div class="cm-review-card-date">' + (r.date || '') + '</div></div>'
+            + '</div></div>';
+        }).join('');
+      })
+      .catch(function(){ /* Reviews noch nicht vorhanden — kein Fehler */ });
+  }
+
+  document.addEventListener('DOMContentLoaded', cmLoadReviews);
+})();
+</script>
 
 <!-- ══ CTA ══ -->
 <section class="cm-cta">
