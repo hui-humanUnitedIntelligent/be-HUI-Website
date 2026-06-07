@@ -2279,7 +2279,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </style>
 
 <script>
-/* ── HUI Community Review System ── */
+/* HUI Community Review System v3 */
 (function(){
   var cmSelectedStars = 0;
 
@@ -2305,90 +2305,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var stars = cmSelectedStars;
     var errEl = document.getElementById('cmReviewError');
     errEl.style.display = 'none';
-
-    if (!name || !text) {
-      errEl.textContent = 'Bitte fülle alle Pflichtfelder aus.';
-      errEl.style.display = 'block';
-      return;
-    }
-    if (stars === 0) {
-      errEl.textContent = 'Bitte wähle eine Sterne-Bewertung aus.';
-      errEl.style.display = 'block';
-      return;
-    }
+    if (!name || !text) { errEl.textContent = 'Bitte alle Felder ausfüllen.'; errEl.style.display = 'block'; return; }
+    if (!stars)         { errEl.textContent = 'Bitte Sterne auswählen.';      errEl.style.display = 'block'; return; }
 
     var btn = document.getElementById('cmReviewBtn');
-    btn.disabled = true;
-    btn.textContent = 'Wird gesendet…';
+    btn.disabled = true; btn.textContent = 'Wird gesendet\u2026';
 
-    var reviewId  = cmGenerateId();
-    var starsText = '★'.repeat(stars) + '☆'.repeat(5 - stars);
-    var today     = new Date().toLocaleDateString('de-DE');
+    var rid   = cmGenerateId();
+    var today = new Date().toLocaleDateString('de-DE');
 
-    var params = {
-      reviewer_name: name,
-      stars:         starsText,
-      stars_count:   String(stars),
-      message:       text,
-      date:          today,
-      review_id:     reviewId,
-      email:         'huiwirken@gmail.com',
-      to_email:      'huiwirken@gmail.com'
-    };
-
-    if (typeof emailjs !== 'undefined') {
-      emailjs.send('service_c24pcce', 'template_6twtdnh', params, 'rn01OjX48srlic_N7')
-        .then(function(){
-          document.getElementById('cmReviewSuccess').style.display = 'block';
-          document.getElementById('cmReviewForm').reset();
-          window.cmSetStars(0);
-        })
-        .catch(function(err){
-          errEl.textContent = 'Fehler beim Senden. Bitte versuche es erneut. (' + (err.text || err.message || 'Unbekannter Fehler') + ')';
-          errEl.style.display = 'block';
-        })
-        .finally(function(){
-          btn.disabled = false;
-          btn.textContent = 'Bewertung absenden ⭐';
-        });
-    } else {
-      errEl.textContent = 'EmailJS konnte nicht geladen werden. Bitte Seite neu laden.';
+    fetch('/api/reviews', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, stars: stars, message: text, date: today, review_id: rid })
+    }).then(function(r) {
+      if (!r.ok) return r.json().then(function(d){ throw new Error(d.error || 'Serverfehler'); });
+      return r.json();
+    }).then(function() {
+      document.getElementById('cmReviewSuccess').style.display = 'block';
+      document.getElementById('cmReviewForm').reset();
+      window.cmSetStars(0);
+    }).catch(function(err) {
+      errEl.textContent = 'Fehler: ' + (err.message || 'Unbekannt');
       errEl.style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = 'Bewertung absenden ⭐';
-    }
+    }).finally(function() {
+      btn.disabled = false; btn.textContent = 'Bewertung absenden \u2B50';
+    });
   };
 
-  // Reviews aus reviews.json laden und anzeigen
   function cmLoadReviews() {
     fetch('/data/reviews.json?v=' + Date.now())
-      .then(function(r){ return r.ok ? r.json() : []; })
-      .then(function(reviews){
-        var listEl  = document.getElementById('cmReviewsList');
-        var noEl    = document.getElementById('cmNoReviews');
-        if (!Array.isArray(reviews) || reviews.length === 0) {
-          listEl.innerHTML = '';
-          noEl.style.display = 'block';
-          return;
-        }
+      .then(function(r) { return r.ok ? r.json() : []; })
+      .then(function(reviews) {
+        var listEl = document.getElementById('cmReviewsList');
+        var noEl   = document.getElementById('cmNoReviews');
+        if (!Array.isArray(reviews) || !reviews.length) { listEl.innerHTML = ''; noEl.style.display = 'block'; return; }
         noEl.style.display = 'none';
-        var sorted = reviews.slice().reverse();
-        listEl.innerHTML = sorted.map(function(r){
-          var initial = (r.name || '?').charAt(0).toUpperCase();
-          var starsHtml = '★'.repeat(r.stars || 0) + '☆'.repeat(5 - (r.stars || 0));
-          var safeText = (r.message || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-          var safeName = (r.name || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-          return '<div class="cm-review-card">'
-            + '<div class="cm-review-card-stars">' + starsHtml + '</div>'
-            + '<p class="cm-review-card-text">' + safeText + '</p>'
-            + '<div class="cm-review-card-meta">'
-            + '<div class="cm-review-card-avatar">' + initial + '</div>'
-            + '<div><div class="cm-review-card-name">' + safeName + '</div>'
-            + '<div class="cm-review-card-date">' + (r.date || '') + '</div></div>'
-            + '</div></div>';
+        listEl.innerHTML = reviews.slice().reverse().map(function(r) {
+          var s  = (r.name||'?').charAt(0).toUpperCase();
+          var st = '\u2605'.repeat(r.stars||0) + '\u2606'.repeat(5-(r.stars||0));
+          var tx = (r.message||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+          var nm = (r.name||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+          return '<div class="cm-review-card"><div class="cm-review-card-stars">'+st+'</div><p class="cm-review-card-text">'+tx+'</p><div class="cm-review-card-meta"><div class="cm-review-card-avatar">'+s+'</div><div><div class="cm-review-card-name">'+nm+'</div><div class="cm-review-card-date">'+(r.date||'')+'</div></div></div></div>';
         }).join('');
-      })
-      .catch(function(){ /* Reviews noch nicht vorhanden — kein Fehler */ });
+      }).catch(function(){});
   }
 
   document.addEventListener('DOMContentLoaded', cmLoadReviews);
