@@ -94,13 +94,5 @@
     "message": "sadasdas111111",
     "date": "7.6.2026",
     "submitted_at": "2026-06-07T12:38:57.562Z"
-  },
-  {
-    "id": "test-mail-001",
-    "name": "Test Mail",
-    "stars": 5,
-    "message": "Kommt die Mail an?",
-    "date": "7.6.2026",
-    "submitted_at": "2026-06-07T12:39:48.375Z"
   }
 ]
