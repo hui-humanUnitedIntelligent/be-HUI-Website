@@ -1,6 +1,6 @@
 // /api/save-review.js
 // Saves a new review to pending_reviews.json via GitHub API
-// and sends email notification via EmailJS REST API (server-side)
+// and sends email notification via Gmail API (Base44 function)
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
