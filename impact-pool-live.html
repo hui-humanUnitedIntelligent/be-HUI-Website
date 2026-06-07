@@ -1356,6 +1356,9 @@ img, video, svg { max-width: 100%; }
 .ip-dial-stat .ds-num {
   font-family:'Playfair Display',serif; font-size:22px; font-weight:800; color:var(--text);
 }
+.ip-dial-stat .ds-sub {
+  font-size:12px; color:var(--muted); margin-top:2px; letter-spacing:.3px;
+}
 .ip-dial-stat .ds-lbl {
   font-size:11px; color:var(--muted); letter-spacing:1.5px; text-transform:uppercase; margin-top:2px;
 }
@@ -2063,6 +2066,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="ip-dial-stats">
         <div class="ip-dial-stat">
           <div class="ds-num" id="ipGrossValue">0 €</div>
+          <div class="ds-sub" id="ipPrevMonthValue">Vormonat: – €</div>
           <div class="ds-lbl">Pool Brutto</div>
         </div>
       </div>
@@ -2394,155 +2398,139 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 </script>
 
 <script>
-/* ══ IMPACT POOL LIVE ══ */
+/* ══ IMPACT POOL LIVE — Supabase Live ══ */
 (function(){
 
-  /* ── Konfiguration ── */
-  var POOL_GROSS_PCT = 0.15;
+  /* ── Supabase-Konfiguration ── */
+  var SB_URL  = 'https://gxztrhvhcxhmunhhkfjd.supabase.co';
+  var SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4enRyaHZoY3hobXVuaGhrZmpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4ODI2NDIsImV4cCI6MjA5MzQ1ODY0Mn0.cq8E_NQkmeTZPIe0G0SSqEzzg6yJhyce5xpW2iwVIbk';
+  var HEADERS = { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY };
 
-  /* State */
-  var state = {
-    rawTotal:    0,    // Summe aller Transaktionen
-    poolGross:   0,    // rawTotal × 15%
-    poolNet:     0,
-    activeProj:  [],
-    waitlist:    [],
-    lastUpdate:  null
-  };
+  /* ── Zeitfortschritt des Monats (Tag-basiert) ── */
+  function calcMonthProgress() {
+    var now      = new Date();
+    var year     = now.getFullYear();
+    var month    = now.getMonth();          // 0-basiert
+    var day      = now.getDate();           // 1..31
+    var daysInMonth = new Date(year, month + 1, 0).getDate();
+    // Tag 1 = 0%, letzter Tag = 100%
+    var pct = (day - 1) / (daysInMonth - 1);
+    return Math.min(Math.max(pct, 0), 1);
+  }
 
-  /* ── Dial animieren ── */
-  function animateDial(netValue, maxValue) {
+  /* ── Monat als 'YYYY-MM' String ── */
+  function monthStr(offset) {
+    var d = new Date();
+    d.setDate(1);
+    d.setMonth(d.getMonth() + (offset || 0));
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    return d.getFullYear() + '-' + m;
+  }
+
+  /* ── Betrag formatieren: "1.234,56 €" ── */
+  function fmtEur(val) {
+    return Number(val || 0).toLocaleString('de-DE', {
+      minimumFractionDigits: 2, maximumFractionDigits: 2
+    }) + ' €';
+  }
+
+  /* ── Dial-Fortschrittskreis (Zeitbasiert) ── */
+  function animateDial(pct) {
     var circle = document.getElementById('ipDialFill');
     if (!circle) return;
     var circumference = 816;
-    var pct = maxValue > 0 ? Math.min(netValue / maxValue, 1) : 0;
     var offset = circumference - (circumference * pct);
     circle.style.strokeDashoffset = offset;
   }
 
   /* ── Counter Animation ── */
-  function animateCounter(el, target, prefix, suffix, duration) {
+  function animateCounter(el, target, suffix, duration) {
     if (!el) return;
     var start = 0, startTime = null;
     function step(ts) {
       if (!startTime) startTime = ts;
       var progress = Math.min((ts - startTime) / duration, 1);
       var ease = 1 - Math.pow(1 - progress, 3);
-      var val = Math.floor(ease * target);
-      el.textContent = (prefix||'') + val.toLocaleString('de-DE') + (suffix||'');
+      var val = ease * target;
+      el.textContent = Number(val).toLocaleString('de-DE', {
+        minimumFractionDigits: 2, maximumFractionDigits: 2
+      }) + (suffix || '');
       if (progress < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
 
-  /* ── DOM-Werte setzen ── */
-  function renderValues() {
-    var netEl    = document.getElementById('ipNetValue');
-    var grossEl  = document.getElementById('ipGrossValue');
-    var updateEl = document.getElementById('ipLastUpdate');
+  /* ── DOM aktualisieren ── */
+  function renderValues(netVal, prevVal) {
+    var netEl      = document.getElementById('ipNetValue');
+    var grossEl    = document.getElementById('ipGrossValue');
+    var prevEl     = document.getElementById('ipPrevMonthValue');
+    var updateEl   = document.getElementById('ipLastUpdate');
 
-    if (netEl)   animateCounter(netEl, state.poolNet, '', ' €', 1800);
-    if (grossEl) animateCounter(grossEl, state.poolGross, '', ' €', 1600);
+    // Netto Impact Pool — Zahl im Kreis
+    if (netEl) animateCounter(netEl, netVal, ' €', 1800);
 
-    animateDial(state.poolNet, Math.max(state.poolNet * 1.5, 50000));
+    // Pool Brutto (gleicher Wert, Brutto-Logik kann später angepasst werden)
+    if (grossEl) animateCounter(grossEl, netVal, ' €', 1600);
 
+    // Vormonat
+    if (prevEl) {
+      prevEl.textContent = 'Vormonat: ' + fmtEur(prevVal);
+    }
+
+    // Zeitfortschritts-Kreis
+    animateDial(calcMonthProgress());
+
+    // Timestamp
     if (updateEl) {
-      var d = state.lastUpdate || new Date();
+      var d = new Date();
       updateEl.textContent = 'Aktualisiert: ' +
-        d.toLocaleTimeString('de-DE', {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+        d.toLocaleTimeString('de-DE', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
     }
   }
 
-  /* ── Projekte rendern ── */
-  function renderProjects(items, waitlist) {
-    var grid = document.getElementById('ipActiveGrid');
-    if (grid && items.length) {
-      grid.innerHTML = '';
-      items.slice(0,3).forEach(function(item, idx) {
-        var card = document.createElement('div');
-        card.className = 'ip-proj-card';
-        card.dataset.id = item.id || '';
-        var pct = item.progress || 0;
-        var share = item.poolShare || Math.round(100/items.length);
-        card.innerHTML =
-          '<div class="ip-proj-card-img">' +
-            (item.imageUrl ? '<img src="'+item.imageUrl+'" loading="lazy">' : '<span>🌿</span>') +
-            '<div class="ip-proj-rank">'+(idx+1)+'</div>' +
-          '</div>' +
-          '<div class="ip-proj-body">' +
-            '<div class="ip-proj-cat">'+(item.category||'')+'</div>' +
-            '<div class="ip-proj-title">'+(item.title||'Projekt')+'</div>' +
-            '<div class="ip-proj-desc">'+(item.description||'')+'</div>' +
-            '<div class="ip-proj-status">Aktiv im Impact Pool</div>' +
-            '<div class="ip-pool-share">' +
-              '<div class="ip-pool-share-row"><span>Fortschritt</span><strong>'+pct+'%</strong></div>' +
-              '<div class="ip-pool-bar"><div class="ip-pool-fill" style="width:'+pct+'%"></div></div>' +
-              '<div class="ip-pool-share-row" style="margin-top:8px"><span>Anteil am Pool</span><strong>'+share+'%</strong></div>' +
-            '</div>' +
-          '</div>';
-        grid.appendChild(card);
-      });
-    }
+  /* ── Supabase: Daten laden ── */
+  function loadFromSupabase() {
+    var curMonth  = monthStr(0);
+    var prevMonth = monthStr(-1);
 
-    var wList = document.getElementById('ipWaitGrid');
-    if (wList && waitlist.length) {
-      wList.innerHTML = '';
-      waitlist.forEach(function(item, idx) {
-        var card = document.createElement('div');
-        card.className = 'ip-wait-card';
-        card.innerHTML =
-          '<div class="ip-wait-rank">'+(idx+4)+'</div>' +
-          '<div class="ip-wait-info">' +
-            '<div class="ip-wait-title">'+(item.title||'Projekt')+'</div>' +
-            '<div class="ip-wait-meta">' +
-              '<span class="ip-wait-cat">'+(item.category||'')+'</span>' +
-              '<span class="ip-wait-dot"></span>' +
-              '<span class="ip-wait-status">Wartet auf freien Platz</span>' +
-            '</div>' +
-          '</div>' +
-          '<div class="ip-wait-icon">'+(item.icon||'📋')+'</div>';
-        wList.appendChild(card);
-      });
-    }
+    // Aktuellen + Vormonat parallel laden
+    var urlCur  = SB_URL + '/rest/v1/impact_pool?select=month,total_eur&month=eq.' + curMonth;
+    var urlPrev = SB_URL + '/rest/v1/impact_pool?select=month,total_eur&month=eq.' + prevMonth;
+
+    Promise.all([
+      fetch(urlCur,  { headers: HEADERS }).then(function(r){ return r.json(); }),
+      fetch(urlPrev, { headers: HEADERS }).then(function(r){ return r.json(); })
+    ]).then(function(results) {
+      var curData  = results[0];
+      var prevData = results[1];
+      var netVal  = (curData  && curData[0])  ? (curData[0].total_eur  || 0) : 0;
+      var prevVal = (prevData && prevData[0]) ? (prevData[0].total_eur || 0) : 0;
+      renderValues(netVal, prevVal);
+      console.log('[ImpactPool] Geladen — Aktuell:', netVal, '€ | Vormonat:', prevVal, '€');
+    }).catch(function(e) {
+      console.warn('[ImpactPool] Ladefehler:', e);
+      renderValues(0, 0);
+    });
   }
 
-  /* ── API-Ready: window.ipLoadFromAPI(apiUrl) ──
-     Erwartet: { total, activeProjects:[{id,title,category,description,progress,poolShare,imageUrl}],
-                 waitlist:[{id,title,category,icon}] }
-  ─────────────────────────────────────────────── */
-  window.ipLoadFromAPI = function(apiUrl) {
-    fetch(apiUrl, {cache:'no-store'})
-      .then(function(r){ return r.json(); })
-      .then(function(data) {
-        var raw       = data.total || 0;
-        var gross     = raw * POOL_GROSS_PCT;
-        state.rawTotal   = raw;
-        state.poolGross  = Math.round(gross);
-        state.poolNet    = Math.round(gross);
-        state.activeProj = data.activeProjects || [];
-        state.waitlist   = data.waitlist || [];
-        state.lastUpdate = new Date();
-        renderValues();
-        renderProjects(state.activeProj, state.waitlist);
-        /* Log: Impact Pool Aktualisierung */
-        console.log('[ImpactPool] Update', { net: state.poolNet, ts: state.lastUpdate });
-      })
-      .catch(function(e){ console.warn('[ImpactPool] API Error:', e); });
-  };
+  /* ── Initialisierung ── */
+  function init() {
+    // Sofort laden
+    loadFromSupabase();
+    // Alle 5 Sekunden aktualisieren
+    setInterval(loadFromSupabase, 5000);
+    // Dial sofort auf Tageszeitfortschritt setzen
+    animateDial(calcMonthProgress());
+  }
 
-  /* ── Polling alle 60s ── */
-  window.ipStartPolling = function(apiUrl, intervalMs) {
-    window.ipLoadFromAPI(apiUrl);
-    setInterval(function(){ window.ipLoadFromAPI(apiUrl); }, intervalMs || 60000);
-  };
-
-  /* ── IntersectionObserver: animiert wenn in View ── */
-  var animated = false;
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting && !animated) {
-        animated = true;
-        renderValues();
+  /* ── IntersectionObserver: beim Einblenden starten ── */
+  var started = false;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        init();
         /* Pool-Balken animieren */
         setTimeout(function(){
           document.querySelectorAll('.ip-pool-fill').forEach(function(bar){
@@ -2555,15 +2543,17 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
         }, 300);
       }
     });
-  }, {threshold:0.2});
+  }, {threshold: 0.2});
 
   var dial = document.getElementById('ipDialWrap');
   if (dial) observer.observe(dial);
 
-  /* ── Supabase-Integration aktivieren sobald Zugangsdaten vorhanden ──
-     Kommentar entfernen und URL anpassen:
-     window.ipStartPolling('/api/impact-pool-live', 30000);
-  ─────────────────────────────────────────────────────────────────── */
+  /* ── Fallback: Falls Observer nicht feuert ── */
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      if (!started) { started = true; init(); }
+    }, 1500);
+  });
 
 })();
 </script>
