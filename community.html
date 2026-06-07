@@ -2314,10 +2314,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var rid   = cmGenerateId();
     var today = new Date().toLocaleDateString('de-DE');
 
-    fetch('/api/reviews', {
+    fetch('/api/save-review', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, stars: stars, message: text, date: today, review_id: rid })
+      body: JSON.stringify({ name: name, stars: stars, message: text, date: today, id: rid })
     }).then(function(r) {
       if (!r.ok) return r.json().then(function(d){ throw new Error(d.error || 'Serverfehler'); });
       return r.json();
