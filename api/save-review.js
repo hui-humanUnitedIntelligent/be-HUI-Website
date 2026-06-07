@@ -1,7 +1,4 @@
 // /api/save-review.js
-// Saves a new review to pending_reviews.json via GitHub API
-// and sends email notification via Gmail API (Base44 function)
-
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -13,24 +10,16 @@ module.exports = async function handler(req, res) {
   const REPO      = 'hui-humanUnitedIntelligent/be-HUI-Website';
   const BRANCH    = 'main';
   const FILE_PATH = 'data/pending_reviews.json';
-  const BASE_URL  = 'https://be-hui.com';
-  const DASHBOARD = 'https://hui-admin-dashboard.vercel.app/reviews';
-  const SITE_URL   = 'https://be-hui.com';
-
-  const EJS_SERVICE  = 'service_c24pcce';
-  const EJS_TEMPLATE = 'template_6twtdnh';
-  const EJS_PUBLIC   = 'rn01OjX48srlic_N7';
-  const EJS_PRIVATE  = process.env.EMAILJS_PRIVATE_KEY || '';
 
   if (!GH_TOKEN) return res.status(500).json({ error: 'GH_TOKEN missing' });
 
   let name, stars, message, reviewId;
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-    name      = String(body.name    || '').trim();
-    stars     = parseInt(body.stars, 10);
-    message   = String(body.message || body.text || '').trim();
-    reviewId  = String(body.id      || Date.now().toString(36)).trim();
+    name     = String(body.name    || '').trim();
+    stars    = parseInt(body.stars, 10);
+    message  = String(body.message || body.text || '').trim();
+    reviewId = String(body.id      || Date.now().toString(36)).trim();
   } catch (e) {
     return res.status(400).json({ error: 'Invalid JSON body' });
   }
@@ -42,7 +31,7 @@ module.exports = async function handler(req, res) {
   const date      = new Date().toLocaleDateString('de-DE');
   const starsText = '★'.repeat(stars) + '☆'.repeat(5 - stars);
 
-  // 1. Read current pending_reviews.json
+  // 1. Read pending_reviews.json
   let pending = [], currentSHA = '';
   try {
     const ghRes = await fetch(
@@ -60,8 +49,7 @@ module.exports = async function handler(req, res) {
   }
 
   // 2. Append new review
-  const newReview = { id: reviewId, name, stars, message, date, submitted_at: new Date().toISOString() };
-  pending.push(newReview);
+  pending.push({ id: reviewId, name, stars, message, date, submitted_at: new Date().toISOString() });
 
   // 3. Write to GitHub
   const putBody = {
@@ -79,29 +67,38 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify(putBody),
     }
   );
-
   if (!writeRes.ok) {
     const err = await writeRes.json().catch(() => ({}));
     return res.status(500).json({ error: 'Could not save review', detail: err.message || '' });
   }
 
-  // 4. Send email via Base44 Gmail function
+  // 4. EmailJS — mit publish_url als echtem Link-Parameter
   try {
-    const notifyUrl = 'https://api.base44.com/api/apps/6a1bd77ed430878cc4e431a5/functions/sendReviewNotification';
-    await fetch(notifyUrl, {
+    const publishUrl = `https://be-hui.com/api/publish-review?id=${reviewId}`;
+    await fetch('https://api.emailjs.com/api/v1.0/email/send', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'origin': 'https://be-hui.com' },
       body: JSON.stringify({
-        name:     name,
-        stars:    stars,
-        message:  message,
-        date:     date,
-        id:       reviewId,
+        service_id:  'service_c24pcce',
+        template_id: 'template_6twtdnh',
+        user_id:     'rn01OjX48srlic_N7',
+        accessToken: process.env.EMAILJS_PRIVATE_KEY || '',
+        template_params: {
+          reviewer_name: name,
+          name:          name,
+          stars:         starsText,
+          stars_count:   String(stars),
+          message:       message,
+          date:          date,
+          publish_url:   publishUrl,
+          email:         'huiwirken@gmail.com',
+          to_email:      'huiwirken@gmail.com',
+        },
       }),
     });
-    console.log('[save-review] ✅ Gmail notification sent');
-  } catch (emailErr) {
-    console.warn('[save-review] Email error (non-fatal):', emailErr.message);
+    console.log('[save-review] Email sent for review:', reviewId);
+  } catch (e) {
+    console.warn('[save-review] Email error (non-fatal):', e.message);
   }
 
   return res.status(200).json({ success: true, id: reviewId });
