@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HUI – Review Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',system-ui,sans-serif;background:#f7f5f0;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
+    .logo{font-size:1.5rem;font-weight:800;color:#1a1a1a;margin-bottom:2rem}
+    .logo span{color:#1ed8c8}
+    .card{background:#fff;border-radius:18px;padding:2rem;max-width:640px;width:100%;box-shadow:0 4px 24px rgba(0,0,0,.08);margin-bottom:1.5rem}
+    h1{font-size:1.4rem;margin-bottom:.5rem;color:#1a1a1a}
+    .sub{color:#888;font-size:14px;margin-bottom:2rem}
+    .field{margin-bottom:1rem}
+    .field label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;margin-bottom:.3rem}
+    .field .val{font-size:15px;color:#1a1a1a;line-height:1.6}
+    .stars{color:#f5a623;font-size:1.2rem}
+    .btn-row{display:flex;gap:1rem;margin-top:1.5rem}
+    .btn{flex:1;padding:.85rem;border:none;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s}
+    .btn-ok{background:#1ed8c8;color:#fff}
+    .btn-no{background:#f0e8d5;color:#1a1a1a;border:1px solid rgba(0,0,0,.1)}
+    .btn:hover{opacity:.85}
+    .btn:disabled{opacity:.4;cursor:not-allowed}
+    .msg{margin-top:1.5rem;padding:1rem;border-radius:10px;font-size:15px;text-align:center;display:none}
+    .msg.ok{background:rgba(30,216,200,.12);border:1px solid #1ed8c8}
+    .msg.err{background:rgba(220,53,69,.08);border:1px solid #dc3545;color:#dc3545}
+    .login-card{background:#fff;border-radius:18px;padding:2rem;max-width:380px;width:100%;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+    .login-card h2{margin-bottom:1rem}
+    .login-card input{width:100%;padding:.75rem 1rem;border:1px solid rgba(0,0,0,.12);border-radius:10px;font-size:15px;margin-bottom:1rem;outline:none;font-family:inherit}
+    .login-card input:focus{border-color:#1ed8c8}
+    .login-card button{width:100%;padding:.85rem;background:#1ed8c8;color:#fff;border:none;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer}
+    .empty{text-align:center;color:#888;padding:3rem 1rem}
+    a.link-btn{display:inline-block;margin-top:1.5rem;background:#1ed8c8;color:#fff;padding:.75rem 2rem;border-radius:50px;text-decoration:none;font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="logo">HUI <span>Admin</span></div>
+
+  <div id="loginView">
+    <div class="login-card">
+      <h2>🔒 Bewertungs-Admin</h2>
+      <p style="color:#888;font-size:14px;margin-bottom:1.5rem">Nur für autorisierte Personen.</p>
+      <input type="password" id="pwInput" placeholder="Passwort" onkeydown="if(event.key==='Enter')checkPw()" />
+      <button onclick="checkPw()">Einloggen</button>
+      <p id="pwErr" style="color:#dc3545;font-size:13px;margin-top:.75rem;display:none">Falsches Passwort.</p>
+    </div>
+  </div>
+
+  <div id="adminView" style="display:none;width:100%;max-width:640px">
+    <div id="mainContent"></div>
+    <div id="publishedSection" style="margin-top:2rem"></div>
+  </div>
+
+  <script>
+    var ADMIN_PW = 'hui2026admin';
+    var params   = new URLSearchParams(window.location.search);
+
+    function checkPw() {
+      var pw = document.getElementById('pwInput').value;
+      if (pw === ADMIN_PW) {
+        document.getElementById('loginView').style.display = 'none';
+        document.getElementById('adminView').style.display = 'block';
+        loadPanel();
+      } else {
+        document.getElementById('pwErr').style.display = 'block';
+      }
+    }
+
+    function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function api(method, qs, body) {
+      var url = '/api/reviews' + (qs ? '?' + qs : '');
+      var opts = { method: method, headers: {} };
+      if (body) { opts.headers['Content-Type'] = 'application/json'; opts.body = JSON.stringify(body); }
+      return fetch(url, opts);
+    }
+
+    function loadPanel() {
+      var targetId = params.get('id');
+      var action   = params.get('action');
+      var main     = document.getElementById('mainContent');
+      main.innerHTML = '<div class="card"><p style="color:#888">Lade Bewertungen...</p></div>';
+
+      // Pending reviews laden via GitHub direkt (public endpoint)
+      fetch('https://raw.githubusercontent.com/hui-humanUnitedIntelligent/be-HUI-Website/main/data/pending_reviews.json?t=' + Date.now())
+        .then(function(r){ return r.ok ? r.json() : []; })
+        .then(function(pending) {
+          if (targetId) {
+            var review = pending.find(function(r){ return r.id === targetId; });
+            if (!review) {
+              main.innerHTML = '<div class="card"><h1>Bewertung nicht gefunden</h1><p class="sub">Sie wurde bereits bearbeitet.</p></div>';
+            } else if (action === 'approve' || action === 'reject') {
+              doAction(review, action, main);
+            } else {
+              renderCard(review, main);
+            }
+          } else {
+            if (!pending.length) {
+              main.innerHTML = '<div class="card"><div class="empty">✅ Keine ausstehenden Bewertungen</div></div>';
+            } else {
+              main.innerHTML = '';
+              pending.forEach(function(r) {
+                var d = document.createElement('div');
+                renderCard(r, d);
+                main.appendChild(d);
+              });
+            }
+          }
+          loadPublished();
+        }).catch(function(err) {
+          main.innerHTML = '<div class="card"><p style="color:red">Ladefehler: ' + err.message + '</p></div>';
+        });
+    }
+
+    function renderCard(review, container) {
+      var st = '★'.repeat(review.stars||0) + '☆'.repeat(5-(review.stars||0));
+      container.innerHTML =
+        '<div class="card">' +
+        '<h1>Neue Bewertung</h1><p class="sub">Eingereicht am ' + esc(review.date) + '</p>' +
+        '<div class="field"><label>Name</label><div class="val">'+esc(review.name)+'</div></div>' +
+        '<div class="field"><label>Bewertung</label><div class="val stars">'+st+'</div></div>' +
+        '<div class="field"><label>Erfahrung</label><div class="val">'+esc(review.message)+'</div></div>' +
+        '<div class="btn-row">' +
+        '<button class="btn btn-ok" onclick="doAction(window.__rev,\'approve\',document.getElementById(\'mainContent\'))">✅ Veröffentlichen</button>' +
+        '<button class="btn btn-no" onclick="doAction(window.__rev,\'reject\',document.getElementById(\'mainContent\'))">🗑️ Ablehnen</button>' +
+        '</div><div class="msg" id="actionMsg"></div></div>';
+      window.__rev = review;
+    }
+
+    function doAction(review, action, container) {
+      document.querySelectorAll('.btn').forEach(function(b){ b.disabled = true; });
+      var qs = 'action=' + action + '&id=' + review.id + '&token=hui-review-secret-2026';
+      api('GET', qs).then(function(r){ return r.text(); }).then(function() {
+        if (action === 'approve') {
+          container.innerHTML = '<div class="card" style="text-align:center">' +
+            '<h2 style="color:#1ed8c8;margin-bottom:1rem">✅ Veröffentlicht!</h2>' +
+            '<p>Die Bewertung von <strong>'+esc(review.name)+'</strong> ist jetzt live.</p>' +
+            '<a class="link-btn" href="https://be-hui.com/community.html#cm-reviews">Zur Community-Seite →</a></div>';
+        } else {
+          container.innerHTML = '<div class="card" style="text-align:center">' +
+            '<h2 style="margin-bottom:1rem">🗑️ Abgelehnt</h2>' +
+            '<p>Bewertung von <strong>'+esc(review.name)+'</strong> wurde gelöscht.</p>' +
+            '<a class="link-btn" style="background:#888" href="/admin-reviews.html">Zurück zur Übersicht →</a></div>';
+        }
+      }).catch(function(err) {
+        var msg = document.getElementById('actionMsg');
+        if (msg) { msg.className='msg err'; msg.textContent='Fehler: '+err.message; msg.style.display='block'; }
+        document.querySelectorAll('.btn').forEach(function(b){ b.disabled = false; });
+      });
+    }
+
+    function loadPublished() {
+      fetch('https://raw.githubusercontent.com/hui-humanUnitedIntelligent/be-HUI-Website/main/data/reviews.json?t=' + Date.now())
+        .then(function(r){ return r.ok ? r.json() : []; })
+        .then(function(reviews) {
+          var el = document.getElementById('publishedSection');
+          if (!reviews.length) { el.innerHTML = '<p style="text-align:center;color:#888;font-size:14px">Keine veröffentlichten Bewertungen.</p>'; return; }
+          el.innerHTML = '<h2 style="font-size:1.1rem;margin-bottom:1rem">Veröffentlicht ('+reviews.length+')</h2>' +
+            reviews.slice().reverse().map(function(r){
+              var s = '★'.repeat(r.stars||0)+'☆'.repeat(5-(r.stars||0));
+              return '<div style="background:#fff;border-radius:12px;padding:1rem 1.5rem;margin-bottom:.75rem;border:1px solid rgba(0,0,0,.07)">' +
+                '<div style="color:#f5a623">'+s+'</div>' +
+                '<p style="margin:.4rem 0;font-size:14px">'+esc(r.message)+'</p>' +
+                '<span style="font-size:12px;color:#888">'+esc(r.name)+' · '+(r.date||'')+'</span></div>';
+            }).join('');
+        });
+    }
+  </script>
+</body>
+</html>
