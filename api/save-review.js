@@ -15,6 +15,7 @@ module.exports = async function handler(req, res) {
   const FILE_PATH = 'data/pending_reviews.json';
   const BASE_URL  = 'https://be-hui.com';
   const DASHBOARD = 'https://hui-admin-dashboard.vercel.app/reviews';
+  const SITE_URL   = 'https://be-hui.com';
 
   const EJS_SERVICE  = 'service_c24pcce';
   const EJS_TEMPLATE = 'template_6twtdnh';
@@ -97,7 +98,7 @@ module.exports = async function handler(req, res) {
         message:       message,
         date:          date,
         admin_url:     DASHBOARD,
-        publish_url:   DASHBOARD,
+        publish_url:   `${SITE_URL}/api/publish-review?id=${reviewId}`,
         email:         'huiwirken@gmail.com',
         to_email:      'huiwirken@gmail.com',
       },
