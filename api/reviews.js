@@ -12,6 +12,7 @@ const EMAILJS_SVC    = 'service_c24pcce';
 const EMAILJS_TPL    = 'template_6twtdnh';
 const EMAILJS_KEY    = 'rn01OjX48srlic_N7';
 const BASE_URL       = 'https://be-hui.com';
+const ADMIN_API_URL  = 'https://hui-admin-dashboard.vercel.app';
 
 async function ghGet(path) {
   const r = await fetch(
@@ -111,8 +112,8 @@ export default async function handler(req, res) {
     ];
     await ghPut('data/pending_reviews.json', newPending, pendingSha, `review: pending by ${name}`);
 
-    const approveUrl = `${BASE_URL}/api/reviews?action=approve&id=${rid}&token=${APPROVE_SECRET}`;
-    const rejectUrl  = `${BASE_URL}/api/reviews?action=reject&id=${rid}&token=${APPROVE_SECRET}`;
+    const approveUrl = `${ADMIN_API_URL}/api/reviews?action=approve&id=${rid}&token=${APPROVE_SECRET}`;
+    const rejectUrl  = `${ADMIN_API_URL}/api/reviews?action=reject&id=${rid}&token=${APPROVE_SECRET}`;
     const starsText  = '★'.repeat(starsNum) + '☆'.repeat(5 - starsNum);
 
     await sendEmail({
