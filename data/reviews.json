@@ -13,5 +13,13 @@
     "message": "Die Plattform funktioniert zuverlässig, transparent und ohne versteckte Kosten. Ich finde schnell Talente, die wirklich helfen — und gleichzeitig unterstützt jede Buchung soziale Projekte. Das ist modernes, verantwortungsvolles Buchen.",
     "date": "7.6.2026",
     "approvedAt": "2026-06-07T12:02:04.880Z"
+  },
+  {
+    "id": "btn-test-1780834366",
+    "name": "Test HUI",
+    "stars": 5,
+    "message": "Button-Test bitte anklicken",
+    "date": "7.6.2026",
+    "approvedAt": "2026-06-07T12:12:57.932Z"
   }
 ]
