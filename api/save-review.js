@@ -85,33 +85,21 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Could not save review', detail: err.message || '' });
   }
 
-  // 4. Send email via EmailJS REST API
+  // 4. Send email via Base44 Gmail function
   try {
-    const ejsPayload = {
-      service_id:   EJS_SERVICE,
-      template_id:  EJS_TEMPLATE,
-      user_id:      EJS_PUBLIC,
-      accessToken:  EJS_PRIVATE,
-      template_params: {
-        reviewer_name: name,
-        name:          name,
-        stars:         starsText,
-        stars_count:   String(stars),
-        message:       message,
-        date:          date,
-        admin_url:     DASHBOARD,
-        publish_url:   `${SITE_URL}/api/publish-review?id=${reviewId}`,
-        email:         'huiwirken@gmail.com',
-        to_email:      'huiwirken@gmail.com',
-      },
-    };
-
-    await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    const notifyUrl = 'https://api.base44.com/api/apps/6a1bd77ed430878cc4e431a5/functions/sendReviewNotification';
+    await fetch(notifyUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'origin': BASE_URL },
-      body: JSON.stringify(ejsPayload),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name:     name,
+        stars:    stars,
+        message:  message,
+        date:     date,
+        id:       reviewId,
+      }),
     });
-    console.log('[save-review] ✅ EmailJS sent');
+    console.log('[save-review] ✅ Gmail notification sent');
   } catch (emailErr) {
     console.warn('[save-review] Email error (non-fatal):', emailErr.message);
   }
