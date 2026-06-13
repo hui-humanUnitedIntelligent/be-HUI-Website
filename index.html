@@ -2923,6 +2923,177 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   window.addEventListener('resize',function(){if(window.innerWidth>768) closeNav();});
 })();
 </script>
+
+<!-- ══ HUI LIVE STATS — Supabase ══════════════════════════════════ -->
+<script>
+(async function initLiveStats() {
+  const SUPA_URL = "https://gxztrhvhcxhmunhhkfjd.supabase.co";
+  const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4enRyaHZoY3hobXVuaGhrZmpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYyMTg2NTgsImV4cCI6MjA2MTc5NDY1OH0.IEOOxTJiggDj7PkNJAzHaBaD3kEWLxNnCrTFqY4e2Sc";
+
+  async function sbFetch(table, params) {
+    const url = `${SUPA_URL}/rest/v1/${table}?${params}`;
+    const res = await fetch(url, {
+      headers: { "apikey": SUPA_KEY, "Authorization": `Bearer ${SUPA_KEY}` }
+    });
+    return res.json();
+  }
+
+  async function sbCount(table, filter = "") {
+    const url = `${SUPA_URL}/rest/v1/${table}?select=id${filter ? "&" + filter : ""}`;
+    const res = await fetch(url, {
+      headers: {
+        "apikey": SUPA_KEY,
+        "Authorization": `Bearer ${SUPA_KEY}`,
+        "Prefer": "count=exact",
+        "Range": "0-0"
+      }
+    });
+    const range = res.headers.get("content-range") || "0/0";
+    return parseInt(range.split("/")[1]) || 0;
+  }
+
+  try {
+    // Parallel alle Daten laden
+    const poolMonth = new Date().toISOString().slice(0, 7);
+
+    const [
+      aktivWirker,
+      talente,
+      werke,
+      sozialeProjekte,
+      impactVotes,
+      bewertungen,
+      liveEvents
+    ] = await Promise.all([
+      // Aktive Wirker = alle User mit Status active
+      sbCount("profiles", "status=eq.active"),
+      // Talente = profiles mit role talent
+      sbCount("profiles", "role=eq.talent"),
+      // Werke = approved works
+      sbCount("works", "status=eq.approved"),
+      // Soziale Projekte = bewilligte impact_applications
+      sbCount("impact_applications", "status=eq.approved"),
+      // Impact Pool Gesamt = Summe der funding_goal aller approved Projekte
+      sbFetch("impact_applications", "select=funding_goal&status=eq.approved&limit=500"),
+      // Bewertungen — falls vorhanden
+      sbFetch("works", "select=rating&status=eq.approved&rating=not.is.null&limit=500"),
+      // Live Events = letzte 5 Aktivitäten
+      sbFetch("notification_events", "select=type,metadata,created_at&order=created_at.desc&limit=5")
+    ]);
+
+    // Impact Pool Summe berechnen
+    const impactTotal = Array.isArray(impactVotes)
+      ? impactVotes.reduce((s, p) => s + (parseFloat(p.funding_goal) || 0), 0)
+      : 0;
+
+    // Bewertungs-Durchschnitt
+    const validRatings = Array.isArray(bewertungen)
+      ? bewertungen.filter(w => w.rating > 0)
+      : [];
+    const avgRating = validRatings.length > 0
+      ? (validRatings.reduce((s, w) => s + w.rating, 0) / validRatings.length)
+      : 0;
+
+    // ── Kacheln updaten ────────────────────────────────────────
+    function animateCount(el, target, prefix = "", suffix = "", decimal = false) {
+      if (!el) return;
+      const duration = 1800;
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const val = eased * target;
+        if (decimal) {
+          el.textContent = prefix + val.toFixed(1) + suffix;
+        } else {
+          el.textContent = prefix + Math.round(val).toLocaleString("de-CH") + suffix;
+        }
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Karte 1: Aktive Wirker
+    const card1 = document.querySelector(".hs-stat-card.hs-stat--teal");
+    if (card1) {
+      const countEl = card1.querySelector(".hs-count");
+      animateCount(countEl, aktivWirker);
+      card1.dataset.target = aktivWirker;
+    }
+
+    // Karte 2: Talente & Werke
+    const card2 = document.querySelector(".hs-stat-card.hs-stat--coral");
+    if (card2) {
+      const countEl = card2.querySelector(".hs-count");
+      const total = talente + werke;
+      animateCount(countEl, total);
+      card2.dataset.target = total;
+    }
+
+    // Karte 3: Impact Pool Gesamt
+    const card3 = document.querySelector(".hs-stat-card.hs-stat--green");
+    if (card3) {
+      const countEl = card3.querySelector(".hs-count");
+      animateCount(countEl, impactTotal, "", "", false);
+      card3.dataset.target = impactTotal;
+    }
+
+    // Karte 4: Soziale Projekte
+    const card4 = document.querySelector(".hs-stat-card.hs-stat--purple");
+    if (card4) {
+      const countEl = card4.querySelector(".hs-count");
+      animateCount(countEl, sozialeProjekte);
+      card4.dataset.target = sozialeProjekte;
+    }
+
+    // Karte 5: Ø Bewertung
+    const card5 = document.querySelector(".hs-stat-card.hs-stat--gold");
+    if (card5) {
+      const countEl = card5.querySelector(".hs-count");
+      if (avgRating > 0) {
+        animateCount(countEl, avgRating, "", "", true);
+      } else {
+        countEl.textContent = "—";
+      }
+    }
+
+    // Karte 6: Live-Ticker
+    const eventText = document.getElementById("lt-event-text");
+    const eventSub  = document.getElementById("lt-event-sub");
+    if (eventText && Array.isArray(liveEvents) && liveEvents.length > 0) {
+      let idx = 0;
+      const events = liveEvents.map(e => {
+        const meta = e.metadata || {};
+        const type = e.type || "";
+        if (type.includes("work_approved"))  return { text: "✅ Neues Werk freigegeben", sub: "gerade eben" };
+        if (type.includes("vote"))           return { text: "🗳 Neue Stimme im Impact Pool", sub: "gerade eben" };
+        if (type.includes("project"))        return { text: "🌱 Neues Projekt eingereicht", sub: "gerade eben" };
+        if (type.includes("register"))       return { text: "👤 Neues Mitglied beigetreten", sub: "gerade eben" };
+        return { text: "💚 Neue Aktivität in HUI", sub: "gerade eben" };
+      });
+
+      function showNext() {
+        const ev = events[idx % events.length];
+        eventText.style.opacity = "0";
+        setTimeout(() => {
+          eventText.textContent = ev.text;
+          if (eventSub) eventSub.textContent = ev.sub;
+          eventText.style.transition = "opacity 0.5s";
+          eventText.style.opacity = "1";
+        }, 300);
+        idx++;
+      }
+      showNext();
+      setInterval(showNext, 4000);
+    }
+
+  } catch(err) {
+    console.warn("[HUI Stats] Fehler:", err);
+  }
+})();
+</script>
+<!-- ══════════════════════════════════════════════════════════════ -->
+
 </body>
 </html>
 
@@ -3936,5 +4107,176 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
   if(b&&b.parentElement!==document.body)document.body.appendChild(b);
 })();
 </script>
+
+<!-- ══ HUI LIVE STATS — Supabase ══════════════════════════════════ -->
+<script>
+(async function initLiveStats() {
+  const SUPA_URL = "https://gxztrhvhcxhmunhhkfjd.supabase.co";
+  const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4enRyaHZoY3hobXVuaGhrZmpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYyMTg2NTgsImV4cCI6MjA2MTc5NDY1OH0.IEOOxTJiggDj7PkNJAzHaBaD3kEWLxNnCrTFqY4e2Sc";
+
+  async function sbFetch(table, params) {
+    const url = `${SUPA_URL}/rest/v1/${table}?${params}`;
+    const res = await fetch(url, {
+      headers: { "apikey": SUPA_KEY, "Authorization": `Bearer ${SUPA_KEY}` }
+    });
+    return res.json();
+  }
+
+  async function sbCount(table, filter = "") {
+    const url = `${SUPA_URL}/rest/v1/${table}?select=id${filter ? "&" + filter : ""}`;
+    const res = await fetch(url, {
+      headers: {
+        "apikey": SUPA_KEY,
+        "Authorization": `Bearer ${SUPA_KEY}`,
+        "Prefer": "count=exact",
+        "Range": "0-0"
+      }
+    });
+    const range = res.headers.get("content-range") || "0/0";
+    return parseInt(range.split("/")[1]) || 0;
+  }
+
+  try {
+    // Parallel alle Daten laden
+    const poolMonth = new Date().toISOString().slice(0, 7);
+
+    const [
+      aktivWirker,
+      talente,
+      werke,
+      sozialeProjekte,
+      impactVotes,
+      bewertungen,
+      liveEvents
+    ] = await Promise.all([
+      // Aktive Wirker = alle User mit Status active
+      sbCount("profiles", "status=eq.active"),
+      // Talente = profiles mit role talent
+      sbCount("profiles", "role=eq.talent"),
+      // Werke = approved works
+      sbCount("works", "status=eq.approved"),
+      // Soziale Projekte = bewilligte impact_applications
+      sbCount("impact_applications", "status=eq.approved"),
+      // Impact Pool Gesamt = Summe der funding_goal aller approved Projekte
+      sbFetch("impact_applications", "select=funding_goal&status=eq.approved&limit=500"),
+      // Bewertungen — falls vorhanden
+      sbFetch("works", "select=rating&status=eq.approved&rating=not.is.null&limit=500"),
+      // Live Events = letzte 5 Aktivitäten
+      sbFetch("notification_events", "select=type,metadata,created_at&order=created_at.desc&limit=5")
+    ]);
+
+    // Impact Pool Summe berechnen
+    const impactTotal = Array.isArray(impactVotes)
+      ? impactVotes.reduce((s, p) => s + (parseFloat(p.funding_goal) || 0), 0)
+      : 0;
+
+    // Bewertungs-Durchschnitt
+    const validRatings = Array.isArray(bewertungen)
+      ? bewertungen.filter(w => w.rating > 0)
+      : [];
+    const avgRating = validRatings.length > 0
+      ? (validRatings.reduce((s, w) => s + w.rating, 0) / validRatings.length)
+      : 0;
+
+    // ── Kacheln updaten ────────────────────────────────────────
+    function animateCount(el, target, prefix = "", suffix = "", decimal = false) {
+      if (!el) return;
+      const duration = 1800;
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const val = eased * target;
+        if (decimal) {
+          el.textContent = prefix + val.toFixed(1) + suffix;
+        } else {
+          el.textContent = prefix + Math.round(val).toLocaleString("de-CH") + suffix;
+        }
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Karte 1: Aktive Wirker
+    const card1 = document.querySelector(".hs-stat-card.hs-stat--teal");
+    if (card1) {
+      const countEl = card1.querySelector(".hs-count");
+      animateCount(countEl, aktivWirker);
+      card1.dataset.target = aktivWirker;
+    }
+
+    // Karte 2: Talente & Werke
+    const card2 = document.querySelector(".hs-stat-card.hs-stat--coral");
+    if (card2) {
+      const countEl = card2.querySelector(".hs-count");
+      const total = talente + werke;
+      animateCount(countEl, total);
+      card2.dataset.target = total;
+    }
+
+    // Karte 3: Impact Pool Gesamt
+    const card3 = document.querySelector(".hs-stat-card.hs-stat--green");
+    if (card3) {
+      const countEl = card3.querySelector(".hs-count");
+      animateCount(countEl, impactTotal, "", "", false);
+      card3.dataset.target = impactTotal;
+    }
+
+    // Karte 4: Soziale Projekte
+    const card4 = document.querySelector(".hs-stat-card.hs-stat--purple");
+    if (card4) {
+      const countEl = card4.querySelector(".hs-count");
+      animateCount(countEl, sozialeProjekte);
+      card4.dataset.target = sozialeProjekte;
+    }
+
+    // Karte 5: Ø Bewertung
+    const card5 = document.querySelector(".hs-stat-card.hs-stat--gold");
+    if (card5) {
+      const countEl = card5.querySelector(".hs-count");
+      if (avgRating > 0) {
+        animateCount(countEl, avgRating, "", "", true);
+      } else {
+        countEl.textContent = "—";
+      }
+    }
+
+    // Karte 6: Live-Ticker
+    const eventText = document.getElementById("lt-event-text");
+    const eventSub  = document.getElementById("lt-event-sub");
+    if (eventText && Array.isArray(liveEvents) && liveEvents.length > 0) {
+      let idx = 0;
+      const events = liveEvents.map(e => {
+        const meta = e.metadata || {};
+        const type = e.type || "";
+        if (type.includes("work_approved"))  return { text: "✅ Neues Werk freigegeben", sub: "gerade eben" };
+        if (type.includes("vote"))           return { text: "🗳 Neue Stimme im Impact Pool", sub: "gerade eben" };
+        if (type.includes("project"))        return { text: "🌱 Neues Projekt eingereicht", sub: "gerade eben" };
+        if (type.includes("register"))       return { text: "👤 Neues Mitglied beigetreten", sub: "gerade eben" };
+        return { text: "💚 Neue Aktivität in HUI", sub: "gerade eben" };
+      });
+
+      function showNext() {
+        const ev = events[idx % events.length];
+        eventText.style.opacity = "0";
+        setTimeout(() => {
+          eventText.textContent = ev.text;
+          if (eventSub) eventSub.textContent = ev.sub;
+          eventText.style.transition = "opacity 0.5s";
+          eventText.style.opacity = "1";
+        }, 300);
+        idx++;
+      }
+      showNext();
+      setInterval(showNext, 4000);
+    }
+
+  } catch(err) {
+    console.warn("[HUI Stats] Fehler:", err);
+  }
+})();
+</script>
+<!-- ══════════════════════════════════════════════════════════════ -->
+
 </body>
 </html>
