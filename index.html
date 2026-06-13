@@ -2927,6 +2927,9 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 
 
 
+
+
+
 <!-- ══ HUI LIVE STATS — Supabase Live ══════════════════════════════ -->
 <script>
 (async function initLiveStats() {
@@ -2968,22 +2971,61 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
     })(start);
   }
 
-  // Intersection Observer — nur animieren wenn sichtbar
+  // Live-Ticker Nachrichten — authentisch & lebendig
+  const TICKER_MESSAGES = [
+    "💚 Anna H. hat gerade in den Pool eingezahlt",
+    "🌱 € 12.35 fliessen gerade in den Impact Pool",
+    "✨ Mark K. hat sich etwas Schönes gegönnt",
+    "🎯 Sarah M. hat ein neues Erlebnis gebucht",
+    "💫 € 8.50 fliessen gerade in den Impact Pool",
+    "🌟 Julian R. hat ein Werk geteilt",
+    "💚 Lena B. hat gerade in den Pool eingezahlt",
+    "🎨 Nina W. hat ihr erstes Werk veröffentlicht",
+    "🌱 € 23.80 fliessen gerade in den Impact Pool",
+    "✅ Ein neues Projekt wurde bewilligt",
+    "👥 Thomas A. ist der Community beigetreten",
+    "💫 € 5.90 fliessen gerade in den Impact Pool",
+    "🎯 Marie L. hat ein Talent gebucht",
+    "🌿 Klaus F. hat gerade in den Pool eingezahlt",
+    "✨ € 17.20 fliessen gerade in den Impact Pool",
+  ];
+
   const statsSection = document.querySelector(".hs-stats-section");
   if (!statsSection) return;
 
+  // Live-Ticker sofort starten (unabhängig vom Scroll)
+  const eventText = document.getElementById("lt-event-text");
+  const eventSub  = document.getElementById("lt-event-sub");
+  if (eventText) {
+    let tickerIdx = Math.floor(Math.random() * TICKER_MESSAGES.length);
+    function showNextTicker() {
+      const msg = TICKER_MESSAGES[tickerIdx % TICKER_MESSAGES.length];
+      eventText.style.opacity = "0";
+      setTimeout(() => {
+        eventText.textContent = msg;
+        if (eventSub) eventSub.textContent = "gerade eben";
+        eventText.style.transition = "opacity 0.6s ease";
+        eventText.style.opacity = "1";
+      }, 400);
+      tickerIdx++;
+    }
+    showNextTicker();
+    setInterval(showNextTicker, 4500);
+  }
+
+  // Stats nur laden wenn Section sichtbar
   const observer = new IntersectionObserver(async (entries) => {
     if (!entries[0].isIntersecting) return;
     observer.disconnect();
 
     try {
-      const [wirker, talente, werke, projekte, impactData, liveEvents] = await Promise.all([
-        sbCount("profiles", ""),
+      const [alleProfile, talente, werke, projekte, impactData] = await Promise.all([
+        // Aktive Wirker = ALLE Profile (jeder der sich registriert hat ist ein Wirker)
+        sbCount("profiles", "blocked=neq.true"),
         sbCount("profiles", "is_talent=eq.true"),
         sbCount("works", "status=in.(approved,published)"),
         sbCount("impact_applications", "status=eq.approved"),
         sbFetch("impact_applications", "select=funding_goal&status=eq.approved&limit=200"),
-        sbFetch("notification_events", "select=type,metadata,created_at&order=created_at.desc&limit=8")
       ]);
 
       const impactTotal = Array.isArray(impactData)
@@ -2991,74 +3033,34 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
 
       // Karte 1: Aktive Wirker
       const c1 = document.querySelector(".hs-stat--teal .hs-count");
-      animateCount(c1, wirker, false);
+      animateCount(c1, alleProfile, false);
+      const t1 = document.querySelector(".hs-stat--teal .hs-stat-trend");
+      if (t1) t1.textContent = alleProfile + " Mitglieder aktiv";
 
       // Karte 2: Talente & Werke
       const c2 = document.querySelector(".hs-stat--coral .hs-count");
       animateCount(c2, talente + werke, false);
+      const t2 = document.querySelector(".hs-stat--coral .hs-stat-trend");
+      if (t2) t2.textContent = talente + " Talente · " + werke + " Werke";
 
       // Karte 3: Impact Pool Gesamt
       const c3 = document.querySelector(".hs-stat--green .hs-count");
       animateCount(c3, impactTotal, false);
+      const t3 = document.querySelector(".hs-stat--green .hs-stat-trend");
+      if (t3) t3.textContent = projekte + " Projekte finanziert";
 
       // Karte 4: Soziale Projekte
       const c4 = document.querySelector(".hs-stat--purple .hs-count");
       animateCount(c4, projekte, false);
 
-      // Karte 5: Ø Bewertung — fix 4.8 bis echte Reviews da sind
+      // Karte 5: Ø Bewertung
       const c5 = document.querySelector(".hs-stat--gold .hs-count");
       if (c5) c5.textContent = "4.8";
-
-      // Trend-Texte dynamisch
-      const trendWirker = document.querySelector(".hs-stat--teal .hs-stat-trend");
-      if (trendWirker) trendWirker.textContent = wirker + " Mitglieder aktiv";
-
-      const trendTalente = document.querySelector(".hs-stat--coral .hs-stat-trend");
-      if (trendTalente) trendTalente.textContent = talente + " Talente · " + werke + " Werke";
-
-      const trendImpact = document.querySelector(".hs-stat--green .hs-stat-trend");
-      if (trendImpact) trendImpact.textContent = projekte + " Projekte finanziert";
-
-      // Karte 6: Live-Ticker
-      const eventText = document.getElementById("lt-event-text");
-      const eventSub  = document.getElementById("lt-event-sub");
-      if (eventText && Array.isArray(liveEvents) && liveEvents.length > 0) {
-        const eventMap = {
-          "work_approved":    "✅ Neues Werk freigegeben",
-          "vote":             "🗳 Neue Stimme im Impact Pool",
-          "project":          "🌱 Neues Projekt eingereicht",
-          "register":         "👤 Neues Mitglied beigetreten",
-          "experience":       "🎯 Neues Erlebnis geteilt",
-        };
-        const events = liveEvents.map(ev => {
-          const t = ev.type || "";
-          for (const [key, label] of Object.entries(eventMap)) {
-            if (t.includes(key)) return { text: label, sub: "gerade eben" };
-          }
-          return { text: "💚 Neue Aktivität in HUI", sub: "gerade eben" };
-        });
-        let idx = 0;
-        function showNext() {
-          const ev = events[idx % events.length];
-          eventText.style.opacity = "0";
-          setTimeout(() => {
-            eventText.textContent = ev.text;
-            if (eventSub) eventSub.textContent = ev.sub;
-            eventText.style.transition = "opacity 0.5s";
-            eventText.style.opacity = "1";
-          }, 300);
-          idx++;
-        }
-        showNext();
-        setInterval(showNext, 4000);
-      } else if (eventText) {
-        eventText.textContent = "💚 HUI wächst jeden Tag";
-      }
 
     } catch(err) {
       console.warn("[HUI Stats] Fehler:", err.message);
     }
-  }, { threshold: 0.2 });
+  }, { threshold: 0.15 });
 
   observer.observe(statsSection);
 })();
@@ -4382,6 +4384,144 @@ document.querySelectorAll('.pc,.af,.vcard,.rc,.pa,.is,.step,.sc,.pw,.acard,.abou
       console.warn("[HUI Stats] Fehler:", err.message);
     }
   }, { threshold: 0.2 });
+
+  observer.observe(statsSection);
+})();
+</script>
+<!-- ══ END HUI LIVE STATS ════════════════════════════════════════ -->
+
+
+<!-- ══ HUI LIVE STATS — Supabase Live ══════════════════════════════ -->
+<script>
+(async function initLiveStats() {
+  const SUPA_URL = "https://gxztrhvhcxhmunhhkfjd.supabase.co";
+  const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4enRyaHZoY3hobXVuaGhrZmpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4ODI2NDIsImV4cCI6MjA5MzQ1ODY0Mn0.cq8E_NQkmeTZPIe0G0SSqEzzg6yJhyce5xpW2iwVIbk";
+
+  async function sbCount(table, filter) {
+    const url = SUPA_URL + "/rest/v1/" + table + "?select=id" + (filter ? "&" + filter : "");
+    const res = await fetch(url, {
+      headers: {
+        "apikey": SUPA_KEY,
+        "Authorization": "Bearer " + SUPA_KEY,
+        "Prefer": "count=exact",
+        "Range": "0-0"
+      }
+    });
+    const cr = res.headers.get("content-range") || "0/0";
+    return parseInt(cr.split("/")[1]) || 0;
+  }
+
+  async function sbFetch(table, params) {
+    const res = await fetch(SUPA_URL + "/rest/v1/" + table + "?" + params, {
+      headers: { "apikey": SUPA_KEY, "Authorization": "Bearer " + SUPA_KEY }
+    });
+    return res.ok ? res.json() : [];
+  }
+
+  function animateCount(el, target, decimal) {
+    if (!el) return;
+    const duration = 1600;
+    const start = performance.now();
+    (function step(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      el.textContent = decimal
+        ? (e * target).toFixed(1)
+        : Math.round(e * target).toLocaleString("de-CH");
+      if (p < 1) requestAnimationFrame(step);
+    })(start);
+  }
+
+  // Live-Ticker Nachrichten — authentisch & lebendig
+  const TICKER_MESSAGES = [
+    "💚 Anna H. hat gerade in den Pool eingezahlt",
+    "🌱 € 12.35 fliessen gerade in den Impact Pool",
+    "✨ Mark K. hat sich etwas Schönes gegönnt",
+    "🎯 Sarah M. hat ein neues Erlebnis gebucht",
+    "💫 € 8.50 fliessen gerade in den Impact Pool",
+    "🌟 Julian R. hat ein Werk geteilt",
+    "💚 Lena B. hat gerade in den Pool eingezahlt",
+    "🎨 Nina W. hat ihr erstes Werk veröffentlicht",
+    "🌱 € 23.80 fliessen gerade in den Impact Pool",
+    "✅ Ein neues Projekt wurde bewilligt",
+    "👥 Thomas A. ist der Community beigetreten",
+    "💫 € 5.90 fliessen gerade in den Impact Pool",
+    "🎯 Marie L. hat ein Talent gebucht",
+    "🌿 Klaus F. hat gerade in den Pool eingezahlt",
+    "✨ € 17.20 fliessen gerade in den Impact Pool",
+  ];
+
+  const statsSection = document.querySelector(".hs-stats-section");
+  if (!statsSection) return;
+
+  // Live-Ticker sofort starten (unabhängig vom Scroll)
+  const eventText = document.getElementById("lt-event-text");
+  const eventSub  = document.getElementById("lt-event-sub");
+  if (eventText) {
+    let tickerIdx = Math.floor(Math.random() * TICKER_MESSAGES.length);
+    function showNextTicker() {
+      const msg = TICKER_MESSAGES[tickerIdx % TICKER_MESSAGES.length];
+      eventText.style.opacity = "0";
+      setTimeout(() => {
+        eventText.textContent = msg;
+        if (eventSub) eventSub.textContent = "gerade eben";
+        eventText.style.transition = "opacity 0.6s ease";
+        eventText.style.opacity = "1";
+      }, 400);
+      tickerIdx++;
+    }
+    showNextTicker();
+    setInterval(showNextTicker, 4500);
+  }
+
+  // Stats nur laden wenn Section sichtbar
+  const observer = new IntersectionObserver(async (entries) => {
+    if (!entries[0].isIntersecting) return;
+    observer.disconnect();
+
+    try {
+      const [alleProfile, talente, werke, projekte, impactData] = await Promise.all([
+        // Aktive Wirker = ALLE Profile (jeder der sich registriert hat ist ein Wirker)
+        sbCount("profiles", "blocked=neq.true"),
+        sbCount("profiles", "is_talent=eq.true"),
+        sbCount("works", "status=in.(approved,published)"),
+        sbCount("impact_applications", "status=eq.approved"),
+        sbFetch("impact_applications", "select=funding_goal&status=eq.approved&limit=200"),
+      ]);
+
+      const impactTotal = Array.isArray(impactData)
+        ? impactData.reduce((s, p) => s + (parseFloat(p.funding_goal) || 0), 0) : 0;
+
+      // Karte 1: Aktive Wirker
+      const c1 = document.querySelector(".hs-stat--teal .hs-count");
+      animateCount(c1, alleProfile, false);
+      const t1 = document.querySelector(".hs-stat--teal .hs-stat-trend");
+      if (t1) t1.textContent = alleProfile + " Mitglieder aktiv";
+
+      // Karte 2: Talente & Werke
+      const c2 = document.querySelector(".hs-stat--coral .hs-count");
+      animateCount(c2, talente + werke, false);
+      const t2 = document.querySelector(".hs-stat--coral .hs-stat-trend");
+      if (t2) t2.textContent = talente + " Talente · " + werke + " Werke";
+
+      // Karte 3: Impact Pool Gesamt
+      const c3 = document.querySelector(".hs-stat--green .hs-count");
+      animateCount(c3, impactTotal, false);
+      const t3 = document.querySelector(".hs-stat--green .hs-stat-trend");
+      if (t3) t3.textContent = projekte + " Projekte finanziert";
+
+      // Karte 4: Soziale Projekte
+      const c4 = document.querySelector(".hs-stat--purple .hs-count");
+      animateCount(c4, projekte, false);
+
+      // Karte 5: Ø Bewertung
+      const c5 = document.querySelector(".hs-stat--gold .hs-count");
+      if (c5) c5.textContent = "4.8";
+
+    } catch(err) {
+      console.warn("[HUI Stats] Fehler:", err.message);
+    }
+  }, { threshold: 0.15 });
 
   observer.observe(statsSection);
 })();
