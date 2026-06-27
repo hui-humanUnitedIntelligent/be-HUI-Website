@@ -2382,7 +2382,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function cmLoadReviews() {
-    fetch('/api/reviews?status=published&limit=12')
+    fetch('/api/reviews?status=published&limit=20&_=' + Date.now())
       .then(function(r){ return r.ok ? r.json() : []; })
       .then(function(data) {
         var reviews = Array.isArray(data) ? data : (data.reviews || []);
