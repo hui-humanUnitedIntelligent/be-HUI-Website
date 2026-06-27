@@ -2353,10 +2353,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var rid   = cmGenerateId();
     var today = new Date().toLocaleDateString('de-DE');
 
-    fetch('/api/save-review', {
+    fetch('/api/reviews', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, stars: stars, message: text, date: today, id: rid })
+      body: JSON.stringify({ name: name, stars: stars, message: text, status: 'pending' })
     }).then(function(r) {
       if (!r.ok) return r.json().then(function(d){ throw new Error(d.error || 'Serverfehler'); });
       return r.json();
@@ -2382,9 +2382,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function cmLoadReviews() {
-    fetch('/data/reviews.json?v=' + Date.now())
+    fetch('/api/reviews?status=published&limit=12')
       .then(function(r){ return r.ok ? r.json() : []; })
-      .then(function(reviews) {
+      .then(function(data) {
+        var reviews = Array.isArray(data) ? data : (data.reviews || []);
         var noEl    = document.getElementById('cmNoReviews');
         var section = document.getElementById('cmSliderSection');
         if (!Array.isArray(reviews) || !reviews.length) {
@@ -2392,7 +2393,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           if (section) section.style.display = 'none';
           return;
         }
-        cmSliderData = reviews.slice(-6).reverse();
+        cmSliderData = reviews.slice(0, 12);
         if (noEl)    noEl.style.display    = 'none';
         if (section) section.style.display = 'block';
         cmSliderPage = 0;
