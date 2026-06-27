@@ -1,5 +1,6 @@
-// /api/get-pending-reviews.js
-// Returns all pending reviews — called by Admin Dashboard
+// /api/get-pending-reviews.js — liest pending reviews aus Supabase
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://gxztrhvhcxhmunhhkfjd.supabase.co';
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY || '';
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -7,23 +8,14 @@ module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-hui-secret');
   res.setHeader('Cache-Control', 'no-cache, no-store');
   if (req.method === 'OPTIONS') return res.status(200).end();
-
-  const GH_TOKEN = process.env.GH_TOKEN;
-  const REPO     = 'hui-humanUnitedIntelligent/be-HUI-Website';
-  const BRANCH   = 'main';
-
-  if (!GH_TOKEN) return res.status(500).json({ error: 'GH_TOKEN missing' });
-
   try {
-    const ghRes = await fetch(
-      `https://api.github.com/repos/${REPO}/contents/data/pending_reviews.json?ref=${BRANCH}`,
-      { headers: { Authorization: `Bearer ${GH_TOKEN}`, 'User-Agent': 'HUI-Bot', Accept: 'application/vnd.github+json' } }
+    const r = await fetch(
+      `${SUPABASE_URL}/rest/v1/website_reviews?status=eq.pending&order=created_at.desc&limit=200`,
+      { headers: { 'Authorization': `Bearer ${SUPABASE_KEY}`, 'apikey': SUPABASE_KEY } }
     );
-    if (!ghRes.ok) return res.status(200).json([]);
-    const ghData = await ghRes.json();
-    const data = JSON.parse(Buffer.from(ghData.content, 'base64').toString('utf-8'));
+    const data = await r.json();
     return res.status(200).json(Array.isArray(data) ? data : []);
-  } catch (e) {
+  } catch(e) {
     return res.status(500).json({ error: e.message });
   }
 };
