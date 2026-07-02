@@ -2497,19 +2497,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ══ HUI LIVE STATS — via Backend Proxy (Single Source of Truth) ══ -->
 <script>
 window.HUI_TICKER = (function() {
-  var eventText, eventSub, lastAt = 0;
+  var eventText, eventSub, lastAt = 0, lastId = null;
 
   function ensureEls() {
     if (!eventText) eventText = document.getElementById("lt-event-text");
     if (!eventSub) eventSub = document.getElementById("lt-event-sub");
   }
 
-  function show(text, atISO) {
+  function show(text, atISO, id) {
     ensureEls();
     if (!eventText) return;
     var atMs = atISO ? new Date(atISO).getTime() : Date.now();
     if (atMs < lastAt) return; // aelteres Event nicht ueber ein neueres schreiben
+    if (id && id === lastId) {
+      // identisches Event -- keine erneute Animation, nur Alter aktualisieren
+      if (eventSub) {
+        var ageMin2 = Math.max(0, Math.round((Date.now() - atMs) / 60000));
+        eventSub.textContent = ageMin2 < 1 ? "gerade eben" : "vor " + ageMin2 + " Min.";
+      }
+      return;
+    }
     lastAt = atMs;
+    lastId = id || null;
     eventText.style.opacity = "0";
     setTimeout(function() {
       eventText.textContent = text;
@@ -2597,7 +2606,7 @@ window.HUI_TICKER = (function() {
 
     // Live-Ticker (bookings/stripe_payments, anonymisiert, server-seitig via RLS-sicherem Proxy)
     if (data.live_event && data.live_event.text) {
-      window.HUI_TICKER.show(data.live_event.text, data.live_event.at);
+      window.HUI_TICKER.show(data.live_event.text, data.live_event.at, data.live_event.id);
     } else {
       window.HUI_TICKER.showFallbackIfEmpty();
     }
@@ -2649,12 +2658,18 @@ window.HUI_TICKER = (function() {
       .catch(function() { return "ein Projekt"; });
   }
 
+  var PLACEHOLDER_ID = "00000000-0000-0000-0000-000000000000";
+
   client
     .channel("hui-public-votes")
     .on("postgres_changes", { event: "INSERT", schema: "public", table: "impact_votes" }, function(payload) {
       var row = payload.new || {};
+      if (!row.project_id || row.project_id === PLACEHOLDER_ID) return; // Test-/Platzhalter-Stimmen ignorieren
       getProjectName(row.project_id).then(function(name) {
-        window.HUI_TICKER.show("🗳 Jemand hat gerade für „" + name + "\u201c gestimmt", row.created_at || new Date().toISOString());
+        var text = name
+          ? "Ein Mitglied hat gerade im Impact Pool für „" + name + "\u201c gestimmt."
+          : "Ein Mitglied hat gerade im Impact Pool abgestimmt.";
+        window.HUI_TICKER.show(text, row.created_at || new Date().toISOString(), "vote:" + row.id);
       });
     })
     .subscribe();
