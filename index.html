@@ -2484,7 +2484,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="lt-title">Live aus der App</div>
         </div>
         <div class="lt-feed">
-          <div class="lt-event" id="lt-event-text">Warten auf neue Live-Events&nbsp;…</div>
+          <div class="lt-event" id="lt-event-text">Gerade keine neuen Aktivitäten.</div>
         </div>
         <div class="lt-sub" id="lt-event-sub"></div>
         <div class="lt-counter" id="lt-counter"></div>
@@ -2496,9 +2496,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ══ HUI LIVE STATS — via Backend Proxy (Single Source of Truth) ══ -->
 <script>
+window.HUI_TICKER = (function() {
+  var eventText, eventSub, lastAt = 0;
+
+  function ensureEls() {
+    if (!eventText) eventText = document.getElementById("lt-event-text");
+    if (!eventSub) eventSub = document.getElementById("lt-event-sub");
+  }
+
+  function show(text, atISO) {
+    ensureEls();
+    if (!eventText) return;
+    var atMs = atISO ? new Date(atISO).getTime() : Date.now();
+    if (atMs < lastAt) return; // aelteres Event nicht ueber ein neueres schreiben
+    lastAt = atMs;
+    eventText.style.opacity = "0";
+    setTimeout(function() {
+      eventText.textContent = text;
+      eventText.style.transition = "opacity 0.6s ease";
+      eventText.style.opacity = "1";
+    }, 250);
+    if (eventSub) {
+      var ageMin = Math.max(0, Math.round((Date.now() - atMs) / 60000));
+      eventSub.textContent = ageMin < 1 ? "gerade eben" : "vor " + ageMin + " Min.";
+    }
+  }
+
+  function showFallbackIfEmpty() {
+    ensureEls();
+    if (eventText && lastAt === 0) {
+      eventText.textContent = "Gerade keine neuen Aktivitäten.";
+      if (eventSub) eventSub.textContent = "";
+    }
+  }
+
+  return { show: show, showFallbackIfEmpty: showFallbackIfEmpty };
+})();
+</script>
+
+<script>
 (function() {
   var API = "https://base44.app/api/apps/6a1bd77ed430878cc4e431a5/functions/huiPublicStats";
-  var REFRESH_MS = 30000; // periodisches Live-Update ohne Reload
+  var REFRESH_MS = 10000; // periodisches Live-Update ohne Reload -- so nah an "sofort" wie mit RLS-Schutz sicher moeglich
 
   function animateCount(el, from, to, decimal) {
     if (!el) return;
@@ -2521,19 +2560,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function applyStats(data) {
-    // Aktive Wirker
     setCard("aktive_wirker", data.aktive_wirker, false, function(card, val) {
       var trend = card.querySelector(".hs-stat-trend");
       if (trend) trend.textContent = val > 0 ? "↑ " + val + " Wirker aktiv" : "Noch im Aufbau";
     });
 
-    // Talente & Werke
     setCard("talente_werke", data.talente_werke, false, function(card, val) {
       var trend = card.querySelector(".hs-stat-trend");
       if (trend) trend.textContent = val > 0 ? "↑ " + val + " Talente & Werke" : "Noch im Aufbau";
     });
 
-    // Impact Pool Gesamt
     setCard("impact_pool_eur", data.impact_pool_eur, false, function(card, val) {
       var trend = card.querySelector(".hs-stat-trend");
       if (trend) trend.textContent = data.soziale_projekte > 0
@@ -2541,13 +2577,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         : "Live aus Stripe";
     });
 
-    // Soziale Projekte
     setCard("soziale_projekte", data.soziale_projekte, false, function(card, val) {
       var trend = card.querySelector(".hs-stat-trend");
       if (trend) trend.textContent = val > 0 ? "Aktuell gefördert" : "Noch im Aufbau";
     });
 
-    // Ø Bewertung — ehrlich: keine Datenquelle vorhanden -> Platzhalter, keine Fake-Zahl
     var bewCard = document.querySelector('[data-metric="bewertung"]');
     if (bewCard) {
       var count = bewCard.querySelector(".hs-count");
@@ -2561,25 +2595,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     }
 
-    // Live-Ticker — echtes juengstes Ereignis, keine erfundenen Nachrichten
-    var eventText = document.getElementById("lt-event-text");
-    var eventSub = document.getElementById("lt-event-sub");
-    if (eventText) {
-      if (data.live_event && data.live_event.text) {
-        eventText.style.opacity = "0";
-        setTimeout(function() {
-          eventText.textContent = data.live_event.text;
-          eventText.style.transition = "opacity 0.6s ease";
-          eventText.style.opacity = "1";
-        }, 300);
-        if (eventSub) {
-          var ageMin = Math.max(0, Math.round((Date.now() - new Date(data.live_event.at).getTime()) / 60000));
-          eventSub.textContent = ageMin < 1 ? "gerade eben" : "vor " + ageMin + " Min.";
-        }
-      } else {
-        eventText.textContent = "Noch keine Aktivität";
-        if (eventSub) eventSub.textContent = "";
-      }
+    // Live-Ticker (bookings/stripe_payments, anonymisiert, server-seitig via RLS-sicherem Proxy)
+    if (data.live_event && data.live_event.text) {
+      window.HUI_TICKER.show(data.live_event.text, data.live_event.at);
+    } else {
+      window.HUI_TICKER.showFallbackIfEmpty();
     }
 
     function setCard(metric, value, decimal, trendFn) {
@@ -2597,12 +2617,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       .then(applyStats)
       .catch(function(err) {
         console.warn("[HUI Stats] konnte Live-Daten nicht laden:", err.message);
-        // Bewusst KEIN Fallback auf Fake-Zahlen — Skeleton ("–") bleibt sichtbar bis zum naechsten Versuch.
       });
   }
 
   loadStats();
   setInterval(loadStats, REFRESH_MS);
+})();
+</script>
+
+<!-- ══ HUI LIVE VOTES — echter Supabase Realtime Channel (impact_votes ist oeffentlich lesbar) ══ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function() {
+  if (!window.supabase || !window.supabase.createClient) return;
+  var SB_URL = "https://gxztrhvhcxhmunhhkfjd.supabase.co";
+  var SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4enRyaHZoY3hobXVuaGhrZmpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4ODI2NDIsImV4cCI6MjA5MzQ1ODY0Mn0.cq8E_NQkmeTZPIe0G0SSqEzzg6yJhyce5xpW2iwVIbk";
+  var client = window.supabase.createClient(SB_URL, SB_KEY);
+  var projectNameCache = {};
+
+  function getProjectName(id) {
+    if (projectNameCache[id]) return Promise.resolve(projectNameCache[id]);
+    return fetch(SB_URL + "/rest/v1/impact_projects?id=eq." + id + "&select=name", {
+      headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY }
+    })
+      .then(function(r) { return r.json(); })
+      .then(function(rows) {
+        var name = (rows && rows[0] && rows[0].name) || "ein Projekt";
+        projectNameCache[id] = name;
+        return name;
+      })
+      .catch(function() { return "ein Projekt"; });
+  }
+
+  client
+    .channel("hui-public-votes")
+    .on("postgres_changes", { event: "INSERT", schema: "public", table: "impact_votes" }, function(payload) {
+      var row = payload.new || {};
+      getProjectName(row.project_id).then(function(name) {
+        window.HUI_TICKER.show("🗳 Jemand hat gerade für „" + name + "\u201c gestimmt", row.created_at || new Date().toISOString());
+      });
+    })
+    .subscribe();
 })();
 </script>
 
