@@ -2554,7 +2554,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var trend = bewCard.querySelector(".hs-stat-trend");
       if (data.bewertung_has_data && data.bewertung != null) {
         animateCount(count, currentValue(count), data.bewertung, true);
-        if (trend) trend.textContent = "Live-Bewertung";
+        if (trend) trend.textContent = data.bewertung_anzahl + (data.bewertung_anzahl === 1 ? " Bewertung" : " Bewertungen");
       } else {
         if (count) count.textContent = "–";
         if (trend) trend.textContent = "Bald verfügbar";
