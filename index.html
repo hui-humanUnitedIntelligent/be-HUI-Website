@@ -432,12 +432,12 @@ p {
   <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <style>
-/* HUI Hero — Radiant Morning (overrides old hero CSS) */
+/* HUI Hero — Golden Hour Final (overrides old hero CSS) */
 .hero{min-height:100vh;background:#faf6f0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:132px 56px 100px}
-.hero-nature-bg{position:absolute;inset:0;z-index:1;background:url('/hero.webp') center 30%/cover no-repeat!important;animation:60s ease-in-out infinite alternate heroZoomRefined!important;transform-origin:center center;will-change:transform;filter:brightness(1.33) contrast(.86) saturate(1.15) sepia(.04) hue-rotate(-2deg)}
-@keyframes heroZoomRefined{0%{transform:scale(1)}100%{transform:scale(1.04)}}
-.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(250,246,240,.06) 0%,transparent 30%,transparent 65%,rgba(250,246,240,.12) 100%);pointer-events:none}
-.hero-text-glow{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);width:1000px;max-width:95vw;height:520px;pointer-events:none;background:radial-gradient(ellipse at center,rgba(255,250,240,.32) 0%,rgba(255,250,240,.15) 30%,rgba(255,250,240,.04) 55%,transparent 75%);border-radius:50%}
+.hero-nature-bg{position:absolute;inset:0;z-index:1;background:url('/hero.webp') center 40%/cover no-repeat!important;animation:60s ease-in-out infinite alternate heroZoomRefined!important;transform-origin:center 60%;will-change:transform;filter:brightness(1.33) contrast(.87) saturate(1.18) sepia(.05) hue-rotate(-3deg);transform:scale(1.12)}
+@keyframes heroZoomRefined{0%{transform:scale(1.12)}100%{transform:scale(1.16)}}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(250,246,240,.04) 0%,transparent 30%,transparent 70%,rgba(250,246,240,.07) 100%);pointer-events:none}
+.hero-text-glow{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);width:1100px;max-width:95vw;height:560px;pointer-events:none;background:radial-gradient(ellipse at center,rgba(255,248,232,.35) 0%,rgba(255,248,232,.16) 30%,rgba(255,248,232,.04) 55%,transparent 75%);border-radius:50%}
 #hero-canvas{display:none!important}
 .hero-light-rays,.hero-clouds,.hero-bokeh,.hero-water{display:none!important}
 .hero-content{position:relative;z-index:3;max-width:820px;text-align:center;animation:.9s both heroUp;will-change:transform;transition:transform 80ms cubic-bezier(.25,.46,.45,.94)}
