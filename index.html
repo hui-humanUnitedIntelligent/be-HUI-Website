@@ -1002,6 +1002,45 @@ p {
 }
 </style>
 
+<style>
+/* Community Story Cards */
+.hs-community-stories{background:var(--bg2);padding:96px 0;overflow:hidden}
+.hs-story-slider{position:relative;max-width:1200px;margin:48px auto 0;padding:0 60px}
+.hs-story-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth}
+.hs-story-track::-webkit-scrollbar{display:none}
+.hs-story-card{flex:0 0 320px;background:#fff;border-radius:var(--rl);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);scroll-snap-align:start;transition:transform .3s,box-shadow .3s}
+.hs-story-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.1)}
+.hs-story-img{height:180px;display:flex;align-items:center;justify-content:center}
+.hs-story-body{padding:24px}
+.hs-story-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+.hs-story-body h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3}
+.hs-story-body p{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.hs-story-meta{font-size:12px;color:var(--light);display:flex;gap:4px;align-items:center}
+.hs-story-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid var(--border2);background:#fff;color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;z-index:5;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.hs-story-nav:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+.hs-story-nav--prev{left:8px}
+.hs-story-nav--next{right:8px}
+/* App QR + Badges */
+.hs-app-qr-row{display:flex;align-items:center;gap:32px;margin-top:28px;flex-wrap:wrap}
+.hs-qr-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted)}
+.hs-qr-placeholder svg{color:var(--text2);padding:12px;border:1px solid var(--border2);border-radius:var(--r);background:#fff}
+.hs-qr-placeholder span{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--light)}
+.hs-store-badges{display:flex;gap:12px;flex-wrap:wrap}
+.hs-store-badge img{height:40px;width:auto;border-radius:8px;transition:transform .2s}
+.hs-store-badge:hover img{transform:scale(1.03)}
+/* Footer Newsletter */
+.hs-footer-newsletter{max-width:500px;margin:0 auto 40px;text-align:center;padding:0 24px}
+.hs-footer-newsletter h4{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:rgba(255,255,255,.95);margin-bottom:8px}
+.hs-footer-newsletter p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:20px}
+.hs-newsletter-form{display:flex;gap:8px;max-width:400px;margin:0 auto}
+.hs-newsletter-form input{flex:1;padding:12px 16px;border:1px solid rgba(255,255,255,.15);border-radius:12px;background:rgba(255,255,255,.06);color:#fff;font-size:14px;font-family:'DM Sans',sans-serif}
+.hs-newsletter-form input::placeholder{color:rgba(255,255,255,.4)}
+.hs-newsletter-form input:focus{outline:none;border-color:var(--teal);background:rgba(255,255,255,.1)}
+.hs-newsletter-form button{padding:12px 24px;border:none;border-radius:12px;background:var(--grad);color:#fff;font-weight:600;font-size:14px;cursor:pointer;transition:transform .2s,box-shadow .2s;white-space:nowrap}
+.hs-newsletter-form button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(30,216,200,.3)}
+/* Responsive */
+@media(max-width:768px){.hs-story-card{flex:0 0 260px}.hs-story-slider{padding:0 40px}.hs-app-qr-row{flex-direction:column;align-items:flex-start;gap:20px}.hs-newsletter-form{flex-direction:column}.hs-newsletter-form input{width:100%}}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1443,8 +1482,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><span class="hs-feat-dot hs-feat-dot--purple"></span> Sichere Zahlungen &amp; Bewertungen</li>
       </ul>
       <div class="hs-app-btns">
-        <a href="https://be-hui.vercel.app/Home" class="hs-btn-primary" target="_blank" rel="noopener">✨&nbsp; App öffnen</a>
+        <a href="https://be-hui.vercel.app/Home" class="hs-btn-primary" target="_blank" rel="noopener">App öffnen</a>
         <a href="hui-app.html" class="hs-btn-sec">Mehr erfahren &rarr;</a>
+      </div>
+      <div class="hs-app-qr-row">
+        <div class="hs-qr-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="14" y1="14" x2="14" y2="21"/><line x1="17" y1="14" x2="21" y2="14"/><line x1="14" y1="17" x2="17" y2="17"/><line x1="17" y1="21" x2="21" y2="21"/><line x1="21" y1="17" x2="21" y2="17"/></svg>
+          <span>HUI App scannen &amp; entdecken</span>
+        </div>
+        <div class="hs-store-badges">
+          <a href="app-download.html" class="hs-store-badge"><img src="assets/img/app-store.png" alt="App Store" /></a>
+          <a href="app-download.html" class="hs-store-badge"><img src="assets/img/google-play.png" alt="Google Play" /></a>
+        </div>
       </div>
     </div>
     <div class="hs-app-mockup">
@@ -1482,6 +1531,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="hs-phone-glow"></div>
     </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ COMMUNITY ══════════════ -->
+<section class="hs-section hs-community-stories" id="community">
+  <div class="hs-container">
+    <div class="hs-eyebrow">Menschen. Geschichten. Wirkung.</div>
+    <h2 class="hs-headline">Inspiration aus unserer Community</h2>
+    <p class="hs-subtext">Echte Geschichten von Menschen, die mit HUI etwas bewegen.</p>
+  </div>
+  <div class="hs-story-slider" id="storySlider">
+    <button class="hs-story-nav hs-story-nav--prev" aria-label="Zurück" onclick="hsScrollStories(-1)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="hs-story-track">
+      <div class="hs-story-card">
+        <div class="hs-story-img" style="background:linear-gradient(135deg,#1ED8C8,#17B8AA);">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7. r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22c1.3 0 4.7-1 4.7-5c0-2.5-2-3.5-4.7-3.5s-4.7 1-4.7 3.5c0 4 3.4 5 4.7 5z"/></svg>
+        </div>
+        <div class="hs-story-body">
+          <div class="hs-story-tag">Kunst &amp; Bildung</div>
+          <h3>Kreative helfen Kindern</h3>
+          <p>Ein Kunstworkshop bringt Talente und Kinder zusammen. Jede Buchung finanziert Materialien für soziale Projekte.</p>
+          <div class="hs-story-meta"><span>Anna K.</span> &middot; <span>3 Std. her</span></div>
+        </div>
+      </div>
+      <div class="hs-story-card">
+        <div class="hs-story-img" style="background:linear-gradient(135deg,#E8876A,#F4793B);">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <div class="hs-story-body">
+          <div class="hs-story-tag">Musik</div>
+          <h3>Musik verbindet</h3>
+          <p>Live-Musik für Seniorenheime: Ein Wirker organisiert wöchentliche Konzerte, die Generationen zusammenbringen.</p>
+          <div class="hs-story-meta"><span>Marco S.</span> &middot; <span>1 Tag her</span></div>
+        </div>
+      </div>
+      <div class="hs-story-card">
+        <div class="hs-story-img" style="background:linear-gradient(135deg,#1ED8C8,#E8876A);">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L5 7l7 5 7-5-7-5z"/><path d="M5 12l7 5 7-5"/><path d="M5 17l7 5 7-5"/></svg>
+        </div>
+        <div class="hs-story-body">
+          <div class="hs-story-tag">Nachhaltigkeit</div>
+          <h3>Nachhaltig handeln</h3>
+          <p>Gemeinsam Bäume pflanzen: Für jede Buchung über HUI fließen 15% in Umweltprojekte, die sichtbare Wirkung zeigen.</p>
+          <div class="hs-story-meta"><span>Lena R.</span> &middot; <span>2 Tage her</span></div>
+        </div>
+      </div>
+      <div class="hs-story-card">
+        <div class="hs-story-img" style="background:linear-gradient(135deg,#17B8AA,#1ED8C8);">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
+        </div>
+        <div class="hs-story-body">
+          <div class="hs-story-tag">Talente</div>
+          <h3>Talente fördern</h3>
+          <p>Lokale Talente erhalten über HUI eine Plattform, ihre Fähigkeiten zu teilen und gleichzeitig Gutes zu tun.</p>
+          <div class="hs-story-meta"><span>Jonas M.</span> &middot; <span>4 Tage her</span></div>
+        </div>
+      </div>
+    </div>
+    <button class="hs-story-nav hs-story-nav--next" aria-label="Weiter" onclick="hsScrollStories(1)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
   </div>
 </section>
 
@@ -1548,6 +1661,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="cookies.html">Cookie-Richtlinie</a></li>
       </ul></div>
     </div>
+    <div class="hs-footer-newsletter">
+      <h4>Bleib auf dem Laufenden</h4>
+      <p>Erhalte Geschichten, Projekte und Impact-Updates direkt in dein Postfach.</p>
+      <form class="hs-newsletter-form" onsubmit="return false;">
+        <input type="email" placeholder="deine@email.com" aria-label="E-Mail Adresse" required />
+        <button type="submit">Anmelden</button>
+      </form>
+    </div>
     <div class="fbot">
       <p>&#169; 2026 by Be-HUI &middot; Human United Intelligence &middot; Alle Rechte vorbehalten</p>
       <span class="fm" data-t-key="footer.tagline">Gemeinschaft. Talente. Wirkung.</span>
@@ -1567,6 +1688,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script id="mob-nav-script">!function(){var e=document.getElementById("hamBtn"),n=document.getElementById("mobDrawer"),t=document.getElementById("mobBackdrop"),o=document.getElementById("mobDrawerClose");function c(){n.classList.remove("open"),t.classList.remove("open"),e.classList.remove("open"),document.body.style.overflow=""}e&&n&&t&&(e.addEventListener("click",function(o){o.stopPropagation(),n.classList.contains("open")?c():(n.classList.add("open"),t.classList.add("open"),e.classList.add("open"),document.body.style.overflow="hidden")}),t.addEventListener("click",c),o&&o.addEventListener("click",c),document.querySelectorAll("[data-mob-toggle]").forEach(function(e){e.addEventListener("click",function(n){n.stopPropagation();var t=e.closest(".mob-nav-item"),o=t.classList.contains("open");document.querySelectorAll(".mob-nav-item.open").forEach(function(e){e.classList.remove("open")}),o||t.classList.add("open")})}),n.querySelectorAll("a").forEach(function(e){e.addEventListener("click",c)}),window.addEventListener("resize",function(){window.innerWidth>768&&c()}))}();</script>
 
 <script>!function(){var e=document.querySelector("[data-parallax]");if(!e)return;var t=document.getElementById("hero-parallax-content");if(!t)return;var a=0,r=0,o=0,s=0,i=null;function u(){i=null,o+=.03*(a-o),s+=.03*(r-s),t.style.transform="translate("+.6*o+"px,"+.4*s+"px)";Math.abs(a-o)+Math.abs(r-s)>.02&&(i=requestAnimationFrame(u))}window.matchMedia("(pointer:fine)").matches&&(e.addEventListener("mousemove",function(e){var n=e.getBoundingClientRect();a=e.clientX-(n.left+n.width/2),r=e.clientY-(n.top+n.height/2),i||(i=requestAnimationFrame(u))},{passive:!0}),e.addEventListener("mouseleave",function(){a=0,r=0,i||(i=requestAnimationFrame(u))},{passive:!0}))}();</script>
+<script>function hsScrollStories(e){const t=document.getElementById("storySlider");if(!t)return;const n=t.querySelector(".hs-story-track");n&&(n.scrollBy({left:e*340,behavior:"smooth"}))}</script>
 </body>
 </html>
 
