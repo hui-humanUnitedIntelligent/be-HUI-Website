@@ -450,13 +450,13 @@ p {
   background:url('/hero.webp') center 35%/cover no-repeat!important;
   animation:60s ease-in-out infinite alternate heroZoomRefined!important;
   transform-origin:center 55%;will-change:transform;
-  filter:brightness(1.32) contrast(1.05) saturate(1.18);
+  filter:none;
   transform:scale(1.12);
   clip-path:inset(0);
 }
 @keyframes heroZoomRefined{0%{transform:scale(1.12)}100%{transform:scale(1.16)}}
-.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(to bottom,rgba(8,18,22,.12) 0%,rgba(8,18,22,.04) 30%,rgba(0,0,0,0) 55%,rgba(0,0,0,0) 100%);pointer-events:none}
-.hero-text-glow{position:absolute;z-index:2;top:38%;left:50%;transform:translate(-50%,-50%);width:880px;max-width:90vw;height:440px;pointer-events:none;background:radial-gradient(ellipse 55% 50% at 50% 40%,rgba(0,0,0,.15) 0%,rgba(0,0,0,.06) 45%,rgba(0,0,0,0) 70%);border-radius:50%}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:transparent;pointer-events:none}
+.hero-text-glow{position:absolute;z-index:2;top:38%;left:50%;transform:translate(-50%,-50%);width:880px;max-width:90vw;height:440px;pointer-events:none;background:transparent;border-radius:50%}
 #hero-canvas{display:none!important}
 .hero-light-rays,.hero-clouds,.hero-bokeh,.hero-water,.hero-people-silhouette{display:none!important}
 
