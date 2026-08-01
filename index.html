@@ -442,7 +442,7 @@ p {
   justify-content:center;
   position:relative;
   overflow:visible;
-  padding:80px 56px 200px;
+  padding:80px 56px 0px;
   z-index:10;
 }
 .hero-nature-bg{
@@ -572,17 +572,17 @@ p {
 
 /* Responsive */
 @media(max-width:768px){
-  .hero{padding:80px 20px 180px;min-height:90vh}
+  .hero{padding:80px 20px 0px;min-height:90vh}
   .hero h1{font-size:clamp(28px,9vw,46px)}
   .hero-tag{font-size:14px;max-width:90%;margin-bottom:28px}
   .hero-badge{font-size:9px;padding:6px 14px;margin-bottom:20px}
   .hero-acts{gap:10px;margin-top:20px;flex-direction:column;align-items:center}
   .hero-acts a{width:100%;max-width:240px;text-align:center;padding:13px 20px;font-size:14px;display:flex;align-items:center;justify-content:center}
-  .hero-stats-row{bottom:130px}
+  .hero-stats-row{bottom:140px}
   .hero-stats-container{padding:12px 24px;gap:10px;justify-content:center;border-radius:32px}
   .hero-stat-divider{display:none}
 }
-@media(max-width:480px){.hero{padding:80px 16px 180px}}
+@media(max-width:480px){.hero{padding:80px 16px 0px}}
 </style>
 
 <!-- ═══════════════════════════════════════════════════
@@ -599,10 +599,10 @@ p {
 }
 
 /* ── HUI IN ZAHLEN REDESIGN ── */
-.hs-zahlen-intro{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--muted);max-width:520px;margin:12px auto 0;line-height:1.7;font-weight:400;text-align:center}
+.hs-zahlen-intro{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--muted);max-width:520px;margin:12px auto 0;line-height:1.7;font-weight:400;text-align:center}.hs-stats-section .hs-container{padding-top:80px}
 .hs-stats-section {
   background: var(--bg) !important;
-  padding: 100px 0 80px !important;
+  padding: 0px 0 80px !important;
   position: relative;
   z-index: 1;
 }
@@ -1775,7 +1775,7 @@ document.querySelectorAll('footer .fbrand,footer .fcol,footer .hs-footer-newslet
   background: #1ed8c8;
 }
 
-.hs-stats-section { background: #f9f7f4; position: relative; z-index: 1; padding: 100px 0 80px !important; }
+.hs-stats-section { background: #f9f7f4; position: relative; z-index: 1; padding: 0px 0 80px !important; }
 .hs-stats-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr) minmax(160px, 1fr);
