@@ -434,11 +434,11 @@ p {
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <style>
 /* HUI Hero — Golden Hour Final (overrides old hero CSS) */
-.hero{min-height:100vh;background:#faf6f0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:132px 56px 100px}
+.hero{min-height:100vh;background:#faf6f0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:132px 56px 60px}
 .hero-nature-bg{position:absolute;inset:0;z-index:1;background:url('/hero.webp') center 40%/cover no-repeat!important;animation:60s ease-in-out infinite alternate heroZoomRefined!important;transform-origin:center 60%;will-change:transform;filter:brightness(1.33) contrast(.87) saturate(1.18) sepia(.05) hue-rotate(-3deg);transform:scale(1.12)}
 @keyframes heroZoomRefined{0%{transform:scale(1.12)}100%{transform:scale(1.16)}}
-.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(rgba(8,18,22,.28),rgba(8,18,22,.38));pointer-events:none}
-.hero-text-glow{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);width:1100px;max-width:95vw;height:560px;pointer-events:none;background:radial-gradient(circle,rgba(0,0,0,.40) 0%,rgba(0,0,0,.22) 45%,rgba(0,0,0,0) 75%);border-radius:50%}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(rgba(8,18,22,.30),rgba(8,18,22,.22));pointer-events:none}
+.hero-text-glow{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);width:1100px;max-width:95vw;height:700px;pointer-events:none;background:radial-gradient(circle,rgba(0,0,0,.38) 0%,rgba(0,0,0,.18) 40%,rgba(0,0,0,0) 70%);border-radius:50%}
 #hero-canvas{display:none!important}
 .hero-light-rays,.hero-clouds,.hero-bokeh,.hero-water{display:none!important}
 .hero-content{position:relative;z-index:3;max-width:820px;text-align:center;animation:.9s both heroUp;will-change:transform;transition:transform 80ms cubic-bezier(.25,.46,.45,.94);padding-top:50px}
@@ -507,21 +507,13 @@ p {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: linear-gradient(rgba(8,18,22,.28), rgba(8,18,22,.38)) !important;
+  background: linear-gradient(rgba(8,18,22,.30), rgba(8,18,22,.22)) !important;
 }
 
-.hero-text-glow{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);width:1100px;max-width:95vw;height:560px;pointer-events:none;background:radial-gradient(circle,rgba(0,0,0,.40) 0%,rgba(0,0,0,.22) 45%,rgba(0,0,0,0) 75%);border-radius:50%}
+.hero-text-glow{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);width:1100px;max-width:95vw;height:700px;pointer-events:none;background:radial-gradient(circle,rgba(0,0,0,.38) 0%,rgba(0,0,0,.18) 40%,rgba(0,0,0,0) 70%);border-radius:50%}
 
 .hero-people-silhouette {
-  position: absolute;
-  bottom: 85px;
-  left: 0;
-  right: 0;
-  z-index: 3;
-  height: 130px;
-  pointer-events: none;
-  overflow: hidden;
-  opacity: 0.88;
+  display: none !important;
 }
 
 .hero-people-silhouette svg {
@@ -657,26 +649,27 @@ p {
 /* Hero Bottom Stats Row */
 .hero-stats-row {
   position: relative;
-  z-index: 5;
+  z-index: 7;
   width: 100%;
   max-width: 1050px;
-  margin-top: 40px;
-  margin-bottom: 24px;
+  margin: 0 auto;
+  margin-bottom: -50px;
+  padding: 0 24px;
 }
 
 .hero-stats-container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(24px) saturate(1.1);
-  -webkit-backdrop-filter: blur(24px) saturate(1.1);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 24px;
-  padding: 22px 36px;
+  padding: 24px 40px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.2);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.15);
 }
 
 .hero-stat-item {
@@ -755,9 +748,13 @@ p {
     display: none;
   }
   .hero-stats-container {
-    padding: 14px 18px;
+    padding: 16px 20px;
     gap: 12px;
     justify-content: center;
+    border-radius: 20px;
+  }
+  .hero-stats-row {
+    margin-bottom: -40px;
   }
 }
 
@@ -767,8 +764,8 @@ p {
   left: 0;
   right: 0;
   width: 100%;
-  height: 50px;
-  z-index: 6;
+  height: 80px;
+  z-index: 5;
   pointer-events: none;
   overflow: hidden;
   line-height: 0;
@@ -1336,8 +1333,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Curved SVG Wave Transition -->
   <div class="hero-curved-wave">
-    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,40 C320,95 1120,0 1440,50 L1440,100 L0,100 Z" fill="#F5F0E8"/>
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <path d="M0,20 C240,70 480,90 720,55 C960,20 1200,80 1440,35 L1440,100 L0,100 Z" fill="#F5F0E8"/>
     </svg>
   </div>
 
