@@ -432,19 +432,20 @@ p {
   <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <style>
-/* HUI Hero — Bright Morning (overrides old hero CSS) */
-.hero{min-height:100vh;background:#f5f0e8;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:132px 56px 100px}
-.hero-nature-bg{position:absolute;inset:0;z-index:1;background:url('/hero.webp') center 30%/cover no-repeat!important;animation:60s ease-in-out infinite alternate heroZoomRefined!important;transform-origin:center center;will-change:transform;filter:brightness(1.12) contrast(.92) saturate(1.08)}
+/* HUI Hero — Sunny Morning (overrides old hero CSS) */
+.hero{min-height:100vh;background:#f8f4ee;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:132px 56px 100px}
+.hero-nature-bg{position:absolute;inset:0;z-index:1;background:url('/hero.webp') center 30%/cover no-repeat!important;animation:60s ease-in-out infinite alternate heroZoomRefined!important;transform-origin:center center;will-change:transform;filter:brightness(1.25) contrast(.88) saturate(1.12) sepia(.06)}
 @keyframes heroZoomRefined{0%{transform:scale(1)}100%{transform:scale(1.04)}}
-.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(245,240,232,.15) 0%,rgba(245,240,232,.05) 35%,rgba(245,240,232,.1) 65%,rgba(245,240,232,.28) 100%);pointer-events:none}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(248,244,238,.1) 0%,rgba(248,244,238,.03) 35%,rgba(248,244,238,.05) 65%,rgba(248,244,238,.18) 100%);pointer-events:none}
+.hero-text-glow{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;max-width:90vw;height:400px;pointer-events:none;background:radial-gradient(ellipse at center,rgba(255,250,240,.25) 0%,rgba(255,250,240,.08) 40%,transparent 70%);border-radius:50%}
 #hero-canvas{display:none!important}
 .hero-light-rays,.hero-clouds,.hero-bokeh,.hero-water{display:none!important}
 .hero-content{position:relative;z-index:3;max-width:820px;text-align:center;animation:.9s both heroUp;will-change:transform;transition:transform 80ms cubic-bezier(.25,.46,.45,.94)}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:7px 18px;font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.9);font-weight:600;margin-bottom:28px;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:7px 18px;font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.92);font-weight:600;margin-bottom:28px;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 .hero-badge .bdot{width:5px;height:5px;border-radius:50%;background:var(--teal);box-shadow:0 0 6px var(--teal);animation:2s ease-in-out infinite pulse}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(42px,7.5vw,86px);font-weight:900;line-height:1.05;color:#fff!important;letter-spacing:-.5px;margin-bottom:14px;text-shadow:0 1px 12px rgba(0,0,0,.15)!important}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(42px,7.5vw,86px);font-weight:900;line-height:1.05;color:#fff!important;letter-spacing:-.5px;margin-bottom:14px;text-shadow:0 1px 8px rgba(40,30,15,.18),0 0 24px rgba(255,248,230,.15)!important}
 .hero h1 em{background:linear-gradient(135deg,#1ed8c8,rgba(232,135,106,.9))!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important;font-style:italic}
-.hero-tag{font-size:clamp(16px,2.2vw,20px);color:rgba(255,255,255,.85)!important;max-width:540px;margin:0 auto 48px;line-height:1.7;font-weight:300;text-shadow:0 1px 8px rgba(0,0,0,.12)!important}
+.hero-tag{font-size:clamp(16px,2.2vw,20px);color:rgba(255,255,255,.88)!important;max-width:540px;margin:0 auto 48px;line-height:1.7;font-weight:300;text-shadow:0 1px 6px rgba(40,30,15,.15),0 0 16px rgba(255,248,230,.12)!important}
 .hero-acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px}
 .hero .btn-main{background:var(--grad);color:var(--white);padding:15px 34px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;box-shadow:0 6px 24px rgba(30,216,200,.3);transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px}
 .hero .btn-main:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(30,216,200,.4)}
