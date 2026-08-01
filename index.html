@@ -621,6 +621,23 @@ p {
   .hero-stat-divider{display:none}
 }
 
+/* Stats Float — zwischen Hero und Section */
+.hero-stats-float{
+  position:relative;
+  z-index:30;
+  margin-top:-35px;
+  margin-bottom:0;
+}
+.hero-stats-float .hero-stats-row{
+  position:relative;
+  bottom:auto;
+  left:auto;
+  transform:none;
+  max-width:900px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
 </style>
 
 <!-- ═══════════════════════════════════════════════════
@@ -639,7 +656,7 @@ p {
 /* ── HUI IN ZAHLEN REDESIGN ── */
 .hs-zahlen-intro{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--muted);max-width:520px;margin:12px auto 0;line-height:1.7;font-weight:400;text-align:center}.hs-stats-section {
   background: var(--bg) !important;
-  padding: 60px 0 80px !important;
+  padding: 30px 0 80px !important;
   position: relative;
   z-index: 1;
 }
@@ -1152,7 +1169,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <!-- Hero Bottom Stats Row -->
+
+  <!-- Curved SVG Wave Transition -->
+  <div class="hero-curved-wave">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+      <path d="M0,0 C120,18 240,42 360,28 C480,14 600,38 720,32 C840,26 960,8 1080,22 C1200,36 1320,28 1440,8 L1440,100 L0,100 Z" fill="#F5F0E8"/>
+    </svg>
+  </div>
+
+</section>
+
+<!-- Stats Float — schwebt auf Hero/Section-Kante -->
+<div class="hero-stats-float">
   <div class="hero-stats-row">
     <div class="hero-stats-container">
       <div class="hero-stat-item hero-stat-avatars">
@@ -1190,15 +1218,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </div>
-
-  <!-- Curved SVG Wave Transition -->
-  <div class="hero-curved-wave">
-    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
-      <path d="M0,0 C120,18 240,42 360,28 C480,14 600,38 720,32 C840,26 960,8 1080,22 C1200,36 1320,28 1440,8 L1440,100 L0,100 Z" fill="#F5F0E8"/>
-    </svg>
-  </div>
-
-</section>
+</div>
 
 <!-- ══════════════ STATS ══════════════ -->
 <section class="hs-section hs-stats-section">
@@ -1812,7 +1832,7 @@ document.querySelectorAll('footer .fbrand,footer .fcol,footer .hs-footer-newslet
   background: #1ed8c8;
 }
 
-.hs-stats-section { background: #F5F0E8; position: relative; z-index: 1; padding: 60px 0 80px !important; }
+.hs-stats-section { background: #F5F0E8; position: relative; z-index: 1; padding: 30px 0 80px !important; }
 .hs-stats-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr) minmax(160px, 1fr);
@@ -2222,7 +2242,7 @@ document.querySelectorAll('footer .fbrand,footer .fcol,footer .hs-footer-newslet
 /* ══ RESPONSIVE ══ */
 @media (max-width: 900px) {
   .hs-section { padding: 64px 0; }
-.hs-stats-section { padding-top: 60px !important; }
+.hs-stats-section { padding-top: 30px !important; }
   .hs-container { padding: 0 24px; }
   .hs-stats-grid { grid-template-columns: repeat(3, 1fr); }
   .hs-stat--large { grid-column: span 1; }
