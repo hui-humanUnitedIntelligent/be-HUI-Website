@@ -78,10 +78,9 @@ ul{list-style:none}
 .hero{position:relative;height:100vh;min-height:600px;max-height:900px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:url('/hero.webp') center 30%/cover no-repeat;z-index:0}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,20,15,.18) 0%,rgba(10,20,15,.32) 40%,rgba(10,20,15,.52) 72%,rgba(10,30,20,.68) 100%);z-index:1}
-.hero-glass-wrap{position:relative;z-index:3;text-align:center;padding:0 24px;max-width:720px;margin:0 auto 120px}
-.hero-glass{position:relative;background:rgba(20,20,20,.22);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.10);border-radius:36px;padding:52px 56px;box-shadow:0 24px 80px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.06)}
-.hero-glass::before{content:'';position:absolute;inset:-40px;border-radius:48px;background:radial-gradient(ellipse at center,rgba(0,0,0,.28) 0%,transparent 70%);z-index:-1;pointer-events:none}
-.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:22px}
+.hero-content{position:relative;z-index:3;text-align:center;padding:0 24px;max-width:720px;margin:0 auto 120px}
+.hero-text-shade{position:relative;display:inline-block;padding:48px 64px;border-radius:36px;background:radial-gradient(ellipse at center,rgba(0,0,0,.22) 0%,rgba(0,0,0,.12) 45%,rgba(0,0,0,0) 80%)}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:22px;background:rgba(0,0,0,.28);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:inline-flex;align-items:center;gap:6px;padding:7px 18px;border-radius:999px}
 .hero-eyebrow span{margin:0 5px}
 .hero-h1{font-family:'Playfair Display',serif;font-size:clamp(42px,7vw,72px);font-weight:900;line-height:1.08;color:#fff;margin-bottom:20px;text-shadow:0 4px 18px rgba(0,0,0,.45)}
 .hero-h1 em{font-style:italic;background:linear-gradient(135deg,#1ED8C8,#E8876A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -258,7 +257,7 @@ ul{list-style:none}
   .nav-links{display:none}
   .nav-ham{display:flex}
   .nav{padding:0 20px}
-  .hero-glass-wrap{margin:0 auto 150px}.hero-glass{padding:36px 32px}
+  .hero-content{margin:0 auto 150px}.hero-text-shade{padding:32px 28px}
   .hero-stats-inner{flex-wrap:wrap;border-radius:20px;padding:16px 20px;gap:12px}
   .hero-stat-div{display:none}
   .hero-stat{padding:0}
@@ -387,15 +386,15 @@ ul{list-style:none}
 <section class="hero" id="start">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="hero-glass-wrap">
-    <div class="hero-glass">
+  <div class="hero-content">
+    <div class="hero-text-shade">
       <p class="hero-eyebrow">GEMEINSCHAFT <span>&middot;</span> TALENTE <span>&middot;</span> WIRKUNG</p>
       <h1 class="hero-h1">Einer f&#252;r Alle,<br>alle <em>Fair(ein)t</em></h1>
       <p class="hero-sub">Entdecke Menschen, Talente, Werke und Erlebnisse. Jede Aktivit&#228;t erzeugt automatisch sozialen Impact &#8211; fair, sicher und menschlich.</p>
-      <div class="hero-btns">
-        <a href="werde-wirker.html" class="btn-primary">&#10022; Werde Wirker</a>
-        <a href="hui-app.html" class="btn-outline">App entdecken</a>
-      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="werde-wirker.html" class="btn-primary">&#10022; Werde Wirker</a>
+      <a href="hui-app.html" class="btn-outline">App entdecken</a>
     </div>
   </div>
 
