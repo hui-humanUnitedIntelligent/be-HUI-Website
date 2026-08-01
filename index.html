@@ -486,7 +486,7 @@ p {
   justify-content: space-between !important;
   align-items: center !important;
   padding: 120px 24px 0 24px !important;
-  background: #0d1a1a !important;
+  background: #faf6f0 !important;
   overflow: hidden !important;
 }
 
@@ -494,8 +494,11 @@ p {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: url('/hero.webp') center 30%/cover no-repeat !important;
-  animation: 50s ease-in-out infinite alternate heroZoom;
+  background: url('/hero.webp') center 40%/cover no-repeat !important;
+  animation: 60s ease-in-out infinite alternate heroZoomRefined;
+  filter: brightness(1.33) contrast(.87) saturate(1.18) sepia(.05) hue-rotate(-3deg);
+  transform: scale(1.12);
+  transform-origin: center 60%;
   will-change: transform;
 }
 
@@ -503,8 +506,10 @@ p {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: linear-gradient(180deg, rgba(13,26,26,0.35) 0%, rgba(13,26,26,0.6) 60%, rgba(13,26,26,0.92) 100%) !important;
+  background: linear-gradient(180deg, rgba(250,246,240,.04) 0%, transparent 30%, transparent 70%, rgba(250,246,240,.07) 100%) !important;
 }
+
+.hero-text-glow{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);width:1100px;max-width:95vw;height:560px;pointer-events:none;background:radial-gradient(ellipse at center,rgba(255,248,232,.35) 0%,rgba(255,248,232,.16) 30%,rgba(255,248,232,.04) 55%,transparent 75%);border-radius:50%}
 
 .hero-people-silhouette {
   position: absolute;
@@ -537,11 +542,11 @@ p {
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
-  background: rgba(30, 216, 200, 0.12) !important;
-  border: 1px solid rgba(30, 216, 200, 0.3) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  color: #1ED8C8 !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  color: rgba(255,255,255,0.95) !important;
   font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: 2.5px !important;
@@ -567,7 +572,7 @@ p {
   line-height: 1.15 !important;
   margin-bottom: 20px !important;
   letter-spacing: -0.5px;
-  text-shadow: 0 4px 28px rgba(0,0,0,0.4) !important;
+  text-shadow: 0 1px 6px rgba(40,30,15,.14), 0 0 30px rgba(255,248,230,.22) !important;
 }
 
 .hero h1 em {
@@ -587,7 +592,7 @@ p {
   margin: 0 auto 32px auto !important;
   line-height: 1.6 !important;
   font-weight: 300 !important;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.4) !important;
+  text-shadow: 0 1px 5px rgba(40,30,15,.12), 0 0 20px rgba(255,248,230,.18) !important;
 }
 
 .hero-acts {
@@ -603,21 +608,22 @@ p {
   color: #FFFFFF !important;
   font-family: 'DM Sans', sans-serif !important;
   font-weight: 700 !important;
-  font-size: 15px !important;
-  padding: 14px 32px !important;
+  font-size: 16px !important;
+  padding: 16px 38px !important;
   border-radius: 50px !important;
   text-decoration: none !important;
-  box-shadow: 0 6px 24px rgba(30, 216, 200, 0.35) !important;
-  transition: all 0.25s ease !important;
+  box-shadow: 0 8px 28px rgba(30, 216, 200, 0.4), 0 0 0 1px rgba(30, 216, 200, 0.2) !important;
+  transition: all 0.3s cubic-bezier(.25,.46,.45,.94) !important;
   border: none !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+  position: relative;
 }
 
 .hero .btn-main:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 10px 32px rgba(30, 216, 200, 0.5) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 14px 40px rgba(30, 216, 200, 0.5), 0 0 0 1px rgba(30, 216, 200, 0.3) !important;
   background: linear-gradient(135deg, #22e3d3, #1ed8c8) !important;
 }
 
@@ -657,18 +663,18 @@ p {
 }
 
 .hero-stats-container {
-  background: rgba(13, 26, 26, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 20px;
-  padding: 16px 28px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 20px 32px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 16px;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.15);
 }
 
 .hero-stat-item {
@@ -699,7 +705,7 @@ p {
   font-size: 11px;
   font-weight: 700;
   color: #FFFFFF;
-  border: 2px solid #0d1a1a;
+  border: 2px solid rgba(255,255,255,0.3);
   margin-left: -8px;
 }
 
@@ -739,7 +745,7 @@ p {
 .hero-stat-divider {
   width: 1px;
   height: 32px;
-  background: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.2), transparent);
 }
 
 @media (max-width: 768px) {
@@ -773,6 +779,7 @@ p {
 }
 
 /* ── HUI IN ZAHLEN REDESIGN ── */
+.hs-zahlen-intro{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--muted);max-width:520px;margin:12px auto 0;line-height:1.7;font-weight:400;text-align:center}
 .hs-stats-section {
   background: var(--bg) !important;
   padding: 80px 0 !important;
@@ -802,10 +809,15 @@ p {
 .hs-stat-card {
   background: #FFFFFF !important;
   border-radius: 20px !important;
-  padding: 22px 20px !important;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.04) !important;
-  border: 1px solid rgba(0,0,0,0.04) !important;
+  padding: 28px 24px !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.03), 0 8px 32px rgba(0,0,0,0.02) !important;
+  border: 1px solid rgba(0,0,0,0.03) !important;
   position: relative;
+  transition: transform 0.35s cubic-bezier(.25,.46,.45,.94), box-shadow 0.35s ease !important;
+}
+.hs-stat-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 24px rgba(30,216,200,0.08), 0 20px 48px rgba(0,0,0,0.06) !important;
 }
 
 .hs-stat-card .hs-stat-num {
@@ -853,16 +865,20 @@ p {
 }
 
 .hs-cib-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 2px;
   color: #1ED8C8;
-  background: rgba(30, 216, 200, 0.15);
-  padding: 4px 12px;
+  background: rgba(30, 216, 200, 0.12);
+  padding: 5px 14px;
   border-radius: 50px;
   margin-bottom: 12px;
+  border: 1px solid rgba(30,216,200,0.2);
 }
+.hs-cib-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#1ED8C8;box-shadow:0 0 8px #1ED8C8;animation:2s ease-in-out infinite pulse}
 
 .hs-cib-content h3 {
   font-family: 'Playfair Display', serif;
@@ -958,22 +974,25 @@ p {
   box-shadow: 0 12px 32px rgba(0,0,0,0.08) !important;
 }
 
-.hs-why-img-placeholder {
+.hs-why-img-wrap {
   position: relative;
   width: 100%;
-  height: 140px;
+  height: 180px;
   border-radius: 14px;
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
-
-.hs-why-img-placeholder svg {
+.hs-why-photo {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
+  transition: transform 0.5s cubic-bezier(.25,.46,.45,.94);
 }
-
-.hs-why-img-placeholder .hs-why-icon {
+.hs-why-card:hover .hs-why-photo {
+  transform: scale(1.06);
+}
+.hs-why-img-wrap .hs-why-icon {
   position: absolute;
   bottom: 12px;
   left: 12px;
@@ -983,7 +1002,9 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .hs-why-card h3 {
@@ -1009,10 +1030,12 @@ p {
 .hs-story-slider{position:relative;max-width:1200px;margin:48px auto 0;padding:0 60px}
 .hs-story-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth}
 .hs-story-track::-webkit-scrollbar{display:none}
-.hs-story-card{flex:0 0 320px;background:#fff;border-radius:var(--rl);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);scroll-snap-align:start;transition:transform .3s,box-shadow .3s}
-.hs-story-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.1)}
-.hs-story-img{height:180px;display:flex;align-items:center;justify-content:center}
-.hs-story-body{padding:24px}
+.hs-story-card{flex:0 0 340px;background:#fff;border-radius:var(--rl);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.03),0 8px 28px rgba(0,0,0,.04);scroll-snap-align:start;transition:transform .35s cubic-bezier(.25,.46,.45,.94),box-shadow .35s ease}
+.hs-story-card:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(0,0,0,.08),0 24px 60px rgba(0,0,0,.06)}
+.hs-story-img-wrap{height:200px;overflow:hidden;position:relative}
+.hs-story-photo{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.25,.46,.45,.94)}
+.hs-story-card:hover .hs-story-photo{transform:scale(1.05)}
+.hs-story-body{padding:28px 24px}
 .hs-story-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
 .hs-story-body h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3}
 .hs-story-body p{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:16px}
@@ -1039,6 +1062,43 @@ p {
 .hs-newsletter-form input:focus{outline:none;border-color:var(--teal);background:rgba(255,255,255,.1)}
 .hs-newsletter-form button{padding:12px 24px;border:none;border-radius:12px;background:var(--grad);color:#fff;font-weight:600;font-size:14px;cursor:pointer;transition:transform .2s,box-shadow .2s;white-space:nowrap}
 .hs-newsletter-form button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(30,216,200,.3)}
+
+/* App Section Premium */
+.hs-app-preview{background:linear-gradient(180deg,var(--bg) 0%,#fff 100%)!important;padding:96px 0!important}
+.hs-app-mockup{position:relative}
+.hs-app-mockup::before{content:'';position:absolute;inset:-40px -20px -20px;background:radial-gradient(ellipse at center,rgba(30,216,200,.12) 0%,rgba(232,135,106,.06) 40%,transparent 70%);border-radius:50%;z-index:0;pointer-events:none}
+.hs-app-mockup .hs-phone{position:relative;z-index:1;transform:translateY(0);animation:6s ease-in-out infinite appFloat}
+@keyframes appFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hs-app-mockup .hs-phone-glow{position:absolute;inset:-20px;background:radial-gradient(ellipse at 50% 40%,rgba(30,216,200,.15) 0%,transparent 60%);border-radius:40px;z-index:0;pointer-events:none}
+.hs-app-features li{transition:transform .2s,padding-left .2s}
+.hs-app-features li:hover{transform:translateX(4px);padding-left:4px}
+.hs-app-btns .hs-btn-primary{box-shadow:0 8px 28px rgba(30,216,200,.35);transition:all .25s ease}
+.hs-app-btns .hs-btn-primary:hover{box-shadow:0 12px 36px rgba(30,216,200,.45);transform:translateY(-2px)}
+
+
+/* Footer Premium */
+.fbrand-mission{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:rgba(255,255,255,.7);margin-top:12px;line-height:1.6;max-width:320px;border-left:2px solid rgba(30,216,200,.4);padding-left:12px}
+.fsoc-btn{transition:all .25s ease!important}
+.fsoc-btn:hover{background:rgba(30,216,200,.15)!important;color:#1ED8C8!important;transform:translateY(-2px)}
+.hs-footer-newsletter{padding:40px 0 20px!important}
+.hs-newsletter-form input{transition:border-color .2s,box-shadow .2s}
+.hs-newsletter-form input:focus{box-shadow:0 0 0 3px rgba(30,216,200,.12)}
+.hs-newsletter-form button{transition:all .25s ease}
+.hs-newsletter-form button:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,216,200,.35)}
+footer{background:linear-gradient(180deg,#0d2624 0%,#0a1f1f 100%)!important}
+footer .si{padding:64px 0 0!important}
+
+
+/* Premium Scroll Animations */
+.hs-stat-card,.hs-why-card,.hs-story-card,.hs-app-mockup,.hs-community-impact-box{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s cubic-bezier(.25,.46,.45,.94)!important}
+.hs-stat-card.hs-visible,.hs-why-card.hs-visible,.hs-story-card.hs-visible,.hs-app-mockup.hs-visible,.hs-community-impact-box.hs-visible{opacity:1;transform:translateY(0)!important}
+.hs-story-card{transition:opacity .7s ease,transform .7s cubic-bezier(.25,.46,.45,.94),box-shadow .35s ease!important}
+.hs-story-card.hs-visible{transition:opacity .7s ease,transform .7s cubic-bezier(.25,.46,.45,.94),box-shadow .35s ease!important}
+/* Section transitions */
+.hs-section{position:relative}
+.hs-stats-section::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:80%;max-width:600px;height:1px;background:linear-gradient(to right,transparent,rgba(30,216,200,.2),transparent)}
+.hs-why::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80%;max-width:600px;height:1px;background:linear-gradient(to right,transparent,rgba(30,216,200,.15),transparent)}
+
 /* Responsive */
 @media(max-width:768px){.hs-story-card{flex:0 0 260px}.hs-story-slider{padding:0 40px}.hs-app-qr-row{flex-direction:column;align-items:flex-start;gap:20px}.hs-newsletter-form{flex-direction:column}.hs-newsletter-form input{width:100%}}
 </style>
@@ -1269,6 +1329,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hs-container">
     <div class="hs-eyebrow">HUI in Zahlen</div>
     <h2 class="hs-headline">Gemeinsam bewegen wir <em>Großes</em></h2>
+    <p class="hs-zahlen-intro">Jede Zahl steht für einen Menschen, ein Talent oder ein Projekt, das unsere Welt ein Stück besser macht.</p>
     <div class="hs-stats-grid">
 
       <div class="hs-stat-card hs-stat--teal" data-metric="aktive_wirker">
@@ -1369,18 +1430,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hs-why-grid">
 
       <div class="hs-why-card">
-        <div class="hs-why-img-placeholder">
-          <svg width="100%" height="100%" viewBox="0 0 320 160" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="whyGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#1ED8C8" stop-opacity="0.25"/>
-                <stop offset="100%" stop-color="#17B8AA" stop-opacity="0.08"/>
-              </linearGradient>
-            </defs>
-            <rect width="100%" height="100%" rx="12" fill="url(#whyGrad1)"/>
-            <path d="M100 120 C140 80 180 130 220 90 L320 160 L0 160 Z" fill="#1ED8C8" fill-opacity="0.15"/>
-            <circle cx="240" cy="50" r="20" fill="#1ED8C8" fill-opacity="0.2"/>
-          </svg>
+        <div class="hs-why-img-wrap">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Menschen arbeiten gemeinsam" loading="lazy" class="hs-why-photo" />
           <div class="hs-why-icon hs-why-icon--teal">
             <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
               <path d="M14 4C8.48 4 4 8.48 4 14s4.48 10 10 10 10-4.48 10-10S19.52 4 14 4z" stroke="currentColor" stroke-width="1.8"/>
@@ -1393,18 +1444,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="hs-why-card">
-        <div class="hs-why-img-placeholder">
-          <svg width="100%" height="100%" viewBox="0 0 320 160" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="whyGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#E8876A" stop-opacity="0.25"/>
-                <stop offset="100%" stop-color="#F4793B" stop-opacity="0.08"/>
-              </linearGradient>
-            </defs>
-            <rect width="100%" height="100%" rx="12" fill="url(#whyGrad2)"/>
-            <path d="M80 130 C130 90 170 120 240 70 L320 160 L0 160 Z" fill="#E8876A" fill-opacity="0.15"/>
-            <circle cx="80" cy="50" r="24" fill="#E8876A" fill-opacity="0.2"/>
-          </svg>
+        <div class="hs-why-img-wrap">
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80" alt="Künstler bei der Arbeit" loading="lazy" class="hs-why-photo" />
           <div class="hs-why-icon hs-why-icon--coral">
             <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
               <path d="M14 3l2.8 8.5H25l-7 5.1 2.7 8.4L14 20l-6.7 5 2.7-8.4-7-5.1h8.2z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
@@ -1416,17 +1457,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="hs-why-card">
-        <div class="hs-why-img-placeholder">
-          <svg width="100%" height="100%" viewBox="0 0 320 160" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="whyGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#2DAB6F" stop-opacity="0.25"/>
-                <stop offset="100%" stop-color="#1ED8C8" stop-opacity="0.08"/>
-              </linearGradient>
-            </defs>
-            <rect width="100%" height="100%" rx="12" fill="url(#whyGrad3)"/>
-            <path d="M60 140 C120 100 200 130 280 80 L320 160 L0 160 Z" fill="#2DAB6F" fill-opacity="0.15"/>
-            <circle cx="160" cy="45" r="22" fill="#2DAB6F" fill-opacity="0.2"/>
+        <div class="hs-why-img-wrap">
+          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80" alt="Gemeinsam für die Natur" loading="lazy" class="hs-why-photo" />
           </svg>
           <div class="hs-why-icon hs-why-icon--green">
             <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
@@ -1560,9 +1592,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="hs-story-card">
-        <div class="hs-story-img" style="background:linear-gradient(135deg,#E8876A,#F4793B);">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-        </div>
+        <div class="hs-story-img-wrap"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=80" alt="Musik verbindet" loading="lazy" class="hs-story-photo" />
         <div class="hs-story-body">
           <div class="hs-story-tag">Musik</div>
           <h3>Musik verbindet</h3>
@@ -1571,9 +1601,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="hs-story-card">
-        <div class="hs-story-img" style="background:linear-gradient(135deg,#1ED8C8,#E8876A);">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L5 7l7 5 7-5-7-5z"/><path d="M5 12l7 5 7-5"/><path d="M5 17l7 5 7-5"/></svg>
-        </div>
+        <div class="hs-story-img-wrap"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80" alt="Nachhaltig handeln" loading="lazy" class="hs-story-photo" />
         <div class="hs-story-body">
           <div class="hs-story-tag">Nachhaltigkeit</div>
           <h3>Nachhaltig handeln</h3>
@@ -1582,9 +1610,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="hs-story-card">
-        <div class="hs-story-img" style="background:linear-gradient(135deg,#17B8AA,#1ED8C8);">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
-        </div>
+        <div class="hs-story-img-wrap"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Talente fördern" loading="lazy" class="hs-story-photo" />
         <div class="hs-story-body">
           <div class="hs-story-tag">Talente</div>
           <h3>Talente fördern</h3>
@@ -1616,6 +1642,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="fhui">HUI</span>
         </div>
         <p>Human United Intelligence &#8212; die Plattform, die Menschen, Talente und soziale Projekte verbindet. Jede Aktivit&#228;t erzeugt Impact.</p>
+        <p class="fbrand-mission">Gemeinsam erschaffen wir eine Welt, in der Talente sichtbar werden und Wirkung selbstverst&#228;ndlich ist.</p>
         <div class="forgs">
           <span class="fob">4VisionGlobal &middot; ZVR 1225874555</span>
           <span class="fob">Liga der Kreativen &middot; ZVR 1844906406</span>
@@ -1690,6 +1717,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>!function(){var e=document.querySelector("[data-parallax]");if(!e)return;var t=document.getElementById("hero-parallax-content");if(!t)return;var a=0,r=0,o=0,s=0,i=null;function u(){i=null,o+=.03*(a-o),s+=.03*(r-s),t.style.transform="translate("+.6*o+"px,"+.4*s+"px)";Math.abs(a-o)+Math.abs(r-s)>.02&&(i=requestAnimationFrame(u))}window.matchMedia("(pointer:fine)").matches&&(e.addEventListener("mousemove",function(e){var n=e.getBoundingClientRect();a=e.clientX-(n.left+n.width/2),r=e.clientY-(n.top+n.height/2),i||(i=requestAnimationFrame(u))},{passive:!0}),e.addEventListener("mouseleave",function(){a=0,r=0,i||(i=requestAnimationFrame(u))},{passive:!0}))}();</script>
 <script>function hsScrollStories(e){const t=document.getElementById("storySlider");if(!t)return;const n=t.querySelector(".hs-story-track");n&&(n.scrollBy({left:e*340,behavior:"smooth"}))}</script>
+<script>
+!function(){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('hs-visible');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.hs-stat-card,.hs-why-card,.hs-story-card,.hs-app-mockup,.hs-community-impact-box').forEach(function(el){obs.observe(el)});
+}();
+</script>
 </body>
 </html>
 
