@@ -564,7 +564,7 @@ p {
 .hero-stat-divider{width:1px;height:32px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.2),transparent)}
 
 /* Wave transition */
-.hero-curved-wave{position:absolute;bottom:0;left:0;right:0;width:100%;height:80px;z-index:5;pointer-events:none;overflow:visible;line-height:0}
+.hero-curved-wave{position:absolute;bottom:0;left:0;right:0;width:100%;height:100px;z-index:5;pointer-events:none;overflow:hidden;line-height:0}
 .hero-curved-wave svg{width:100%;height:100%;display:block}
 
 /* Responsive */
@@ -1154,8 +1154,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Curved SVG Wave Transition -->
   <div class="hero-curved-wave">
-    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-      <path d="M0,20 C240,70 480,90 720,55 C960,20 1200,80 1440,35 L1440,100 L0,100 Z" fill="#F5F0E8"/>
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+      <path d="M0,0 C360,45 720,55 1080,30 C1260,15 1380,0 1440,0 L1440,100 L0,100 Z" fill="#F5F0E8"/>
     </svg>
   </div>
 
