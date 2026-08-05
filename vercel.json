@@ -13,11 +13,6 @@
       "destination": "/api/og?path=/projekt/:id"
     },
     {
-      "source": "/erlebnis/:id",
-      "has": [{ "type": "header", "key": "user-agent", "value": "(?i).*(facebookexternalhit|twitterbot|slackbot|telegrambot|discordbot|linkedinbot|whatsapp|applebot|googlebot|bingbot|pinterest|vkshare|ia_archiver).*" }],
-      "destination": "/api/og?path=/erlebnis/:id"
-    },
-    {
       "source": "/werke/:slug",
       "has": [{ "type": "header", "key": "user-agent", "value": "(?i).*(facebookexternalhit|twitterbot|slackbot|telegrambot|discordbot|linkedinbot|whatsapp|applebot|googlebot|bingbot|pinterest|vkshare|ia_archiver).*" }],
       "destination": "/api/og?path=/werke/:slug"
@@ -41,15 +36,47 @@
   ],
   "headers": [
     {
-      "source": "/assets/(.*)\\.(js|css)$",
+      "source": "/assets/(.*).js",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
-      "source": "/(.*)\\.(png|jpg|jpeg|webp|svg|ico)$",
+      "source": "/assets/(.*).css",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/(.*).png",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
     },
     {
-      "source": "/(.*)\\.(woff|woff2|ttf)$",
+      "source": "/(.*).jpg",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+    },
+    {
+      "source": "/(.*).jpeg",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+    },
+    {
+      "source": "/(.*).webp",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+    },
+    {
+      "source": "/(.*).svg",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+    },
+    {
+      "source": "/(.*).ico",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+    },
+    {
+      "source": "/(.*).woff",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000, immutable" }]
+    },
+    {
+      "source": "/(.*).woff2",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000, immutable" }]
+    },
+    {
+      "source": "/(.*).ttf",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000, immutable" }]
     },
     {
