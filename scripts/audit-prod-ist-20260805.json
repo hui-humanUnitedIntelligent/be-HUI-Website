@@ -1,0 +1,960 @@
+{
+  "meta": {
+    "target": "https://be-hui.vercel.app/app/Home",
+    "timestamp": "2026-08-05T21:49:52.727Z",
+    "timeline": [
+      {
+        "label": "networkidle2",
+        "ms": 2837,
+        "blocking": false
+      },
+      {
+        "label": "feed_dom_visible",
+        "ms": 2850,
+        "blocking": false
+      },
+      {
+        "label": "idle_15s",
+        "ms": 17855,
+        "blocking": false
+      },
+      {
+        "label": "idle_30s",
+        "ms": 32859,
+        "blocking": false
+      }
+    ]
+  },
+  "webVitals": {
+    "ttfb": 14.300000000745058,
+    "fcp": 204,
+    "cls": 0,
+    "dom": {
+      "total": 1120,
+      "feedCards": 15,
+      "imgs": 32
+    }
+  },
+  "supabaseQueries": [
+    {
+      "table": "profiles",
+      "select": "id%2Cdisplay_name%2Cfull_name%2Cusername%2Cavatar_url%2Chead",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/profiles?select=id%2Cdisplay_name%2Cfull_name%2Cusername%2Cavatar_url%2Cheader_img%2Cbio%2Clocation_label%2Clocation%2Cmember_since%2Crole%2Chas_talent",
+      "duration": 500.40000000037253,
+      "transferSize": 0,
+      "startTime": 200,
+      "responseEnd": 700.4000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "profiles",
+      "select": "id%2Cdisplay_name%2Cusername%2Cavatar_url%2Cbio%2Clocation_l",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/profiles?select=id%2Cdisplay_name%2Cusername%2Cavatar_url%2Cbio%2Clocation_label%2Cmember_since%2Crole%2Chas_talent_profile%2Ctalent%2Cmembership_type%",
+      "duration": 440.8999999994412,
+      "transferSize": 0,
+      "startTime": 258.30000000074506,
+      "responseEnd": 699.2000000001863,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "experiences",
+      "select": "id%2Ctitle%2Ccreated_at",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/experiences?select=id%2Ctitle%2Ccreated_at&status=eq.published&approval_status=eq.approved&order=created_at.desc&limit=5",
+      "duration": 440,
+      "transferSize": 0,
+      "startTime": 259.6000000005588,
+      "responseEnd": 699.6000000005588,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "talent_bookings",
+      "select": "id%2Ctalent_id%2Ccustomer_id%2Cseller_id%2Cselected_date%2Cs",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/talent_bookings?select=id%2Ctalent_id%2Ccustomer_id%2Cseller_id%2Cselected_date%2Cselected_time_slot%2Cparticipants%2Cstatus%2Camount_eur%2Ccustomer_no",
+      "duration": 437.09999999962747,
+      "transferSize": 0,
+      "startTime": 258.80000000074506,
+      "responseEnd": 695.9000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "works",
+      "select": "id%2Ctitle%2Ccreated_at",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/works?select=id%2Ctitle%2Ccreated_at&status=eq.published&approval_status=eq.approved&order=created_at.desc&limit=5",
+      "duration": 436.40000000037253,
+      "transferSize": 0,
+      "startTime": 259.40000000037253,
+      "responseEnd": 695.8000000007451,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "talent_bookings",
+      "select": "id%2Ccreated_at%2Cstatus%2Ctalent_id%2Ctalent%3Atalent_id%28",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/talent_bookings?select=id%2Ccreated_at%2Cstatus%2Ctalent_id%2Ctalent%3Atalent_id%28title%29&status=in.%28confirmed%2Ccompleted%29&order=created_at.desc",
+      "duration": 434.1000000005588,
+      "transferSize": 0,
+      "startTime": 261,
+      "responseEnd": 695.1000000005588,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "post_reactions",
+      "select": "id%2Cpost_id%2Cpost_type%2Ccreated_at",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/post_reactions?select=id%2Cpost_id%2Cpost_type%2Ccreated_at&type=eq.inspire&order=created_at.desc&limit=5",
+      "duration": 433.40000000037253,
+      "transferSize": 0,
+      "startTime": 260,
+      "responseEnd": 693.4000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "talent_bookings",
+      "select": "id%2Ctalent_id%2Ccustomer_id%2Cseller_id%2Cselected_date%2Cs",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/talent_bookings?select=id%2Ctalent_id%2Ccustomer_id%2Cseller_id%2Cselected_date%2Cselected_time_slot%2Cparticipants%2Cstatus%2Camount_eur%2Ccustomer_no",
+      "duration": 428.20000000018626,
+      "transferSize": 0,
+      "startTime": 259,
+      "responseEnd": 687.2000000001863,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "works",
+      "select": "id%2Ctitle%2Ccover_url%2Ccategory%2Cprice%2Ccreator_id%2Csta",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/works?select=id%2Ctitle%2Ccover_url%2Ccategory%2Cprice%2Ccreator_id%2Cstatus&status=eq.published&limit=6",
+      "duration": 427.5,
+      "transferSize": 0,
+      "startTime": 258.5,
+      "responseEnd": 686,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "rpc/rpc_get_impact_pool_current",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/rpc/rpc_get_impact_pool_current",
+      "duration": 427.40000000037253,
+      "transferSize": 0,
+      "startTime": 258,
+      "responseEnd": 685.4000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "follows",
+      "select": "followed_id",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/follows?select=followed_id&follower_id=eq.81e6750e-9338-4a4f-9f45-7a063f9018cd",
+      "duration": 426.19999999925494,
+      "transferSize": 0,
+      "startTime": 257.80000000074506,
+      "responseEnd": 684,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "work_sales",
+      "select": "id%2Ccreated_at%2Cwork_id%2Cwork%3Awork_id%28title%29",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/work_sales?select=id%2Ccreated_at%2Cwork_id%2Cwork%3Awork_id%28title%29&payment_status=eq.completed&order=created_at.desc&limit=5",
+      "duration": 421.59999999962747,
+      "transferSize": 0,
+      "startTime": 260.30000000074506,
+      "responseEnd": 681.9000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "impact_applications",
+      "select": "id%2Cuser_id%2Cproject_name%2Cshort_desc%2Cproblem%2Ccover_u",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/impact_applications?select=id%2Cuser_id%2Cproject_name%2Cshort_desc%2Cproblem%2Ccover_url%2Cmedia_urls%2Cfunding_goal%2Ccurrent_amount_eur%2Crank%2Ccre",
+      "duration": 419.79999999981374,
+      "transferSize": 0,
+      "startTime": 281.20000000018626,
+      "responseEnd": 701,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "notifications",
+      "select": "id",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/notifications?select=id&user_id=eq.81e6750e-9338-4a4f-9f45-7a063f9018cd&is_read=eq.false",
+      "duration": 419.20000000018626,
+      "transferSize": 0,
+      "startTime": 261.20000000018626,
+      "responseEnd": 680.4000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "chats",
+      "select": "id%2Cstate%2Cbooking_title%2Clast_message%2Clast_message_at%",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/chats?select=id%2Cstate%2Cbooking_title%2Clast_message%2Clast_message_at%2Copened_at%2Cbooking_id%2Cparticipant_ids&participant_ids=cs.%7B81e6750e-9338",
+      "duration": 418.09999999962747,
+      "transferSize": 0,
+      "startTime": 259.1000000005588,
+      "responseEnd": 677.2000000001863,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "experiences",
+      "select": "id%2Ctitle%2Clocation_text%2Cprice%2Cformat%2Cduration%2Cdat",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/experiences?select=id%2Ctitle%2Clocation_text%2Cprice%2Cformat%2Cduration%2Cdate%2Ctime_start%2Ctime_end%2Ccover_url%2Cmedia_url%2Cuser_id&status=eq.pu",
+      "duration": 416.5,
+      "transferSize": 0,
+      "startTime": 280,
+      "responseEnd": 696.5,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "invitations",
+      "select": "id%2Cuser_id%2Ctext%2Ctitle%2Cvibe%2Cmood%2Cenergy%2Clocatio",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/invitations?select=id%2Cuser_id%2Ctext%2Ctitle%2Cvibe%2Cmood%2Cenergy%2Clocation%2Ccity%2Ctime_label%2Cstarts_at%2Cexpires_at%2Cvisibility%2Cstatus%2Cm",
+      "duration": 415.8999999994412,
+      "transferSize": 0,
+      "startTime": 280.80000000074506,
+      "responseEnd": 696.7000000001863,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "saved_posts",
+      "select": "id%2Cpost_id",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/saved_posts?select=id%2Cpost_id&user_id=eq.81e6750e-9338-4a4f-9f45-7a063f9018cd",
+      "duration": 415.1000000005588,
+      "transferSize": 0,
+      "startTime": 257.5,
+      "responseEnd": 672.6000000005588,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "rpc/reaction_counts",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/rpc/reaction_counts",
+      "duration": 412.5,
+      "transferSize": 0,
+      "startTime": 1081.5,
+      "responseEnd": 1494,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "experiences",
+      "select": "id%2Ctitle%2Ccover_url%2Cmedia_url%2Ccategory%2Cdescription%",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/experiences?select=id%2Ctitle%2Ccover_url%2Cmedia_url%2Ccategory%2Cdescription%2Cprice%2Cduration%2Cformat%2Clocation_text%2Cdate%2Ctime_start%2Ctime_e",
+      "duration": 412.20000000018626,
+      "transferSize": 0,
+      "startTime": 280.40000000037253,
+      "responseEnd": 692.6000000005588,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "impact_projects",
+      "select": "id%2Cname%2Ccreated_at",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/impact_projects?select=id%2Cname%2Ccreated_at&order=created_at.desc&limit=5",
+      "duration": 409,
+      "transferSize": 0,
+      "startTime": 259.80000000074506,
+      "responseEnd": 668.8000000007451,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "beitraege",
+      "select": "id%2Cuser_id%2Csrc%2Ctype%2Cmoment_source%2Ccaption%2Ccreate",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/beitraege?select=id%2Cuser_id%2Csrc%2Ctype%2Cmoment_source%2Ccaption%2Ccreated_at&order=created_at.desc&limit=10",
+      "duration": 405.20000000018626,
+      "transferSize": 0,
+      "startTime": 280.70000000018626,
+      "responseEnd": 685.9000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "works",
+      "select": "id%2Ctitle%2Ccover_url%2Cmedia_url%2Ccategory%2Cdescription%",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/works?select=id%2Ctitle%2Ccover_url%2Cmedia_url%2Ccategory%2Cdescription%2Ccaption%2Ctags%2Cprice%2Cfor_sale%2Cstatus%2Capproval_status%2Cuser_id%2Ccre",
+      "duration": 403.6000000005588,
+      "transferSize": 0,
+      "startTime": 280.20000000018626,
+      "responseEnd": 683.8000000007451,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "talents",
+      "select": "id%2Cuser_id%2Ctitle%2Cdescription%2Ccategory%2Cimages%2Cpri",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/talents?select=id%2Cuser_id%2Ctitle%2Cdescription%2Ccategory%2Cimages%2Cprice_per_hour%2Cprice_per_session%2Ccurrency%2Clocation_type%2Clocation_addres",
+      "duration": 403.29999999981374,
+      "transferSize": 0,
+      "startTime": 281.1000000005588,
+      "responseEnd": 684.4000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "rpc/rpc_get_impact_pool_history",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/rpc/rpc_get_impact_pool_history",
+      "duration": 348.20000000018626,
+      "transferSize": 0,
+      "startTime": 688.6000000005588,
+      "responseEnd": 1036.800000000745,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/auth/v1/user",
+      "duration": 166.1000000005588,
+      "transferSize": 0,
+      "startTime": 963.5,
+      "responseEnd": 1129.6000000005588,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/auth/v1/user",
+      "duration": 164.5,
+      "transferSize": 0,
+      "startTime": 963.1000000005588,
+      "responseEnd": 1127.6000000005588,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/works/6a93098f-076f-49ef-a0c5-8ec091735036/1783778401673_nm6y.png",
+      "duration": 163.3999999994412,
+      "transferSize": 0,
+      "startTime": 708.8000000007451,
+      "responseEnd": 872.2000000001863,
+      "initiatorType": "img"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/auth/v1/user",
+      "duration": 157.59999999962747,
+      "transferSize": 0,
+      "startTime": 963.8000000007451,
+      "responseEnd": 1121.4000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/auth/v1/user",
+      "duration": 157.5,
+      "transferSize": 0,
+      "startTime": 963.3000000007451,
+      "responseEnd": 1120.800000000745,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "momente_reports",
+      "select": "id",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/momente_reports?select=id&moment_id=eq.fa712d1f-a666-4597-8a2b-c81664068980&reporter_id=eq.81e6750e-9338-4a4f-9f45-7a063f9018cd",
+      "duration": 150.40000000037253,
+      "transferSize": 0,
+      "startTime": 1128.5,
+      "responseEnd": 1278.9000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/e85e0057-7af7-44c8-bd94-df90926275fa/1781855368168.png",
+      "duration": 147.1000000005588,
+      "transferSize": 0,
+      "startTime": 9392.200000000186,
+      "responseEnd": 9539.300000000745,
+      "initiatorType": "img"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/works/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1783698800291_vxq6.png",
+      "duration": 146.29999999981374,
+      "transferSize": 0,
+      "startTime": 708.8000000007451,
+      "responseEnd": 855.1000000005588,
+      "initiatorType": "img"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1780990501416.jpg",
+      "duration": 145.40000000037253,
+      "transferSize": 0,
+      "startTime": 952.7000000001863,
+      "responseEnd": 1098.1000000005588,
+      "initiatorType": "img"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/auth/v1/user",
+      "duration": 143,
+      "transferSize": 0,
+      "startTime": 962.9000000003725,
+      "responseEnd": 1105.9000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/beitraege/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1784792030472.jpg",
+      "duration": 142.8999999994412,
+      "transferSize": 0,
+      "startTime": 952.8000000007451,
+      "responseEnd": 1095.7000000001863,
+      "initiatorType": "img"
+    },
+    {
+      "table": "profiles",
+      "select": "id%2Cdisplay_name%2Cfull_name%2Cusername%2Cavatar_url%2Chead",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/profiles?select=id%2Cdisplay_name%2Cfull_name%2Cusername%2Cavatar_url%2Cheader_img%2Cbio%2Clocation_label%2Clocation%2Cmember_since%2Crole%2Chas_talent",
+      "duration": 134.79999999981374,
+      "transferSize": 0,
+      "startTime": 709.6000000005588,
+      "responseEnd": 844.4000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "messages",
+      "select": "chat_id%2Ccreated_at",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/messages?select=chat_id%2Ccreated_at&chat_id=in.%28%29&sender_id=neq.81e6750e-9338-4a4f-9f45-7a063f9018cd",
+      "duration": 129.20000000018626,
+      "transferSize": 0,
+      "startTime": 802.6000000005588,
+      "responseEnd": 931.8000000007451,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "momente_reports",
+      "select": "id",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/momente_reports?select=id&moment_id=eq.385866bd-168a-4187-a424-02c960cda4d5&reporter_id=eq.81e6750e-9338-4a4f-9f45-7a063f9018cd",
+      "duration": 128.8999999994412,
+      "transferSize": 0,
+      "startTime": 1122.800000000745,
+      "responseEnd": 1251.7000000001863,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "user_presence",
+      "select": "user_id%2Cstatus%2Clast_seen_at",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/user_presence?select=user_id%2Cstatus%2Clast_seen_at&user_id=in.%283a291a5c-9c4c-4537-9e87-b7b137d5ec01%2Ce85e0057-7af7-44c8-bd94-df90926275fa%2C6a9309",
+      "duration": 126.20000000018626,
+      "transferSize": 0,
+      "startTime": 964,
+      "responseEnd": 1090.2000000001863,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "rpc/count_comments",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/rpc/count_comments",
+      "duration": 125.09999999962747,
+      "transferSize": 0,
+      "startTime": 1082.1000000005588,
+      "responseEnd": 1207.2000000001863,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "momente_reports",
+      "select": "id",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/momente_reports?select=id&moment_id=eq.ec5e41cc-e9c3-4acf-96cb-c79faba6611e&reporter_id=eq.81e6750e-9338-4a4f-9f45-7a063f9018cd",
+      "duration": 124.70000000018626,
+      "transferSize": 0,
+      "startTime": 1107,
+      "responseEnd": 1231.7000000001863,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "post_reactions",
+      "select": "type",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/post_reactions?select=type&post_id=eq.ec5e41cc-e9c3-4acf-96cb-c79faba6611e&user_id=eq.81e6750e-9338-4a4f-9f45-7a063f9018cd",
+      "duration": 122.70000000018626,
+      "transferSize": 0,
+      "startTime": 1495.2000000001863,
+      "responseEnd": 1617.9000000003725,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "chat_participants",
+      "select": "chat_id%2Clast_read_at",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/chat_participants?select=chat_id%2Clast_read_at&user_id=eq.81e6750e-9338-4a4f-9f45-7a063f9018cd&chat_id=in.%28%29",
+      "duration": 122.6000000005588,
+      "transferSize": 0,
+      "startTime": 678.5,
+      "responseEnd": 801.1000000005588,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "momente_reports",
+      "select": "id",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/momente_reports?select=id&moment_id=eq.35d2bd74-10b8-4758-91b1-932e10321644&reporter_id=eq.81e6750e-9338-4a4f-9f45-7a063f9018cd",
+      "duration": 120.59999999962747,
+      "transferSize": 0,
+      "startTime": 1122.1000000005588,
+      "responseEnd": 1242.7000000001863,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "momente_reports",
+      "select": "id",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/rest/v1/momente_reports?select=id&moment_id=eq.84d89717-1db6-404c-acdd-443fda2174e1&reporter_id=eq.81e6750e-9338-4a4f-9f45-7a063f9018cd",
+      "duration": 119.79999999981374,
+      "transferSize": 0,
+      "startTime": 1132.2000000001863,
+      "responseEnd": 1252,
+      "initiatorType": "fetch"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/talents/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1784790971218_97qw.jpg",
+      "duration": 116.79999999981374,
+      "transferSize": 0,
+      "startTime": 9399.300000000745,
+      "responseEnd": 9516.100000000559,
+      "initiatorType": "img"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1784791307715_yh00.jpg",
+      "duration": 115.09999999962747,
+      "transferSize": 0,
+      "startTime": 703.6000000005588,
+      "responseEnd": 818.7000000001863,
+      "initiatorType": "img"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/6a93098f-076f-49ef-a0c5-8ec091735036/1783779692357_q64u.jpg",
+      "duration": 111.3999999994412,
+      "transferSize": 0,
+      "startTime": 703.6000000005588,
+      "responseEnd": 815,
+      "initiatorType": "img"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/posts/e85e0057-7af7-44c8-bd94-df90926275fa/1778921998222-ztlht2r3txf.jpeg",
+      "duration": 109.19999999925494,
+      "transferSize": 0,
+      "startTime": 708.8000000007451,
+      "responseEnd": 818,
+      "initiatorType": "img"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/beitraege/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1784791953004.jpg",
+      "duration": 104.29999999981374,
+      "transferSize": 0,
+      "startTime": 952.8000000007451,
+      "responseEnd": 1057.1000000005588,
+      "initiatorType": "img"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/beitraege/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1785926855711.mp4",
+      "duration": 101.09999999962747,
+      "transferSize": 0,
+      "startTime": 1034.9000000003725,
+      "responseEnd": 1136,
+      "initiatorType": "video"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/beitraege/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1785926855711.mp4",
+      "duration": 93.40000000037253,
+      "transferSize": 0,
+      "startTime": 941.7000000001863,
+      "responseEnd": 1035.1000000005588,
+      "initiatorType": "video"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1784791307715_yh00.jpg",
+      "duration": 33.60000000055879,
+      "transferSize": 0,
+      "startTime": 952.7000000001863,
+      "responseEnd": 986.3000000007451,
+      "initiatorType": "img"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1784791307715_yh00.jpg",
+      "duration": 24.299999999813735,
+      "transferSize": 0,
+      "startTime": 862.6000000005588,
+      "responseEnd": 886.9000000003725,
+      "initiatorType": "img"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/beitraege/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1785926855711.mp4",
+      "duration": 22.09999999962747,
+      "transferSize": 0,
+      "startTime": 9799.100000000559,
+      "responseEnd": 9821.200000000186,
+      "initiatorType": "video"
+    },
+    {
+      "table": "unknown",
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/6a93098f-076f-49ef-a0c5-8ec091735036/1783779692357_q64u.jpg",
+      "duration": 20.5,
+      "transferSize": 0,
+      "startTime": 869.1000000005588,
+      "responseEnd": 889.6000000005588,
+      "initiatorType": "img"
+    }
+  ],
+  "jsChunks": [
+    {
+      "file": "vendor-DZwvM9zh.js",
+      "duration": 16.200000000186265,
+      "transferSize": 185140,
+      "encodedBodySize": 184840,
+      "startTime": 71.5
+    },
+    {
+      "file": "index-BXlYpHJG.js",
+      "duration": 22.200000000186265,
+      "transferSize": 174781,
+      "encodedBodySize": 174481,
+      "startTime": 71.6000000005588
+    },
+    {
+      "file": "UnifiedFeed-wzgwKj8_.js",
+      "duration": 9,
+      "transferSize": 16369,
+      "encodedBodySize": 16069,
+      "startTime": 212
+    },
+    {
+      "file": "web-CIqMBm-c.js",
+      "duration": 40.90000000037253,
+      "transferSize": 14087,
+      "encodedBodySize": 13787,
+      "startTime": 28.90000000037253
+    },
+    {
+      "file": "StudioSubPages-BtUGrWAl.js",
+      "duration": 12.099999999627471,
+      "transferSize": 3947,
+      "encodedBodySize": 3647,
+      "startTime": 71.6000000005588
+    }
+  ],
+  "images": [
+    {
+      "url": "https://be-hui.vercel.app/assets/brand/hui-logo.png",
+      "duration": 15.899999999441206,
+      "transferSize": 32447,
+      "startTime": 215.80000000074506
+    },
+    {
+      "url": "https://be-hui.vercel.app/favicon.png?v=2",
+      "duration": 9.700000000186265,
+      "transferSize": 1890,
+      "startTime": 215.90000000037253
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/6a93098f-076f-49ef-a0c5-8ec091735036",
+      "duration": 111.3999999994412,
+      "transferSize": 0,
+      "startTime": 703.6000000005588
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/3a291a5c-9c4c-4537-9e87-b7b137d5ec01",
+      "duration": 115.09999999962747,
+      "transferSize": 0,
+      "startTime": 703.6000000005588
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/posts/e85e0057-7af7-44c8-bd94-df90926275fa/17789",
+      "duration": 109.19999999925494,
+      "transferSize": 0,
+      "startTime": 708.8000000007451
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/works/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/17836",
+      "duration": 146.29999999981374,
+      "transferSize": 0,
+      "startTime": 708.8000000007451
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/works/6a93098f-076f-49ef-a0c5-8ec091735036/17837",
+      "duration": 163.3999999994412,
+      "transferSize": 0,
+      "startTime": 708.8000000007451
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/3a291a5c-9c4c-4537-9e87-b7b137d5ec01",
+      "duration": 24.299999999813735,
+      "transferSize": 0,
+      "startTime": 862.6000000005588
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/6a93098f-076f-49ef-a0c5-8ec091735036",
+      "duration": 20.5,
+      "transferSize": 0,
+      "startTime": 869.1000000005588
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/3a291a5c-9c4c-4537-9e87-b7b137d5ec01",
+      "duration": 33.60000000055879,
+      "transferSize": 0,
+      "startTime": 952.7000000001863
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "duration": 145.40000000037253,
+      "transferSize": 0,
+      "startTime": 952.7000000001863
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/beitraege/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1",
+      "duration": 104.29999999981374,
+      "transferSize": 0,
+      "startTime": 952.8000000007451
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/beitraege/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1",
+      "duration": 142.8999999994412,
+      "transferSize": 0,
+      "startTime": 952.8000000007451
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/e85e0057-7af7-44c8-bd94-df90926275fa/178",
+      "duration": 147.1000000005588,
+      "transferSize": 0,
+      "startTime": 9392.200000000186
+    },
+    {
+      "url": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/talents/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "duration": 116.79999999981374,
+      "transferSize": 0,
+      "startTime": 9399.300000000745
+    }
+  ],
+  "longTasks": [],
+  "reactProfile": [],
+  "perfStoreSummary": {
+    "mounts": {},
+    "feed": {
+      "fetchStart": null,
+      "fetchEnd": null,
+      "mergeStart": null,
+      "mergeEnd": null,
+      "sortStart": null,
+      "sortEnd": null,
+      "firstVisible": null,
+      "allVisible": null,
+      "cardCount": 0
+    },
+    "hero": {
+      "dataLoad": null,
+      "imgLoadStart": null,
+      "imgLoadEnd": null,
+      "imgDecode": null,
+      "render": null,
+      "rotation": null
+    },
+    "queryCount": 0,
+    "imageCount": 0
+  },
+  "memory": {
+    "at30s": {
+      "usedJSHeapSize": 8343918,
+      "totalJSHeapSize": 10637666
+    }
+  },
+  "cpuHotspots": [],
+  "imgElements": [
+    {
+      "src": "https://be-hui.vercel.app/assets/brand/hui-logo.png",
+      "natural": "512x512",
+      "display": "26x26",
+      "loading": "auto",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/6a93098f-076f-49ef-a0c5-8ec091735036",
+      "natural": "474x309",
+      "display": "0x0",
+      "loading": "auto",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/3a291a5c-9c4c-4537-9e87-b7b137d5ec01",
+      "natural": "474x270",
+      "display": "0x0",
+      "loading": "auto",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "640x640",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "640x640",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "640x640",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/beitraege/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1",
+      "natural": "474x301",
+      "display": "630x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "640x640",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/beitraege/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1",
+      "natural": "474x355",
+      "display": "630x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "640x640",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/3a291a5c-9c4c-4537-9e87-b7b137d5ec01",
+      "natural": "474x270",
+      "display": "630x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "640x640",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/talents/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "474x316",
+      "display": "630x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "0x0",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/works/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/17847",
+      "natural": "0x0",
+      "display": "630x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "0x0",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/works/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/17846",
+      "natural": "0x0",
+      "display": "630x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "0x0",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/beitraege/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/1",
+      "natural": "0x0",
+      "display": "630x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/e85e0057-7af7-44c8-bd94-df90926275fa/178",
+      "natural": "0x0",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/e85e0057-7af7-44c8-bd94-df90926275fa",
+      "natural": "0x0",
+      "display": "630x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/experiences/6a93098f-076f-49ef-a0c5-8ec091735036",
+      "natural": "474x309",
+      "display": "630x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/works/6a93098f-076f-49ef-a0c5-8ec091735036/17837",
+      "natural": "1536x1024",
+      "display": "630x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "0x0",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/works/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/17836",
+      "natural": "1541x995",
+      "display": "630x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "0x0",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+      "natural": "0x0",
+      "display": "598x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/avatars/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "0x0",
+      "display": "48x48",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/talents/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/178",
+      "natural": "0x0",
+      "display": "630x220",
+      "loading": "lazy",
+      "fetchPriority": "auto"
+    },
+    {
+      "src": "https://gxztrhvhcxhmunhhkfjd.supabase.co/storage/v1/object/public/media/works/3a291a5c-9c4c-4537-9e87-b7b137d5ec01/17836",
+      "natural": "1541x995",
+      "display": "72x72",
+      "loading": "auto",
+      "fetchPriority": "auto"
+    }
+  ],
+  "requestLogCount": 116
+}
